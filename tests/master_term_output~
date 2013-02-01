@@ -1,0 +1,43 @@
+/* create */
+enter username to create
+enter account type
+create successful
+
+/* addcredit */
+enter username
+enter credit amount
+credit added
+
+/* sell */
+enter event title
+enter sale price
+enter number of tickets
+tickets added
+
+/* buy */
+enter event title
+enter number of tickets
+enter username of seller
+cost per ticket: $--
+total cost: $--
+current balance: $--
+confirm purchase: yes or no
+current balance: $--
+purchase successful
+
+/* refund */
+enter buyer's username
+enter seller's username
+enter amount to transfer
+refund successful
+
+/* delete */
+enter username
+delete successful
+
+/* logout */
+logout successful
+
+/* login */
+enter username
+login accepted
