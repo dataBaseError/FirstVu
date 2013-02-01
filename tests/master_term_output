@@ -41,3 +41,14 @@ logout successful
 /* login */
 enter username
 login accepted
+
+/* errors */
+
+/* user logged in */
+error: user is already logged in
+
+/* invalid user */
+error: invalid login
+
+/* invalid command, logout */
+error: invalid command, user must be logged in
