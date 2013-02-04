@@ -64,6 +64,8 @@ error: user not authorized to buy
 error: insufficient funds
 error: a maximum of 4 tickets can be purchased
 error: not enough tickets remaining
+error: invalid seller name
+error: invalid event
 
 /* refund */
 error: only administrators can make refunds
