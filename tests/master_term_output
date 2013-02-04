@@ -18,7 +18,6 @@ new balance: $--
 purchase successful
 
 /* refund */
-new balance; $--
 refund successful
 
 /* delete */
@@ -75,6 +74,7 @@ error: total balance cannot be greater than $999 999
 /* delete */
 error: cannot delete user currently logged in
 error: username does not exist
+error: only administrators delete accounts
 
 /* logout */
 error: no users logged in
