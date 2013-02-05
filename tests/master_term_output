@@ -24,9 +24,9 @@ enter number of tickets
 enter username of seller
 cost per ticket: $--
 total cost: $--
-new balance: $--
-confirm purchase: yes or no
 current balance: $--
+confirm purchase: yes or no
+new balance: $--
 purchase successful
 
 /* refund */
@@ -89,6 +89,7 @@ error: only administrators can make refunds
 error: cannot refund this session
 error: username does not exist
 error: total balance cannot be greater than $999 999
+error: no transaction found
 
 /* delete */
 error: cannot delete user currently logged in
