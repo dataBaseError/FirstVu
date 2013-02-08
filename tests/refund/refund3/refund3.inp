@@ -1,2 +1,18 @@
-login admin
+login
+buy_standard
+buy
+JB_Squared
+2
+sell_standard
+yes
 logout
+END
+
+login
+admin
+refund
+buy_standard
+sell_standard
+300
+logout
+END 

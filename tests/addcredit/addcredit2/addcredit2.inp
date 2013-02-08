@@ -1,2 +1,13 @@
-login admin
+login
+admin
+create
+super_user
+AA
 logout
+login
+super_user
+addcredit
+super_user
+900
+logout
+END

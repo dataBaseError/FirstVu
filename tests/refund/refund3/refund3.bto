@@ -1,0 +1,20 @@
+enter username
+login successful
+enter event title
+enter number of tickets
+enter username of seller
+cost per ticket: $150
+total cost: $300
+confirm purchase: yes or no
+new balance: $700
+purchase successful
+
+enter username
+logout successful
+
+login admin
+enter buyer's username
+enter seller's username
+enter amount to transfer
+refund successful
+logout successful
