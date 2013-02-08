@@ -1,2 +1,6 @@
-login admin
+login
+admin
+delete
+admin
 logout
+END 
