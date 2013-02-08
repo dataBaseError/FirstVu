@@ -1,2 +1,8 @@
-login admin
+login
+admin
+create
+END  
+FS
+0.00
 logout
+END 

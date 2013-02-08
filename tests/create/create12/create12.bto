@@ -3,5 +3,5 @@ login successful
 enter username to create
 enter account type
 enter user account balance
-create successful
+error: invalid account balance
 logout successful
