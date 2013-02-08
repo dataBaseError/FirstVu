@@ -4,10 +4,11 @@ Welcome to FirstVu ticket ordering system!
 /* create */
 enter username to create
 enter account type
+enter user account balance
 create successful
 
 /* addcredit */
-enter username
+enter username          //Admin only
 enter credit amount
 new balance: $--
 credit added
@@ -65,15 +66,16 @@ error: only administrators can create new accounts
 error: total balance cannot be greater than $999 999
 error: amount added cannot be greater than $1000.00
 error: username does not exist
+error: invalid credit amount
 
 /* sell */
 error: invalid event name								//contains invalid characters
 error: invalid parameters
 error: user not authorized to sell
 error: event already exists
-error: invalid event price								//price over 999.99
+error: invalid event price								//price over 999.99 or less than 0
 error: event title must be a maximum of 25 characters
-error: invalid ticket number							//over 100
+error: invalid ticket number							//over 100 or less than 1
 error: tickets unavailable
 
 /* buy */
@@ -83,13 +85,15 @@ error: a maximum of 4 tickets can be purchased
 error: not enough tickets remaining
 error: invalid seller name
 error: invalid event
+error: invalid ticket number
 
 /* refund */
 error: only administrators can make refunds
-error: cannot refund this session
 error: username does not exist
 error: total balance cannot be greater than $999 999
 error: no transaction found
+error: insufficient funds
+error: invalid transfer amount
 
 /* delete */
 error: cannot delete user currently logged in
