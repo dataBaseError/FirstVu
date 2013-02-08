@@ -50,7 +50,7 @@ login successful
 Goodbye!
 
 
-/* 
+/*
  * ERRORS
  */
 
@@ -104,6 +104,6 @@ error: username does not exist
 error: user is already logged in
 
 /* end */
-error: invalid command								//cannot be entered when a
+error: logout before ending sessions				//cannot be entered when a
 													//user is logged in
 
