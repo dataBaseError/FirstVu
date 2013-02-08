@@ -108,6 +108,6 @@ error: username does not exist
 error: user is already logged in
 
 /* end */
-error: invalid command while logged in				//cannot be entered when a
+error: invalid command                 				//cannot be entered when a
 													//user is logged in
 
