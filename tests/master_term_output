@@ -67,6 +67,7 @@ error: total balance cannot be greater than $999 999
 error: amount added cannot be greater than $1000.00
 error: username does not exist
 error: invalid credit amount
+error: invalid username
 
 /* sell */
 error: invalid event name								//contains invalid characters
@@ -77,6 +78,7 @@ error: invalid event price								//price over 999.99 or less than 0
 error: event title must be a maximum of 25 characters
 error: invalid ticket number							//over 100 or less than 1
 error: tickets unavailable
+error: invalid username
 
 /* buy */
 error: user not authorized to buy
@@ -94,6 +96,7 @@ error: total balance cannot be greater than $999 999
 error: no transaction found
 error: insufficient funds
 error: invalid transfer amount
+error: invalid username
 
 /* delete */
 error: cannot delete user currently logged in
