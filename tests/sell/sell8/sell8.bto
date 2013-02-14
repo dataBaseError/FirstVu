@@ -1,11 +1,7 @@
-enter username
-login successful
-enter event title
-enter sale price
-enter number of tickets
-
-enter event title
-error: Tickets not available
-error: invalid command
-error: invalid command
-logout successful
+login
+sell_standard
+sell
+Turret_Tenors
+150.00
+200
+logout

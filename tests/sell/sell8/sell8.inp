@@ -1,12 +1,8 @@
 login
-full_standard
-sell
-JB
-150.00
-100
-buy
-JB
-2
 sell_standard
+sell
+Turret_Tenors
+150.00
+200
 logout
-END 
+END
