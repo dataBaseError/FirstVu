@@ -3,5 +3,9 @@ login successful
 enter event title
 enter sale price
 enter number of tickets
-tickets added
+
+enter event title
+error: Tickets not available
+error: invalid command
+error: invalid command
 logout successful
