@@ -3,5 +3,10 @@ login successful
 enter event title
 enter number of tickets
 enter username of seller
-error: invalid seller name
+cost per ticket: $5
+total cost: $25
+current balance: $1000
+confirm purchase: yes or no
+purchase successful
+new balance: $975
 logout successful

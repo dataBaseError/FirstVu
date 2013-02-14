@@ -2,7 +2,6 @@ enter username
 login successful
 enter event title
 enter number of tickets
-error: not enough tickets left
-error: invalid command
+error: invalid ticket number
 error: invalid command
 logout successful
