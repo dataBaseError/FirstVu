@@ -1,8 +1,12 @@
 enter username
 login successful
-error: invalid user privileges
-error: invalid command
-error: invalid command
-error: invalid command
-error: invalid command
+enter event title
+enter number of tickets
+enter username of seller
+cost per ticket: $150
+total cost: $300
+current balance: $1000
+confirm purchase: yes or no
+current balance: $700
+purchase successful
 logout successful
