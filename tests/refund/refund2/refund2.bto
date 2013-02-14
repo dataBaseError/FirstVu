@@ -1,6 +1,5 @@
 enter username
 login successful
-
 enter event title
 enter number of tickets
 enter username of seller
@@ -10,7 +9,6 @@ current balance: $999999
 confirm purchase: yes or no
 new balance: $999699
 purchase successful
-
 enter buyer's username
 enter seller's username
 enter amount to transfer
