@@ -3,9 +3,10 @@ login successful
 enter event title
 enter number of tickets
 enter username of seller
-cost per ticket: $1001
-total cost: $1001
+cost per ticket: $150
+total cost: $300
 current balance: $1000
-error: insufficient funds
-error: invalid command
+confirm purchase: yes or no
+current balance: $700
+purchase successful
 logout successful
