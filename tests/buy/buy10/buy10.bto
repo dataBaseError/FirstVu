@@ -1,7 +1,7 @@
 enter username
 login successful
 enter event title
-enter sale price
 enter number of tickets
-error: invalid ticket number
+enter username of seller
+error: invalid seller name
 logout successful

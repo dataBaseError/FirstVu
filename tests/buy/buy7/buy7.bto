@@ -2,8 +2,7 @@ enter username
 login successful
 enter event title
 enter number of tickets
-enter username of seller
-error: invalid event
+error: not enough tickets left
+error: invalid command
 error: invalid command
 logout successful
-

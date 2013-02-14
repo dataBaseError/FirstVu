@@ -2,11 +2,7 @@ enter username
 login successful
 enter event title
 enter number of tickets
-enter username of seller
-cost per ticket: $5
-total cost: $25
-current balance: $1000
-confirm purchase: yes or no
-purchase successful
-new balance: $975
+error: maximum of 4 tickets can be purchased at a time
+error: invalid command
+error: invalid command
 logout successful

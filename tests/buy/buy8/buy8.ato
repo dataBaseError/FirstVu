@@ -1,4 +1,4 @@
-JB_Squared          sell_standard   003 150.00
-JB_Cubed            sell_standard   003 999.00
-Captain_Canary      full_standard   007 005.00
-END                                 000 000.00
+JB_Squared          sell_standard 003 000150
+JB_Cubed            sell_standard 003 001001
+Captain_Canary      full_standard 002 000005
+END                               000 000.00
