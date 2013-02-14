@@ -1,7 +1,8 @@
 enter username
 login successful
 enter event title
-error: invalid event name
-error: invalid command
+enter sale price
+error: invalid event price
 error: invalid command
 logout successful
+
