@@ -6,8 +6,7 @@ JB_Squared
 sell_standard
 yes
 logout
-END
-
+END 
 login
 admin
 refund
@@ -15,3 +14,4 @@ admin
 sell_standard
 300
 logout
+END 
