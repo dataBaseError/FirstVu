@@ -88,6 +88,7 @@ error: not enough tickets remaining
 error: invalid seller name
 error: invalid event
 error: invalid ticket number
+error: invalid user privileges
 
 /* refund */
 error: only administrators can make refunds
