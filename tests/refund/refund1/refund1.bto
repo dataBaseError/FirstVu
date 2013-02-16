@@ -1,4 +1,7 @@
 enter username
 login successful
 error: Privileged transaction
-logout
+error: invalid command
+error: invalid command
+error: invalid command
+logout successful

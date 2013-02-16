@@ -18,5 +18,5 @@ login successful
 enter buyer's username
 enter seller's username
 enter amount to transfer
-error: total balance cannot be greater than $999 999
+error: total balance cannot be greater than $999,999
 logout successful

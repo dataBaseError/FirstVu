@@ -6,7 +6,7 @@ JB_Squared
 sell_standard
 yes
 logout
-END 
+quit
 login
 admin
 refund
