@@ -1,4 +1,3 @@
-create13.inp
 login
 admin
 create
@@ -6,4 +5,4 @@ create
 SS
 0.00
 logout
-END 
+quit
