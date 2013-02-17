@@ -4,9 +4,9 @@ enter event title
 enter number of tickets
 enter username of seller
 cost per ticket: $150.00
-total cost: $300.00
-current balance: $1000.00
+total cost: $450.00
+current balance: $999999.00
 confirm purchase: yes or no
-current balance: $700.00
+new balance: $999549.00
 purchase successful
 logout successful

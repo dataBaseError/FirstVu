@@ -1,0 +1,15 @@
+enter username
+login successful
+enter event title
+enter sale price
+enter number of tickets
+tickets added
+logout successful
+enter username
+login successful
+enter event title
+enter number of tickets
+enter username of seller
+error: seller balance cannot be greater than $999,999
+error: invalid command
+logout successful

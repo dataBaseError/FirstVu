@@ -30,6 +30,12 @@ confirm purchase: yes or no
 new balance: $--
 purchase successful
 
+/* sell buy back */
+enter event title
+enter number of tickets
+enter username of seller
+buy back: yes or no
+
 /* refund */
 enter buyer's username
 enter seller's username
