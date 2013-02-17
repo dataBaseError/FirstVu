@@ -74,6 +74,7 @@ error: amount added cannot be greater than $1000.00
 error: username does not exist
 error: invalid credit amount
 error: invalid username
+error: invalid user privileges
 
 /* sell */
 error: invalid event name								//contains invalid characters
