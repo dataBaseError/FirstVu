@@ -1,15 +1,18 @@
 enter username
 login successful
 enter event title
-enter sale price
-enter number of tickets
-tickets added
-logout successful
-enter username
-login successful
-enter event title
 enter number of tickets
 enter username of seller
-error: seller balance cannot be greater than $999,999
-error: invalid command
+cost per ticket: $150.00
+total cost: $300.00
+confirm purchase: yes or no
+new balance: $700.00
+purchase successful
+enter username
+logout successful
+login admin
+enter buyer's username
+enter seller's username
+enter amount to transfer
+refund successful
 logout successful
