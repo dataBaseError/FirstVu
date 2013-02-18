@@ -3,3 +3,7 @@
 
 # Ignore Visual Paradigm backup files
 *.vpp~*
+
+# Ignore project files
+.cproject
+.project
