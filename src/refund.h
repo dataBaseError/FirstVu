@@ -1,7 +1,7 @@
 class refund : Entry {
 
 private:
-	String buyName;
-	String sellName;
+	string buyName;
+	string sellName;
 	double credit;
 };

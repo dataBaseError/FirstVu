@@ -2,19 +2,19 @@ class FileIO {
 
 
 public:
-	boolean initialize();
+	bool initialize();
 
-	boolean updateUserAccounts(AccountList newList);
+	bool updateUserAccounts(AccountList newList);
 
-	boolean updateAvailTickets(TicketList newList);
+	bool updateAvailTickets(TicketList newList);
 
-	boolean writeTransaction(EntryList newList);
+	bool writeTransaction(EntryList newList);
 
-	Account findUser(String username);
+	Account findUser(string username);
 
-	Ticket findEvent(String event, String sellName);
+	Ticket findEvent(string event, string sellName);
 
-	boolean isUserUnique(String username);
+	bool isUserUnique(string username);
 
-	boolean isEventUnique(String event, String sellName);
+	bool isEventUnique(string event, string sellName);
 };

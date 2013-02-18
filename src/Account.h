@@ -1,20 +1,20 @@
 class Account {
 
 private:
-	String username;
-	String type;
+	string username;
+	string type;
 	double balance;
 
 public:
-	String getType();
+	string getType();
 
-	void setType(String type);
+	void setType(string type);
 
 	double getBalance();
 
 	void setBalance(double balance);
 
-	String getUsername();
+	string getUsername();
 
-	void setUsername(String username);
+	void setUsername(string username);
 };

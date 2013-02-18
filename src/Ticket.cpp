@@ -1,6 +1,6 @@
 #include "Ticket.h"
 
-String Ticket::getEvent() {
+string Ticket::getEvent() {
 	return this->event;
 }
 
@@ -8,7 +8,7 @@ void Ticket::setEvent(String event) {
 	this->event = event;
 }
 
-String Ticket::getUserName() {
+string Ticket::getUserName() {
 	return this->userName;
 }
 
@@ -30,4 +30,12 @@ double Ticket::getCost() {
 
 void Ticket::setCost(double cost) {
 	this->cost = cost;
+}
+
+void Ticket::setEvent(string event) {
+	this->event = event;
+}
+
+void Ticket::setUserName(string userName) {
+	this->userName = userName;
 }

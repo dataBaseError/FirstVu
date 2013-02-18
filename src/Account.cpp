@@ -1,6 +1,6 @@
 #include "Account.h"
 
-String Account::getType() {
+string Account::getType() {
 	return this->type;
 }
 
@@ -16,10 +16,18 @@ void Account::setBalance(double balance) {
 	this->balance = balance;
 }
 
-String Account::getUsername() {
+string Account::getUsername() {
 	return this->username;
 }
 
 void Account::setUsername(String username) {
+	this->username = username;
+}
+
+void Account::setType(string type) {
+	this->type = type;
+}
+
+void Account::setUsername(string username) {
 	this->username = username;
 }
