@@ -1,2 +1,5 @@
 # Ignore backup files
 *~
+
+# Ignore Visual Paradigm backup files
+*.vpp~*
