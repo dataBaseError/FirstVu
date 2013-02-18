@@ -1,7 +1,7 @@
 enter username
 login successful
 enter username to create
-error: cannot use 'END ' as a username
+error: cannot use 'quit' as a username
 error: invalid command
 error: invalid command
 logout successful

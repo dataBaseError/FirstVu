@@ -1,20 +1,29 @@
 class Transactions {
 
+private:
+	Vector<Entry> transactions;
 
 public:
 	boolean login();
 
 	boolean logout();
 
-	boolean buy(int String_buyName, int String_event, int int_numTickets, int String_sellName);
+	boolean buy(String buyName, String event, int numTickets, String sellName);
 
-	boolean sell(int Sting_sellName, int String_event, int double_salePrice, int int_availTicket);
+	boolean sell(Sting sellName, String event, double salePrice, int availTicket);
 
-	boolean create(int String_newUser, int String_accountType, int double_accountBalance);
+	boolean create(String newUser, String accountType, double accountBalance);
 
-	boolean removeUser(int String_username);
+	boolean removeUser(String username);
 
-	boolean addcredit(int String_username, int double_amount);
+	boolean addcredit(int username_String, double amount);
 
-	boolean refund(int String_buyName, int String_sellName, int double_amount);
+	boolean refund(String buyName, String sellName, double amount);
+
+private:
+	boolean initTransactions();
+
+	boolean addTransaction(Entry entry);
+
+	boolean writeTransactions();
 };

@@ -1,7 +1,6 @@
 enter username
 login successful
-enter buyer's username
-enter seller's username
-error: invalid username
+enter username
+error: invalid user privileges
 error: invalid command
 logout successful

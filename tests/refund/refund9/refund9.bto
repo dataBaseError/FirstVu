@@ -3,5 +3,5 @@ login successful
 enter buyer's username
 enter seller's username
 enter amount to transfer
-error: insufficient funds
+error: invalid transfer amount
 logout successful

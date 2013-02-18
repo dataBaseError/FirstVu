@@ -2,5 +2,5 @@ class main {
 
 
 public:
-	main();
+	main(String userAccountIn, String availableTicketIn, String dailyTransaction, String userAccountOut, String availableTicketOut);
 };

@@ -30,6 +30,12 @@ confirm purchase: yes or no
 new balance: $--
 purchase successful
 
+/* sell buy back */
+enter event title
+enter number of tickets
+enter username of seller
+buy back: yes or no
+
 /* refund */
 enter buyer's username
 enter seller's username
@@ -63,11 +69,12 @@ error: invalid username									//cannot use 'END '
 error: only administrators can create new accounts
 
 /* addcredit */
-error: total balance cannot be greater than $999 999
+error: total balance cannot be greater than $999,999
 error: amount added cannot be greater than $1000.00
 error: username does not exist
 error: invalid credit amount
 error: invalid username
+error: invalid user privileges
 
 /* sell */
 error: invalid event name								//contains invalid characters
@@ -79,6 +86,7 @@ error: event title must be a maximum of 25 characters
 error: invalid ticket number							//over 100 or less than 1
 error: tickets unavailable
 error: invalid username
+error: seller balance cannot be greater than $999,999
 
 /* buy */
 error: user not authorized to buy
@@ -88,11 +96,12 @@ error: not enough tickets remaining
 error: invalid seller name
 error: invalid event
 error: invalid ticket number
+error: invalid user privileges
 
 /* refund */
 error: only administrators can make refunds
 error: username does not exist
-error: total balance cannot be greater than $999 999
+error: total balance cannot be greater than $999,999
 error: no transaction found
 error: insufficient funds
 error: invalid transfer amount
