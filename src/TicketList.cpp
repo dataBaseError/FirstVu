@@ -1,9 +1,9 @@
 #include "TicketList.h"
 
-Vector<Ticket> TicketList::getTicketList() {
-	return this->ticketList;
+vector<Ticket> TicketList::getTicketList() {
+    return this->ticketList;
 }
 
-void TicketList::setTicketList(Vector<Ticket> ticketList) {
-	this->ticketList = ticketList;
+void TicketList::setTicketList(vector<Ticket> ticketList) {
+    this->ticketList = ticketList;
 }

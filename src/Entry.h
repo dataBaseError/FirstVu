@@ -1,5 +1,5 @@
 class Entry {
 
 private:
-	int transactionType;
+    int transactionType;
 };

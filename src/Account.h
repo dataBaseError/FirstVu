@@ -1,20 +1,24 @@
+#include <string>
+
+using namespace std;
+
 class Account {
 
 private:
-	string username;
-	string type;
-	double balance;
+    string username;
+    string type;
+    double balance;
 
 public:
-	string getType();
+    string getType();
 
-	void setType(string type);
+    void setType(string type);
 
-	double getBalance();
+    double getBalance();
 
-	void setBalance(double balance);
+    void setBalance(double balance);
 
-	string getUsername();
+    string getUsername();
 
-	void setUsername(string username);
+    void setUsername(string username);
 };

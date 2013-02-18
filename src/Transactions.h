@@ -1,12 +1,17 @@
+#include <string>
+#include <vector>
+
+using namespace std;
+
 class Transactions {
 
 private:
-	Vector<Entry> transactions;
+	vector<Entry> transactions;
 
 public:
-	boolean login();
+	bool login();
 
-	boolean logout();
+	bool logout();
 
 	bool buy(string buyName, string event, int numTickets, string sellName);
 

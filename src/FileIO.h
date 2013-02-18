@@ -1,20 +1,23 @@
+#include <string>
+
+using namespace std;
+
 class FileIO {
 
-
 public:
-	bool initialize();
+    bool initialize();
 
-	bool updateUserAccounts(AccountList newList);
+    bool updateUserAccounts(AccountList newList);
 
-	bool updateAvailTickets(TicketList newList);
+    bool updateAvailTickets(TicketList newList);
 
-	bool writeTransaction(EntryList newList);
+    bool writeTransaction(EntryList newList);
 
-	Account findUser(string username);
+    Account findUser(string username);
 
-	Ticket findEvent(string event, string sellName);
+    Ticket findEvent(string event, string sellName);
 
-	bool isUserUnique(string username);
+    bool isUserUnique(string username);
 
-	bool isEventUnique(string event, string sellName);
+    bool isEventUnique(string event, string sellName);
 };

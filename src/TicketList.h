@@ -1,10 +1,14 @@
+#include <vector>
+
+using namespace std;
+
 class TicketList {
 
 private:
-	Vector<Ticket> ticketList;
+    vector<Ticket> ticketList;
 
 public:
-	Vector<Ticket> getTicketList();
+    vector<Ticket> getTicketList();
 
-	void setTicketList(Vector<Ticket> ticketList);
+    void setTicketList(vector<Ticket> ticketList);
 };

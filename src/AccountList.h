@@ -1,10 +1,14 @@
+#include <vector>
+
+using namespace std;
+
 class AccountList {
 
 private:
-	Vector<Account> accountList;
+    vector<Account> accountList;
 
 public:
-	Vector<Account> getAccountList();
+    vector<Account> getAccountList();
 
-	void setAccountList(Vector<Account> accountList);
+    void setAccountList(vector<Account> accountList);
 };

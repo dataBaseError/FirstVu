@@ -1,25 +1,29 @@
+#include <string>
+
+using namespace std;
+
 class Ticket {
 
 private:
-	string event;
-	string userName;
-	int ticketNumber;
-	double cost;
+    string event;
+    string userName;
+    int ticketNumber;
+    double cost;
 
 public:
-	string getEvent();
+    string getEvent();
 
-	void setEvent(string event);
+    void setEvent(string event);
 
-	string getUserName();
+    string getUserName();
 
-	void setUserName(string userName);
+    void setUserName(string userName);
 
-	int getTicketNumber();
+    int getTicketNumber();
 
-	void setTicketNumber(int ticketNumber);
+    void setTicketNumber(int ticketNumber);
 
-	double getCost();
+    double getCost();
 
-	void setCost(double cost);
+    void setCost(double cost);
 };

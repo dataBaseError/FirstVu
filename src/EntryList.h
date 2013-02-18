@@ -1,10 +1,14 @@
+#include <vector>
+
+using namespace std;
+
 class EntryList {
 
 private:
-	Vector<Entry> dailyTransactions;
+    vector<Entry> dailyTransactions;
 
 public:
-	Vector<Entry> getDailyTransactions();
+    vector<Entry> getDailyTransactions();
 
-	void setDailyTransactions(Vector<Entry> dailyTransactions);
+    void setDailyTransactions(vector<Entry> dailyTransactions);
 };

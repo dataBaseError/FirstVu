@@ -1,9 +1,13 @@
+#include <vector>
+
 #include "AccountList.h"
 
-Vector<Account> AccountList::getAccountList() {
-	return this->accountList;
+using namespace std;
+
+vector<Account> AccountList::getAccountList() {
+    return this->accountList;
 }
 
-void AccountList::setAccountList(Vector<Account> accountList) {
-	this->accountList = accountList;
+void AccountList::setAccountList(vector<Account> accountList) {
+    this->accountList = accountList;
 }

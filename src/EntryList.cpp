@@ -1,9 +1,13 @@
+#include <vector>
+
 #include "EntryList.h"
 
-Vector<Entry> EntryList::getDailyTransactions() {
-	return this->dailyTransactions;
+using namespace std;
+
+vector<Entry> EntryList::getDailyTransactions() {
+    return this->dailyTransactions;
 }
 
-void EntryList::setDailyTransactions(Vector<Entry> dailyTransactions) {
-	this->dailyTransactions = dailyTransactions;
+void EntryList::setDailyTransactions(vector<Entry> dailyTransactions) {
+    this->dailyTransactions = dailyTransactions;
 }
