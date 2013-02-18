@@ -1,5 +1,19 @@
 #include "Ticket.h"
 
+Ticket::Ticket(string event, string username, int ticketNumber, double cost) {
+	this->event = event;
+	this->username = username;
+	this->ticketNumber = ticketNumber;
+	this->cost = cost;
+}
+
+Ticket::~Ticket() {
+	delete event;
+	delete username;
+	delete ticketNumber;
+	delete cost;
+}
+
 string Ticket::getEvent() {
     return this->event;
 }
@@ -8,12 +22,12 @@ void Ticket::setEvent(string event) {
     this->event = event;
 }
 
-string Ticket::getUserName() {
-    return this->userName;
+string Ticket::getUsername() {
+    return this->username;
 }
 
-void Ticket::setUserName(string userName) {
-    this->userName = userName;
+void Ticket::setUsername(string userName) {
+    this->username = userName;
 }
 
 int Ticket::getTicketNumber() {
@@ -32,10 +46,6 @@ void Ticket::setCost(double cost) {
     this->cost = cost;
 }
 
-void Ticket::setEvent(string event) {
-    this->event = event;
-}
-
-void Ticket::setUserName(string userName) {
-    this->userName = userName;
+void Ticket::decreaseTicketNumber(int ticketNumber) {
+	this->ticketNumber -= ticketNumber;
 }
