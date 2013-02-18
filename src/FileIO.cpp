@@ -1,18 +1,18 @@
 #include "FileIO.h"
 
-boolean FileIO::initialize() {
+bool FileIO::initialize() {
 	throw "Not yet implemented";
 }
 
-boolean FileIO::updateUserAccounts(AccountList newList) {
+bool FileIO::updateUserAccounts(AccountList newList) {
 	throw "Not yet implemented";
 }
 
-boolean FileIO::updateAvailTickets(TicketList newList) {
+bool FileIO::updateAvailTickets(TicketList newList) {
 	throw "Not yet implemented";
 }
 
-boolean FileIO::writeTransaction(EntryList newList) {
+bool FileIO::writeTransaction(EntryList newList) {
 	throw "Not yet implemented";
 }
 
@@ -29,5 +29,21 @@ boolean FileIO::isUserUnique(String username) {
 }
 
 boolean FileIO::isEventUnique(String event, String sellName) {
+	throw "Not yet implemented";
+}
+
+Account FileIO::findUser(string username) {
+	throw "Not yet implemented";
+}
+
+Ticket FileIO::findEvent(string event, string sellName) {
+	throw "Not yet implemented";
+}
+
+bool FileIO::isUserUnique(string username) {
+	throw "Not yet implemented";
+}
+
+bool FileIO::isEventUnique(string event, string sellName) {
 	throw "Not yet implemented";
 }

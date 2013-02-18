@@ -1,19 +1,19 @@
 class Ticket {
 
 private:
-	String event;
-	String userName;
+	string event;
+	string userName;
 	int ticketNumber;
 	double cost;
 
 public:
-	String getEvent();
+	string getEvent();
 
-	void setEvent(String event);
+	void setEvent(string event);
 
-	String getUserName();
+	string getUserName();
 
-	void setUserName(String userName);
+	void setUserName(string userName);
 
 	int getTicketNumber();
 

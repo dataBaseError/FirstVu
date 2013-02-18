@@ -24,7 +24,7 @@ boolean Transactions::removeUser(String username) {
 	throw "Not yet implemented";
 }
 
-boolean Transactions::addcredit(int username_String, double amount) {
+bool Transactions::addcredit(int username string, double amount) {
 	throw "Not yet implemented";
 }
 
@@ -32,14 +32,34 @@ boolean Transactions::refund(String buyName, String sellName, double amount) {
 	throw "Not yet implemented";
 }
 
-boolean Transactions::initTransactions() {
+bool Transactions::initTransactions() {
 	throw "Not yet implemented";
 }
 
-boolean Transactions::addTransaction(Entry entry) {
+bool Transactions::addTransaction(Entry entry) {
 	throw "Not yet implemented";
 }
 
-boolean Transactions::writeTransactions() {
+bool Transactions::writeTransactions() {
+	throw "Not yet implemented";
+}
+
+bool Transactions::buy(string buyName, string event, int numTickets, string sellName) {
+	throw "Not yet implemented";
+}
+
+bool Transactions::sell(string sellName, string event, double salePrice, int availTicket) {
+	throw "Not yet implemented";
+}
+
+bool Transactions::create(string newUser, string accountType, double accountBalance) {
+	throw "Not yet implemented";
+}
+
+bool Transactions::removeUser(string username) {
+	throw "Not yet implemented";
+}
+
+bool Transactions::refund(string buyName, string sellName, double amount) {
 	throw "Not yet implemented";
 }

@@ -8,22 +8,22 @@ public:
 
 	boolean logout();
 
-	boolean buy(String buyName, String event, int numTickets, String sellName);
+	bool buy(string buyName, string event, int numTickets, string sellName);
 
-	boolean sell(Sting sellName, String event, double salePrice, int availTicket);
+	bool sell(string sellName, string event, double salePrice, int availTicket);
 
-	boolean create(String newUser, String accountType, double accountBalance);
+	bool create(string newUser, string accountType, double accountBalance);
 
-	boolean removeUser(String username);
+	bool removeUser(string username);
 
-	boolean addcredit(int username_String, double amount);
+	bool addcredit(int username_string, double amount);
 
-	boolean refund(String buyName, String sellName, double amount);
+	bool refund(string buyName, string sellName, double amount);
 
 private:
-	boolean initTransactions();
+	bool initTransactions();
 
-	boolean addTransaction(Entry entry);
+	bool addTransaction(Entry entry);
 
-	boolean writeTransactions();
+	bool writeTransactions();
 };

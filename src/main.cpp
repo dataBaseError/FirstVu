@@ -7,3 +7,7 @@ int main(string userAccountIn, string availableTicketIn, string dailyTransaction
 {
 	return 0;
 }
+
+main::main(string userAccountIn, string availableTicketIn, string dailyTransaction, string userAccountOut, string availableTicketOut) {
+	throw "Not yet implemented";
+}

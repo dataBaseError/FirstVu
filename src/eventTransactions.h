@@ -1,8 +1,8 @@
 class eventTransactions : Entry {
 
 private:
-	String eventName;
-	String sellName;
+	string eventName;
+	string sellName;
 	double price;
 	int numTickets;
 };
