@@ -32,22 +32,6 @@ bool FileIO::isEventUnique(string event, string sellName) {
     throw "Not yet implemented";
 }
 
-Account FileIO::findUser(string username) {
-    throw "Not yet implemented";
-}
-
-Ticket FileIO::findEvent(string event, string sellName) {
-    throw "Not yet implemented";
-}
-
-bool FileIO::isUserUnique(string username) {
-    throw "Not yet implemented";
-}
-
-bool FileIO::isEventUnique(string event, string sellName) {
-    throw "Not yet implemented";
-}
-
 AccountList FileIO::getAccountList(){
 	return this->accountList;
 }

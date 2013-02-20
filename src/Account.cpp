@@ -27,11 +27,3 @@ string Account::getUsername() {
 void Account::setUsername(string username) {
     this->username = username;
 }
-
-void Account::setType(string type) {
-    this->type = type;
-}
-
-void Account::setUsername(string username) {
-    this->username = username;
-}
