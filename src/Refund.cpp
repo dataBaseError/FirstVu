@@ -1,25 +1,25 @@
-#include "refund.h"
+#include "Refund.h"
 
-string refund::getBuyName() {
+string Refund::getBuyName() {
 	return this->buyName;
 }
 
-void refund::setBuyName(string buyName) {
+void Refund::setBuyName(string buyName) {
 	this->buyName = buyName;
 }
 
-string refund::getSellName() {
+string Refund::getSellName() {
 	return this->sellName;
 }
 
-void refund::setSellName(string sellName) {
+void Refund::setSellName(string sellName) {
 	this->sellName = sellName;
 }
 
-double refund::getCredit() {
+double Refund::getCredit() {
 	return this->credit;
 }
 
-void refund::setCredit(double credit) {
+void Refund::setCredit(double credit) {
 	this->credit = credit;
 }

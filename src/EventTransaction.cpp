@@ -1,33 +1,33 @@
-#include "eventTransactions.h"
+#include "EventTransaction.h"
 
-string eventTransactions::getSellName() {
+string EventTransaction::getSellName() {
 	return this->sellName;
 }
 
-void eventTransactions::setSellName(string sellName) {
+void EventTransaction::setSellName(string sellName) {
 	this->sellName = sellName;
 }
 
-string eventTransactions::getEventName() {
+string EventTransaction::getEventName() {
 	return this->eventName;
 }
 
-void eventTransactions::setEventName(string eventName) {
+void EventTransaction::setEventName(string eventName) {
 	this->eventName = eventName;
 }
 
-double eventTransactions::getPrice() {
+double EventTransaction::getPrice() {
 	return this->price;
 }
 
-void eventTransactions::setPrice(double price) {
+void EventTransaction::setPrice(double price) {
 	this->price = price;
 }
 
-int eventTransactions::getNumTickets() {
+int EventTransaction::getNumTickets() {
 	return this->numTickets;
 }
 
-void eventTransactions::setNumTickets(int numTickets) {
+void EventTransaction::setNumTickets(int numTickets) {
 	this->numTickets = numTickets;
 }

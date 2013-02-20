@@ -3,7 +3,7 @@
 using namespace std;
 
 /**
- * The array of ticket listings.
+ * A data structure of ticket listings.
  *
  * @author Ryan Crawford
  * @author Khalil Fazal
