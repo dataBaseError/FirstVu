@@ -35,11 +35,3 @@ bool Transactions::refund(string buyName, string sellName, double amount) {
 bool Transactions::initTransactions() {
     throw "Not yet implemented";
 }
-
-bool Transactions::addTransaction(Entry entry) {
-    throw "Not yet implemented";
-}
-
-bool Transactions::writeTransactions() {
-    throw "Not yet implemented";
-}

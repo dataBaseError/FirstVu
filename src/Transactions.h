@@ -25,10 +25,5 @@ public:
 
 	bool refund(string buyName, string sellName, double amount);
 
-private:
 	bool initTransactions();
-
-	bool addTransaction(Entry entry);
-
-	bool writeTransactions();
 };

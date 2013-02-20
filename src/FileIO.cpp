@@ -47,3 +47,11 @@ bool FileIO::isUserUnique(string username) {
 bool FileIO::isEventUnique(string event, string sellName) {
     throw "Not yet implemented";
 }
+
+AccountList FileIO::getAccountList(){
+	return this->accountList;
+}
+
+TicketList FileIO::getTicketList(){
+	return this->ticketList;
+}

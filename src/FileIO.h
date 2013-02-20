@@ -4,6 +4,10 @@ using namespace std;
 
 class FileIO {
 
+private:
+	AccountList accountList;
+	TicketList ticketList;
+
 public:
     bool initialize();
 
@@ -20,4 +24,8 @@ public:
     bool isUserUnique(string username);
 
     bool isEventUnique(string event, string sellName);
+
+    AccountList getAccountList();
+
+    TicketList getTicketList();
 };
