@@ -1,0 +1,27 @@
+C++ style guide
+
+- Single parameter constructors are required to use the keyword explicit
+- Fix Copy Constructors and Assignment Constructors
+- class declaration order
+    - public before private
+    - methods before data members
+- soft limit of 40 lines on functions
+- function overload is allowed but not liked
+- no exceptions
+- use static_cast<>() instead of built in cast
+- Dont use streams except for logging
+- files should have '_' or '-' but no upper case characters
+- classes should be Upper case for every word no '_' or '-'
+- variable names should not mix case, should include '_'
+- constants start with 'k' and are followed by Uppercase starting words
+- functions start with Uppercase for each word, accessor and mutator are lowercase with '_'
+- start file with license 
+- do not duplicated .cc and .h comments 
+- class comments should include an example on how to use it.
+- Constructor and destructor comments should be more about how the parameters are used.
+- comment tricky or points of intrest
+- lines need to be 80 characters
+- indent 2 spaces at a time
+- indentation is spaces (2)
+- else on the same line as both curly braces
+- public and private in classes are 1 space indentation

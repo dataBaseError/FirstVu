@@ -1,6 +1,6 @@
 #include "Entry.h";
 
-Entry::Entry(int transactionType) {
+explicit Entry::Entry(int transactionType) {
 	this->transactionType = transactionType;
 }
 

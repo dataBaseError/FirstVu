@@ -19,7 +19,7 @@ public:
 	 *
 	 * @param transactionType the type of transaction.
 	 */
-	Entry(int transactionType);
+	explicit Entry(int transactionType);
 
 
 	/**
