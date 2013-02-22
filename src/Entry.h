@@ -1,3 +1,5 @@
+#ifndef _ENTRY_H_
+#define _ENTRY_H_
 
 /**
  * Abstract class that allows for entries to the daily transaction file.
@@ -21,7 +23,6 @@ public:
 	 */
 	explicit Entry(int transactionType);
 
-
 	/**
 	 * De-constructor for delete an entry.
 	 */
@@ -41,3 +42,5 @@ public:
 	 */
 	void setTransactionType(int transactionType);
 };
+
+#endif
