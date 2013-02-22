@@ -7,11 +7,12 @@ Ticket::Ticket(string event, string username, int ticketNumber, double cost) {
 	this->cost = cost;
 }
 
+// http://stackoverflow.com/questions/2365624/should-i-delete-the-string-members-of-a-c-class
 Ticket::~Ticket() {
-	delete event;
-	delete username;
-	delete ticketNumber;
-	delete cost;
+	// delete event;
+	// delete username;
+	// delete ticketNumber;
+	// delete cost;
 }
 
 string Ticket::getEvent() {
