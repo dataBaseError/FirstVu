@@ -1,6 +1,11 @@
 #include "FileIO.h"
 
+FileIO::FileIO(){
+	//Initialize the lists
+}
+
 bool FileIO::initialize() {
+	//Read in lists
     throw "Not yet implemented";
 }
 
