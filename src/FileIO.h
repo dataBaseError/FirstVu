@@ -1,12 +1,17 @@
 #include <string>
+#include <vector>
+
+#include "Account.h"
+#include "Entry.h"
+#include "Ticket.h"
 
 using namespace std;
 
 class FileIO {
 
 private:
-	AccountList accountList;
-	TicketList ticketList;
+	vector<Account> accountList;
+	vector<Ticket> ticketList;
 
 public:
 
@@ -14,21 +19,21 @@ public:
 
     bool initialize();
 
-    bool updateUserAccounts(AccountList newList);
+    bool updateUserAccounts(vector<Account> newList);
 
-    bool updateAvailTickets(TicketList newList);
+    bool updateAvailTickets(vector<Ticket> newList);
 
-    bool writeTransaction(EntryList newList);
+    bool writeTransaction(vector<Entry> newList);
 
-    Account findUser(string username);
+    int findUser(string username);
 
-    Ticket findEvent(string event, string sellName);
+    int findEvent(string event, string sellName);
 
     bool isUserUnique(string username);
 
     bool isEventUnique(string event, string sellName);
 
-    AccountList getAccountList();
+    vector<Account> getAccountList();
 
-    TicketList getTicketList();
+    vector<Ticket> getTicketList();
 };

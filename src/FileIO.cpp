@@ -1,6 +1,6 @@
 #include "FileIO.h"
 
-FileIO::FileIO(){
+FileIO::FileIO() {
 	//Initialize the lists
 }
 
@@ -9,23 +9,23 @@ bool FileIO::initialize() {
     throw "Not yet implemented";
 }
 
-bool FileIO::updateUserAccounts(AccountList newList) {
+bool FileIO::updateUserAccounts(vector<Account> newList) {
     throw "Not yet implemented";
 }
 
-bool FileIO::updateAvailTickets(TicketList newList) {
+bool FileIO::updateAvailTickets(vector<Ticket> newList) {
     throw "Not yet implemented";
 }
 
-bool FileIO::writeTransaction(EntryList newList) {
+bool FileIO::writeTransaction(vector<Entry> newList) {
     throw "Not yet implemented";
 }
 
-Account FileIO::findUser(string username) {
+int FileIO::findUser(string username) {
     throw "Not yet implemented";
 }
 
-Ticket FileIO::findEvent(string event, string sellName) {
+int FileIO::findEvent(string event, string sellName) {
     throw "Not yet implemented";
 }
 
@@ -37,10 +37,10 @@ bool FileIO::isEventUnique(string event, string sellName) {
     throw "Not yet implemented";
 }
 
-AccountList FileIO::getAccountList(){
+vector<Account> FileIO::getAccountList(){
 	return this->accountList;
 }
 
-TicketList FileIO::getTicketList(){
+vector<Ticket> FileIO::getTicketList(){
 	return this->ticketList;
 }

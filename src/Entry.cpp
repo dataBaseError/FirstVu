@@ -1,11 +1,13 @@
-#include "Entry.h";
+#include "Entry.h"
 
-explicit Entry::Entry(int transactionType) {
+// The 'explicit' keyword is only used in header files
+Entry::Entry(int transactionType) {
 	this->transactionType = transactionType;
 }
 
 Entry::~Entry() {
-	delete transactionType;
+	// Don't need, 'int' is a primitive type
+    // delete &transactionType;
 }
 
 int Entry::getTransactionType() {

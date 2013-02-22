@@ -1,12 +1,15 @@
 #include <string>
 #include <vector>
 
+#include "Entry.h"
+#include "FileIO.h"
+
 using namespace std;
 
 class Transaction {
 
 private:
-	EntryList transaction;
+	vector<Entry> transaction;
 	FileIO fileIO;
 
 public:

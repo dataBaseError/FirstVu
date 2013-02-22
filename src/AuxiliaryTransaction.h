@@ -1,5 +1,7 @@
 #include <string>
 
+#include "Entry.h"
+
 using namespace std;
 
 /**
@@ -10,7 +12,7 @@ using namespace std;
  * @author Joseph Heron
  * @author Carly Marshall
  */
-class AuxiliaryTransaction : Entry {
+class AuxiliaryTransaction : public Entry {
 
 private:
 	string username;

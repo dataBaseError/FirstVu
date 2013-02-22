@@ -10,11 +10,11 @@ private:
     double balance;
 
 public:
-    const string admin = "AA";
-    const string sell  = "SS";
-    const string buy   = "BS";
-    const string full  = "FS";
-    const double maxPrice = 999999.99;
+    static const string admin;
+    static const string sell;
+    static const string buy;
+    static const string full;
+    static const double maxPrice;
 
     string getType();
 
