@@ -3,10 +3,10 @@
 
 using namespace std;
 
-class Transactions {
+class Transaction {
 
 private:
-	vector<Entry> transactions;
+	vector<Entry> transaction;
 
 public:
 	bool login();
@@ -21,9 +21,9 @@ public:
 
 	bool removeUser(string username);
 
-	bool addcredit(int username_string, double amount);
+	bool addcredit(string username, double amount);
 
 	bool refund(string buyName, string sellName, double amount);
 
-	bool initTransactions();
+	bool initTransaction();
 };
