@@ -6,9 +6,13 @@ using namespace std;
 class Transaction {
 
 private:
-	vector<Entry> transaction;
+	EntryList transaction;
 
 public:
+	Transaction();
+
+	~Transaction();
+
 	bool login();
 
 	bool logout();

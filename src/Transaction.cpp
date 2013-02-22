@@ -1,5 +1,13 @@
 #include "Transaction.h"
 
+Transaction::Transaction() {
+	this->transaction = new EntryList();
+}
+
+Transaction::~Transaction() {
+	delete transaction;
+}
+
 bool Transaction::login() {
     throw "Not yet implemented";
 }
