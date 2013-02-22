@@ -4,11 +4,12 @@
 
 using namespace std;
 
-static const string Account::admin = "AA";
-static const string Account::sell  = "SS";
-static const string Account::buy   = "BS";
-static const string Account::full  = "FS";
-static const double Account::maxPrice = 999999.99;
+// ‘static’ may not be used when defining (as opposed to declaring) a static data member [-fpermissive]
+const string Account::admin = "AA";
+const string Account::sell  = "SS";
+const string Account::buy   = "BS";
+const string Account::full  = "FS";
+const double Account::maxPrice = 999999.99;
 
 string Account::getType() {
     return this->type;
