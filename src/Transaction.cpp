@@ -1,21 +1,20 @@
 #include "Transaction.h"
 
-Transaction::Transaction() {
-	this->fileIO = new FileIO();
-}
+Transaction::Transaction() : fileIO(*new FileIO()){}
 
 Transaction::~Transaction() {
-	delete transaction;
+	delete &transaction;
+    delete &fileIO;
 }
 
 bool Transaction::login() {
 	//check if transaction list is empty
-	if (this->transaction != NULL) {
+	if (this->transaction.empty()) {
 		//read in uao and ato files
 
 		if (this->fileIO.initialize()) {
 			//initialize transaction list
-			this->transaction = new vector<Entry>;
+			this->transaction = *new vector<Entry>();
 		}
 	}
 
@@ -25,7 +24,9 @@ bool Transaction::login() {
 bool Transaction::logout() {
 	//write to daily transaction file
 	if (this->fileIO.writeTransaction(this->transaction)) {
-		~Transaction();
+	    // Apparently, committing suicide is legal behaviour
+	    //~Transaction();
+		delete this;
 	}
 
 	return false;
