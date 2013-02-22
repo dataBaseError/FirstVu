@@ -7,6 +7,7 @@ class Transaction {
 
 private:
 	EntryList transaction;
+	FileIO fileIO;
 
 public:
 	Transaction();
@@ -30,4 +31,6 @@ public:
 	bool refund(string buyName, string sellName, double amount);
 
 	bool initTransaction();
+
+	FileIO getFileIO();
 };
