@@ -9,6 +9,9 @@ private:
 	TicketList ticketList;
 
 public:
+
+	FileIO();
+
     bool initialize();
 
     bool updateUserAccounts(AccountList newList);

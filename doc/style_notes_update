@@ -7,11 +7,18 @@ Variables: start with lowercase and each new word is uppercase, ex: myAwesomeVar
 Constant: all uppercase with '_' before each new word, ex: MY_CONSTANT_VALUE
     - note each of these should be slightly descriptive of the actual use/intent of the class, method, variable, or constant.
 
+For declaring methods, constructors, or decontructors:
+	- the name must be followed by a bracket no space between them
+Ex: myMethod()  // Good
+	myMethod () // Bad
+
 Comments:
 - use of javadoc
 - use /** for start class, and method comments
 - use // or /* for in-line comments
     - This is more for doxygen which will pickup /** for method and class comments
+- for all comments use a space between the * or the / 
+Ex. 
 - do not duplicated .cpp and .h comments 
 - comments in .h file are for external users (people that do not understand how it is implemented and just wish to use it)
 - comments in .cpp files are for internal users (people working on the file and making changes or fixes)
@@ -32,6 +39,16 @@ Ex:
 reallyLongMethod(otherReallyLongMethod(), friendOfReallyLongMethod(), 3, 4,
     OtherRandomNumbers());
 - if conditions that are to large to fit in one line will break up along && or ||s
+- For if, while, and for there should a space following and then a bracket
+Ex:
+	if (true)	// Good
+	if(false)	// Bad
+- For if, while, and for there should be curly braces even if it is one line
 
 namespaces:
 - use 'using namespace std'
+
+Math
+	- Spaces between operations
+
+Declare variable at the start of methods
