@@ -93,9 +93,16 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 				if (this->fileIO.getTicketList().at(ticket).getTicketNumber()
 						== 0) {
 					// delete ticket
+					this->fileIO.getTicketList().erase(this->fileIO
+							.getTicketList().begin() + (ticket - 1),
+							this->fileIO.getTicketList().begin() + ticket);
 				}
 
 				// add transaction to transaction list
+				EventTransaction buy = new EventTransaction(event, sellName,
+						this->fileIO.getTicketList().at(ticket).getCost(),
+						numTickets);
+				this->transaction.push_back(buy);
 			}
 		}
 	}
