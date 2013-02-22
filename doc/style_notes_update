@@ -1,0 +1,37 @@
+new guide lines:
+
+Java style file, classes, methods, variables, constants
+Classes: start with uppercase and each new word is uppercase, ex: MyClass.cpp
+Methods: start with lowercase and each new word is uppercase, ex: myAwesomeMethod
+Variables: start with lowercase and each new word is uppercase, ex: myAwesomeVariable
+Constant: all uppercase with '_' before each new word, ex: MY_CONSTANT_VALUE
+    - note each of these should be slightly descriptive of the actual use/intent of the class, method, variable, or constant.
+
+Comments:
+- use of javadoc
+- use /** for start class, and method comments
+- use // or /* for in-line comments
+    - This is more for doxygen which will pickup /** for method and class comments
+- do not duplicated .cpp and .h comments 
+- comments in .h file are for external users (people that do not understand how it is implemented and just wish to use it)
+- comments in .cpp files are for internal users (people working on the file and making changes or fixes)
+- start files with license
+- comment tricky or points of intrest
+
+Formating
+- openning curly brace is on the same line (no new line) and ending curly brace is on a new line. Else statment is on a new line (not on the same line as the closing curly brace). Ex:
+if (true) {
+    //something
+}
+else {
+    //somethingElse
+}
+- lines need to be 80 characters
+    - within reason, ensure that lines that wrap around are spaced accordingly.
+Ex:
+reallyLongMethod(otherReallyLongMethod(), friendOfReallyLongMethod(), 3, 4,
+    OtherRandomNumbers());
+- if conditions that are to large to fit in one line will break up along && or ||s
+
+namespaces:
+- use 'using namespace std'
