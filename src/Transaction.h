@@ -6,7 +6,7 @@ using namespace std;
 class Transaction {
 
 private:
-	EntryList transaction;
+	vector<Entry> transaction;
 	FileIO fileIO;
 
 public:

@@ -15,7 +15,7 @@ bool Transaction::login() {
 
 		if (this->fileIO.initialize()) {
 			//initialize transaction list
-			this->transaction = new EntryList;
+			this->transaction = new vector<Entry>;
 		}
 	}
 
@@ -43,21 +43,21 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 	// seller's credit must not exceed maximum after transaction
 	// buyer must have buy privileges
 		// seller can buy back their own tickets
-	Account buyer = this->fileIO.findUser(buyName);
+	int buyer = this->fileIO.findUser(buyName);
 	if (buyer == NULL) {
 		return false;
 	}
 
-	if (buyer.getType() != buyer.sell) {
+	if (this->fileIO.getAccountList(). != buyer.sell) {
 		if ((buyer.getType() != buyer.admin && numTickets <= 4) ||
 				buyer.getType() == buyer.admin) {
-			Ticket ticket = this->fileIO.findEvent(event, sellName);
+			int ticket = this->fileIO.findEvent(event, sellName);
 
 			if (ticket != NULL) {
 				double cost = ticket.getCost() * numTickets;
 
 				if (buyer.getBalance() >= cost) {
-					Account seller = this->fileIO.findUser(sellName);
+					int seller = this->fileIO.findUser(sellName);
 
 					if (seller == NULL) {
 						return false;
