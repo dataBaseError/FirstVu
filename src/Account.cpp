@@ -4,6 +4,12 @@
 
 using namespace std;
 
+const string Account::admin = "AA";
+const string sell  = "SS";
+const string buy   = "BS";
+const string full  = "FS";
+const double maxPrice = 999999.99;
+
 string Account::getType() {
     return this->type;
 }
