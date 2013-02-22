@@ -20,9 +20,9 @@ public:
 
     bool writeTransaction(EntryList newList);
 
-    Account findUser(string username);
+    int findUser(string username);
 
-    Ticket findEvent(string event, string sellName);
+    int findEvent(string event, string sellName);
 
     bool isUserUnique(string username);
 

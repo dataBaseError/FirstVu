@@ -21,11 +21,11 @@ bool FileIO::writeTransaction(EntryList newList) {
     throw "Not yet implemented";
 }
 
-Account FileIO::findUser(string username) {
+int FileIO::findUser(string username) {
     throw "Not yet implemented";
 }
 
-Ticket FileIO::findEvent(string event, string sellName) {
+int FileIO::findEvent(string event, string sellName) {
     throw "Not yet implemented";
 }
 
