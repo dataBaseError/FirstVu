@@ -1,4 +1,4 @@
-#include "FileIO.h"
+#include "../include/FileIO.h"
 
 FileIO::FileIO() {
 	//Initialize the lists

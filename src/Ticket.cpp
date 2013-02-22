@@ -1,4 +1,4 @@
-#include "Ticket.h"
+#include "../include/Ticket.h"
 
 Ticket::Ticket(string event, string username, int ticketNumber, double cost) {
 	this->event = event;

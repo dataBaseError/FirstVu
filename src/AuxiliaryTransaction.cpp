@@ -1,4 +1,4 @@
-#include "AuxiliaryTransaction.h"
+#include "../include/AuxiliaryTransaction.h"
 
 string AuxiliaryTransaction::getUsername() {
 	return this->username;

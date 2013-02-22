@@ -1,4 +1,4 @@
-#include "EventTransaction.h"
+#include "../include/EventTransaction.h"
 
 string EventTransaction::getSellName() {
 	return this->sellName;

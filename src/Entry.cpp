@@ -1,4 +1,4 @@
-#include "Entry.h"
+#include "../include/Entry.h"
 
 // The 'explicit' keyword is only used in header files
 Entry::Entry(int transactionType) {
