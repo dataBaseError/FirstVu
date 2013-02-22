@@ -1,6 +1,6 @@
 #include "FileIO.h"
 
-FileIO::FileIO(){
+FileIO::FileIO() {
 	//Initialize the lists
 }
 

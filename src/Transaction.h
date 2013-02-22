@@ -1,6 +1,9 @@
 #include <string>
 #include <vector>
 
+#include "Entry.h"
+#include "FileIO.h"
+
 using namespace std;
 
 class Transaction {

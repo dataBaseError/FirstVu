@@ -1,4 +1,9 @@
 #include <string>
+#include <vector>
+
+#include "Account.h"
+#include "Entry.h"
+#include "Ticket.h"
 
 using namespace std;
 

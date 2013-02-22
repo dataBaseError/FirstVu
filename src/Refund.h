@@ -1,5 +1,7 @@
 #include <string>
 
+#include "Entry.h"
+
 using namespace std;
 
 /**
