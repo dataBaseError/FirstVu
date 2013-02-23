@@ -13,7 +13,7 @@ using namespace std;
  * @author Carly Marshall
  *
  */
-class EventTransaction : Entry {
+class EventTransaction : public Entry {
 
 private:
 	string eventName;
@@ -31,12 +31,12 @@ public:
 	 * @param price the price per ticket.
 	 * @param the number of tickets for sale.
 	 */
-	EventTransaction(string eventName, string sellName, double price, int numTickets);
+	EventTransaction(int type, string eventName, string sellName, double price, int numTickets);
 
 	/**
 	 * De-constructor for deleting an event transaction.
 	 */
-	~EventTransaction();
+	//~EventTransaction();
 
 	/**
 	 * Accessor method for getting the username of the seller.

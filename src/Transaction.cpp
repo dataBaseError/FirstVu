@@ -1,6 +1,6 @@
 #include "../include/Transaction.h"
 
-Transaction::Transaction() : fileIO(*new FileIO()){}
+Transaction::Transaction() : fileIO(*new FileIO()) {}
 
 Transaction::~Transaction() {
 	delete &transaction;
@@ -15,6 +15,8 @@ bool Transaction::login() {
 		if (this->fileIO.initialize()) {
 			//initialize transaction list
 			this->transaction = *new vector<Entry>();
+
+			return true;
 		}
 	}
 
@@ -45,18 +47,19 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 	// buyer must have buy privileges
 		// seller can buy back their own tickets
 	int buyer = this->fileIO.findUser(buyName);
-	if (buyer == NULL) {
+	if (buyer == -1) {
 		return false;
 	}
 
-	if ((this->fileIO.getAccountList().at(buyer) != Account::sell) &&
-			((this->fileIO.getAccountList().at(buyer) != Account::admin &&
+	if ((this->fileIO.getAccountList().at(buyer).getType()
+			.compare(Account::sell) != 0) && ((this->fileIO.getAccountList()
+			.at(buyer).getType().compare(Account::admin) != 0 &&
 			numTickets <= 4) || this->fileIO.getAccountList().at(buyer)
-			== Account::admin)) {
+			.getType().compare(Account::admin) == 0)) {
 
 		int ticket = this->fileIO.findEvent(event, sellName);
 
-		if (ticket != NULL) {
+		if (ticket != 0) {
 			double cost = this->fileIO.getTicketList().at(ticket).getCost()
 					* numTickets;
 
@@ -64,7 +67,7 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 					>= cost) {
 				int seller = this->fileIO.findUser(sellName);
 
-				if (seller == NULL) {
+				if (seller == 0) {
 					return false;
 				}
 
@@ -99,10 +102,9 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 							this->fileIO.getTicketList().begin() + ticket);
 				}
 
+				double ticketCost = this->fileIO.getTicketList().at(ticket).getCost();
 				// add transaction to transaction list
-				EventTransaction buy = new EventTransaction(event, sellName,
-						this->fileIO.getTicketList().at(ticket).getCost(),
-						numTickets);
+				EventTransaction buy (5, event, sellName, ticketCost, numTickets);
 				this->transaction.push_back(buy);
 			}
 		}

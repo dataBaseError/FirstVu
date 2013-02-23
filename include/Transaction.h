@@ -2,6 +2,7 @@
 #include <vector>
 
 #include "Entry.h"
+#include "EventTransaction.h"
 #include "FileIO.h"
 
 using namespace std;

@@ -1,5 +1,17 @@
 #include "../include/EventTransaction.h"
 
+EventTransaction::EventTransaction(int type, string eventName, string sellName, double price, int numTickets)
+: Entry(type) {
+	this->eventName = eventName;
+	this->sellName = sellName;
+	this->price = price;
+	this-> numTickets = numTickets;
+}
+
+/*EventTransaction::~EventTransaction() {
+
+}*/
+
 string EventTransaction::getSellName() {
 	return this->sellName;
 }

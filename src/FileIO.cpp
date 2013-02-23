@@ -4,9 +4,16 @@ FileIO::FileIO() {
 	//Initialize the lists
 }
 
+FileIO::~FileIO() {
+	delete &accountList;
+	delete &ticketList;
+}
+
+
 bool FileIO::initialize() {
 	//Read in lists
-    throw "Not yet implemented";
+    //throw "Not yet implemented";
+	return false;
 }
 
 bool FileIO::updateUserAccounts(vector<Account> newList) {

@@ -17,6 +17,8 @@ public:
 
 	FileIO();
 
+	~FileIO();
+
     bool initialize();
 
     bool updateUserAccounts(vector<Account> newList);
