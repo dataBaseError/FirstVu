@@ -10,8 +10,8 @@ using namespace std;
 class FileIO {
 
 private:
-	vector<Account> accountList;
-	vector<Ticket> ticketList;
+	vector<Account>* accountList;
+	vector<Ticket>* ticketList;
 
 public:
 
@@ -25,7 +25,7 @@ public:
 
     bool updateAvailTickets(vector<Ticket> newList);
 
-    bool writeTransaction(vector<Entry> newList);
+    bool writeTransaction(vector<Entry>* newList);
 
     int findUser(string username);
 
@@ -35,7 +35,7 @@ public:
 
     bool isEventUnique(string event, string sellName);
 
-    vector<Account> getAccountList();
+    vector<Account>* getAccountList();
 
-    vector<Ticket> getTicketList();
+    vector<Ticket>* getTicketList();
 };

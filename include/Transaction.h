@@ -10,8 +10,8 @@ using namespace std;
 class Transaction {
 
 private:
-	vector<Entry> transaction;
-	FileIO fileIO;
+    FileIO* fileIO;
+	vector<Entry>* transaction;
 
 public:
 	Transaction();
@@ -36,5 +36,5 @@ public:
 
 	bool initTransaction();
 
-	FileIO getFileIO();
+	FileIO* getFileIO();
 };

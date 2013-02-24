@@ -1,12 +1,10 @@
 #include "../include/FileIO.h"
 
-FileIO::FileIO() {
-	//Initialize the lists
-}
+FileIO::FileIO() : accountList(new vector<Account>()), ticketList(new vector<Ticket>()){}
 
 FileIO::~FileIO() {
-	delete &accountList;
-	delete &ticketList;
+	delete accountList;
+	delete ticketList;
 }
 
 
@@ -24,7 +22,7 @@ bool FileIO::updateAvailTickets(vector<Ticket> newList) {
     throw "Not yet implemented";
 }
 
-bool FileIO::writeTransaction(vector<Entry> newList) {
+bool FileIO::writeTransaction(vector<Entry>* newList) {
     throw "Not yet implemented";
 }
 
@@ -44,10 +42,10 @@ bool FileIO::isEventUnique(string event, string sellName) {
     throw "Not yet implemented";
 }
 
-vector<Account> FileIO::getAccountList(){
+vector<Account>* FileIO::getAccountList(){
 	return this->accountList;
 }
 
-vector<Ticket> FileIO::getTicketList(){
+vector<Ticket>* FileIO::getTicketList(){
 	return this->ticketList;
 }

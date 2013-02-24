@@ -1,20 +1,20 @@
 #include "../include/Transaction.h"
 
-Transaction::Transaction() : fileIO(*new FileIO()) {}
+Transaction::Transaction() : fileIO(new FileIO()), transaction(new vector<Entry>()) {}
 
 Transaction::~Transaction() {
-	delete &transaction;
-    delete &fileIO;
+	delete transaction;
+    delete fileIO;
 }
 
 bool Transaction::login() {
 	//check if transaction list is empty
-	if (this->transaction.empty()) {
+	if (this->transaction->empty()) {
 		//read in uao and ato files
 
-		if (this->fileIO.initialize()) {
+		if (this->fileIO->initialize()) {
 			//initialize transaction list
-			this->transaction = *new vector<Entry>();
+			this->transaction = new vector<Entry>();
 
 			return true;
 		}
@@ -25,7 +25,7 @@ bool Transaction::login() {
 
 bool Transaction::logout() {
 	//write to daily transaction file
-	if (this->fileIO.writeTransaction(this->transaction)) {
+	if (this->fileIO->writeTransaction(this->transaction)) {
 	    // Apparently, committing suicide is legal behaviour
 	    //~Transaction();
 		delete this;
@@ -46,32 +46,32 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 	// seller's credit must not exceed maximum after transaction
 	// buyer must have buy privileges
 		// seller can buy back their own tickets
-	int buyer = this->fileIO.findUser(buyName);
+	int buyer = this->fileIO->findUser(buyName);
 	if (buyer == -1) {
 		return false;
 	}
 
-	if ((this->fileIO.getAccountList().at(buyer).getType()
-			.compare(Account::sell) != 0) && ((this->fileIO.getAccountList()
-			.at(buyer).getType().compare(Account::admin) != 0 &&
-			numTickets <= 4) || this->fileIO.getAccountList().at(buyer)
+	if ((this->fileIO->getAccountList()->at(buyer).getType()
+			.compare(Account::sell) != 0) && ((this->fileIO->getAccountList()
+			->at(buyer).getType().compare(Account::admin) != 0 &&
+			numTickets <= 4) || this->fileIO->getAccountList()->at(buyer)
 			.getType().compare(Account::admin) == 0)) {
 
-		int ticket = this->fileIO.findEvent(event, sellName);
+		int ticket = this->fileIO->findEvent(event, sellName);
 
 		if (ticket != 0) {
-			double cost = this->fileIO.getTicketList().at(ticket).getCost()
+			double cost = this->fileIO->getTicketList()->at(ticket).getCost()
 					* numTickets;
 
-			if (this->fileIO.getAccountList().at(buyer).getBalance()
+			if (this->fileIO->getAccountList()->at(buyer).getBalance()
 					>= cost) {
-				int seller = this->fileIO.findUser(sellName);
+				int seller = this->fileIO->findUser(sellName);
 
 				if (seller == 0) {
 					return false;
 				}
 
-				if ((this->fileIO.getAccountList().at(buyer).getBalance()
+				if ((this->fileIO->getAccountList()->at(buyer).getBalance()
 						+ cost) > Account::maxPrice) {
 					return false;
 				}
@@ -83,29 +83,29 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 					// delete event if it no longer has tickets
 				// write to daily transaction file
 
-				this->fileIO.getAccountList().at(buyer).setBalance(
-						this->fileIO.getAccountList().at(buyer).getBalance()
+				this->fileIO->getAccountList()->at(buyer).setBalance(
+						this->fileIO->getAccountList()->at(buyer).getBalance()
 						- cost);
 
-				this->fileIO.getAccountList().at(seller).setBalance(
-						this->fileIO.getAccountList().at(seller).getBalance()
+				this->fileIO->getAccountList()->at(seller).setBalance(
+						this->fileIO->getAccountList()->at(seller).getBalance()
 						+ cost);
 
-				this->fileIO.getTicketList().at(ticket).decreaseTicketNumber
+				this->fileIO->getTicketList()->at(ticket).decreaseTicketNumber
 						(numTickets);
 
-				if (this->fileIO.getTicketList().at(ticket).getTicketNumber()
+				if (this->fileIO->getTicketList()->at(ticket).getTicketNumber()
 						== 0) {
 					// delete ticket
-					this->fileIO.getTicketList().erase(this->fileIO
-							.getTicketList().begin() + (ticket - 1),
-							this->fileIO.getTicketList().begin() + ticket);
+					this->fileIO->getTicketList()->erase(this->fileIO
+							->getTicketList()->begin() + (ticket - 1),
+							this->fileIO->getTicketList()->begin() + ticket);
 				}
 
-				double ticketCost = this->fileIO.getTicketList().at(ticket).getCost();
+				double ticketCost = this->fileIO->getTicketList()->at(ticket).getCost();
 				// add transaction to transaction list
 				EventTransaction buy (5, event, sellName, ticketCost, numTickets);
-				this->transaction.push_back(buy);
+				this->transaction->push_back(buy);
 			}
 		}
 	}
@@ -139,6 +139,6 @@ bool Transaction::initTransaction() {
     throw "Not yet implemented";
 }
 
-FileIO Transaction::getFileIO() {
+FileIO* Transaction::getFileIO() {
 	return this->fileIO;
 }
