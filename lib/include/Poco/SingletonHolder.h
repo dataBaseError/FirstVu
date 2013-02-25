@@ -40,8 +40,8 @@
 #define Foundation_SingletonHolder_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "Mutex.h"
 
 
 namespace Poco {

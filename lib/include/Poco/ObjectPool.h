@@ -40,10 +40,10 @@
 #define Foundation_ObjectPool_INCLUDED
 
 
-#include "Poco/Poco.h"
-#include "Poco/Mutex.h"
-#include "Poco/AutoPtr.h"
-#include "Poco/SharedPtr.h"
+#include "Poco.h"
+#include "Mutex.h"
+#include "AutoPtr.h"
+#include "SharedPtr.h"
 #include <vector>
 #include <cctype>
 

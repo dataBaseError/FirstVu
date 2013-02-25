@@ -40,9 +40,9 @@
 #define Foundation_SplitterChannel_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Channel.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "Channel.h"
+#include "Mutex.h"
 #include <vector>
 
 

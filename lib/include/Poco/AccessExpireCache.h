@@ -40,8 +40,8 @@
 #define Foundation_AccessExpireCache_INCLUDED
 
 
-#include "Poco/AbstractCache.h"
-#include "Poco/AccessExpireStrategy.h"
+#include "AbstractCache.h"
+#include "AccessExpireStrategy.h"
 
 
 namespace Poco {

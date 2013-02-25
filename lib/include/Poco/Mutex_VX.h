@@ -40,8 +40,8 @@
 #define Foundation_Mutex_VX_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Exception.h"
 #include <semLib.h>
 #include <errno.h>
 

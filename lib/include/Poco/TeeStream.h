@@ -40,8 +40,8 @@
 #define Foundation_TeeStream_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/UnbufferedStreamBuf.h"
+#include "Foundation.h"
+#include "UnbufferedStreamBuf.h"
 #include <vector>
 #include <istream>
 #include <ostream>

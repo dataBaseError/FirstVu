@@ -40,8 +40,8 @@
 #define Foundation_Pipe_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/PipeImpl.h"
+#include "Foundation.h"
+#include "PipeImpl.h"
 
 
 namespace Poco {

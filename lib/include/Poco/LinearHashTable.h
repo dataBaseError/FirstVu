@@ -40,8 +40,8 @@
 #define Foundation_LinearHashTable_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Hash.h"
+#include "Foundation.h"
+#include "Hash.h"
 #include <functional>
 #include <algorithm>
 #include <vector>

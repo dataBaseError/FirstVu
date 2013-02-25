@@ -40,7 +40,7 @@
 #define Foundation_FPEnvironment_SUN_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <ieeefp.h>
 
 

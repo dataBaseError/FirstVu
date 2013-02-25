@@ -40,7 +40,7 @@
 #define Foundation_Timestamp_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <ctime>
 
 

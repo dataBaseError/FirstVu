@@ -40,8 +40,8 @@
 #define Foundation_RefCountedObject_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/AtomicCounter.h"
+#include "Foundation.h"
+#include "AtomicCounter.h"
 
 
 namespace Poco {

@@ -40,8 +40,8 @@
 #define Foundation_AbstractPriorityDelegate_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/AbstractDelegate.h"
+#include "Foundation.h"
+#include "AbstractDelegate.h"
 
 
 namespace Poco {

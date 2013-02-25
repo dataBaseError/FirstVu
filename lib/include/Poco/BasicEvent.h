@@ -40,10 +40,10 @@
 #define Foundation_BasicEvent_INCLUDED
 
 
-#include "Poco/AbstractEvent.h"
-#include "Poco/DefaultStrategy.h"
-#include "Poco/AbstractDelegate.h"
-#include "Poco/Mutex.h"
+#include "AbstractEvent.h"
+#include "DefaultStrategy.h"
+#include "AbstractDelegate.h"
+#include "Mutex.h"
 
 
 namespace Poco {

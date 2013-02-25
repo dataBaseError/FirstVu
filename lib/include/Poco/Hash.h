@@ -40,7 +40,7 @@
 #define Foundation_Hash_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <cstddef>
 
 

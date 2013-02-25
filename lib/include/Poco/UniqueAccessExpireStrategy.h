@@ -40,14 +40,14 @@
 #define Foundation_UniqueAccessExpireStrategy_INCLUDED
 
 
-#include "Poco/KeyValueArgs.h"
-#include "Poco/ValidArgs.h"
-#include "Poco/AbstractStrategy.h"
-#include "Poco/Bugcheck.h"
-#include "Poco/Timestamp.h"
-#include "Poco/Timespan.h"
-#include "Poco/EventArgs.h"
-#include "Poco/UniqueExpireStrategy.h"
+#include "KeyValueArgs.h"
+#include "ValidArgs.h"
+#include "AbstractStrategy.h"
+#include "Bugcheck.h"
+#include "Timestamp.h"
+#include "Timespan.h"
+#include "EventArgs.h"
+#include "UniqueExpireStrategy.h"
 #include <set>
 #include <map>
 

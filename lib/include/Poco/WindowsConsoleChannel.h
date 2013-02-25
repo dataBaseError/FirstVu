@@ -40,10 +40,10 @@
 #define Foundation_WindowsConsoleChannel_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Channel.h"
-#include "Poco/Mutex.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "Channel.h"
+#include "Mutex.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

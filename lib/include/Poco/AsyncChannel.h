@@ -40,12 +40,12 @@
 #define Foundation_AsyncChannel_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Channel.h"
-#include "Poco/Thread.h"
-#include "Poco/Mutex.h"
-#include "Poco/Runnable.h"
-#include "Poco/NotificationQueue.h"
+#include "Foundation.h"
+#include "Channel.h"
+#include "Thread.h"
+#include "Mutex.h"
+#include "Runnable.h"
+#include "NotificationQueue.h"
 
 
 namespace Poco {

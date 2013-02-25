@@ -40,7 +40,7 @@
 #define Foundation_Buffer_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <cstring>
 #include <cstddef>
 

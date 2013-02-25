@@ -40,8 +40,8 @@
 #define Foundation_Event_VX_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Exception.h"
 #include <semLib.h>
 
 

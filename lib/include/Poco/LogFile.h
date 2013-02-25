@@ -40,17 +40,17 @@
 #define Foundation_LogFile_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS) && defined(POCO_WIN32_UTF8)
-#include "Poco/LogFile_WIN32U.h"
+#include "LogFile_WIN32U.h"
 #elif defined(POCO_OS_FAMILY_WINDOWS)
-#include "Poco/LogFile_WIN32.h"
+#include "LogFile_WIN32.h"
 #elif defined(POCO_OS_FAMILY_VMS)
-#include "Poco/LogFile_VMS.h"
+#include "LogFile_VMS.h"
 #else
-#include "Poco/LogFile_STD.h"
+#include "LogFile_STD.h"
 #endif
 
 

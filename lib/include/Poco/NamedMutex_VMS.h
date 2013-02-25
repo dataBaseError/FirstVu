@@ -40,7 +40,7 @@
 #define Foundation_NamedMutex_VMS_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <descrip.h>
 #include <lckdef.h>
 

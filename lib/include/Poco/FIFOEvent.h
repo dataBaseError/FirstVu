@@ -40,9 +40,9 @@
 #define Foundation_FIFOEvent_INCLUDED
 
 
-#include "Poco/AbstractEvent.h"
-#include "Poco/FIFOStrategy.h"
-#include "Poco/AbstractDelegate.h"
+#include "AbstractEvent.h"
+#include "FIFOStrategy.h"
+#include "AbstractDelegate.h"
 
 
 namespace Poco {

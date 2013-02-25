@@ -40,9 +40,9 @@
 #define Foundation_PurgeStrategy_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/File.h"
-#include "Poco/Timespan.h"
+#include "Foundation.h"
+#include "File.h"
+#include "Timespan.h"
 #include <vector>
 
 

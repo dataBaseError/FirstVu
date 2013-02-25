@@ -40,8 +40,8 @@
 #define Foundation_UniqueExpireCache_INCLUDED
 
 
-#include "Poco/AbstractCache.h"
-#include "Poco/UniqueExpireStrategy.h"
+#include "AbstractCache.h"
+#include "UniqueExpireStrategy.h"
 
 
 namespace Poco {

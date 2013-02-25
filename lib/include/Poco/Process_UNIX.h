@@ -40,8 +40,8 @@
 #define Foundation_Process_UNIX_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/RefCountedObject.h"
+#include "Foundation.h"
+#include "RefCountedObject.h"
 #include <unistd.h>
 #include <vector>
 #include <map>

@@ -40,9 +40,9 @@
 #define Foundation_AbstractStrategy_INCLUDED
 
 
-#include "Poco/KeyValueArgs.h"
-#include "Poco/ValidArgs.h"
-#include "Poco/EventArgs.h"
+#include "KeyValueArgs.h"
+#include "ValidArgs.h"
+#include "EventArgs.h"
 #include <set>
 
 

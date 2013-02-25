@@ -40,8 +40,8 @@
 #define Foundation_FileStream_POSIX_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/BufferedBidirectionalStreamBuf.h"
+#include "Foundation.h"
+#include "BufferedBidirectionalStreamBuf.h"
 #include <istream>
 #include <ostream>
 

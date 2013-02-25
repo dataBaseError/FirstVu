@@ -40,7 +40,7 @@
 #define Foundation_FPEnvironment_C99_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <fenv.h>
 #include <math.h>
 

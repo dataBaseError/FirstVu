@@ -40,7 +40,7 @@
 #define Foundation_Path_WIN32_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <vector>
 
 

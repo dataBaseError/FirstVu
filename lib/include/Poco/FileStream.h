@@ -40,7 +40,7 @@
 #define Foundation_FileStream_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #include "FileStream_WIN32.h"
 #else

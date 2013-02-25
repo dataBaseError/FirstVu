@@ -40,9 +40,9 @@
 #define Foundation_TaskNotification_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Notification.h"
-#include "Poco/Task.h"
+#include "Foundation.h"
+#include "Notification.h"
+#include "Task.h"
 
 
 namespace Poco {

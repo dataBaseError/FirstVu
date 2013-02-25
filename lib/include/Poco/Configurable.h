@@ -40,7 +40,7 @@
 #define Foundation_Configurable_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 namespace Poco {

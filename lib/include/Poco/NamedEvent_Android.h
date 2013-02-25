@@ -40,7 +40,7 @@
 #define Foundation_NamedEvent_Android_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 namespace Poco {

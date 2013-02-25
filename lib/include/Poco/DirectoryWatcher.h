@@ -40,12 +40,12 @@
 #define Foundation_DirectoryWatcher_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/File.h"
-#include "Poco/BasicEvent.h"
-#include "Poco/Runnable.h"
-#include "Poco/Thread.h"
-#include "Poco/AtomicCounter.h"
+#include "Foundation.h"
+#include "File.h"
+#include "BasicEvent.h"
+#include "Runnable.h"
+#include "Thread.h"
+#include "AtomicCounter.h"
 
 
 namespace Poco {

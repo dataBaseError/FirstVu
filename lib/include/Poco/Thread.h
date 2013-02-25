@@ -40,20 +40,20 @@
 #define Foundation_Thread_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "Mutex.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)
-#include "Poco/Thread_WINCE.h"
+#include "Thread_WINCE.h"
 #else
-#include "Poco/Thread_WIN32.h"
+#include "Thread_WIN32.h"
 #endif
 #elif defined(POCO_VXWORKS)
-#include "Poco/Thread_VX.h"
+#include "Thread_VX.h"
 #else
-#include "Poco/Thread_POSIX.h"
+#include "Thread_POSIX.h"
 #endif
 
 

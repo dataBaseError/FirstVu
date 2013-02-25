@@ -40,7 +40,7 @@
 #define Foundation_SharedMemory_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <algorithm>
 #include <cstddef>
 

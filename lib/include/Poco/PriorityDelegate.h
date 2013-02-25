@@ -40,11 +40,11 @@
 #define Foundation_PriorityDelegate_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/AbstractPriorityDelegate.h"
-#include "Poco/PriorityExpire.h"
-#include "Poco/FunctionPriorityDelegate.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "AbstractPriorityDelegate.h"
+#include "PriorityExpire.h"
+#include "FunctionPriorityDelegate.h"
+#include "Mutex.h"
 
 
 namespace Poco {

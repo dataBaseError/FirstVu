@@ -40,8 +40,8 @@
 #define Foundation_String_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Ascii.h"
+#include "Foundation.h"
+#include "Ascii.h"
 #include <cstring>
 
 

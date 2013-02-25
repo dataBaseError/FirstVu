@@ -40,16 +40,16 @@
 #define Foundation_Semaphore_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Exception.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
-#include "Poco/Semaphore_WIN32.h"
+#include "Semaphore_WIN32.h"
 #elif defined(POCO_VXWORKS)
-#include "Poco/Semaphore_VX.h"
+#include "Semaphore_VX.h"
 #else
-#include "Poco/Semaphore_POSIX.h"
+#include "Semaphore_POSIX.h"
 #endif
 
 

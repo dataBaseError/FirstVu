@@ -40,11 +40,11 @@
 #define Foundation_ArchiveStrategy_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/LogFile.h"
-#include "Poco/File.h"
-#include "Poco/DateTimeFormatter.h"
-#include "Poco/NumberFormatter.h"
+#include "Foundation.h"
+#include "LogFile.h"
+#include "File.h"
+#include "DateTimeFormatter.h"
+#include "NumberFormatter.h"
 
 
 namespace Poco {

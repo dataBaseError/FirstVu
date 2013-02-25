@@ -40,10 +40,10 @@
 #define Foundation_PriorityNotificationQueue_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Notification.h"
-#include "Poco/Mutex.h"
-#include "Poco/Event.h"
+#include "Foundation.h"
+#include "Notification.h"
+#include "Mutex.h"
+#include "Event.h"
 #include <map>
 #include <deque>
 

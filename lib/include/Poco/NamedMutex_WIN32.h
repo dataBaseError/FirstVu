@@ -40,8 +40,8 @@
 #define Foundation_NamedMutex_WIN32_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

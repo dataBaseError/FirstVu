@@ -43,7 +43,7 @@
 #define Foundation_UnicodeConverter_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 namespace Poco {

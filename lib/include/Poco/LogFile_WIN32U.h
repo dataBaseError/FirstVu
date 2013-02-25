@@ -40,9 +40,9 @@
 #define Foundation_LogFile_WIN32U_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Timestamp.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "Timestamp.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

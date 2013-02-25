@@ -40,10 +40,10 @@
 #define Foundation_DynamicFactory_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Instantiator.h"
-#include "Poco/Exception.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "Instantiator.h"
+#include "Exception.h"
+#include "Mutex.h"
 #include <map>
 #include <memory>
 

@@ -40,8 +40,8 @@
 #define Foundation_Glob_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/TextIterator.h"
+#include "Foundation.h"
+#include "TextIterator.h"
 #include <set>
 
 

@@ -40,9 +40,9 @@
 #define Foundation_Expire_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/AbstractDelegate.h"
-#include "Poco/Timestamp.h"
+#include "Foundation.h"
+#include "AbstractDelegate.h"
+#include "Timestamp.h"
 
 
 namespace Poco {

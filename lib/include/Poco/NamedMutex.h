@@ -40,20 +40,20 @@
 #define Foundation_NamedMutex_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/ScopedLock.h"
+#include "Foundation.h"
+#include "ScopedLock.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS) && defined(POCO_WIN32_UTF8)
-#include "Poco/NamedMutex_WIN32U.h"
+#include "NamedMutex_WIN32U.h"
 #elif defined(POCO_OS_FAMILY_WINDOWS)
-#include "Poco/NamedMutex_WIN32.h"
+#include "NamedMutex_WIN32.h"
 #elif defined(POCO_ANDROID)
-#include "Poco/NamedMutex_Android.h"
+#include "NamedMutex_Android.h"
 #elif defined(POCO_OS_FAMILY_UNIX)
-#include "Poco/NamedMutex_UNIX.h"
+#include "NamedMutex_UNIX.h"
 #else
-#include "Poco/NamedMutex_VMS.h"
+#include "NamedMutex_VMS.h"
 #endif
 
 

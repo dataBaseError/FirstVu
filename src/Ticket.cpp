@@ -1,5 +1,9 @@
 #include "../include/Ticket.h"
 
+
+const double Ticket::maxPrice = 999.99;
+const int Ticket::maxTicket = 100;
+
 Ticket::Ticket(string event, string username, int ticketNumber, double cost) {
 	this->event = event;
 	this->username = username;

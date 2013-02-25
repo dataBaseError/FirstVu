@@ -40,9 +40,9 @@
 #define Foundation_DateTime_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Timestamp.h"
-#include "Poco/Timespan.h"
+#include "Foundation.h"
+#include "Timestamp.h"
+#include "Timespan.h"
 
 
 namespace Poco {

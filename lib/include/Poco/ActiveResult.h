@@ -40,11 +40,11 @@
 #define Foundation_ActiveResult_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Mutex.h"
-#include "Poco/Event.h"
-#include "Poco/RefCountedObject.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Mutex.h"
+#include "Event.h"
+#include "RefCountedObject.h"
+#include "Exception.h"
 #include <algorithm>
 
 

@@ -40,8 +40,8 @@
 #define Foundation_Timezone_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Timestamp.h"
+#include "Foundation.h"
+#include "Timestamp.h"
 
 
 namespace Poco {

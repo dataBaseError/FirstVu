@@ -40,8 +40,8 @@
 #define Foundation_RandomStream_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/BufferedStreamBuf.h"
+#include "Foundation.h"
+#include "BufferedStreamBuf.h"
 #include <istream>
 
 

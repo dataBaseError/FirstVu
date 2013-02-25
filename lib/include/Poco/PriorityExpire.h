@@ -40,9 +40,9 @@
 #define Foundation_PriorityExpire_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Timestamp.h"
-#include "Poco/AbstractPriorityDelegate.h"
+#include "Foundation.h"
+#include "Timestamp.h"
+#include "AbstractPriorityDelegate.h"
 
 
 namespace Poco {

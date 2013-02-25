@@ -40,7 +40,7 @@
 #define Foundation_FPEnvironment_WIN32_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <float.h>
 #include <math.h>
 

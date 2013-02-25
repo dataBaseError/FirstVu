@@ -40,12 +40,12 @@
 #define Foundation_UUIDGenerator_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/UUID.h"
-#include "Poco/Mutex.h"
-#include "Poco/Random.h"
-#include "Poco/Timestamp.h"
-#include "Poco/Environment.h"
+#include "Foundation.h"
+#include "UUID.h"
+#include "Mutex.h"
+#include "Random.h"
+#include "Timestamp.h"
+#include "Environment.h"
 
 
 namespace Poco {

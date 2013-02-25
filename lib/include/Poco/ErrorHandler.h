@@ -40,9 +40,9 @@
 #define Foundation_ErrorHandler_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "Exception.h"
+#include "Mutex.h"
 
 
 namespace Poco {

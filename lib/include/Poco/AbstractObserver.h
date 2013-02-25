@@ -40,8 +40,8 @@
 #define Foundation_AbstractObserver_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Notification.h"
+#include "Foundation.h"
+#include "Notification.h"
 
 
 namespace Poco {

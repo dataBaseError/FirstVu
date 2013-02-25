@@ -40,8 +40,8 @@
 #define Foundation_LRUCache_INCLUDED
 
 
-#include "Poco/AbstractCache.h"
-#include "Poco/LRUStrategy.h"
+#include "AbstractCache.h"
+#include "LRUStrategy.h"
 
 
 namespace Poco {

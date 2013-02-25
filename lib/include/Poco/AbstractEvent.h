@@ -40,12 +40,12 @@
 #define Foundation_AbstractFoundation_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/SingletonHolder.h"
-#include "Poco/SharedPtr.h"
-#include "Poco/ActiveResult.h"
-#include "Poco/ActiveMethod.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "SingletonHolder.h"
+#include "SharedPtr.h"
+#include "ActiveResult.h"
+#include "ActiveMethod.h"
+#include "Mutex.h"
 
 
 namespace Poco {
@@ -66,8 +66,8 @@ class AbstractEvent
 	/// one of its subclasses which set the TStrategy and TDelegate template parameters
 	/// to fixed values. For most use-cases the BasicEvent template will be sufficient:
 	///
-	///     #include "Poco/BasicEvent.h"
-	///     #include "Poco/Delegate.h"
+	///     #include "BasicEvent.h"
+	///     #include "Delegate.h"
 	///
 	/// Note that as of release 1.4.2, the behavior of BasicEvent equals that of FIFOEvent,
 	/// so the FIFOEvent class is no longer necessary and provided for backwards compatibility
@@ -78,8 +78,8 @@ class AbstractEvent
 	/// and allows one object to register for one priority value one or more delegates. Note that PriorityDelegates
 	/// only work with PriorityEvents:
 	///
-	///     #include "Poco/PriorityEvent.h"
-	///     #include "Poco/PriorityDelegate.h"
+	///     #include "PriorityEvent.h"
+	///     #include "PriorityDelegate.h"
 	///
 	/// Use events by adding them as public members to the object which is throwing notifications:
 	///

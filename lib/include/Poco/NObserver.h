@@ -40,9 +40,9 @@
 #define Foundation_NObserver_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/AbstractObserver.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "AbstractObserver.h"
+#include "Mutex.h"
 
 
 namespace Poco {

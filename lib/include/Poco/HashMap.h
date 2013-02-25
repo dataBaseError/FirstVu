@@ -40,9 +40,9 @@
 #define Foundation_HashMap_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/LinearHashTable.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "LinearHashTable.h"
+#include "Exception.h"
 #include <utility>
 
 
