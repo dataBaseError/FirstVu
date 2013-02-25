@@ -72,7 +72,7 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 				}
 
 				if ((this->fileIO->getAccountList()->at(buyer).getBalance()
-						+ cost) > Account::maxPrice) {
+						+ cost) > Account::maxCredit) {
 					return false;
 				}
 
