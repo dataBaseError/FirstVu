@@ -16,6 +16,14 @@ private:
 
 public:
 
+	static const int logout;
+	static const int create;
+	static const int del;
+	static const int sell;
+	static const int buy;
+	static const int refund;
+	static const int addcredit;
+
 	/**
 	 * Constructor for creating an entry.
 	 *

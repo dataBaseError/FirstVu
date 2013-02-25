@@ -19,6 +19,9 @@ private:
     double cost;
 
 public:
+
+    static const double maxPrice;
+    static const int maxTicket;
     /**
      * Constructor for making a ticket listing for an event.
      */

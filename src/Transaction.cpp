@@ -1,6 +1,8 @@
 #include "../include/Transaction.h"
 
-Transaction::Transaction() : fileIO(new FileIO()), transaction(new vector<Entry>()) {}
+Transaction::Transaction(string accountPath, string availTicketPath)
+: fileIO(new FileIO()), transaction
+(new vector<Entry>()) {}
 
 Transaction::~Transaction() {
 	delete transaction;
@@ -41,7 +43,7 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 		// assume buyer name is correct TODO: implement
 	// seller must be selling tickets for event
 	// there must be enough tickets available
-	// maximum of 4 tickets can be purchased
+	// maximum of 4 tickets can be purchased, minimum of 1
 	// buyer must have sufficient funds
 	// seller's credit must not exceed maximum after transaction
 	// buyer must have buy privileges
@@ -54,8 +56,9 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 	if ((this->fileIO->getAccountList()->at(buyer).getType()
 			.compare(Account::sell) != 0) && ((this->fileIO->getAccountList()
 			->at(buyer).getType().compare(Account::admin) != 0 &&
-			numTickets <= 4) || this->fileIO->getAccountList()->at(buyer)
-			.getType().compare(Account::admin) == 0)) {
+			numTickets <= 4 && numTickets > 0) ||
+			this->fileIO->getAccountList()->at(buyer).getType()
+			.compare(Account::admin) == 0)) {
 
 		int ticket = this->fileIO->findEvent(event, sellName);
 
@@ -104,8 +107,10 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 
 				double ticketCost = this->fileIO->getTicketList()->at(ticket).getCost();
 				// add transaction to transaction list
-				EventTransaction buy (5, event, sellName, ticketCost, numTickets);
+				EventTransaction buy (Entry::buy, event, sellName, ticketCost, numTickets);
+
 				this->transaction->push_back(buy);
+
 			}
 		}
 	}
@@ -115,7 +120,56 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 
 bool Transaction::sell(string sellName, string event, double salePrice,
 		int availTicket) {
-    throw "Not yet implemented";
+	//sellName and must not be null
+		//sell must exist, must have sell privilege,
+		//must not have an event with the given event name already listed
+	//salePrice cant be greater than 999.99 and greater than 0
+	//availTicket must be less than 100 and greater than 0
+
+	int seller = this->fileIO->findUser(sellName);
+	//if(this->fileIO->accountList->at(seller).getUsername())
+	if (seller == -1) {
+		// Seller not found
+		return false;
+	}
+
+	if (this->fileIO->getAccountList()->at(seller).getType()
+			.compare(Account::buy) == 0){
+		// Invalid privileges
+		return false;
+	}
+	if (availTicket <= 0 || availTicket > Ticket::maxTicket) {
+		// Invalid number of Tickets
+		return false;
+	}
+
+	if (salePrice < 0 || salePrice > Ticket::maxPrice) {
+		// Invalid Ticket Price
+		return false;
+	}
+
+	if (this->fileIO->findEvent(event, sellName) >= 0) {
+		// Event already exists
+		return false;
+	}
+
+	// Sell start:
+	// Create event
+	// Add to available ticket file
+	// Create transaction
+	// Add to daily transaction file
+
+	Ticket newEvent (event, sellName, availTicket, salePrice);
+
+	this->fileIO->getTicketList()->push_back(newEvent);
+
+	this->fileIO->updateAvailTickets();
+
+	EventTransaction sell (Entry::sell, event, sellName, salePrice, availTicket);
+
+	this->transaction->push_back(sell);
+
+	return true;
 }
 
 bool Transaction::create(string newUser, string accountType,

@@ -14,7 +14,7 @@ private:
 	vector<Entry>* transaction;
 
 public:
-	Transaction();
+	Transaction(string accountPath, string availTicketPath);
 
 	~Transaction();
 
