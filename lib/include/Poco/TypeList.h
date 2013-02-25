@@ -44,8 +44,8 @@
 #define Foundation_TypeList_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/MetaProgramming.h"
+#include "Foundation.h"
+#include "MetaProgramming.h"
 
 
 namespace Poco {

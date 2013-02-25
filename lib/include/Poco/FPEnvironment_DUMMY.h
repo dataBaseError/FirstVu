@@ -41,7 +41,7 @@
 #define Foundation_FPEnvironment_DUMMY_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <cmath>
 
 

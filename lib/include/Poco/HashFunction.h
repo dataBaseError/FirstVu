@@ -40,8 +40,8 @@
 #define Foundation_HashFunction_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Hash.h"
+#include "Foundation.h"
+#include "Hash.h"
 
 
 namespace Poco {

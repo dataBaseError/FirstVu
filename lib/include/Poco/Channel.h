@@ -40,10 +40,10 @@
 #define Foundation_Channel_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Configurable.h"
-#include "Poco/Mutex.h"
-#include "Poco/RefCountedObject.h"
+#include "Foundation.h"
+#include "Configurable.h"
+#include "Mutex.h"
+#include "RefCountedObject.h"
 
 
 namespace Poco {

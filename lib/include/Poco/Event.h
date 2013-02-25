@@ -40,16 +40,16 @@
 #define Foundation_Event_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Exception.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
-#include "Poco/Event_WIN32.h"
+#include "Event_WIN32.h"
 #elif defined(POCO_VXWORKS)
-#include "Poco/Event_VX.h"
+#include "Event_VX.h"
 #else
-#include "Poco/Event_POSIX.h"
+#include "Event_POSIX.h"
 #endif
 
 

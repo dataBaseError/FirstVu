@@ -40,7 +40,7 @@
 #define Foundation_Poco_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 #endif // Foundation_Poco_INCLUDED

@@ -40,17 +40,17 @@
 #define Foundation_DynamicAnyHolder_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/NumberFormatter.h"
-#include "Poco/NumberParser.h"
-#include "Poco/DateTime.h"
-#include "Poco/Timestamp.h"
-#include "Poco/LocalDateTime.h"
-#include "Poco/DateTimeFormat.h"
-#include "Poco/DateTimeFormatter.h"
-#include "Poco/DateTimeParser.h"
-#include "Poco/String.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "NumberFormatter.h"
+#include "NumberParser.h"
+#include "DateTime.h"
+#include "Timestamp.h"
+#include "LocalDateTime.h"
+#include "DateTimeFormat.h"
+#include "DateTimeFormatter.h"
+#include "DateTimeParser.h"
+#include "String.h"
+#include "Exception.h"
 #include <vector>
 #include <typeinfo>
 #undef min

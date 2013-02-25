@@ -40,9 +40,9 @@
 #define Foundation_PipeImpl_WIN32_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/RefCountedObject.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "RefCountedObject.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

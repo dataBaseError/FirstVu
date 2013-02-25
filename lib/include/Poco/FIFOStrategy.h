@@ -40,7 +40,7 @@
 #define Foundation_FIFOStrategy_INCLUDED
 
 
-#include "Poco/DefaultStrategy.h"
+#include "DefaultStrategy.h"
 
 
 namespace Poco {

@@ -40,14 +40,14 @@
 #define Foundation_AbstractCache_INCLUDED
 
 
-#include "Poco/KeyValueArgs.h"
-#include "Poco/ValidArgs.h" 
-#include "Poco/Mutex.h"
-#include "Poco/Exception.h"
-#include "Poco/FIFOEvent.h"
-#include "Poco/EventArgs.h"
-#include "Poco/Delegate.h"
-#include "Poco/SharedPtr.h"
+#include "KeyValueArgs.h"
+#include "ValidArgs.h" 
+#include "Mutex.h"
+#include "Exception.h"
+#include "FIFOEvent.h"
+#include "EventArgs.h"
+#include "Delegate.h"
+#include "SharedPtr.h"
 #include <map>
 #include <set>
 #include <cstddef>

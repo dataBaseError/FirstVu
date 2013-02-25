@@ -40,8 +40,8 @@
 #define Foundation_TemporaryFile_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/File.h"
+#include "Foundation.h"
+#include "File.h"
 
 
 namespace Poco {

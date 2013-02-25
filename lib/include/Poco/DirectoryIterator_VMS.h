@@ -40,7 +40,7 @@
 #define Foundation_DirectoryIterator_VMS_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <rms.h>
 
 

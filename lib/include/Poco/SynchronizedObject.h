@@ -40,9 +40,9 @@
 #define Foundation_SynchronizedObject_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Mutex.h"
-#include "Poco/Event.h"
+#include "Foundation.h"
+#include "Mutex.h"
+#include "Event.h"
 
 
 namespace Poco {

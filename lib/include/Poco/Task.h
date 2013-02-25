@@ -40,11 +40,11 @@
 #define Foundation_Task_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Runnable.h"
-#include "Poco/RefCountedObject.h"
-#include "Poco/Mutex.h"
-#include "Poco/Event.h"
+#include "Foundation.h"
+#include "Runnable.h"
+#include "RefCountedObject.h"
+#include "Mutex.h"
+#include "Event.h"
 
 
 namespace Poco {

@@ -40,8 +40,8 @@
 #define Foundation_LogFile_VMS_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Timestamp.h"
+#include "Foundation.h"
+#include "Timestamp.h"
 #include <stdio.h>
 
 

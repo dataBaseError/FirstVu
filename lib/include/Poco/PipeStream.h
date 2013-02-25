@@ -40,9 +40,9 @@
 #define Foundation_PipeStream_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Pipe.h"
-#include "Poco/BufferedStreamBuf.h"
+#include "Foundation.h"
+#include "Pipe.h"
+#include "BufferedStreamBuf.h"
 #include <istream>
 #include <ostream>
 

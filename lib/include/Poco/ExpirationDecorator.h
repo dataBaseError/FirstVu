@@ -40,8 +40,8 @@
 #define Foundation_ExpirationDecorator_INCLUDED
 
 
-#include "Poco/Timestamp.h"
-#include "Poco/Timespan.h"
+#include "Timestamp.h"
+#include "Timespan.h"
 
 
 namespace Poco {

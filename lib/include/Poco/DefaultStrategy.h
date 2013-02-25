@@ -40,8 +40,8 @@
 #define Foundation_DefaultStrategy_INCLUDED
 
 
-#include "Poco/NotificationStrategy.h"
-#include "Poco/SharedPtr.h"
+#include "NotificationStrategy.h"
+#include "SharedPtr.h"
 #include <vector>
 
 

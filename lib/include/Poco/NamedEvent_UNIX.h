@@ -40,7 +40,7 @@
 #define Foundation_NamedEvent_UNIX_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #if defined(sun) || defined(__APPLE__) || defined(__osf__) || defined(__QNX__) || defined(_AIX)
 #include <semaphore.h>
 #endif

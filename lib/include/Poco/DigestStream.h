@@ -40,9 +40,9 @@
 #define Foundation_DigestStream_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/BufferedStreamBuf.h"
-#include "Poco/DigestEngine.h"
+#include "Foundation.h"
+#include "BufferedStreamBuf.h"
+#include "DigestEngine.h"
 #include <istream>
 #include <ostream>
 

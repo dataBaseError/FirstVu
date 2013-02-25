@@ -40,8 +40,8 @@
 #define Foundation_Tuple_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/TypeList.h"
+#include "Foundation.h"
+#include "TypeList.h"
 
 
 namespace Poco {

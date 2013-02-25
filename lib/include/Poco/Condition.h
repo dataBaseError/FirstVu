@@ -40,11 +40,11 @@
 #define Foundation_Condition_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Mutex.h"
-#include "Poco/ScopedUnlock.h"
-#include "Poco/Event.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Mutex.h"
+#include "ScopedUnlock.h"
+#include "Event.h"
+#include "Exception.h"
 #include <deque>
 
 

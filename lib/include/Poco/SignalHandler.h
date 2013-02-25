@@ -40,7 +40,7 @@
 #define Foundation_SignalHandler_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 #if defined(POCO_OS_FAMILY_UNIX) && !defined(POCO_VXWORKS)

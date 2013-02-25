@@ -40,19 +40,19 @@
 #define Foundation_NamedEvent_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS) && defined(POCO_WIN32_UTF8)
-#include "Poco/NamedEvent_WIN32U.h"
+#include "NamedEvent_WIN32U.h"
 #elif defined(POCO_OS_FAMILY_WINDOWS)
-#include "Poco/NamedEvent_WIN32.h"
+#include "NamedEvent_WIN32.h"
 #elif defined(POCO_ANDROID)
-#include "Poco/NamedEvent_Android.h"
+#include "NamedEvent_Android.h"
 #elif defined(POCO_OS_FAMILY_UNIX)
-#include "Poco/NamedEvent_UNIX.h"
+#include "NamedEvent_UNIX.h"
 #else
-#include "Poco/NamedEvent_VMS.h"
+#include "NamedEvent_VMS.h"
 #endif
 
 

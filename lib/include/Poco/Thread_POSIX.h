@@ -40,12 +40,12 @@
 #define Foundation_Thread_POSIX_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Runnable.h"
-#include "Poco/SignalHandler.h"
-#include "Poco/Event.h"
-#include "Poco/RefCountedObject.h"
-#include "Poco/AutoPtr.h"
+#include "Foundation.h"
+#include "Runnable.h"
+#include "SignalHandler.h"
+#include "Event.h"
+#include "RefCountedObject.h"
+#include "AutoPtr.h"
 #include <pthread.h>
 // must be limits.h (not <climits>) for PTHREAD_STACK_MIN on Solaris
 #include <limits.h>

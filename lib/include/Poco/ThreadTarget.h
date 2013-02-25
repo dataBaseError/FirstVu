@@ -40,8 +40,8 @@
 #define Foundation_ThreadTarget_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Runnable.h"
+#include "Foundation.h"
+#include "Runnable.h"
 
 
 namespace Poco {

@@ -40,7 +40,7 @@
 #define Foundation_BinaryWriter_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <vector>
 #include <ostream>
 

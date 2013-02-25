@@ -40,12 +40,12 @@
 #define Foundation_ActiveDispatcher_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Runnable.h"
-#include "Poco/Thread.h"
-#include "Poco/ActiveStarter.h"
-#include "Poco/ActiveRunnable.h"
-#include "Poco/NotificationQueue.h"
+#include "Foundation.h"
+#include "Runnable.h"
+#include "Thread.h"
+#include "ActiveStarter.h"
+#include "ActiveRunnable.h"
+#include "NotificationQueue.h"
 
 
 namespace Poco {

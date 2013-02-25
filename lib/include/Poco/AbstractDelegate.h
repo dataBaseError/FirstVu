@@ -40,7 +40,7 @@
 #define Foundation_AbstractDelegate_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 namespace Poco {

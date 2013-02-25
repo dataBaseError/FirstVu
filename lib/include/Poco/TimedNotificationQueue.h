@@ -40,11 +40,11 @@
 #define Foundation_TimedNotificationQueue_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Notification.h"
-#include "Poco/Mutex.h"
-#include "Poco/Event.h"
-#include "Poco/Timestamp.h"
+#include "Foundation.h"
+#include "Notification.h"
+#include "Mutex.h"
+#include "Event.h"
+#include "Timestamp.h"
 #include <map>
 
 

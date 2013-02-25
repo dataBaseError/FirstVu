@@ -40,8 +40,8 @@
 #define Foundation_ClassLibrary_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Manifest.h"
+#include "Foundation.h"
+#include "Manifest.h"
 #include <typeinfo>
 
 

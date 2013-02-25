@@ -40,10 +40,10 @@
 #define Foundation_NotificationCenter_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Notification.h"
-#include "Poco/Mutex.h"
-#include "Poco/SharedPtr.h"
+#include "Foundation.h"
+#include "Notification.h"
+#include "Mutex.h"
+#include "SharedPtr.h"
 #include <vector>
 #include <cstddef>
 

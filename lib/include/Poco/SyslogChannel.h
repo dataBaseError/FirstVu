@@ -40,8 +40,8 @@
 #define Foundation_SyslogChannel_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Channel.h"
+#include "Foundation.h"
+#include "Channel.h"
 
 
 namespace Poco {

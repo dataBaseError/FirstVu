@@ -40,9 +40,9 @@
 #define Foundation_BufferedBidirectionalStreamBuf_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/BufferAllocator.h"
-#include "Poco/StreamUtil.h"
+#include "Foundation.h"
+#include "BufferAllocator.h"
+#include "StreamUtil.h"
 #include <streambuf>
 #include <iosfwd>
 #include <ios>

@@ -40,9 +40,9 @@
 #define Foundation_ThreadPool_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Thread.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "Thread.h"
+#include "Mutex.h"
 #include <vector>
 
 

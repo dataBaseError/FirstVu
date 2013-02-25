@@ -40,12 +40,12 @@
 #define Foundation_TaskManager_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Mutex.h"
-#include "Poco/Task.h"
-#include "Poco/AutoPtr.h"
-#include "Poco/NotificationCenter.h"
-#include "Poco/Timestamp.h"
+#include "Foundation.h"
+#include "Mutex.h"
+#include "Task.h"
+#include "AutoPtr.h"
+#include "NotificationCenter.h"
+#include "Timestamp.h"
 #include <list>
 
 

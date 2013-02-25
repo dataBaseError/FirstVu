@@ -40,8 +40,8 @@
 #define Foundation_File_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Timestamp.h"
+#include "Foundation.h"
+#include "Timestamp.h"
 #include <vector>
 
 
@@ -49,16 +49,16 @@
 #if defined(_WIN32_WCE)
 #include "File_WINCE.h"
 #else
-#include "Poco/File_WIN32U.h"
+#include "File_WIN32U.h"
 #endif
 #elif defined(POCO_OS_FAMILY_WINDOWS)
-#include "Poco/File_WIN32.h"
+#include "File_WIN32.h"
 #elif defined(POCO_VXWORKS)
-#include "Poco/File_VX.h"
+#include "File_VX.h"
 #elif defined(POCO_OS_FAMILY_UNIX)
-#include "Poco/File_UNIX.h"
+#include "File_UNIX.h"
 #else
-#include "Poco/File_VMS.h"
+#include "File_VMS.h"
 #endif
 
 

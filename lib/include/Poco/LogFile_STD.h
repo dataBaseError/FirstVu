@@ -40,9 +40,9 @@
 #define Foundation_LogFile_STD_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Timestamp.h"
-#include "Poco/FileStream.h"
+#include "Foundation.h"
+#include "Timestamp.h"
+#include "FileStream.h"
 
 
 namespace Poco {

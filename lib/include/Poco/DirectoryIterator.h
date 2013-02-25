@@ -40,9 +40,9 @@
 #define Foundation_DirectoryIterator_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/File.h"
-#include "Poco/Path.h"
+#include "Foundation.h"
+#include "File.h"
+#include "Path.h"
 
 
 namespace Poco {

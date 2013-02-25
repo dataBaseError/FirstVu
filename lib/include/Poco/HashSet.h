@@ -40,8 +40,8 @@
 #define Foundation_HashSet_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/LinearHashTable.h"
+#include "Foundation.h"
+#include "LinearHashTable.h"
 
 
 namespace Poco {

@@ -40,8 +40,8 @@
 #define Foundation_StreamTokenizer_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Token.h"
+#include "Foundation.h"
+#include "Token.h"
 #include <istream>
 #include <vector>
 

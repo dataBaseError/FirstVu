@@ -45,7 +45,7 @@
 //
 // Include library configuration
 //
-#include "Poco/Config.h"
+#include "Config.h"
 
 
 //
@@ -113,15 +113,15 @@
 //
 // Include platform-specific definitions
 //
-#include "Poco/Platform.h"
+#include "Platform.h"
 #if defined(_WIN32)
-	#include "Poco/Platform_WIN32.h"
+	#include "Platform_WIN32.h"
 #elif defined(__VMS)
-	#include "Poco/Platform_VMS.h"
+	#include "Platform_VMS.h"
 #elif defined(POCO_VXWORKS)
-	#include "Poco/Platform_VX.h"
+	#include "Platform_VX.h"
 #elif defined(POCO_OS_FAMILY_UNIX)
-	#include "Poco/Platform_POSIX.h"
+	#include "Platform_POSIX.h"
 #endif
 
 
@@ -156,8 +156,8 @@
 //
 // Pull in basic definitions
 //
-#include "Poco/Bugcheck.h"
-#include "Poco/Types.h"
+#include "Bugcheck.h"
+#include "Types.h"
 #include <string>
 
 

@@ -40,14 +40,14 @@
 #define Foundation_RotateStrategy_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Timespan.h"
-#include "Poco/Timestamp.h"
-#include "Poco/Exception.h"
-#include "Poco/LogFile.h"
-#include "Poco/StringTokenizer.h"
-#include "Poco/DateTimeParser.h"
-#include "Poco/NumberParser.h"
+#include "Foundation.h"
+#include "Timespan.h"
+#include "Timestamp.h"
+#include "Exception.h"
+#include "LogFile.h"
+#include "StringTokenizer.h"
+#include "DateTimeParser.h"
+#include "NumberParser.h"
 
 
 namespace Poco {

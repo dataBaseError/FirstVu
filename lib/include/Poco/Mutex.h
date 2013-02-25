@@ -40,21 +40,21 @@
 #define Foundation_Mutex_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
-#include "Poco/ScopedLock.h"
+#include "Foundation.h"
+#include "Exception.h"
+#include "ScopedLock.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)
-#include "Poco/Mutex_WINCE.h"
+#include "Mutex_WINCE.h"
 #else
-#include "Poco/Mutex_WIN32.h"
+#include "Mutex_WIN32.h"
 #endif
 #elif defined(POCO_VXWORKS)
-#include "Poco/Mutex_VX.h"
+#include "Mutex_VX.h"
 #else
-#include "Poco/Mutex_POSIX.h"
+#include "Mutex_POSIX.h"
 #endif
 
 

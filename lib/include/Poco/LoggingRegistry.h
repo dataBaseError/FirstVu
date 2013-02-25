@@ -40,11 +40,11 @@
 #define Foundation_LoggingRegistry_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/AutoPtr.h"
-#include "Poco/Channel.h"
-#include "Poco/Formatter.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "AutoPtr.h"
+#include "Channel.h"
+#include "Formatter.h"
+#include "Mutex.h"
 #include <map>
 
 
