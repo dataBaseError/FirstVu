@@ -17,13 +17,13 @@ Comments:
 - use /** for start class, and method comments
 - use // or /* for in-line comments
     - This is more for doxygen which will pickup /** for method and class comments
-- for all comments use a space between the * or the / 
-Ex. 
-- do not duplicated .cpp and .h comments 
+- for all comments use a space between the * or the /
+Ex.
+- do not duplicated .cpp and .h comments
 - comments in .h file are for external users (people that do not understand how it is implemented and just wish to use it)
 - comments in .cpp files are for internal users (people working on the file and making changes or fixes)
 - start files with license
-- comment tricky or points of intrest
+- comment tricky or points of interest
 
 Formating
 - openning curly brace is on the same line (no new line) and ending curly brace is on a new line. Else statment is on a new line (not on the same line as the closing curly brace). Ex:
