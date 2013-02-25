@@ -40,9 +40,9 @@
 #define Foundation_RWLock_WINCE_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "Exception.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

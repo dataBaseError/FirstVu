@@ -40,7 +40,7 @@
 #define Foundation_NamedEvent_VMS_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 namespace Poco {

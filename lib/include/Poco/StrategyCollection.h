@@ -40,10 +40,10 @@
 #define Foundation_StrategyCollection_INCLUDED
 
 
-#include "Poco/KeyValueArgs.h"
-#include "Poco/ValidArgs.h"
-#include "Poco/AbstractStrategy.h"
-#include "Poco/SharedPtr.h"
+#include "KeyValueArgs.h"
+#include "ValidArgs.h"
+#include "AbstractStrategy.h"
+#include "SharedPtr.h"
 #include <vector>
 
 

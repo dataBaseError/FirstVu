@@ -40,7 +40,7 @@
 #define Foundation_Environment_WIN32U_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 namespace Poco {

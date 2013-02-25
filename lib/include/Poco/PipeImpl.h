@@ -40,19 +40,19 @@
 #define Foundation_PipeImpl_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)
 #include "PipeImpl_DUMMY.h"
 #else
-#include "Poco/PipeImpl_WIN32.h"
+#include "PipeImpl_WIN32.h"
 #endif
 #elif defined(POCO_OS_FAMILY_UNIX)
-#include "Poco/PipeImpl_POSIX.h"
+#include "PipeImpl_POSIX.h"
 #else
-#include "Poco/PipeImpl_DUMMY.h"
+#include "PipeImpl_DUMMY.h"
 #endif
 
 

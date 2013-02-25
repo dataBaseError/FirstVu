@@ -40,8 +40,8 @@
 #define Foundation_HMACEngine_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/DigestEngine.h"
+#include "Foundation.h"
+#include "DigestEngine.h"
 #include <cstring>
 
 

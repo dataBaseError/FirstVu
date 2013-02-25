@@ -40,7 +40,7 @@
 #define Foundation_StreamCopier_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <istream>
 #include <ostream>
 #include <cstddef>

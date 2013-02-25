@@ -40,11 +40,11 @@
 #define Foundation_Delegate_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/AbstractDelegate.h"
-#include "Poco/FunctionDelegate.h"
-#include "Poco/Expire.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "AbstractDelegate.h"
+#include "FunctionDelegate.h"
+#include "Expire.h"
+#include "Mutex.h"
 
 
 namespace Poco {

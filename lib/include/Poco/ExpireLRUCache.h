@@ -40,10 +40,10 @@
 #define Foundation_ExpireLRUCache_INCLUDED
 
 
-#include "Poco/AbstractCache.h"
-#include "Poco/StrategyCollection.h"
-#include "Poco/ExpireStrategy.h"
-#include "Poco/LRUStrategy.h"
+#include "AbstractCache.h"
+#include "StrategyCollection.h"
+#include "ExpireStrategy.h"
+#include "LRUStrategy.h"
 
 
 namespace Poco {

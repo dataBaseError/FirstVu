@@ -40,21 +40,21 @@
 #define Foundation_FPEnvironment_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 
 
 #if defined(POCO_NO_FPENVIRONMENT)
-#include "Poco/FPEnvironment_DUMMY.h"
+#include "FPEnvironment_DUMMY.h"
 #elif defined(__osf__) || defined(__VMS)
-#include "Poco/FPEnvironment_DEC.h"
+#include "FPEnvironment_DEC.h"
 #elif defined(sun) || defined(__sun)
-#include "Poco/FPEnvironment_SUN.h"
+#include "FPEnvironment_SUN.h"
 #elif defined(POCO_OS_FAMILY_UNIX)
-#include "Poco/FPEnvironment_C99.h"
+#include "FPEnvironment_C99.h"
 #elif defined(POCO_OS_FAMILY_WINDOWS)
-#include "Poco/FPEnvironment_WIN32.h"
+#include "FPEnvironment_WIN32.h"
 #else
-#include "Poco/FPEnvironment_DUMMY.h"
+#include "FPEnvironment_DUMMY.h"
 #endif
 
 

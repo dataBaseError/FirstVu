@@ -63,8 +63,8 @@
 #define Foundation_MD4Engine_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/DigestEngine.h"
+#include "Foundation.h"
+#include "DigestEngine.h"
 
 
 namespace Poco {

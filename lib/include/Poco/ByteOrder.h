@@ -38,8 +38,8 @@
 #define Foundation_ByteOrder_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Types.h"
+#include "Foundation.h"
+#include "Types.h"
 
 
 namespace Poco {

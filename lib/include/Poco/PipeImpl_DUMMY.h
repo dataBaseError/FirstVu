@@ -40,8 +40,8 @@
 #define Foundation_PipeImpl_DUMMY_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/RefCountedObject.h"
+#include "Foundation.h"
+#include "RefCountedObject.h"
 
 
 namespace Poco {

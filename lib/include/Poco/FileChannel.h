@@ -40,10 +40,10 @@
 #define Foundation_FileChannel_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Channel.h"
-#include "Poco/Timestamp.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "Channel.h"
+#include "Timestamp.h"
+#include "Mutex.h"
 
 
 namespace Poco {

@@ -40,10 +40,10 @@
 #define Foundation_SimpleHashTable_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
-#include "Poco/HashFunction.h"
-#include "Poco/HashStatistic.h"
+#include "Foundation.h"
+#include "Exception.h"
+#include "HashFunction.h"
+#include "HashStatistic.h"
 #include <vector>
 #include <map>
 #include <cstddef>

@@ -40,8 +40,8 @@
 #define Foundation_Format_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Any.h"
+#include "Foundation.h"
+#include "Any.h"
 #include <vector>
 
 

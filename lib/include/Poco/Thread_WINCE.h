@@ -40,9 +40,9 @@
 #define Foundation_Thread_WINCE_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Runnable.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "Runnable.h"
+#include "UnWindows.h"
 
 
 #if !defined(TLS_OUT_OF_INDEXES) // Windows CE 5.x does not define this

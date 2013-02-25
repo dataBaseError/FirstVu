@@ -40,9 +40,9 @@
 #define Foundation_FileStream_WIN32_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/BufferedBidirectionalStreamBuf.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "BufferedBidirectionalStreamBuf.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

@@ -40,8 +40,8 @@
 #define Foundation_TextEncoding_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/SharedPtr.h"
+#include "Foundation.h"
+#include "SharedPtr.h"
 
 
 namespace Poco {

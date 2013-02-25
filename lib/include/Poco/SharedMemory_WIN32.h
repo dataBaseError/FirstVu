@@ -40,9 +40,9 @@
 #define Foundation_SharedMemoryImpl_INCLUDED
 
 
-#include "Poco/Poco.h"
-#include "Poco/SharedMemory.h"
-#include "Poco/RefCountedObject.h"
+#include "Poco.h"
+#include "SharedMemory.h"
+#include "RefCountedObject.h"
 
 
 namespace Poco {

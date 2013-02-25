@@ -40,10 +40,10 @@
 #define Foundation_LoggingFactory_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/DynamicFactory.h"
-#include "Poco/Channel.h"
-#include "Poco/Formatter.h"
+#include "Foundation.h"
+#include "DynamicFactory.h"
+#include "Channel.h"
+#include "Formatter.h"
 
 
 namespace Poco {

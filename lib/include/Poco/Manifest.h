@@ -40,8 +40,8 @@
 #define Foundation_Manifest_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/MetaObject.h"
+#include "Foundation.h"
+#include "MetaObject.h"
 #include <map>
 #include <typeinfo>
 

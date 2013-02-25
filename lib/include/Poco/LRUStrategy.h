@@ -40,11 +40,11 @@
 #define Foundation_LRUStrategy_INCLUDED
 
 
-#include "Poco/KeyValueArgs.h"
-#include "Poco/ValidArgs.h"
-#include "Poco/AbstractStrategy.h"
-#include "Poco/EventArgs.h"
-#include "Poco/Exception.h"
+#include "KeyValueArgs.h"
+#include "ValidArgs.h"
+#include "AbstractStrategy.h"
+#include "EventArgs.h"
+#include "Exception.h"
 #include <list>
 #include <map>
 #include <cstddef>

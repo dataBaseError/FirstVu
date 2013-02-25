@@ -40,9 +40,9 @@
 #define Foundation_LogStream_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Logger.h"
-#include "Poco/UnbufferedStreamBuf.h"
+#include "Foundation.h"
+#include "Logger.h"
+#include "UnbufferedStreamBuf.h"
 #include <istream>
 
 

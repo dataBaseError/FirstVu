@@ -38,7 +38,7 @@
 #define Foundation_Any_INCLUDED
 
 
-#include "Poco/Exception.h"
+#include "Exception.h"
 #include <algorithm>
 #include <typeinfo>
 

@@ -40,12 +40,12 @@
 #define Foundation_ActiveRunnable_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/ActiveResult.h"
-#include "Poco/Runnable.h"
-#include "Poco/RefCountedObject.h"
-#include "Poco/AutoPtr.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "ActiveResult.h"
+#include "Runnable.h"
+#include "RefCountedObject.h"
+#include "AutoPtr.h"
+#include "Exception.h"
 
 
 namespace Poco {

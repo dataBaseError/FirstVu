@@ -40,8 +40,8 @@
 #define Foundation_Windows1252Encoding_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/TextEncoding.h"
+#include "Foundation.h"
+#include "TextEncoding.h"
 
 
 namespace Poco {

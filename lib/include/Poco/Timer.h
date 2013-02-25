@@ -40,12 +40,12 @@
 #define Foundation_Timer_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Runnable.h"
-#include "Poco/Mutex.h"
-#include "Poco/Event.h"
-#include "Poco/Thread.h"
-#include "Poco/Timestamp.h"
+#include "Foundation.h"
+#include "Runnable.h"
+#include "Mutex.h"
+#include "Event.h"
+#include "Thread.h"
+#include "Timestamp.h"
 
 
 namespace Poco {

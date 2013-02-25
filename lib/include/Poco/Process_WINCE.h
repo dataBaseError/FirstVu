@@ -40,11 +40,11 @@
 #define Foundation_Process_WINCE_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/RefCountedObject.h"
+#include "Foundation.h"
+#include "RefCountedObject.h"
 #include <vector>
 #include <map>
-#include "Poco/UnWindows.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

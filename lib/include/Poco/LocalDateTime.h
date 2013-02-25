@@ -40,8 +40,8 @@
 #define Foundation_LocalDateTime_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/DateTime.h"
+#include "Foundation.h"
+#include "DateTime.h"
 
 
 namespace Poco {

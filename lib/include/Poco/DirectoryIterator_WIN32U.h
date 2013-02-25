@@ -40,8 +40,8 @@
 #define Foundation_DirectoryIterator_WIN32U_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

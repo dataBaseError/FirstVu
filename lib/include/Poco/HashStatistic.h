@@ -40,7 +40,7 @@
 #define Foundation_HashStatistic_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <vector>
 
 

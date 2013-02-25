@@ -40,8 +40,8 @@
 #define Foundation_AutoPtr_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Exception.h"
 #include <algorithm>
 
 

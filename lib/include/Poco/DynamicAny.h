@@ -40,9 +40,9 @@
 #define Foundation_DynamicAny_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/DynamicAnyHolder.h"
-#include "Poco/Format.h"
+#include "Foundation.h"
+#include "DynamicAnyHolder.h"
+#include "Format.h"
 #include <typeinfo>
 
 

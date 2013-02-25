@@ -40,8 +40,8 @@
 #define Foundation_Process_VMS_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/RefCountedObject.h"
+#include "Foundation.h"
+#include "RefCountedObject.h"
 #include <vector>
 #include <map>
 #include <unistd.h>

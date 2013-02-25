@@ -40,8 +40,8 @@
 #define Foundation_StringTokenizer_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Exception.h"
 #include <vector>
 #include <cstddef>
 

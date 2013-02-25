@@ -40,9 +40,9 @@
 #define Foundation_Thread_WIN32_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Runnable.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "Runnable.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

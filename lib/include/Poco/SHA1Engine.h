@@ -46,8 +46,8 @@
 #define Foundation_SHA1Engine_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/DigestEngine.h"
+#include "Foundation.h"
+#include "DigestEngine.h"
 
 
 namespace Poco {

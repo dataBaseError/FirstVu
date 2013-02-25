@@ -40,7 +40,7 @@
 #define Foundation_BufferAllocator_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <ios>
 #include <cstddef>
 

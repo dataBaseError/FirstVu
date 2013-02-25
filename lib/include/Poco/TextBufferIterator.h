@@ -40,7 +40,7 @@
 #define Foundation_TextBufferIterator_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <cstdlib>
 
 

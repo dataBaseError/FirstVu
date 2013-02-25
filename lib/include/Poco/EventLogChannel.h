@@ -40,9 +40,9 @@
 #define Foundation_EventLogChannel_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Channel.h"
-#include "Poco/UnWindows.h"
+#include "Foundation.h"
+#include "Channel.h"
+#include "UnWindows.h"
 
 
 namespace Poco {

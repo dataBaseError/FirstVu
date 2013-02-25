@@ -40,7 +40,7 @@
 #define Foundation_Token_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <istream>
 
 

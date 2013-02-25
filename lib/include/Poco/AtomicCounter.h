@@ -40,9 +40,9 @@
 #define Foundation_AtomicCounter_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #if POCO_OS == POCO_OS_WINDOWS_NT
-#include "Poco/UnWindows.h"
+#include "UnWindows.h"
 #elif POCO_OS == POCO_OS_MAC_OS_X
 #include <libkern/OSAtomic.h>
 #elif ((__GNUC__ == 4) && (__GNUC_MINOR__ >= 2) || __GNUC__ > 4) && (defined(__x86_64__) || defined(__i386__))
@@ -54,7 +54,7 @@
 #define POCO_HAVE_GCC_ATOMICS
 #endif
 #endif // POCO_OS
-#include "Poco/Mutex.h"
+#include "Mutex.h"
 
 
 namespace Poco {

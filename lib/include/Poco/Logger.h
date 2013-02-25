@@ -40,10 +40,10 @@
 #define Foundation_Logger_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Channel.h"
-#include "Poco/Message.h"
-#include "Poco/Format.h"
+#include "Foundation.h"
+#include "Channel.h"
+#include "Message.h"
+#include "Format.h"
 #include <map>
 #include <vector>
 #include <cstddef>

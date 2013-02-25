@@ -40,8 +40,8 @@
 #define Foundation_FileStreamFactory_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/URIStreamFactory.h"
+#include "Foundation.h"
+#include "URIStreamFactory.h"
 
 
 namespace Poco {

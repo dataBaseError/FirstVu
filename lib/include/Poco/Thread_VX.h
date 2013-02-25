@@ -40,12 +40,12 @@
 #define Foundation_Thread_VX_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Runnable.h"
-#include "Poco/SignalHandler.h"
-#include "Poco/Event.h"
-#include "Poco/RefCountedObject.h"
-#include "Poco/AutoPtr.h"
+#include "Foundation.h"
+#include "Runnable.h"
+#include "SignalHandler.h"
+#include "Event.h"
+#include "RefCountedObject.h"
+#include "AutoPtr.h"
 #include <taskLib.h>
 #include <taskVarLib.h>
 

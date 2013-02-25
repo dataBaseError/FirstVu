@@ -40,12 +40,12 @@
 #define Foundation_ClassLoader_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/MetaObject.h"
-#include "Poco/Manifest.h"
-#include "Poco/SharedLibrary.h"
-#include "Poco/Mutex.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "MetaObject.h"
+#include "Manifest.h"
+#include "SharedLibrary.h"
+#include "Mutex.h"
+#include "Exception.h"
 #include <map>
 
 

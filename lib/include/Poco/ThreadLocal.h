@@ -40,7 +40,7 @@
 #define Foundation_ThreadLocal_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <map>
 
 

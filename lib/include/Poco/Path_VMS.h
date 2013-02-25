@@ -40,7 +40,7 @@
 #define Foundation_Path_VMS_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <vector>
 
 

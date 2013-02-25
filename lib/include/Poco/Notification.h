@@ -40,10 +40,10 @@
 #define Foundation_Notification_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Mutex.h"
-#include "Poco/RefCountedObject.h"
-#include "Poco/AutoPtr.h"
+#include "Foundation.h"
+#include "Mutex.h"
+#include "RefCountedObject.h"
+#include "AutoPtr.h"
 
 
 namespace Poco {

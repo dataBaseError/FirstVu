@@ -40,7 +40,7 @@
 #define Foundation_FPEnvironment_DEC_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #if defined(__VMS)
 #include <ieeedef.h>
 #else

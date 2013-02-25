@@ -40,9 +40,9 @@
 #define Foundation_Formatter_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Configurable.h"
-#include "Poco/RefCountedObject.h"
+#include "Foundation.h"
+#include "Configurable.h"
+#include "RefCountedObject.h"
 
 
 namespace Poco {

@@ -40,7 +40,7 @@
 #define Foundation_Bugcheck_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <string>
 #if defined(_DEBUG)
 #	include <iostream>

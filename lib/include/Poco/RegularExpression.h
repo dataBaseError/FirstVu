@@ -43,7 +43,7 @@
 #define Foundation_RegularExpression_INCLUDED
 
 
-#include "Poco/Foundation.h"
+#include "Foundation.h"
 #include <vector>
 
 

@@ -40,12 +40,12 @@
 #define Foundation_NamedTuple_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Tuple.h"
-#include "Poco/TypeList.h"
-#include "Poco/DynamicAny.h"
-#include "Poco/SharedPtr.h"
-#include "Poco/Format.h"
+#include "Foundation.h"
+#include "Tuple.h"
+#include "TypeList.h"
+#include "DynamicAny.h"
+#include "SharedPtr.h"
+#include "Format.h"
 
 
 namespace Poco {

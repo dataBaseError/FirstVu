@@ -40,9 +40,9 @@
 #define Foundation_MetaObject_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
-#include "Poco/SingletonHolder.h"
+#include "Foundation.h"
+#include "Exception.h"
+#include "SingletonHolder.h"
 #include <set>
 
 

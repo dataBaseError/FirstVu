@@ -40,11 +40,11 @@
 #define Foundation_Activity_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/RunnableAdapter.h"
-#include "Poco/ThreadPool.h"
-#include "Poco/Event.h"
-#include "Poco/Mutex.h"
+#include "Foundation.h"
+#include "RunnableAdapter.h"
+#include "ThreadPool.h"
+#include "Event.h"
+#include "Mutex.h"
 
 
 namespace Poco {

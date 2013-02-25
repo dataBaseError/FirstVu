@@ -40,9 +40,9 @@
 #define Foundation_PatternFormatter_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Formatter.h"
-#include "Poco/Message.h"
+#include "Foundation.h"
+#include "Formatter.h"
+#include "Message.h"
 
 
 namespace Poco {

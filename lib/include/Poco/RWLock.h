@@ -40,22 +40,22 @@
 #define Foundation_RWLock_INCLUDED
 
 
-#include "Poco/Foundation.h"
-#include "Poco/Exception.h"
+#include "Foundation.h"
+#include "Exception.h"
 
 
 #if defined(POCO_OS_FAMILY_WINDOWS)
 #if defined(_WIN32_WCE)
-#include "Poco/RWLock_WINCE.h"
+#include "RWLock_WINCE.h"
 #else
-#include "Poco/RWLock_WIN32.h"
+#include "RWLock_WIN32.h"
 #endif
 #elif defined(POCO_ANDROID)
-#include "Poco/RWLock_Android.h"
+#include "RWLock_Android.h"
 #elif defined(POCO_VXWORKS)
-#include "Poco/RWLock_VX.h"
+#include "RWLock_VX.h"
 #else
-#include "Poco/RWLock_POSIX.h"
+#include "RWLock_POSIX.h"
 #endif
 
 
