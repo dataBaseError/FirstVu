@@ -206,6 +206,26 @@ bool Transaction::sell(string sellName, string event, double salePrice,
 
 bool Transaction::create(string newUser, string accountType,
 		double accountBalance) {
+
+	// newUser does not already exist
+	// valid accountType
+	// accountBalance between 0 and maxCredit
+
+	if (accountType.compare(Account::buy) != 0 &&
+			accountType.compare(Account::sell) != 0 &&
+			accountType.compare(Account::full) != 0 &&
+			accountType.compare(Account::admin) != 0) {
+
+		// Invalid account type
+		return false;
+	}
+
+	if (accountBalance < 0 || accountBalance > Account::maxPrice) {
+
+		// Invalid credit
+		return false;
+	}
+
     throw "Not yet implemented";
 }
 
