@@ -1,8 +1,9 @@
 #include "../include/Transaction.h"
 
-Transaction::Transaction(string accountPath, string availTicketPath)
-: fileIO(new FileIO()), transaction
-(new vector<Entry>()) {}
+Transaction::Transaction(string accountPath, string availTicketPath) {
+	this->fileIO = new FileIO();
+	this->transaction = new vector<Entry>();
+}
 
 Transaction::~Transaction() {
 	delete transaction;

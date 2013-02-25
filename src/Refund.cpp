@@ -1,5 +1,12 @@
 #include "../include/Refund.h"
 
+Refund::Refund(int type, string buyName, string sellName, double credit)
+: Entry(type){
+	this->buyName = buyName;
+	this->sellName = sellName;
+	this->credit = credit;
+}
+
 string Refund::getBuyName() {
 	return this->buyName;
 }

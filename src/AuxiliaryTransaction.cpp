@@ -1,5 +1,12 @@
 #include "../include/AuxiliaryTransaction.h"
 
+AuxiliaryTransaction::AuxiliaryTransaction(int type, string username,
+		double credit, string accountType) : Entry(type) {
+	this->username = username;
+	this->credit = credit;
+	this->accountType = accountType;
+}
+
 string AuxiliaryTransaction::getUsername() {
 	return this->username;
 }
@@ -16,10 +23,10 @@ void AuxiliaryTransaction::setCredit(double credit) {
 	this->credit = credit;
 }
 
-string AuxiliaryTransaction::getType() {
-	return this->type;
+string AuxiliaryTransaction::getAccountType() {
+	return this->accountType;
 }
 
-void AuxiliaryTransaction::setType(string type) {
-	this->type = type;
+void AuxiliaryTransaction::setAccountType(string accountType) {
+	this->accountType = accountType;
 }
