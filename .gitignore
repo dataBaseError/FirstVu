@@ -7,3 +7,6 @@
 # Ignore project files
 .cproject
 .project
+
+# Ignore debug folder
+Debug/
