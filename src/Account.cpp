@@ -9,7 +9,7 @@ const string Account::admin = "AA";
 const string Account::sell  = "SS";
 const string Account::buy   = "BS";
 const string Account::full  = "FS";
-const double Account::maxPrice = 999999.99;
+const double Account::maxCredit = 999999.99;
 
 string Account::getType() {
     return this->type;

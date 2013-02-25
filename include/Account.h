@@ -14,7 +14,7 @@ public:
     static const string sell;
     static const string buy;
     static const string full;
-    static const double maxPrice;
+    static const double maxCredit;
 
     string getType();
 
