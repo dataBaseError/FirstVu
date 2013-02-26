@@ -1,6 +1,9 @@
 #include "../include/Transaction.h"
 
+const double Transaction::maxAddCredit = 1000.00;
+
 Transaction::Transaction(string accountPath, string availTicketPath) {
+	this->currentUser = -1;
 	this->fileIO = new FileIO();
 	this->transaction = new vector<Entry>();
 }
@@ -10,13 +13,20 @@ Transaction::~Transaction() {
     delete fileIO;
 }
 
-bool Transaction::login() {
-	//check if transaction list is empty
-	if (this->transaction->empty()) {
-		//read in uao and ato files
+bool Transaction::login(string username) {
+	// Check if transaction list is empty
+	if (currentUser == -1) {
 
+		// Read in uao and ato files
 		if (this->fileIO->initialize()) {
-			//initialize transaction list
+
+			currentUser = this->fileIO->findUser(username);
+			if (currentUser == -1) {
+				// Invalid user
+				return false;
+			}
+
+			// Initialize transaction list
 			this->transaction = new vector<Entry>();
 
 			return true;
@@ -27,7 +37,7 @@ bool Transaction::login() {
 }
 
 bool Transaction::logout() {
-	//write to daily transaction file
+	// Write to daily transaction file
 	if (this->fileIO->writeTransaction(this->transaction)) {
 	    // Apparently, committing suicide is legal behaviour
 	    //~Transaction();
@@ -38,11 +48,10 @@ bool Transaction::logout() {
 	return false;
 }
 
-bool Transaction::buy(string buyName, string event, int numTickets,
-		string sellName) {
+bool Transaction::buy(string event, int numTickets, string sellName) {
 	// verify valid input
 	// buyer's name, event, and seller's name must exist
-		// assume buyer name is correct TODO: implement
+		// assume buyer name is correct
 	// seller must be selling tickets for event
 	// there must be enough tickets available
 	// maximum of 4 tickets can be purchased, minimum of 1
@@ -50,17 +59,17 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 	// seller's credit must not exceed maximum after transaction
 	// buyer must have buy privileges
 		// seller can buy back their own tickets
-	int buyer = this->fileIO->findUser(buyName);
-	if (buyer == -1) {
 
-		// Buyer not found
+	if (currentUser == -1) {
+		// No user logged in
 		return false;
 	}
 
-	if(this->fileIO->getAccountList()->at(buyer).getType()
+
+	if(this->fileIO->getAccountList()->at(currentUser).getType()
 			.compare(Account::sell) == 0) {
 
-		// User does not have sell privileges
+		// User does not have buy privileges
 		return false;
 	}
 
@@ -70,7 +79,7 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 		return false;
 	}
 
-	if (this->fileIO->getAccountList()->at(buyer).getType()
+	if (this->fileIO->getAccountList()->at(currentUser).getType()
 			.compare(Account::admin) != 0 && numTickets > 4) {
 
 		// User cannot buy more than 4 tickets
@@ -103,14 +112,14 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 	double cost = this->fileIO->getTicketList()->at(ticket).getCost()
 			* numTickets;
 
-	if (this->fileIO->getAccountList()->at(buyer).getBalance()
+	if (this->fileIO->getAccountList()->at(currentUser).getBalance()
 			< cost) {
 
 		// User has insufficient funds
 		return false;
 	}
 
-	if ((this->fileIO->getAccountList()->at(buyer).getBalance()
+	if ((this->fileIO->getAccountList()->at(currentUser).getBalance()
 			+ cost) > Account::maxCredit) {
 
 		// Seller's funds will exceed max price
@@ -124,8 +133,8 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 		// delete event if it no longer has tickets
 	// write to daily transaction file
 
-	this->fileIO->getAccountList()->at(buyer).setBalance(
-			this->fileIO->getAccountList()->at(buyer).getBalance()
+	this->fileIO->getAccountList()->at(currentUser).setBalance(
+			this->fileIO->getAccountList()->at(currentUser).getBalance()
 			- cost);
 
 	this->fileIO->getAccountList()->at(seller).setBalance(
@@ -152,22 +161,22 @@ bool Transaction::buy(string buyName, string event, int numTickets,
     return true;
 }
 
-bool Transaction::sell(string sellName, string event, double salePrice,
-		int availTicket) {
+bool Transaction::sell(string event, double salePrice, int availTicket) {
 	//sellName and must not be null
 		//sell must exist, must have sell privilege,
 		//must not have an event with the given event name already listed
 	//salePrice cant be greater than 999.99 and greater than 0
 	//availTicket must be less than 100 and greater than 0
 
-	int seller = this->fileIO->findUser(sellName);
-	//if(this->fileIO->accountList->at(seller).getUsername())
-	if (seller == -1) {
-		// Seller not found
+
+	if (currentUser == -1) {
+		// No user is logged in
 		return false;
 	}
 
-	if (this->fileIO->getAccountList()->at(seller).getType()
+	string sellName = this->fileIO->getAccountList()->at(currentUser).getUsername();
+
+	if (this->fileIO->getAccountList()->at(currentUser).getType()
 			.compare(Account::buy) == 0){
 		// Invalid privileges
 		return false;
@@ -197,7 +206,7 @@ bool Transaction::sell(string sellName, string event, double salePrice,
 
 	this->fileIO->getTicketList()->push_back(newEvent);
 
-	this->fileIO->updateAvailTickets();
+	//this->fileIO->updateAvailTickets();
 
 	EventTransaction sell (Entry::sell, event, sellName, salePrice, availTicket);
 
@@ -212,6 +221,11 @@ bool Transaction::create(string newUser, string accountType,
 	// newUser does not already exist
 	// valid accountType
 	// accountBalance between 0 and maxCredit
+
+	if (currentUser == -1) {
+		// No user logged in
+		return false;
+	}
 
 	if (accountType.compare(Account::buy) != 0 &&
 			accountType.compare(Account::sell) != 0 &&
@@ -228,15 +242,133 @@ bool Transaction::create(string newUser, string accountType,
 		return false;
 	}
 
-    throw "Not yet implemented";
+	if (this->fileIO->getAccountList()->at(currentUser).getType()
+			.compare(Account::admin) != 0) {
+		// Invalid user privileges
+		return false;
+	}
+
+	Account newAccount(newUser, accountType, accountBalance);
+	this->fileIO->accountList->push_back(newAccount);
+
+	return true;
 }
 
 bool Transaction::removeUser(string username) {
-    throw "Not yet implemented";
+    // check if user is logged in
+	// check if user is admin
+	// check if user to be deleted exists
+	// check that user to be deleted is not logged in
+
+	if (currentUser == -1) {
+		// No user is logged in
+		return false;
+	}
+
+	if (this->fileIO->getAccountList()->at(currentUser).getType()
+			.compare(Account::admin) != 0) {
+		// Invalid user privileges
+		return false;
+	}
+
+	int user = this->fileIO->findUser(username);
+	if (user == -1) {
+		// User does not exist
+		return false;
+	}
+
+	if (currentUser == user) {
+		// Cannot delete self
+		return false;
+	}
+
+	string type = this->fileIO->getAccountList()->at(user).getType();
+	double balance = this->fileIO->getAccountList()->at(user).getBalance();
+
+	// delete
+	this->fileIO->getAccountList()->erase(this->fileIO
+					->getAccountList()->begin() + (user - 1),
+					this->fileIO->getAccountList()->begin() + user);
+
+	AuxiliaryTransaction remove(Entry::del, username, type, balance);
+	this->transaction->push_back(remove);
+
+	return true;
+}
+
+bool Transaction::addcredit(double amount) {
+	if (currentUser == -1) {
+		// No user is logged in
+		return false;
+	}
+
+	if (amount > Transaction::maxAddCredit) {
+		// Invalid credit amount
+		return false;
+	}
+
+	double newBalance = this->fileIO->getAccountList()->at(currentUser)
+			.getBalance() + amount;
+
+	if (newBalance > Account::maxCredit) {
+		// Will exceed maximum credit balance
+		return false;
+	}
+
+	this->fileIO->getAccountList()->at(currentUser).setBalance(newBalance);
+
+	string username = this->fileIO->getAccountList()->at(currentUser).getUsername();
+	string type = this->fileIO->getAccountList()->at(currentUser).getType();
+	AuxiliaryTransaction add(Entry::addcredit, username, type, newBalance);
+	this->transaction->push_back(add);
+
+	return true;
 }
 
 bool Transaction::addcredit(string username, double amount) {
-    throw "Not yet implemented";
+	// check if user is logged in
+	// check if current user is admin
+		// check if user exists
+	// check if amount is valid
+	// check if new balance will be over the max
+
+	if (currentUser == -1) {
+		// No user is logged in
+		return false;
+	}
+
+	int user = this->fileIO->findUser(username);
+	if (user == -1) {
+		// User does not exist
+		return false;
+	}
+
+	if (amount > Transaction::maxAddCredit) {
+		// Invalid credit amount
+		return false;
+	}
+
+
+	if (this->fileIO->getAccountList()->at(currentUser).getType()
+			.compare(Account::admin) != 0) {
+		// user is not admin
+		return false;
+	}
+
+	double newBalance = this->fileIO->getAccountList()->at(user).getBalance() + amount;
+	if (newBalance > Account::maxCredit) {
+		// Will exceed maximum credit balance
+		return false;
+	}
+
+	// add amount to user
+	// add transaction to transaction list
+	this->fileIO->getAccountList()->at(user).setBalance(newBalance);
+
+	string type = this->fileIO->getAccountList()->at(user).getType();
+	AuxiliaryTransaction add(Entry::addcredit, username, type, newBalance);
+	this->transaction->push_back(add);
+    return true;
 }
 
 bool Transaction::refund(string buyName, string sellName, double amount) {

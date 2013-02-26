@@ -20,6 +20,8 @@ local.properties
 
 # Git commit messages
 message.git
+*.orig
 
 # Ignore backup files
 *~
+*~1
