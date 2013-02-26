@@ -32,11 +32,6 @@ public:
 			string accountType);
 
 	/**
-	 * De-constructor for deleting  a transaction.
-	 */
-	~AuxiliaryTransaction();
-
-	/**
 	 * Accessor method for getting the username.
 	 *
 	 * @return the username of the user involved in the transaction

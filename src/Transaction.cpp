@@ -249,7 +249,7 @@ bool Transaction::create(string newUser, string accountType,
 	}
 
 	Account newAccount(newUser, accountType, accountBalance);
-	this->fileIO->accountList->push_back(newAccount);
+	this->fileIO->getAccountList()->push_back(newAccount);
 
 	return true;
 }
@@ -290,7 +290,7 @@ bool Transaction::removeUser(string username) {
 					->getAccountList()->begin() + (user - 1),
 					this->fileIO->getAccountList()->begin() + user);
 
-	AuxiliaryTransaction remove(Entry::del, username, type, balance);
+	AuxiliaryTransaction remove (Entry::del, username, balance, type);
 	this->transaction->push_back(remove);
 
 	return true;
@@ -319,7 +319,7 @@ bool Transaction::addcredit(double amount) {
 
 	string username = this->fileIO->getAccountList()->at(currentUser).getUsername();
 	string type = this->fileIO->getAccountList()->at(currentUser).getType();
-	AuxiliaryTransaction add(Entry::addcredit, username, type, newBalance);
+	AuxiliaryTransaction add (Entry::addcredit, username, newBalance, type);
 	this->transaction->push_back(add);
 
 	return true;
@@ -366,7 +366,7 @@ bool Transaction::addcredit(string username, double amount) {
 	this->fileIO->getAccountList()->at(user).setBalance(newBalance);
 
 	string type = this->fileIO->getAccountList()->at(user).getType();
-	AuxiliaryTransaction add(Entry::addcredit, username, type, newBalance);
+	AuxiliaryTransaction add (Entry::addcredit, username, newBalance, type);
 	this->transaction->push_back(add);
     return true;
 }

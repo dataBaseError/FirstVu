@@ -3,6 +3,7 @@
 
 #include "Entry.h"
 #include "EventTransaction.h"
+#include "AuxiliaryTransaction.h"
 #include "FileIO.h"
 
 using namespace std;

@@ -10,7 +10,7 @@ int main (int argc, char** argv) {
     Transaction* session = new Transaction("", "");
 	//Transaction session = Transaction();
 
-	cout << session->login() << endl;
+	cout << session->login("admin") << endl;
 
 	cout << "finish" << endl;
 
