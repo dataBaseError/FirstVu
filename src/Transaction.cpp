@@ -372,6 +372,70 @@ bool Transaction::addcredit(string username, double amount) {
 }
 
 bool Transaction::refund(string buyName, string sellName, double amount) {
+	// check if user is logged in
+	//check if user is admin
+	// check if buyname and sellname exist
+	// check if seller has at least 'amount' amount of credit
+	// check if buyer's new balance will be over the limit
+	// check buyer and seller privilges
+	if (currentUser == -1) {
+		// No user is logged in
+		return false;
+	}
+
+	if (this->fileIO->getAccountList()->at(currentUser).getType()
+			.compare(Account::admin) != 0) {
+		// user is not admin
+		return false;
+	}
+
+	int buyer = this->fileIO->findUser(buyName);
+	int seller = this ->fileIO->findUser(sellName);
+
+	if (buyer == -1) {
+		// buyName does not exist
+		return false;
+	}
+
+	if (seller == -1) {
+		// sellName does not exist
+		return false;
+	}
+
+	string buyerType = this->fileIO->getAccountList()->at(buyer).getType();
+	string sellerType = this->fileIO->getAccountList()->at(seller).getType();
+
+	if (buyerType.compare(Account::sell) == 0) {
+		// Buyer does not have buy privileges
+		return false;
+	}
+
+	if (sellerType.compare(Account::buy) == 0) {
+		// Seller does not have sell privileges
+		return false;
+	}
+
+	double newBuyerBalance = this->fileIO->getAccountList()->at(buyer).getBalance() + amount;
+	double newSellerBalance = this->fileIO->getAccountList()->at(seller).getBalance() - amount;
+
+	if (newBuyerBalance > Account::maxCredit) {
+		// New balance will exceed maximum credit balance
+		return false;
+	}
+
+	if (newSellerBalance < 0) {
+		// Seller does not have enough credit
+		return false;
+	}
+
+
+	// add amount to buyer's balance
+	// subtract amount from seller's balance
+	// add transaction to transaction list
+	this->fileIO->getAccountList()->at(seller).setBalance(newSellerBalance);
+	this->fileIO->getAccountList()->at(buyer).setBalance(newBuyerBalance);
+
+	Refund refund(buyName, sellName, amount);
     throw "Not yet implemented";
 }
 
