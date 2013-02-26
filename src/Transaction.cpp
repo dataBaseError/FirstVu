@@ -31,7 +31,8 @@ bool Transaction::logout() {
 	if (this->fileIO->writeTransaction(this->transaction)) {
 	    // Apparently, committing suicide is legal behaviour
 	    //~Transaction();
-		delete this;
+		delete transaction;
+		//delete this;
 	}
 
 	return false;
@@ -110,7 +111,7 @@ bool Transaction::buy(string buyName, string event, int numTickets,
 	}
 
 	if ((this->fileIO->getAccountList()->at(buyer).getBalance()
-			+ cost) > Account::maxPrice) {
+			+ cost) > Account::maxCredit) {
 
 		// Seller's funds will exceed max price
 		return false;
@@ -221,7 +222,7 @@ bool Transaction::create(string newUser, string accountType,
 		return false;
 	}
 
-	if (accountBalance < 0 || accountBalance > Account::maxPrice) {
+	if (accountBalance < 0 || accountBalance > Account::maxCredit) {
 
 		// Invalid credit
 		return false;
