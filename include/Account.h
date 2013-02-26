@@ -16,6 +16,8 @@ public:
     static const string full;
     static const double maxCredit;
 
+    Account(string username, string type, double balance);
+
     string getType();
 
     void setType(string type);

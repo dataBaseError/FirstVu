@@ -11,6 +11,12 @@ const string Account::buy   = "BS";
 const string Account::full  = "FS";
 const double Account::maxCredit = 999999.99;
 
+Account::Account(string username, string type, double balance) {
+	this->username = username;
+	this->type = type;
+	this->balance = balance;
+}
+
 string Account::getType() {
     return this->type;
 }
