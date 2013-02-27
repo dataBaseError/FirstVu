@@ -17,6 +17,30 @@ bool FileIO::initialize() {
 	return false;
 }
 
+vector<Entry>* FileIO::readDailyTransaction() {
+	/**
+	 * Read in the daily transaction file
+	 */
+	throw "Not yet implemented";
+}
+
+/**
+ * This will read in the user accounts from memory and update it based on the
+ * daily transaction file
+ */
+bool FileIO::updateAccountList() {
+	throw "Not yet implemented";
+}
+
+
+/**
+ * This will read in the user accounts from memory and update it based on the
+ * daily transaction file
+ */
+bool FileIO::updateTicketList() {
+	throw "Not yet implemented";
+}
+
 bool FileIO::writeTransaction(vector<Entry>* newList) {
     throw "Not yet implemented";
 }
@@ -37,18 +61,10 @@ bool FileIO::isEventUnique(string event, string sellName) {
     throw "Not yet implemented";
 }
 
-vector<Account>* FileIO::getAccountList(){
+vector<Account>* FileIO::getAccountList() {
 	return this->accountList;
 }
 
-vector<Ticket>* FileIO::getTicketList(){
+vector<Ticket>* FileIO::getTicketList() {
 	return this->ticketList;
-}
-
-bool FileIO::updateAccounts() {
-	throw "Not yet implemented";
-}
-
-bool FileIO::updateTickets() {
-	throw "Not yet implemented";
 }

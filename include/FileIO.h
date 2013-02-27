@@ -13,6 +13,12 @@ private:
 	vector<Account>* accountList;
 	vector<Ticket>* ticketList;
 
+	vector<Entry>* readDailyTransaction();
+
+    bool updateAccounts();
+
+	bool updateTickets();
+
 public:
 
 	FileIO();
@@ -21,9 +27,9 @@ public:
 
     bool initialize();
 
-    bool updateAccounts();
+	bool updateAccountList();
 
-	bool updateTickets();
+	bool updateTicketList();
 
     bool writeTransaction(vector<Entry>* newList);
 
