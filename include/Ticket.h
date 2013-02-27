@@ -28,11 +28,6 @@ public:
     Ticket(string event, string username, int ticketNumber, double cost);
 
     /**
-     * De-constructor for making a ticket listing for an event.
-     */
-    ~Ticket();
-
-    /**
      * Accessor method for getting the event name.
      *
      * @return Name of the event

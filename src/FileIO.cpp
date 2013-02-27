@@ -14,14 +14,6 @@ bool FileIO::initialize() {
 	return false;
 }
 
-bool FileIO::updateUserAccounts(vector<Account> newList) {
-    throw "Not yet implemented";
-}
-
-bool FileIO::updateAvailTickets(vector<Ticket> newList) {
-    throw "Not yet implemented";
-}
-
 bool FileIO::writeTransaction(vector<Entry>* newList) {
     throw "Not yet implemented";
 }

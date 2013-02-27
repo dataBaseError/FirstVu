@@ -31,11 +31,6 @@ public:
 	Refund(int type, string buyName, string sellName, double credit);
 
 	/**
-	 * De-constructor to delete a refund transaction.
-	 */
-	~Refund();
-
-	/**
 	 * Accessor method for getting the username of the buyer.
 	 *
 	 * @return the buyer's username.

@@ -41,21 +41,9 @@ bool Transaction::logout() {
 
 	// Write to daily transaction file
 	if (this->fileIO->writeTransaction(this->transaction)) {
-		if (this->fileIO->updateUserAccounts()) {
-			if (this->fileIO->updateAvailTickets()) {
-				delete transaction;
-				//delete this;
-				this->currentUser = -1;
-			}
-			else {
-				// Error reading available tickets file
-				return false;
-			}
-		}
-		else {
-			// Error reading user accounts file
-			return false;
-		}
+		transaction->clear();
+		//delete this;
+		this->currentUser = -1;
 	}
 	else {
 		// Error writing to transaction file
@@ -195,7 +183,6 @@ bool Transaction::sell(string event, double salePrice, int availTicket) {
 	Ticket newEvent (event, sellName, availTicket, salePrice);
 
 	this->fileIO->getTicketList()->push_back(newEvent);
-	this->fileIO->updateAvailTickets();
 
 	EventTransaction sell (Entry::sell, event, sellName, salePrice, availTicket);
 	this->transaction->push_back(sell);
@@ -426,14 +413,21 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	this->fileIO->getAccountList()->at(seller).setBalance(newSellerBalance);
 	this->fileIO->getAccountList()->at(buyer).setBalance(newBuyerBalance);
 
-	Refund refund(buyName, sellName, amount);
+	Refund refund (Entry::refund, buyName, sellName, amount);
     throw "Not yet implemented";
 }
 
 bool Transaction::initTransaction() {
-    throw "Not yet implemented";
+    if (!transaction->empty()) {
+    	transaction->clear();
+    }
+    return true;
 }
 
 FileIO* Transaction::getFileIO() {
 	return this->fileIO;
+}
+
+int Transaction::getCurrentUser() {
+	return this->currentUser;
 }
