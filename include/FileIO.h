@@ -21,9 +21,9 @@ public:
 
     bool initialize();
 
-    bool updateUserAccounts(vector<Account> newList);
+    bool updateAccounts();
 
-    bool updateAvailTickets(vector<Ticket> newList);
+	bool updateTickets();
 
     bool writeTransaction(vector<Entry>* newList);
 

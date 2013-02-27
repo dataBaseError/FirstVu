@@ -1,6 +1,9 @@
 #include "../include/FileIO.h"
 
-FileIO::FileIO() : accountList(new vector<Account>()), ticketList(new vector<Ticket>()){}
+FileIO::FileIO() {
+	this->accountList = new vector<Account>();
+	this->ticketList = new vector<Ticket>();
+}
 
 FileIO::~FileIO() {
 	delete accountList;
@@ -40,4 +43,12 @@ vector<Account>* FileIO::getAccountList(){
 
 vector<Ticket>* FileIO::getTicketList(){
 	return this->ticketList;
+}
+
+bool FileIO::updateAccounts() {
+	throw "Not yet implemented";
+}
+
+bool FileIO::updateTickets() {
+	throw "Not yet implemented";
 }
