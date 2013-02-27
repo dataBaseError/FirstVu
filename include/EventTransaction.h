@@ -35,11 +35,6 @@ public:
 			double price, int numTickets);
 
 	/**
-	 * De-constructor for deleting an event transaction.
-	 */
-	//~EventTransaction();
-
-	/**
 	 * Accessor method for getting the username of the seller.
 	 *
 	 * @return the seller's username.
