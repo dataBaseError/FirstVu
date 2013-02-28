@@ -51,4 +51,4 @@ public:
 	void setTransactionType(int transactionType);
 };
 
-#endif
+#endif // _ENTRY_H_

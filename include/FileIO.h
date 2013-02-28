@@ -1,3 +1,6 @@
+#ifndef _FILEIO_H_
+#define _FILEIO_H_
+
 #include <string>
 #include <vector>
 
@@ -45,3 +48,5 @@ public:
 
     vector<Ticket>* getTicketList();
 };
+
+#endif // _FILEIO_H_

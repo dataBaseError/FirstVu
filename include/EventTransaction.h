@@ -1,3 +1,6 @@
+#ifndef _EVENTTRANSACTION_H_
+#define _EVENTTRANSACTION_H_
+
 #include <string>
 
 #include "Entry.h"
@@ -90,3 +93,5 @@ public:
 	 */
 	void setNumTickets(int numTickets);
 };
+
+#endif // _EVENTTRANSACTION_H_

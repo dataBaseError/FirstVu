@@ -1,3 +1,6 @@
+#ifndef _TICKET_H_
+#define _TICKET_H_
+
 #include <string>
 
 using namespace std;
@@ -90,3 +93,5 @@ public:
      */
     void decreaseTicketNumber(int ticketNumber);
 };
+
+#endif // _TICKET_H_

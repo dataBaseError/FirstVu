@@ -10,11 +10,18 @@ int main (int argc, char** argv) {
     Transaction* session = new Transaction("", "");
 	//Transaction session = Transaction();
 
-	cout << session->login("admin") << endl;
+    string input;
+	cout << "Enter your command." << endl;
 
-	cout << "finish" << endl;
+	getline(cin, input);
+	//Trim right side of the input
+	if (input.compare("login") == 0) {
+		// Log in stuff.
+		cout << "Enter username" << endl;
+		getline(cin, input);
 
-	delete session;
+		session->login(input);
+	}
 
 	return 0;
 }

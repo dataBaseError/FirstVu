@@ -1,3 +1,6 @@
+#ifndef _TRANSACTION_H_
+#define _TRANSACTION_H_
+
 #include <string>
 #include <vector>
 
@@ -147,3 +150,4 @@ public:
 	 */
 	int getCurrentUser();
 };
+#endif // _TRANSACTION_H_

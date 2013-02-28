@@ -1,3 +1,6 @@
+#ifndef _AUXILIARYTRANSACTION_H_
+#define _AUXILIARYTRANSACTION_H_
+
 #include <string>
 
 #include "Entry.h"
@@ -73,3 +76,5 @@ public:
 	 */
 	void setAccountType(string type);
 };
+
+#endif // _AUXILIARYTRANSACTION_H_

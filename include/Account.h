@@ -1,3 +1,6 @@
+#ifndef _ACCOUNT_H_
+#define _ACCOUNT_H_
+
 #include <string>
 
 using namespace std;
@@ -30,3 +33,5 @@ public:
 
     void setUsername(string username);
 };
+
+#endif // _ACCOUNT_H_

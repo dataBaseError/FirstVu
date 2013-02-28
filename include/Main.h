@@ -1,3 +1,6 @@
+#ifndef _MAIN_H_
+#define _MAIN_H_
+
 #include <string>
 #include <iostream>
 
@@ -5,8 +8,4 @@
 
 using namespace std;
 
-/*class main {
-
-public:*/
-//main(string userAccountIn, string availableTicketIn, string dailyTransaction, string userAccountOut, string availableTicketOut);
-//};
+#endif // _MAIN_H_

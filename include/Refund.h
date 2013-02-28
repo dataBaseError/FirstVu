@@ -1,3 +1,6 @@
+#ifndef _REFUND_H_
+#define _REFUND_H_
+
 #include <string>
 
 #include "Entry.h"
@@ -72,3 +75,5 @@ public:
 	 */
 	void setCredit(double credit);
 };
+
+#endif // _REFUND_H_
