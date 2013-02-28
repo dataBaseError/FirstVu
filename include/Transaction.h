@@ -155,3 +155,5 @@ public:
 
 	bool isLoggedIn();
 };
+
+#endif
