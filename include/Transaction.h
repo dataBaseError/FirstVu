@@ -151,5 +151,7 @@ public:
 	int getCurrentUser();
 
 	bool isAdmin();
+
+	bool isLoggedIn();
 };
 #endif // _TRANSACTION_H_

@@ -411,4 +411,12 @@ bool Transaction::isAdmin() {
 			Account::admin) == 0) {
 		return true;
 	}
+	return false;
+}
+
+bool Transaction::isLoggedIn() {
+	if (this->currentUser == -1) {
+		return false;
+	}
+	return true;
 }
