@@ -4,8 +4,17 @@ const double Transaction::maxAddCredit = 1000.00;
 
 Transaction::Transaction(string accountPath, string availTicketPath) {
 	this->currentUser = -1;
-	this->fileIO = new FileIO();
 	this->transaction = new vector<Entry>();
+
+	char *uao = new char[accountPath.size() + 1];
+	uao[strlen(uao)] = 0;
+	memcpy(uao, accountPath.c_str(), strlen(uao));
+
+	char *ato = new char[availTicketPath.size() + 1];
+	ato[strlen(ato)] = 0;
+	memcpy(ato, availTicketPath.c_str(), strlen(ato));
+
+	this->fileIO = new FileIO(uao, ato);
 }
 
 Transaction::~Transaction() {
