@@ -149,5 +149,7 @@ public:
 	 * @return the current user's index that is logged in.
 	 */
 	int getCurrentUser();
+
+	bool isAdmin();
 };
 #endif // _TRANSACTION_H_

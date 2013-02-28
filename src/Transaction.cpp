@@ -402,3 +402,13 @@ FileIO* Transaction::getFileIO() {
 int Transaction::getCurrentUser() {
 	return this->currentUser;
 }
+
+bool Transaction::isAdmin() {
+	if (this->currentUser == -1) {
+		return false;
+	}
+	if (this->fileIO->getAccountList()->at(currentUser).getType().compare(
+			Account::admin) == 0) {
+		return true;
+	}
+}
