@@ -3,7 +3,7 @@
 const double Transaction::maxAddCredit = 1000.00;
 
 Transaction::Transaction(string accountPath, string availTicketPath) {
-	this->currentUser = -1;
+	this->currentUser = 0;
 	this->fileIO = new FileIO();
 	this->transaction = new vector<Entry>();
 }
