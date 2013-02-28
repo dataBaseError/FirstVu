@@ -1,18 +1,14 @@
 #include "../include/Ticket.h"
 
+
+const double Ticket::maxPrice = 999.99;
+const int Ticket::maxTicket = 100;
+
 Ticket::Ticket(string event, string username, int ticketNumber, double cost) {
 	this->event = event;
 	this->username = username;
 	this->ticketNumber = ticketNumber;
 	this->cost = cost;
-}
-
-// http://stackoverflow.com/questions/2365624/should-i-delete-the-string-members-of-a-c-class
-Ticket::~Ticket() {
-	// delete event;
-	// delete username;
-	// delete ticketNumber;
-	// delete cost;
 }
 
 string Ticket::getEvent() {

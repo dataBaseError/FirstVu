@@ -12,7 +12,7 @@ using namespace std;
  * @author Joseph Heron
  * @author Carly Marshall
  */
-class Refund : Entry {
+class Refund : public Entry {
 
 private:
 	string buyName;
@@ -28,12 +28,7 @@ public:
 	 * @param sellName the seller's username.
 	 * @param credit the amount of credit involved in the refund.
 	 */
-	Refund(string buyName, string sellName, double credit);
-
-	/**
-	 * De-constructor to delete a refund transaction.
-	 */
-	~Refund();
+	Refund(int type, string buyName, string sellName, double credit);
 
 	/**
 	 * Accessor method for getting the username of the buyer.

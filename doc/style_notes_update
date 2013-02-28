@@ -35,9 +35,10 @@ else {
 }
 - lines need to be 80 characters
     - within reason, ensure that lines that wrap around are spaced accordingly.
+    - the line that wraps around should be tabbed in twice.
 Ex:
 reallyLongMethod(otherReallyLongMethod(), friendOfReallyLongMethod(), 3, 4,
-    OtherRandomNumbers());
+        OtherRandomNumbers());
 - if conditions that are to large to fit in one line will break up along && or ||s
 - For if, while, and for there should a space following and then a bracket
 Ex:

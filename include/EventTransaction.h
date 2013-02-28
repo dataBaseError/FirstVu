@@ -31,12 +31,8 @@ public:
 	 * @param price the price per ticket.
 	 * @param the number of tickets for sale.
 	 */
-	EventTransaction(int type, string eventName, string sellName, double price, int numTickets);
-
-	/**
-	 * De-constructor for deleting an event transaction.
-	 */
-	//~EventTransaction();
+	EventTransaction(int type, string eventName, string sellName,
+			double price, int numTickets);
 
 	/**
 	 * Accessor method for getting the username of the seller.

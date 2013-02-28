@@ -1,22 +1,28 @@
 #include "../include/Main.h"
 
-// Stupid VP
-// main takes argc and argv
-// We have to parse argv to get the file names
-
+using Poco::StringTokenizer;
 int main (int argc, char** argv) {
-//int main(string userAccountIn, string availableTicketIn, string dailyTransaction, string userAccountOut, string availableTicketOut) {
 
+<<<<<<< HEAD
 	// argv[1]: Ticket File
 	// argv[2]: User File
     Transaction* session = new Transaction(argv[1],argv[2]);
+=======
+    //Transaction* session = new Transaction("", "");
+>>>>>>> de1584c25cbeea1e9c500cf7336a45271a4fb587
 	//Transaction session = Transaction();
 
-	cout << session->login() << endl;
+    // Accept user input
+    // Tokenize the input
+    // Return error for invalid tokens
+    // Call appropriate method
 
-	cout << "finish" << endl;
+    string input;
 
-	delete session;
+    cout << "Enter your command" << endl;
+    cin >> input;
+
+    StringTokenizer inputTokenizer (",ab,cd,", ",");
 
 	return 0;
 }

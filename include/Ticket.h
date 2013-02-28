@@ -19,15 +19,13 @@ private:
     double cost;
 
 public:
+
+    static const double maxPrice;
+    static const int maxTicket;
     /**
      * Constructor for making a ticket listing for an event.
      */
     Ticket(string event, string username, int ticketNumber, double cost);
-
-    /**
-     * De-constructor for making a ticket listing for an event.
-     */
-    ~Ticket();
 
     /**
      * Accessor method for getting the event name.

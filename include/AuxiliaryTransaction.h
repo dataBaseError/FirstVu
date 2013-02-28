@@ -17,7 +17,7 @@ class AuxiliaryTransaction : public Entry {
 private:
 	string username;
 	double credit;
-	string type;
+	string accountType;
 
 public:
 
@@ -28,12 +28,8 @@ public:
 	 * @param credit the credit involved in the transaction.
 	 * @param type the type of user involved in the transaction.
 	 */
-	AuxiliaryTransaction(string username, double credit, string type);
-
-	/**
-	 * De-constructor for deleting  a transaction.
-	 */
-	~AuxiliaryTransaction();
+	AuxiliaryTransaction(int type, string username, double credit,
+			string accountType);
 
 	/**
 	 * Accessor method for getting the username.
@@ -68,12 +64,12 @@ public:
 	 *
 	 * @return the type of user that is involved in the transaction
 	 */
-	string getType();
+	string getAccountType();
 
 	/**
 	 * Mutator method for setting the account type.
 	 *
 	 * @param type the type of user that is involved in the transaction
 	 */
-	void setType(string type);
+	void setAccountType(string type);
 };

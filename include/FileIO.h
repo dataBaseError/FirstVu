@@ -20,6 +20,12 @@ private:
 	string ticketFile;
 	string userFile;
 
+	vector<Entry>* readDailyTransaction();
+
+    bool updateAccounts();
+
+	bool updateTickets();
+
 public:
 
 	FileIO(string userFile, string ticketFile);
@@ -28,9 +34,9 @@ public:
 
     bool initialize();
 
-    bool updateUserAccounts(vector<Account> newList);
+	bool updateAccountList();
 
-    bool updateAvailTickets(vector<Ticket> newList);
+	bool updateTicketList();
 
     bool writeTransaction(vector<Entry>* newList);
 
