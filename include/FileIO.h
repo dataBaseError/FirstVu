@@ -1,3 +1,5 @@
+#include <fstream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -7,9 +9,20 @@
 
 using namespace std;
 
+#ifndef _FileIO_H_
+#define _FileIO_H_
+
+// puts the results in an already constructed vector
+vector<string> &split(const string &s, char delim, vector<string> &elems);
+
+//returns a new vector
+vector<std::string> split(const std::string &s, char delim);
+
 class FileIO {
 
 private:
+    char* uao;
+    char* ato;
 	vector<Account>* accountList;
 	vector<Ticket>* ticketList;
 
@@ -21,7 +34,7 @@ private:
 
 public:
 
-	FileIO();
+	FileIO(char* uao, char* ato);
 
 	~FileIO();
 
@@ -45,3 +58,5 @@ public:
 
     vector<Ticket>* getTicketList();
 };
+
+#endif
