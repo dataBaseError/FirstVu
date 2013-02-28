@@ -92,6 +92,8 @@ public:
      * @param ticketNumber Number of tickets being purchased
      */
     void decreaseTicketNumber(int ticketNumber);
+
+    friend bool operator==(Ticket left, Ticket right);
 };
 
 #endif // _TICKET_H_
