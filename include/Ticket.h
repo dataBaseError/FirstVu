@@ -2,6 +2,9 @@
 
 using namespace std;
 
+#ifndef _TICKET_H_
+#define _TICKET_H_
+
 /**
  * Class for holding information involving tickets for sale in the program.
  *
@@ -90,3 +93,5 @@ public:
      */
     void decreaseTicketNumber(int ticketNumber);
 };
+
+#endif
