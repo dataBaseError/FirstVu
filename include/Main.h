@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Transaction.h"
+#include "../lib/include/Poco/StringTokenizer.h"
 
 using namespace std;
 

@@ -9,7 +9,7 @@ Transaction::Transaction(string accountPath, string availTicketPath) {
 }
 
 Transaction::~Transaction() {
-	delete transaction;
+	//delete transaction;
     delete fileIO;
 }
 
