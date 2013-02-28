@@ -107,7 +107,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 		return false;
 	}
 
-	// Buy start
+	// Buy Start
 	this->fileIO->getAccountList()->at(currentUser).setBalance(
 			this->fileIO->getAccountList()->at(currentUser).getBalance()
 			- cost);
@@ -203,6 +203,7 @@ bool Transaction::create(string newUser, string accountType,
 		return false;
 	}
 
+	// Create Start
 	Account newAccount(newUser, accountType, accountBalance);
 	this->fileIO->getAccountList()->push_back(newAccount);
 
@@ -234,10 +235,10 @@ bool Transaction::removeUser(string username) {
 		return false;
 	}
 
+	// Delete Start
 	string type = this->fileIO->getAccountList()->at(user).getType();
 	double balance = this->fileIO->getAccountList()->at(user).getBalance();
 
-	// Delete
 	this->fileIO->getAccountList()->erase(this->fileIO
 					->getAccountList()->begin() + (user - 1),
 					this->fileIO->getAccountList()->begin() + user);
@@ -268,6 +269,7 @@ bool Transaction::addcredit(double amount) {
 		return false;
 	}
 
+	// AddCredit Start
 	this->fileIO->getAccountList()->at(currentUser).setBalance(newBalance);
 
 	string username = this->fileIO->getAccountList()->at(currentUser).getUsername();
@@ -311,6 +313,7 @@ bool Transaction::addcredit(string username, double amount) {
 		return false;
 	}
 
+	// AddCredit Start
 	this->fileIO->getAccountList()->at(user).setBalance(newBalance);
 
 	string type = this->fileIO->getAccountList()->at(user).getType();
@@ -349,7 +352,6 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	string sellerType = this->fileIO->getAccountList()->at(seller).getType();
 
 	if (buyerType.compare(Account::sell) == 0) {
-
 		// Buyer does not have buy privileges
 		return false;
 	}
@@ -372,6 +374,7 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 		return false;
 	}
 
+	// Refund Start
 	this->fileIO->getAccountList()->at(seller).setBalance(newSellerBalance);
 	this->fileIO->getAccountList()->at(buyer).setBalance(newBuyerBalance);
 
@@ -383,6 +386,7 @@ bool Transaction::initTransaction() {
     if (!transaction->empty()) {
     	transaction->clear();
     }
+
     /**
      * TODO Read in user accounts and available tickets. Apply daily
      * transactions to these files

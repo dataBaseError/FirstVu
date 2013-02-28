@@ -32,7 +32,6 @@ bool FileIO::updateAccountList() {
 	throw "Not yet implemented";
 }
 
-
 /**
  * This will read in the user accounts from memory and update it based on the
  * daily transaction file
