@@ -1,9 +1,14 @@
 #include <string>
 #include <vector>
+#include <istream>
+#include <iostream>
 
 #include "Account.h"
 #include "Entry.h"
 #include "Ticket.h"
+
+//#include "../lib/include/Poco/File.h"
+#include "../lib/include/Poco/FileStream.h"
 
 using namespace std;
 
@@ -12,10 +17,12 @@ class FileIO {
 private:
 	vector<Account>* accountList;
 	vector<Ticket>* ticketList;
+	string ticketFile;
+	string userFile;
 
 public:
 
-	FileIO();
+	FileIO(string userFile, string ticketFile);
 
 	~FileIO();
 

@@ -14,7 +14,7 @@ private:
 	vector<Entry>* transaction;
 
 public:
-	Transaction();
+	Transaction(string ticketFile, string userFile);
 
 	~Transaction();
 

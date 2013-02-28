@@ -7,7 +7,9 @@
 int main (int argc, char** argv) {
 //int main(string userAccountIn, string availableTicketIn, string dailyTransaction, string userAccountOut, string availableTicketOut) {
 
-    Transaction* session = new Transaction();
+	// argv[1]: Ticket File
+	// argv[2]: User File
+    Transaction* session = new Transaction(argv[1],argv[2]);
 	//Transaction session = Transaction();
 
 	cout << session->login() << endl;

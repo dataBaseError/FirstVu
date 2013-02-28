@@ -1,6 +1,13 @@
 #include "../include/FileIO.h"
 
-FileIO::FileIO() : accountList(new vector<Account>()), ticketList(new vector<Ticket>()){}
+
+FileIO::FileIO(string ticketFile, string userFile){
+	accountList = new vector<Account>();
+	ticketList = new vector<Ticket>();
+	this->ticketFile = ticketFile;
+	this->userFile = userFile;
+
+}
 
 FileIO::~FileIO() {
 	delete accountList;
@@ -10,7 +17,26 @@ FileIO::~FileIO() {
 
 bool FileIO::initialize() {
 	//Read in lists
+	//Poco::FileInputStream *stream1 = new Poco::FileInputStream(ticketFile);
+	//string file = "../tests/login/login.inp";
+	Poco::FileInputStream* stream1 = new Poco::FileInputStream("../tests/login/login.inp");
+
+
+	Poco::FileInputStream *stream2 = new Poco::FileInputStream(userFile);
+	while(!stream1->eof()){
+		string test;
+		//*stream1 >> test;
+		getline(*stream1,test);
+		cout << test;
+	}
+
+	while(!stream2->eof()){
+	//	string test;
+	//	*stream2 >> test;
+	}
     //throw "Not yet implemented";
+	delete stream1;
+	delete stream2;
 	return false;
 }
 
