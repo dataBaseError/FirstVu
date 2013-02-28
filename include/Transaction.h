@@ -1,6 +1,7 @@
 #ifndef _TRANSACTION_H_
 #define _TRANSACTION_H_
 
+#include <cstring>
 #include <string>
 #include <vector>
 
@@ -154,4 +155,3 @@ public:
 
 	bool isLoggedIn();
 };
-#endif // _TRANSACTION_H_
