@@ -4,8 +4,7 @@
 
 int main (int argc, char** argv) {
 
-    Transaction* session = new Transaction("", "");
-	//Transaction session = Transaction();
+    Transaction* session = new Transaction("", "", "");
 
     string input;
     string username;
@@ -21,7 +20,7 @@ int main (int argc, char** argv) {
 		cout << "Enter your command." << endl;
 
 		getline(cin, input);
-		//Trim right side of the input
+		// TODO Trim right side of the input
 		if (!session->isLoggedIn()) {
 			if (input.compare("login") == 0) {
 				// Log in stuff.

@@ -24,6 +24,7 @@ class FileIO {
 private:
     char* uao;
     char* ato;
+    char* dtf;
 	vector<Account>* accountList;
 	vector<Ticket>* ticketList;
 
@@ -35,7 +36,7 @@ private:
 
 public:
 
-	FileIO(char* uao, char* ato);
+	FileIO(char* uao, char* ato,char* dtf);
 
 	~FileIO();
 

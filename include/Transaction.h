@@ -45,7 +45,7 @@ public:
 	 * @param accountPath the path of the current user accounts file.
 	 * @param availTicketPath the path of the available tickets file.
 	 */
-	Transaction(string accountPath, string availTicketPath);
+	Transaction(string accountPath, string availTicketPath, string dailyTransactionPath);
 
 	/**
 	 * The deconstructor to delete the transaction session handler.

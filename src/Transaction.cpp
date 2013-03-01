@@ -2,7 +2,8 @@
 
 const double Transaction::maxAddCredit = 1000.00;
 
-Transaction::Transaction(string accountPath, string availTicketPath) {
+//TODO add daily transaction file path as argument.
+Transaction::Transaction(string accountPath, string availTicketPath,string dailyTransactionPath) {
 	this->currentUser = -1;
 	this->transaction = new vector<Entry>();
 
@@ -14,7 +15,11 @@ Transaction::Transaction(string accountPath, string availTicketPath) {
 	ato[strlen(ato)] = 0;
 	memcpy(ato, availTicketPath.c_str(), strlen(ato));
 
-	this->fileIO = new FileIO(uao, ato);
+	char *dtf = new char[dailyTransactionPath.size() + 1];
+	ato[strlen(dtf)] = 0;
+	memcpy(ato, dailyTransactionPath.c_str(), strlen(dtf));
+
+	this->fileIO = new FileIO(uao, ato, dtf);
 }
 
 Transaction::~Transaction() {

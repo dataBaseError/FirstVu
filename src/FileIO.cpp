@@ -1,8 +1,10 @@
 #include "../include/FileIO.h"
 
-FileIO::FileIO(char* uao, char* ato) {
+//TODO add daily transaction file path as argument.
+FileIO::FileIO(char* uao, char* ato, char* dtf) {
     this->uao = uao;
     this->ato = ato;
+    this->dtf = dtf;
 
 	this->accountList = new vector<Account>();
 	this->ticketList = new vector<Ticket>();
