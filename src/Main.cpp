@@ -17,18 +17,18 @@ int main (int argc, char** argv) {
     bool success = false;
 
     while (true) {
-		cout << "Enter your command." << endl;
+		//cout << "Enter your command." << endl;
 
 		getline(cin, input);
 		// TODO Trim right side of the input
 		if (!session->isLoggedIn()) {
 			if (input.compare("login") == 0) {
 				// Log in stuff.
-				cout << "Enter Username" << endl;
+				cout << "enter username" << endl;
 				getline(cin, input);
 
 				if (session->login(input)) {
-					cout << "Login successful." << endl;
+					cout << "login successful" << endl;
 				}
 			}
 			else if (input.compare("quit") == 0) {
