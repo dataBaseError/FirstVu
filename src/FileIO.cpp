@@ -169,7 +169,19 @@ bool FileIO::isUserUnique(string username) {
 }
 
 bool FileIO::isEventUnique(string event, string sellName) {
-    throw "Not yet implemented";
+    bool found = false;
+
+    for (vector<Ticket>::iterator iterator = this->ticketList->begin(); iterator != this->ticketList->end(); iterator++) {
+        if (iterator->getEvent() == event && iterator->getUsername() == sellName) {
+            if (found) {
+                return false;
+            } else {
+                found = true;
+            }
+        }
+    }
+
+    return found;
 }
 
 vector<Account>* FileIO::getAccountList() {
