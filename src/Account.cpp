@@ -40,3 +40,7 @@ string Account::getUsername() {
 void Account::setUsername(string username) {
     this->username = username;
 }
+
+bool operator==(Account left, Account right) {
+    return left.getUsername() == right.getUsername();
+}

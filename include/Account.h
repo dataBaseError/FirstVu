@@ -32,6 +32,8 @@ public:
     string getUsername();
 
     void setUsername(string username);
+
+    friend bool operator==(Account left, Account right);
 };
 
 #endif // _ACCOUNT_H_
