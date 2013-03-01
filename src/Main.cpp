@@ -4,7 +4,7 @@
 
 int main (int argc, char** argv) {
 
-    Transaction* session = new Transaction("", "");
+    Transaction* session = new Transaction("", "", "");
 
     string input;
     string username;
