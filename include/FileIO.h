@@ -12,6 +12,7 @@
 
 using namespace std;
 
+// http://www.cplusplus.com/faq/sequences/strings/split/
 // puts the results in an already constructed vector
 vector<string> &split(const string &s, char delim, vector<string> &elems);
 
@@ -23,6 +24,7 @@ class FileIO {
 private:
     char* uao;
     char* ato;
+    char* dtf;
 	vector<Account>* accountList;
 	vector<Ticket>* ticketList;
 
@@ -34,7 +36,7 @@ private:
 
 public:
 
-	FileIO(char* uao, char* ato);
+	FileIO(char* uao, char* ato,char* dtf);
 
 	~FileIO();
 
