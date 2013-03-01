@@ -1,5 +1,6 @@
 #include "../include/FileIO.h"
 
+//TODO add daily transaction file path as argument.
 FileIO::FileIO(char* uao, char* ato) {
     this->uao = uao;
     this->ato = ato;

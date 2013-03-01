@@ -2,6 +2,7 @@
 
 const double Transaction::maxAddCredit = 1000.00;
 
+//TODO add daily transaction file path as argument.
 Transaction::Transaction(string accountPath, string availTicketPath) {
 	this->currentUser = -1;
 	this->transaction = new vector<Entry>();
