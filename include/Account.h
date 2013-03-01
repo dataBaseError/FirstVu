@@ -5,6 +5,14 @@
 
 using namespace std;
 
+/**
+ * A class for storing all the relevant data for each user.
+ *
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
 class Account {
 
 private:
@@ -19,18 +27,55 @@ public:
     static const string full;
     static const double maxCredit;
 
+    /**
+     * Constructor for creating a new account.
+     *
+     * @param username The username for the account
+     * @param type The type of account
+     * @param balance The balance of the account
+     */
     Account(string username, string type, double balance);
 
+    /**
+     * Accessor method for retrieving the account type.
+     *
+     * @return The user's account type.
+     */
     string getType();
 
+    /**
+     * Mutator method for setting the account type for each account.
+     *
+     * @param type The user's account new type
+     */
     void setType(string type);
 
+    /**
+     * Accessor method for retrieving the current balance of the account.
+     *
+     * @return The user's current balance
+     */
     double getBalance();
 
+    /**
+     * Mutator method for setting the account balance.
+     *
+     * @param balance The new balance amount
+     */
     void setBalance(double balance);
 
+    /**
+     * Accessor method for retrieving the username of the account.
+     *
+     * @return The user's username
+     */
     string getUsername();
 
+    /**
+     * Mutator method for setting the username of the account.
+     *
+     * @param username The user's new username
+     */
     void setUsername(string username);
 
     friend bool operator==(Account left, Account right);
