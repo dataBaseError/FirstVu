@@ -138,7 +138,7 @@ public:
 	bool refund(string buyName, string sellName, double amount);
 
 	/**
-	 * Accessor method for fileIO.
+	 * Accessor method for FileIO.
 	 *
 	 * @return the fileIO object.
 	 */
@@ -151,7 +151,18 @@ public:
 	 */
 	int getCurrentUser();
 
+	/**
+	 * Identify if the current user has administrative privileges.
+	 *
+	 * @return whether the user that is currently logged in has administrative
+	 * privileges.
+	 */
 	bool isAdmin();
 
+	/**
+	 * Check if a user is logged in to the system.
+	 *
+	 * @return whether a user is currently logged in.
+	 */
 	bool isLoggedIn();
 };

@@ -49,7 +49,8 @@ public:
 	void setUsername(string username);
 
 	/**
-	 * Accessor method for getting the credit amount associated with the transaction.
+	 * Accessor method for getting the credit amount associated with the
+	 * transaction.
 	 *
 	 * @return the amount of credit involved in the transaction.
 	 */
