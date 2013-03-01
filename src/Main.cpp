@@ -3,7 +3,6 @@
 //using Poco::StringTokenizer;
 
 int main (int argc, char** argv) {
-
     Transaction* session = new Transaction(argv[1],argv[2],argv[3]);
 
     string input;

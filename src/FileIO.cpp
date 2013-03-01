@@ -49,11 +49,11 @@ bool FileIO::updateAccountList() {
         while (!uao.eof()) {
             string line;
 
-            uao >> line;
+            getline(uao, line);
             vector<string> lineV = split(line, '\n');
 
-            for (vector<string>::iterator iterator = lineV.begin(); iterator != lineV.end(); iterator++) {
-                vector<string> accountV = split(*iterator, ' ');
+            for (vector<string>::size_type i = 0; i < lineV.size(); i++) {
+                vector<string> accountV = split(lineV.at(i), ' ');
 
                 if (accountV[0] != "END") {
                     string username = accountV[0];
@@ -71,9 +71,12 @@ bool FileIO::updateAccountList() {
                 }
             }
         }
-    }
 
-    return true;
+        return true;
+    }
+    else {
+        return false;
+    }
 }
 
 /**
@@ -88,11 +91,11 @@ bool FileIO::updateTicketList() {
         while (!ato.eof()) {
             string line;
 
-            ato >> line;
+            getline(ato, line);
             vector<string> lineV = split(line, '\n');
 
-            for (vector<string>::iterator iterator = lineV.begin(); iterator != lineV.end(); iterator++) {
-                vector<string> ticketV = split(*iterator, ' ');
+            for (vector<string>::size_type i = 0; i < lineV.size(); i++) {
+                vector<string> ticketV = split(lineV.at(i), ' ');
 
                 if (ticketV[0] != "END") {
                     string event = ticketV[0];
@@ -125,7 +128,7 @@ bool FileIO::writeTransaction(vector<Entry>* newList) {
 }
 
 int FileIO::findUser(string username) {
-    for (vector<Account>::size_type i = 0; i != this->accountList->size(); i++) {
+    for (vector<Account>::size_type i = 0; i < this->accountList->size(); i++) {
         if (this->accountList->at(i).getUsername() == username) {
             return i;
         }
@@ -135,7 +138,7 @@ int FileIO::findUser(string username) {
 }
 
 int FileIO::findEvent(string event, string sellName) {
-    for (vector<Ticket>::size_type i = 0; i != this->ticketList->size(); i++) {
+    for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
         if (this->ticketList->at(i).getEvent() == event && this->ticketList->at(i).getUsername() == sellName) {
             return i;
         }
@@ -147,7 +150,7 @@ int FileIO::findEvent(string event, string sellName) {
 bool FileIO::isUserUnique(string username) {
     bool found = false;
 
-    for (vector<Account>::size_type i = 0; i != this->accountList->size(); i++) {
+    for (vector<Account>::size_type i = 0; i < this->accountList->size(); i++) {
         if (found) {
             return false;
         } else {
@@ -161,7 +164,7 @@ bool FileIO::isUserUnique(string username) {
 bool FileIO::isEventUnique(string event, string sellName) {
     bool found = false;
 
-    for (vector<Ticket>::size_type i = 0; i != this->ticketList->size(); i++) {
+    for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
         if (found) {
             return false;
         } else {
