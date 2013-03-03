@@ -21,11 +21,14 @@ private:
     double balance;
 
 public:
-    static const string admin;
-    static const string sell;
-    static const string buy;
-    static const string full;
-    static const double maxCredit;
+    static const string ADMIN;
+    static const string SELL;
+    static const string BUY;
+    static const string FULL;
+
+    static const double MAX_CREDIT;
+    static const int MAX_USERNAME_LENGTH;
+    static const int MAX_EVENT_LENGTH;
 
     /**
      * Constructor for creating a new account.

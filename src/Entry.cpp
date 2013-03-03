@@ -1,12 +1,12 @@
 #include "../include/Entry.h"
 
-const int Entry::logout    = 0;
-const int Entry::create    = 1;
-const int Entry::del       = 2;
-const int Entry::sell      = 3;
-const int Entry::buy       = 4;
-const int Entry::refund    = 5;
-const int Entry::addcredit = 6;
+const int Entry::LOGOUT    = 0;
+const int Entry::CREATE    = 1;
+const int Entry::DEL       = 2;
+const int Entry::SELL      = 3;
+const int Entry::BUY       = 4;
+const int Entry::REFUND    = 5;
+const int Entry::ADDCREDIT = 6;
 
 Entry::Entry(int transactionType) {
 	this->transactionType = transactionType;

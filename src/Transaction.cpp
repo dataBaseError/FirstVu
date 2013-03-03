@@ -64,7 +64,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 
 
 	if(this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::sell) == 0) {
+			.compare(Account::SELL) == 0) {
 		// User does not have buy privileges
 		return false;
 	}
@@ -75,7 +75,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 	}
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::admin) != 0 && numTickets > 4) {
+			.compare(Account::ADMIN) != 0 && numTickets > 4) {
 		// User cannot buy more than 4 tickets
 		return false;
 	}
@@ -104,7 +104,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 	}
 
 	if ((this->fileIO->getAccountList()->at(currentUser).getBalance()
-			+ cost) > Account::maxCredit) {
+			+ cost) > Account::MAX_CREDIT) {
 		// Seller's funds will exceed max price
 		return false;
 	}
@@ -131,7 +131,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 	double ticketCost = this->fileIO->getTicketList()->at(ticket).getCost();
 
 	// Add transaction to transaction list
-	EventTransaction buy (Entry::buy, event, sellName, ticketCost, numTickets);
+	EventTransaction buy (Entry::BUY, event, sellName, ticketCost, numTickets);
 
 	this->transaction->push_back(buy);
 
@@ -148,16 +148,16 @@ bool Transaction::sell(string event, double salePrice, int availTicket) {
 	string sellName = this->fileIO->getAccountList()->at(currentUser).getUsername();
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::buy) == 0){
+			.compare(Account::BUY) == 0){
 		// Invalid privileges
 		return false;
 	}
-	if (availTicket <= 0 || availTicket > Ticket::maxTicket) {
+	if (availTicket <= 0 || availTicket > Ticket::MAX_TICKET) {
 		// Invalid number of Tickets
 		return false;
 	}
 
-	if (salePrice < 0 || salePrice > Ticket::maxPrice) {
+	if (salePrice < 0 || salePrice > Ticket::MAX_PRICE) {
 		// Invalid Ticket Price
 		return false;
 	}
@@ -172,7 +172,7 @@ bool Transaction::sell(string event, double salePrice, int availTicket) {
 
 	this->fileIO->getTicketList()->push_back(newEvent);
 
-	EventTransaction sell (Entry::sell, event, sellName, salePrice, availTicket);
+	EventTransaction sell (Entry::SELL, event, sellName, salePrice, availTicket);
 	this->transaction->push_back(sell);
 
 	return true;
@@ -186,21 +186,21 @@ bool Transaction::create(string newUser, string accountType,
 		return false;
 	}
 
-	if (accountType.compare(Account::buy) != 0 &&
-			accountType.compare(Account::sell) != 0 &&
-			accountType.compare(Account::full) != 0 &&
-			accountType.compare(Account::admin) != 0) {
+	if (accountType.compare(Account::BUY) != 0 &&
+			accountType.compare(Account::SELL) != 0 &&
+			accountType.compare(Account::FULL) != 0 &&
+			accountType.compare(Account::ADMIN) != 0) {
 		// Invalid account type
 		return false;
 	}
 
-	if (accountBalance < 0 || accountBalance > Account::maxCredit) {
+	if (accountBalance < 0 || accountBalance > Account::MAX_CREDIT) {
 		// Invalid credit
 		return false;
 	}
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::admin) != 0) {
+			.compare(Account::ADMIN) != 0) {
 		// Invalid user privileges
 		return false;
 	}
@@ -220,7 +220,7 @@ bool Transaction::removeUser(string username) {
 	}
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::admin) != 0) {
+			.compare(Account::ADMIN) != 0) {
 		// Invalid user privileges
 		return false;
 	}
@@ -245,7 +245,7 @@ bool Transaction::removeUser(string username) {
 					->getAccountList()->begin() + (user - 1),
 					this->fileIO->getAccountList()->begin() + user);
 
-	AuxiliaryTransaction remove (Entry::del, username, balance, type);
+	AuxiliaryTransaction remove (Entry::DEL, username, balance, type);
 	this->transaction->push_back(remove);
 
 	return true;
@@ -266,7 +266,7 @@ bool Transaction::addcredit(double amount) {
 	double newBalance = this->fileIO->getAccountList()->at(currentUser)
 			.getBalance() + amount;
 
-	if (newBalance > Account::maxCredit) {
+	if (newBalance > Account::MAX_CREDIT) {
 		// Will exceed maximum credit balance
 		return false;
 	}
@@ -277,7 +277,7 @@ bool Transaction::addcredit(double amount) {
 	string username = this->fileIO->getAccountList()->at(currentUser).getUsername();
 	string type = this->fileIO->getAccountList()->at(currentUser).getType();
 
-	AuxiliaryTransaction add (Entry::addcredit, username, newBalance, type);
+	AuxiliaryTransaction add (Entry::ADDCREDIT, username, newBalance, type);
 	this->transaction->push_back(add);
 
 	return true;
@@ -303,14 +303,14 @@ bool Transaction::addcredit(string username, double amount) {
 
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::admin) != 0) {
+			.compare(Account::ADMIN) != 0) {
 		// User is not admin
 		return false;
 	}
 
 	double newBalance = this->fileIO->getAccountList()->at(user).getBalance() + amount;
 
-	if (newBalance > Account::maxCredit) {
+	if (newBalance > Account::MAX_CREDIT) {
 		// Will exceed maximum credit balance
 		return false;
 	}
@@ -319,7 +319,7 @@ bool Transaction::addcredit(string username, double amount) {
 	this->fileIO->getAccountList()->at(user).setBalance(newBalance);
 
 	string type = this->fileIO->getAccountList()->at(user).getType();
-	AuxiliaryTransaction add (Entry::addcredit, username, newBalance, type);
+	AuxiliaryTransaction add (Entry::ADDCREDIT, username, newBalance, type);
 	this->transaction->push_back(add);
     return true;
 }
@@ -332,7 +332,7 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	}
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::admin) != 0) {
+			.compare(Account::ADMIN) != 0) {
 		// User is not admin
 		return false;
 	}
@@ -353,12 +353,12 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	string buyerType = this->fileIO->getAccountList()->at(buyer).getType();
 	string sellerType = this->fileIO->getAccountList()->at(seller).getType();
 
-	if (buyerType.compare(Account::sell) == 0) {
+	if (buyerType.compare(Account::SELL) == 0) {
 		// Buyer does not have buy privileges
 		return false;
 	}
 
-	if (sellerType.compare(Account::buy) == 0) {
+	if (sellerType.compare(Account::BUY) == 0) {
 		// Seller does not have sell privileges
 		return false;
 	}
@@ -366,7 +366,7 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	double newBuyerBalance = this->fileIO->getAccountList()->at(buyer).getBalance() + amount;
 	double newSellerBalance = this->fileIO->getAccountList()->at(seller).getBalance() - amount;
 
-	if (newBuyerBalance > Account::maxCredit) {
+	if (newBuyerBalance > Account::MAX_CREDIT) {
 		// New balance will exceed maximum credit balance
 		return false;
 	}
@@ -380,7 +380,7 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	this->fileIO->getAccountList()->at(seller).setBalance(newSellerBalance);
 	this->fileIO->getAccountList()->at(buyer).setBalance(newBuyerBalance);
 
-	Refund refund (Entry::refund, buyName, sellName, amount);
+	Refund refund (Entry::REFUND, buyName, sellName, amount);
     throw "Not yet implemented";
 }
 
@@ -410,7 +410,7 @@ bool Transaction::isAdmin() {
 		return false;
 	}
 	if (this->fileIO->getAccountList()->at(currentUser).getType().compare(
-			Account::admin) == 0) {
+			Account::ADMIN) == 0) {
 		return true;
 	}
 	return false;

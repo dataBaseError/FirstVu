@@ -5,11 +5,14 @@
 using namespace std;
 
 // ‘static’ may not be used when defining (as opposed to declaring) a static data member [-fpermissive]
-const string Account::admin = "AA";
-const string Account::sell  = "SS";
-const string Account::buy   = "BS";
-const string Account::full  = "FS";
-const double Account::maxCredit = 999999.99;
+const string Account::ADMIN = "AA";
+const string Account::SELL  = "SS";
+const string Account::BUY   = "BS";
+const string Account::FULL  = "FS";
+
+const double Account::MAX_CREDIT = 999999.99;
+const int Account::MAX_USERNAME_LENGTH = 15;
+const int Account::MAX_EVENT_LENGTH = 19;
 
 Account::Account(string username, string type, double balance) {
 	this->username = username;
