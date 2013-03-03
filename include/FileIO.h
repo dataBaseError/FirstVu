@@ -39,9 +39,20 @@ private:
 
 	vector<Entry>* readDailyTransaction();
 
-    bool updateAccounts();
+	 /**
+	 * Reads in the UserAccountFile and stores it in the AccountList vector
+	 *
+	 * @return Whether the user accounts list update was successful.
+	 */
+	bool updateAccountList();
 
-	bool updateTickets();
+	 /**
+	 * Reads in the TicketList file and stores it in the TicketList
+	 *
+	 * @return Whether the event ticket list update was successful.
+	 */
+	 bool updateTicketList();
+
 
 public:
 
@@ -64,20 +75,6 @@ public:
 	 * @return Whether the initialization was successful.
 	 */
     bool initialize();
-
-    /**
-     * Updates the user accounts file based on daily transaction file.
-     *
-     * @return Whether the user accounts list update was successful.
-     */
-	bool updateAccountList();
-
-	/**
-	 * Updates the available tickets file based on daily transaction file.
-	 *
-	 * @return Whether the event ticket list update was successful.
-	 */
-	bool updateTicketList();
 
 	/**
 	 * Writes all of the transactions to the end of the daily
