@@ -37,17 +37,23 @@ private:
 	vector<Account>* accountList;
 	vector<Ticket>* ticketList;
 
+	/**
+	 * Read in the current daily transaction file.
+	 *
+	 * @return The list of transactions previously recored in the daily
+	 * transactions file.
+	 */
 	vector<Entry>* readDailyTransaction();
 
 	 /**
-	 * Reads in the UserAccountFile and stores it in the AccountList vector
+	 * Reads in the User Account File and stores it in the AccountList vector.
 	 *
 	 * @return Whether the user accounts list update was successful.
 	 */
 	bool updateAccountList();
 
 	 /**
-	 * Reads in the TicketList file and stores it in the TicketList
+	 * Reads in the Ticket List file and stores it in the TicketList.
 	 *
 	 * @return Whether the event ticket list update was successful.
 	 */
@@ -77,7 +83,7 @@ public:
     bool initialize();
 
 	/**
-	 * Writes all of the transactions to the end of the daily
+	 * Writes all of the transactions to the end of the daily.
 	 *
 	 * @param newList The list of daily transactions to be added to the daily
 	 * transaction file.

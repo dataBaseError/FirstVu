@@ -195,7 +195,7 @@ vector<string> &split(const string &s, char delim, vector<string> &elems) {
 }
 
 
-vector<std::string> split(const std::string &s, char delim) {
-    std::vector<std::string> elems;
+vector<string> split(const string &s, char delim) {
+    std::vector<string> elems;
     return split(s, delim, elems);
 }
