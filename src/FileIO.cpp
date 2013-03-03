@@ -182,18 +182,3 @@ vector<Account>* FileIO::getAccountList() {
 vector<Ticket>* FileIO::getTicketList() {
 	return this->ticketList;
 }
-
-vector<string> &split(const string &s, char delim, vector<string> &elems) {
-    stringstream ss(s);
-    string item;
-    while(getline(ss, item, delim)) {
-        elems.push_back(item);
-    }
-    return elems;
-}
-
-
-vector<std::string> split(const std::string &s, char delim) {
-    std::vector<std::string> elems;
-    return split(s, delim, elems);
-}

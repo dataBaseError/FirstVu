@@ -2,22 +2,14 @@
 #define _FILEIO_H_
 
 #include <fstream>
-#include <sstream>
 #include <string>
-#include <vector>
 
 #include "Account.h"
 #include "Entry.h"
 #include "Ticket.h"
+#include "utility.h"
 
 using namespace std;
-
-// http://www.cplusplus.com/faq/sequences/strings/split/
-// puts the results in an already constructed vector
-vector<string> &split(const string &s, char delim, vector<string> &elems);
-
-//returns a new vector
-vector<std::string> split(const std::string &s, char delim);
 
 class FileIO {
 
