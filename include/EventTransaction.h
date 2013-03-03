@@ -80,7 +80,7 @@ public:
 	void setPrice(double price);
 
 	/**
-	 * Accessor method to get the number of tickets.
+	 * Accessor method for getting the number of tickets.
 	 *
 	 * @return the number of tickets.
 	 */

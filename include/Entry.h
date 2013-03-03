@@ -2,7 +2,7 @@
 #define _ENTRY_H_
 
 /**
- * Abstract class that allows for entries to the daily transaction file.
+ * Class that allows for entries to the daily transaction file.
  *
  * @author Ryan Crawford
  * @author Khalil Fazal

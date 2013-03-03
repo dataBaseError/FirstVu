@@ -47,14 +47,14 @@ public:
     /**
      * Accessor method for getting the seller’s username.
      *
-     * @return Username of seller
+     * @return The username of seller
      */
     string getUsername();
 
     /**
      * Mutator method for the seller’s username.
      *
-     * @param userName Username of seller
+     * @param userName The username of seller
      */
     void setUsername(string username);
 
@@ -73,6 +73,13 @@ public:
     void setTicketNumber(int ticketNumber);
 
     /**
+	 * Decrement the number of tickets for sale for the event.
+	 *
+	 * @param ticketNumber Number of tickets being purchased
+	 */
+	void decreaseTicketNumber(int ticketNumber);
+
+    /**
      * Accessor method for getting the cost of the event per ticket.
      *
      * @return Cost of one ticket
@@ -85,13 +92,6 @@ public:
      * @param cost Cost of one ticket
      */
     void setCost(double cost);
-
-    /**
-     * Decrement the number of tickets for sale for the event.
-     *
-     * @param ticketNumber Number of tickets being purchased
-     */
-    void decreaseTicketNumber(int ticketNumber);
 
     friend bool operator==(Ticket left, Ticket right);
 };

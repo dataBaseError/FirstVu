@@ -8,7 +8,6 @@ const int Entry::buy       = 4;
 const int Entry::refund    = 5;
 const int Entry::addcredit = 6;
 
-// The 'explicit' keyword is only used in header files
 Entry::Entry(int transactionType) {
 	this->transactionType = transactionType;
 }

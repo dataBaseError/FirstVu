@@ -17,6 +17,7 @@ FileIO::~FileIO() {
 
 
 bool FileIO::initialize() {
+	//TODO REMOVE
     //vector<Entry>* entries = this->readDailyTransaction();
 	//Read in lists
     //throw "Not yet implemented";
@@ -36,6 +37,7 @@ vector<Entry>* FileIO::readDailyTransaction() {
  * daily transaction file
  */
 bool FileIO::updateAccountList() {
+	//TODO REMOVE
     //vector<Entry>* entries = this->readDailyTransaction();
 
     //for (vector<Entry>::iterator iterator = entries->begin(); iterator != entries->end(); iterator++) {
