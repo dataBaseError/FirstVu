@@ -39,8 +39,8 @@ string AuxiliaryTransaction::getDTFLine() {
     stringstream buffer;
 
     char credit[Account::MAX_CREDIT_SIZE];
-    char format[5];
-    sprintf(format, "%%%d.2f", Account::MAX_CREDIT_SIZE);
+    char* format;
+    sprintf(format, "%s%d%s", "%", Account::MAX_CREDIT_SIZE, ".2f");
     sprintf(credit, format, getCredit());
 
     buffer << right << setfill('0') << setw(2) << getTransactionType() << " ";

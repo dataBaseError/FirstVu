@@ -39,8 +39,8 @@ string Refund::getDTFLine() {
     stringstream buffer;
 
     char amount[Account::MAX_CREDIT_SIZE];
-    char format[5];
-    sprintf(format, "%%%d.2f", Account::MAX_CREDIT_SIZE);
+    char* format;
+    sprintf(format, "%s%d%s", "%", Account::MAX_CREDIT_SIZE, ".2f");
     sprintf(amount, format, getCredit());
 
     buffer << right << setfill('0') << setw(2) << getTransactionType() << " ";
