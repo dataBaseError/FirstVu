@@ -32,50 +32,54 @@ int main (int argc, char** argv) {
 			}
 			else if (input.compare("quit") == 0) {
 				if (session->isLoggedIn()) {
-					cout << "Error: invalid command" << endl;
+					cout << "error: invalid command" << endl;
 				}
 				else {
 					break;
 				}
 			}
 			else {
-				cout << "Error: invalid command" << endl;
+				cout << "error: invalid command" << endl;
 			}
     	}
 		else {
 			if (input.compare("logout") == 0) {
 				session->logout();
+				cout << "logout successful" << endl;
 			}
 			else if (input.compare("create") == 0) {
-				cout << "Enter username to create." << endl;
+				cout << "enter username to create" << endl;
 				getline(cin, username);
 
-				cout << "Enter account type." << endl;
+				// TODO: Catch create1 testcase
+				// username must be maximum 15 characters
+
+				cout << "enter account type" << endl;
 				getline(cin, type);
 
-				cout << "Enter user account balance." << endl;
+				cout << "enter user account balance" << endl;
 				//getline(cin, balance);
 				cin >> balance;
 
 				if (session->create(username, type, balance)) {
-					cout << "Create successful." << endl;
+					cout << "create successful" << endl;
 				}
 			}
 			else if (input.compare("delete") == 0) {
-				cout << "Enter username." << endl;
+				cout << "enter username" << endl;
 				getline(cin, username);
 
 				if (session->removeUser(username)) {
-					cout << "Delete successful." << endl;
+					cout << "delete successful" << endl;
 				}
 			}
 			else if (input.compare("addcredit") == 0) {
 				if (session->isAdmin()) {
-					cout << "Enter username." << endl;
-					getline(cin, username);
+					//cout << "Enter username." << endl;
+					//getline(cin, username);
 				}
 
-				cout << "Enter credit amount." << endl;
+				cout << "enter credit amount" << endl;
 				//getline(cin, balance);
 				cin >> balance;
 
@@ -88,61 +92,61 @@ int main (int argc, char** argv) {
 				}
 
 				if (success) {
-					cout << "Credit added." << endl;
+					cout << "credit added" << endl;
 				}
 			}
 			else if (input.compare("sell") == 0) {
-				cout << "Enter event title." << endl;
+				cout << "enter event title" << endl;
 				getline(cin, event);
 
-				cout << "Enter sale price." << endl;
+				cout << "enter sale price" << endl;
 				//getline(cin, price);
 				cin >> price;
 
-				cout << "Enter number of tickets." << endl;
+				cout << "enter number of tickets" << endl;
 				//getline(cin, ticketNum);
 				cin >> ticketNum;
 
 				if (session->sell(event, price, ticketNum)) {
-					cout << "Tickets added." << endl;
+					cout << "tickets added" << endl;
 				}
 			}
 			else if (input.compare("buy") == 0) {
-				cout << "Enter event title." << endl;
+				cout << "enter event title" << endl;
 				getline(cin, event);
 
-				cout << "Enter number of tickets." << endl;
+				cout << "enter number of tickets" << endl;
 				//getline(cin, ticketNum);
 				cin >> ticketNum;
 
-				cout << "Enter username of seller." << endl;
+				cout << "enter username of seller" << endl;
 				getline(cin, seller);
 
 				// TODO add confirmation into buy transaction.
 				if (session->buy(event, ticketNum, seller)) {
-					cout << "Purchase successful." << endl;
+					cout << "purchase successful" << endl;
 				}
 			}
 			else if (input.compare("refund") == 0) {
-				cout << "Enter buyer's username." << endl;
+				cout << "enter buyer's username" << endl;
 				getline(cin, username);
 
-				cout << "Enter seller's username." << endl;
+				cout << "enter seller's username" << endl;
 				getline(cin, seller);
 
-				cout << "Enter amount to transfer." << endl;
+				cout << "enter amount to transfer" << endl;
 				//getline(cin, balance);
 				cin >> balance;
 
 				if (session->refund(username, seller, balance)) {
-					cout << "Refund successful." << endl;
+					cout << "refund successful" << endl;
 				}
 			}
 			else {
-				cout << "Error: invalid command" << endl;
+				cout << "error: invalid command" << endl;
 			}
     	}
-		cout << endl;
+		//cout << endl;
 	}
 
 	return 0;
