@@ -59,6 +59,8 @@ public:
 	/**
 	 * Returns a line which will be used to write to the
 	 * daily transaction file
+	 *
+	 * @return the entry as it would show up in the daily transaction file
 	 */
 	virtual string getDTFLine();
 };
