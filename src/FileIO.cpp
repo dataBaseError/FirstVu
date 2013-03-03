@@ -28,6 +28,9 @@ bool FileIO::initialize() {
 vector<Entry>* FileIO::readDailyTransaction() {
 	/**
 	 * Read in the daily transaction file
+	 *
+	 * This will be implemented to allow for the program to be shut off and then
+	 * re-initialized. Currently not implmented for the prototype.
 	 */
 	throw "Not yet implemented";
 }
@@ -74,6 +77,7 @@ bool FileIO::updateAccountList() {
             }
         }
 
+        uao.close();
         return true;
     }
     else {
@@ -120,13 +124,35 @@ bool FileIO::updateTicketList() {
                 }
             }
         }
+        ato.close();
+
+        // Return true if successful read
+        return true;
     }
 
-    return true;
+    // File could not be opened return false
+    return false;
 }
 
 bool FileIO::writeTransaction(vector<Entry>* newList) {
-    throw "Not yet implemented";
+
+	ofstream dtf (this->dtf, ios::app);
+
+	if(dtf.is_open()) {
+		for(vector<Entry>::size_type i = 0; i < newList->size(); i++) {
+			// Write to file given path
+			dtf << newList->at(i).getDTFLine();
+		}
+
+		/* TODO If this is being written every time, then it will have to be
+		 * removed every time following the first time. Unless we only wrote it
+		 * when a user 'quit' the system.
+		 */
+		dtf << Entry::EMPTY_ENTRY;
+		return true;
+		dtf.close();
+	}
+	return false;
 }
 
 int FileIO::findUser(string username) {

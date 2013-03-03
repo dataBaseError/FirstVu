@@ -30,6 +30,7 @@ public:
 	static const int REFUND;
 	static const int ADDCREDIT;
 
+	static const string EMPTY_ENTRY;
 	/**
 	 * Constructor for creating an entry.
 	 *
