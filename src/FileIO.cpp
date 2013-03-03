@@ -32,10 +32,7 @@ vector<Entry>* FileIO::readDailyTransaction() {
 	throw "Not yet implemented";
 }
 
-/**
- * This will read in the user accounts from memory and update it based on the
- * daily transaction file
- */
+
 bool FileIO::updateAccountList() {
 	//TODO REMOVE
     //vector<Entry>* entries = this->readDailyTransaction();
@@ -81,10 +78,7 @@ bool FileIO::updateAccountList() {
     }
 }
 
-/**
- * This will read in the user accounts from memory and update it based on the
- * daily transaction file
- */
+
 bool FileIO::updateTicketList() {
     ifstream ato;
     ato.open(this->ato);
