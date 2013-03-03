@@ -37,6 +37,8 @@ public:
 	EventTransaction(int type, string eventName, string sellName,
 			double price, int numTickets);
 
+	virtual ~EventTransaction();
+
 	/**
 	 * Accessor method for getting the username of the seller.
 	 *
@@ -92,6 +94,11 @@ public:
 	 * @param numTickets the number of tickets.
 	 */
 	void setNumTickets(int numTickets);
+
+    /**
+     * @see Entry#getDTFLine()
+     */
+    virtual string getDTFLine();
 };
 
 #endif // _EVENTTRANSACTION_H_

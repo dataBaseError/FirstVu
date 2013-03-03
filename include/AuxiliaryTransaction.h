@@ -34,6 +34,8 @@ public:
 	AuxiliaryTransaction(int type, string username, double credit,
 			string accountType);
 
+	virtual ~AuxiliaryTransaction();
+
 	/**
 	 * Accessor method for getting the username.
 	 *
@@ -76,6 +78,11 @@ public:
 	 * @param type the type of user that is involved in the transaction
 	 */
 	void setAccountType(string type);
+
+	/**
+	 * @see Entry#getDTFLine()
+	 */
+	virtual string getDTFLine();
 };
 
 #endif // _AUXILIARYTRANSACTION_H_
