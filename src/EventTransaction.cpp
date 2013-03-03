@@ -58,6 +58,5 @@ string EventTransaction::getDTFLine() {
     buffer << right << setfill('0') << setw(Ticket::MAX_TICKET_SIZE) << " ";
     buffer << price << endl;
 
-
     return buffer.str();
 }

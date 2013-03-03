@@ -36,5 +36,17 @@ void Refund::setCredit(double credit) {
 }
 
 string Refund::getDTFLine() {
-    throw "To be implemented";
+    stringstream buffer;
+
+    char amount[Account::MAX_CREDIT_SIZE];
+    char format[5];
+    sprintf(format, "%%%d.2f", Account::MAX_CREDIT_SIZE);
+    sprintf(amount, format, getCredit());
+
+    buffer << right << setfill('0') << setw(2) << getTransactionType() << " ";
+    buffer << left << setw(Account::MAX_USERNAME_LENGTH) << getBuyName() << " ";
+    buffer << left << setw(Account::MAX_USERNAME_LENGTH) << getSellName() << " ";
+    buffer << amount << endl;
+
+    return buffer.str();
 }
