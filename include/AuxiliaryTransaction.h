@@ -3,6 +3,7 @@
 
 #include <string>
 
+#include "Account.h"
 #include "Entry.h"
 
 using namespace std;

@@ -38,10 +38,10 @@ void AuxiliaryTransaction::setAccountType(string accountType) {
 string AuxiliaryTransaction::getDTFLine() {
     stringstream buffer;
 
-    buffer << setfill(0) << setw(2) << getTransactionType() << " ";
-    buffer << setfill(" ") << setw(Account::MAX_USERNAME_LENGTH) << getUsername() << " ";
+    buffer << setfill('0') << setw(2) << getTransactionType() << " ";
+    buffer << setfill(' ') << setw(Account::MAX_USERNAME_LENGTH) << getUsername() << " ";
     buffer << getAccountType() << " ";
-    buffer << setfill(0) << setw(Account::MAX_CREDIT_SIZE) << setprecision(2) << getCredit();
+    buffer << setfill('0') << setw(Account::MAX_CREDIT_SIZE) << setprecision(2) << getCredit();
     buffer << endl;
 
     return buffer.str();
