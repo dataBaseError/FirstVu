@@ -13,7 +13,6 @@ const string Account::FULL  = "FS";
 const double Account::MAX_CREDIT = 999999.99;
 const double Account::MAX_CREDIT_SIZE = 9;
 const int Account::MAX_USERNAME_LENGTH = 15;
-const int Account::MAX_EVENT_LENGTH = 19;
 
 Account::Account(string username, string type, double balance) {
 	this->username = username;
