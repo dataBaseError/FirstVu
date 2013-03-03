@@ -2,7 +2,7 @@
 
 
 const double Ticket::MAX_PRICE = 999.99;
-const double Ticket::MAX_PRICE_SIZE = 6;
+const int Ticket::MAX_PRICE_SIZE = 6;
 const int Ticket::MAX_TICKET = 100;
 const int Ticket::MAX_TICKET_SIZE = 3;
 const int Ticket::MAX_EVENT_LENGTH = 19;

@@ -24,7 +24,7 @@ private:
 public:
 
     static const double MAX_PRICE;
-    static const double MAX_PRICE_SIZE;
+    static const int MAX_PRICE_SIZE;
     static const int MAX_TICKET;
     static const int MAX_TICKET_SIZE;
     static const int MAX_EVENT_LENGTH;

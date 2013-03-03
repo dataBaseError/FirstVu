@@ -27,7 +27,7 @@ public:
     static const string FULL;
 
     static const double MAX_CREDIT;
-    static const double MAX_CREDIT_SIZE;
+    static const int MAX_CREDIT_SIZE;
     static const int MAX_USERNAME_LENGTH;
 
     /**

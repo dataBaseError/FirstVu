@@ -45,5 +45,19 @@ void EventTransaction::setNumTickets(int numTickets) {
 }
 
 string EventTransaction::getDTFLine() {
-    throw "To be implemented";
+    stringstream buffer;
+
+    char price[Ticket::MAX_PRICE_SIZE];
+    char format[5];
+    sprintf(format, "%%%d.2f", Ticket::MAX_PRICE_SIZE);
+    sprintf(price, format, getPrice());
+
+    buffer << right << setfill('0') << setw(2) << getTransactionType() << " ";
+    buffer << left << setfill(' ') << setw(Ticket::MAX_EVENT_LENGTH) << getEventName() << " ";
+    buffer << left << setfill(' ') << setw(Account::MAX_USERNAME_LENGTH) << getSellName() << " ";
+    buffer << right << setfill('0') << setw(Ticket::MAX_TICKET_SIZE) << " ";
+    buffer << price << endl;
+
+
+    return buffer.str();
 }
