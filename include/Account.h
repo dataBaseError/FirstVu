@@ -79,7 +79,7 @@ public:
     void setUsername(string username);
 
     /**
-     * implemented an equals ovperator to compare to accounts
+     * Implemented an equals operator to compare to accounts.
      *
      * @param left The account to the left of the equal signs
      * @param right The account to the right of the equal signs
