@@ -65,7 +65,7 @@ public:
 	 * @param ato The path of the available tickets file.
 	 * @param dtf The path of the daily transactions file.
 	 */
-	FileIO(char* uao, char* ato,char* dtf);
+	FileIO(char* uao, char* ato, char* dtf);
 
 	~FileIO();
 

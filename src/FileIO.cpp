@@ -149,8 +149,8 @@ bool FileIO::writeTransaction(vector<Entry>* newList) {
 		 * when a user 'quit' the system.
 		 */
 		dtf << Entry::EMPTY_ENTRY;
-		return true;
 		dtf.close();
+        return true;
 	}
 	return false;
 }

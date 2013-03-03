@@ -9,7 +9,7 @@ const int Entry::REFUND    = 5;
 const int Entry::ADDCREDIT = 6;
 
 // TODO make this better needs to be 00 followed by 29 spaces.
-const string EMPTY_ENTRY = "00                             ";
+const string Entry::EMPTY_ENTRY = "00" + string(29, ' ');
 
 Entry::Entry(int transactionType) {
 	this->transactionType = transactionType;
