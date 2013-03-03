@@ -1,6 +1,10 @@
 #ifndef _ENTRY_H_
 #define _ENTRY_H_
 
+#include <string>
+
+using namespace std;
+
 /**
  * Class that allows for entries to the daily transaction file.
  *
@@ -34,7 +38,7 @@ public:
 	/**
 	 * De-constructor for delete an entry.
 	 */
-	~Entry();
+	virtual ~Entry();
 
 	/**
 	 * Accessor method for getting the type of transaction.
@@ -49,6 +53,12 @@ public:
 	 * @param transactionType the type of transaction
 	 */
 	void setTransactionType(int transactionType);
+
+	/**
+	 * Returns a line which will be used to write to the
+	 * daily transaction file
+	 */
+	virtual string getDTFLine();
 };
 
 #endif // _ENTRY_H_

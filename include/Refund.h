@@ -33,6 +33,8 @@ public:
 	 */
 	Refund(int type, string buyName, string sellName, double credit);
 
+	virtual ~Refund();
+
 	/**
 	 * Accessor method for getting the username of the buyer.
 	 *
@@ -74,6 +76,11 @@ public:
 	 * @param credit the new amount of credit transfered as part of the refund
 	 */
 	void setCredit(double credit);
+
+    /**
+     * @see Entry#getDTFLine()
+     */
+    virtual string getDTFLine();
 };
 
 #endif // _REFUND_H_

@@ -8,9 +8,9 @@ EventTransaction::EventTransaction(int type, string eventName, string sellName, 
 	this-> numTickets = numTickets;
 }
 
-/*EventTransaction::~EventTransaction() {
+EventTransaction::~EventTransaction() {
 
-}*/
+}
 
 string EventTransaction::getSellName() {
 	return this->sellName;
@@ -42,4 +42,8 @@ int EventTransaction::getNumTickets() {
 
 void EventTransaction::setNumTickets(int numTickets) {
 	this->numTickets = numTickets;
+}
+
+string EventTransaction::getDTFLine() {
+    throw "To be implemented";
 }

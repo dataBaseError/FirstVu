@@ -23,3 +23,7 @@ int Entry::getTransactionType() {
 void Entry::setTransactionType(int transactionType) {
 	this->transactionType = transactionType;
 }
+
+string Entry::getDTFLine() {
+    return "";
+}

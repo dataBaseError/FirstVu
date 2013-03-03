@@ -7,6 +7,10 @@ Refund::Refund(int type, string buyName, string sellName, double credit)
 	this->credit = credit;
 }
 
+Refund::~Refund() {
+
+}
+
 string Refund::getBuyName() {
 	return this->buyName;
 }
@@ -29,4 +33,8 @@ double Refund::getCredit() {
 
 void Refund::setCredit(double credit) {
 	this->credit = credit;
+}
+
+string Refund::getDTFLine() {
+    throw "To be implemented";
 }

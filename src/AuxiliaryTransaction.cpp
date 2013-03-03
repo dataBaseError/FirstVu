@@ -7,6 +7,10 @@ AuxiliaryTransaction::AuxiliaryTransaction(int type, string username,
 	this->accountType = accountType;
 }
 
+AuxiliaryTransaction::~AuxiliaryTransaction() {
+
+}
+
 string AuxiliaryTransaction::getUsername() {
 	return this->username;
 }
@@ -29,4 +33,8 @@ string AuxiliaryTransaction::getAccountType() {
 
 void AuxiliaryTransaction::setAccountType(string accountType) {
 	this->accountType = accountType;
+}
+
+string AuxiliaryTransaction::getDTFLine() {
+    throw "To be implemented";
 }
