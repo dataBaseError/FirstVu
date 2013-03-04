@@ -5,7 +5,7 @@
  *      Author: capncanuck
  */
 
-#include "validation.h"
+#include "../include/validation.h"
 
 bool validBalance(double balance) {
     throw "Needs to be implemented";
