@@ -30,7 +30,7 @@ bool Transaction::login(string username) {
 			}
 
 			// Initialize transaction list
-			this->transaction = new vector<Entry>();
+			//this->transaction = new vector<Entry>();
 
 			return true;
 		}
@@ -42,17 +42,17 @@ bool Transaction::login(string username) {
 bool Transaction::logout() {
 
 	// Write to daily transaction file
-	if (this->fileIO->writeTransaction(this->transaction)) {
-		transaction->clear();
+	//if (this->fileIO->writeTransaction(this->transaction)) {
+	//	transaction->clear();
 		//delete this;
-		this->currentUser = -1;
-	}
-	else {
+	this->currentUser = -1;
+	//}
+	//else {
 		// Error writing to transaction file
-		return false;
-	}
+	//	return false;
+	//}
 
-	return false;
+	return true;
 }
 
 bool Transaction::buy(string event, int numTickets, string sellName) {
