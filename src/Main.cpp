@@ -73,23 +73,28 @@ int main(int argc, char** argv) {
                     cout << "enter credit amount" << endl;
                     //getline(cin, balance);
                     cin >> balance;
+                    bool fail = cin.fail();
 
-                    success = false;
+                    // Skip to next line
+                    string dummy;
+                    getline(cin, dummy);
 
-                    if(!validBalance(balance))
-                    {
-                    	return false;
-                    }
-
-                    if (session->isAdmin()) {
-                        success = session->addcredit(balance);
+                    if (fail) {
+                        cout << "error: invalid credit amount" << endl;
                     }
                     else {
-                        success = session->addcredit(username, balance);
-                    }
+                        success = false;
 
-                    if (success) {
-                        cout << "credit added" << endl;
+                        if (!session->isAdmin()) {
+                            success = session->addcredit(balance);
+                        }
+                        else {
+                            success = session->addcredit(username, balance);
+                        }
+
+                        if (success) {
+                            cout << "credit added" << endl;
+                        }
                     }
                 }
                 else if (input.compare("sell") == 0) {
