@@ -11,10 +11,8 @@ int main(int argc, char** argv) {
         int ticketNum;
         bool success = false;
 
-        while (true) {
+        while (getline(cin, input)) {
             //cout << "Enter your command." << endl;
-
-            getline(cin, input);
             input = rtrim(input);
             // TODO Trim right side of the input
             if (!session->isLoggedIn()) {
@@ -28,7 +26,6 @@ int main(int argc, char** argv) {
                     }
                 }
                 else if (input.compare("quit") == 0) {
-
                 	session->quit();
                     break;
                 }
