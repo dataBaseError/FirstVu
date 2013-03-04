@@ -1,3 +1,13 @@
+/**
+ * The main class of the front end system.
+ *
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ *
+ */
+
 #ifndef _MAIN_H_
 #define _MAIN_H_
 

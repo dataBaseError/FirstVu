@@ -16,6 +16,7 @@
 using namespace std;
 
 // http://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
+// TODO comment
 string &rtrim(string &s);
 
 // http://www.cplusplus.com/faq/sequences/strings/split/
