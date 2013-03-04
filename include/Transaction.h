@@ -26,7 +26,7 @@ class Transaction {
 
 private:
     FileIO* fileIO;
-	vector<Entry>* transaction;
+	vector<Entry*>* transaction;
 	int currentUser;
 
 public:

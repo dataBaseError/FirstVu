@@ -83,7 +83,7 @@ public:
 	 * transaction file.
 	 * @return Whether the write to the daily transaction file was successful.
 	 */
-    bool writeTransaction(vector<Entry>* newList);
+    bool writeTransaction(vector<Entry*>* newList);
 
     /**
      * Checks if the given string matches any username in the current user
