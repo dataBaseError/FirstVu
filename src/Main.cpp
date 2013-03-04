@@ -20,6 +20,7 @@ int main(int argc, char** argv) {
             //cout << "Enter your command." << endl;
 
             getline(cin, input);
+            input = rtrim(input);
             // TODO Trim right side of the input
             if (!session->isLoggedIn()) {
                 if (input.compare("login") == 0) {

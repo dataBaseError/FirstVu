@@ -7,6 +7,11 @@
 
 #include "../include/utility.h"
 
+string &rtrim(string &s) {
+        s.erase(find_if(s.rbegin(), s.rend(), not1(ptr_fun<int, int>(isspace))).base(), s.end());
+        return s;
+}
+
 vector<string> &split(const string &s, char delim, vector<string> &elems) {
     stringstream ss(s);
     string item;
@@ -17,7 +22,7 @@ vector<string> &split(const string &s, char delim, vector<string> &elems) {
 }
 
 
-vector<std::string> split(const std::string &s, char delim) {
-    std::vector<std::string> elems;
+vector<string> split(const string &s, char delim) {
+    vector<string> elems;
     return split(s, delim, elems);
 }

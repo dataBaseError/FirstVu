@@ -7,6 +7,7 @@
 
 #include "Transaction.h"
 #include "FileIO.h"
+#include "utility.h"
 //#include "../lib/include/Poco/StringTokenizer.h"
 
 using namespace std;

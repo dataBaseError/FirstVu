@@ -8,11 +8,15 @@
 #ifndef UTILITY_H_
 #define UTILITY_H_
 
+#include <algorithm>
 #include <string>
 #include <sstream>
 #include <vector>
 
 using namespace std;
+
+// http://stackoverflow.com/questions/216823/whats-the-best-way-to-trim-stdstring
+string &rtrim(string &s);
 
 // http://www.cplusplus.com/faq/sequences/strings/split/
 // puts the results in an already constructed vector
