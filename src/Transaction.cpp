@@ -48,6 +48,7 @@ bool Transaction::logout() {
 			->getAccountList()->at(this->currentUser).getUsername(),
 			this->fileIO->getAccountList()->at(this->currentUser).getBalance(),
 			this->fileIO->getAccountList()->at(this->currentUser).getType());
+
 	this->transaction->push_back(exitUser);
 	this->currentUser = -1;
 

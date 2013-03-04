@@ -143,7 +143,7 @@ bool FileIO::writeTransaction(vector<Entry>* newList) {
             dtf << newList->at(i).getDTFLine();
         }
 
-        dtf << Entry::EMPTY_ENTRY;
+        dtf << Entry::EMPTY_ENTRY << endl;
         dtf.close();
         return true;
     }
