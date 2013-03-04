@@ -79,14 +79,16 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 
 	int seller = this->fileIO->findUser(sellName);
 
-	if (seller == 0) {
+	//if (seller == 0) {
+	if (seller == -1) {
 		// Seller does not exist
 		return false;
 	}
 
 	int ticket = this->fileIO->findEvent(event, sellName);
 
-	if (ticket == 0) {
+	//if (ticket == 0) {
+	if (ticket == -1) {
 		// Event does not exist
 		return false;
 	}
