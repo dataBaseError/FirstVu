@@ -54,25 +54,21 @@ bool FileIO::updateAccountList() {
             string line;
 
             getline(uao, line);
-            vector<string> lineV = split(line, '\n');
+            vector<string> lineV = split(line, ' ');
 
-            for (vector<string>::size_type i = 0; i < lineV.size(); i++) {
-                vector<string> accountV = split(lineV.at(i), ' ');
+            if (lineV[0] != "END") {
+                string username = lineV[0];
+                string type = lineV[1];
 
-                if (accountV[0] != "END") {
-                    string username = accountV[0];
-                    string type = accountV[1];
+                stringstream ss(stringstream::in | stringstream::out);
+                ss << lineV[2];
 
-                    stringstream ss(stringstream::in | stringstream::out);
-                    ss << accountV[2];
+                double balance;
+                ss >> balance;
 
-                    double balance;
-                    ss >> balance;
-
-                    Account* account = new Account(username, type, balance);
-                    this->accountList->push_back(*account);
-                    delete account;
-                }
+                Account* account = new Account(username, type, balance);
+                this->accountList->push_back(*account);
+                delete account;
             }
         }
 
@@ -97,30 +93,26 @@ bool FileIO::updateTicketList() {
             string line;
 
             getline(ato, line);
-            vector<string> lineV = split(line, '\n');
+            vector<string> lineV = split(line, ' ');
 
-            for (vector<string>::size_type i = 0; i < lineV.size(); i++) {
-                vector<string> ticketV = split(lineV.at(i), ' ');
+            if (lineV[0] != "END") {
+                string event = lineV[0];
+                string username = lineV[1];
 
-                if (ticketV[0] != "END") {
-                    string event = ticketV[0];
-                    string username = ticketV[1];
+                stringstream ss(stringstream::in | stringstream::out);
+                ss << lineV[2];
 
-                    stringstream ss(stringstream::in | stringstream::out);
-                    ss << ticketV[2];
+                int num;
+                ss >> num;
 
-                    int num;
-                    ss >> num;
+                ss << lineV[3];
 
-                    ss << ticketV[3];
+                double price;
+                ss >> price;
 
-                    double price;
-                    ss >> price;
-
-                    Ticket* ticket = new Ticket(event, username, num, price);
-                    this->ticketList->push_back(*ticket);
-                    delete ticket;
-                }
+                Ticket* ticket = new Ticket(event, username, num, price);
+                this->ticketList->push_back(*ticket);
+                delete ticket;
             }
         }
         ato.close();
@@ -133,17 +125,19 @@ bool FileIO::updateTicketList() {
     return false;
 }
 
-bool FileIO::writeTransaction(vector<Entry>* newList) {
-
+bool FileIO::writeTransaction(vector<Entry*>* newList) {
     ofstream dtf(this->dtf, ios::app);
 
+    vector<Entry*>::size_type length = newList->size();
+
     if (dtf.is_open()) {
-        for (vector<Entry>::size_type i = 0; i < newList->size(); i++) {
+        for (vector<Entry*>::size_type i = 0; i < length; i++) {
             // Write to file given path
-            dtf << newList->at(i).getDTFLine();
+            string entry = newList->at(i)->getDTFLine();
+            dtf << entry;
         }
 
-        dtf << Entry::EMPTY_ENTRY;
+        dtf << Entry::EMPTY_ENTRY << endl;
         dtf.close();
         return true;
     }

@@ -5,7 +5,7 @@ const double Transaction::maxAddCredit = 1000.00;
 Transaction::Transaction(char* accountPath, char* availTicketPath,
 		char* dailyTransactionPath) {
 	this->currentUser = -1;
-	this->transaction = new vector<Entry>();
+	this->transaction = new vector<Entry*>();
 
 	this->fileIO = new FileIO(accountPath, availTicketPath, dailyTransactionPath);
 }
@@ -17,7 +17,6 @@ Transaction::~Transaction() {
 
 // TODO add error messages.
 bool Transaction::login(string username) {
-
 	// Check if transaction list is empty
 	if (currentUser == -1) {
 
@@ -38,16 +37,16 @@ bool Transaction::login(string username) {
 }
 
 bool Transaction::logout() {
-
 	if(currentUser == -1) {
 		// No user logged in
 		return false;
 	}
 
-	AuxiliaryTransaction exitUser (Entry::LOGOUT, this->fileIO
-			->getAccountList()->at(this->currentUser).getUsername(),
-			this->fileIO->getAccountList()->at(this->currentUser).getBalance(),
-			this->fileIO->getAccountList()->at(this->currentUser).getType());
+	Account currentUser = this->fileIO->getAccountList()->at(this->currentUser);
+
+	AuxiliaryTransaction* exitUser = new AuxiliaryTransaction (Entry::LOGOUT, currentUser.getUsername(),
+			currentUser.getBalance(),
+			currentUser.getType());
 	this->transaction->push_back(exitUser);
 	this->currentUser = -1;
 
@@ -55,7 +54,6 @@ bool Transaction::logout() {
 }
 
 bool Transaction::buy(string event, int numTickets, string sellName) {
-
 	if (currentUser == -1) {
 		// No user logged in
 		return false;
@@ -130,7 +128,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 	double ticketCost = this->fileIO->getTicketList()->at(ticket).getCost();
 
 	// Add transaction to transaction list
-	EventTransaction buy (Entry::BUY, event, sellName, ticketCost, numTickets);
+	EventTransaction* buy = new EventTransaction(Entry::BUY, event, sellName, ticketCost, numTickets);
 
 	this->transaction->push_back(buy);
 
@@ -138,7 +136,6 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 }
 
 bool Transaction::sell(string event, double salePrice, int availTicket) {
-
 	if (currentUser == -1) {
 		// No user is logged in
 		return false;
@@ -171,7 +168,7 @@ bool Transaction::sell(string event, double salePrice, int availTicket) {
 
 	this->fileIO->getTicketList()->push_back(newEvent);
 
-	EventTransaction sell (Entry::SELL, event, sellName, salePrice, availTicket);
+	EventTransaction* sell = new EventTransaction(Entry::SELL, event, sellName, salePrice, availTicket);
 	this->transaction->push_back(sell);
 
 	return true;
@@ -208,7 +205,7 @@ bool Transaction::create(string newUser, string accountType,
 	Account newAccount(newUser, accountType, accountBalance);
 	this->fileIO->getAccountList()->push_back(newAccount);
 
-	AuxiliaryTransaction createUser (Entry::CREATE, newUser, accountBalance,
+	AuxiliaryTransaction* createUser = new AuxiliaryTransaction(Entry::CREATE, newUser, accountBalance,
 			accountType);
 	this->transaction->push_back(createUser);
 
@@ -216,7 +213,6 @@ bool Transaction::create(string newUser, string accountType,
 }
 
 bool Transaction::removeUser(string username) {
-
 	if (currentUser == -1) {
 		// No user is logged in
 		return false;
@@ -248,7 +244,7 @@ bool Transaction::removeUser(string username) {
 					->getAccountList()->begin() + (user - 1),
 					this->fileIO->getAccountList()->begin() + user);
 
-	AuxiliaryTransaction removeUser (Entry::DEL, username, balance, type);
+	AuxiliaryTransaction* removeUser = new AuxiliaryTransaction(Entry::DEL, username, balance, type);
 	this->transaction->push_back(removeUser);
 
 	return true;
@@ -280,14 +276,13 @@ bool Transaction::addcredit(double amount) {
 	string username = this->fileIO->getAccountList()->at(currentUser).getUsername();
 	string type = this->fileIO->getAccountList()->at(currentUser).getType();
 
-	AuxiliaryTransaction add (Entry::ADDCREDIT, username, newBalance, type);
+	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, newBalance, type);
 	this->transaction->push_back(add);
 
 	return true;
 }
 
 bool Transaction::addcredit(string username, double amount) {
-
 	if (currentUser == -1) {
 		// No user is logged in
 		return false;
@@ -322,13 +317,12 @@ bool Transaction::addcredit(string username, double amount) {
 	this->fileIO->getAccountList()->at(user).setBalance(newBalance);
 	string type = this->fileIO->getAccountList()->at(user).getType();
 
-	AuxiliaryTransaction add (Entry::ADDCREDIT, username, newBalance, type);
+	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, newBalance, type);
 	this->transaction->push_back(add);
     return true;
 }
 
 bool Transaction::refund(string buyName, string sellName, double amount) {
-
 	if (currentUser == -1) {
 		// No user is logged in
 		return false;
@@ -391,7 +385,6 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 }
 
 bool Transaction::quit() {
-
 	if (this->fileIO->writeTransaction(this->transaction)) {
 		this->transaction->clear();
 		return true;
