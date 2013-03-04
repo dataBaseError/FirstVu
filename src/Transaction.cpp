@@ -387,7 +387,7 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 }
 
 bool Transaction::quit() {
-	if (this->fileIO->writeTransaction(this->transaction)) {
+	if (this->fileIO->writeTransaction(*this->transaction)) {
 		this->transaction->clear();
 		return true;
 	}

@@ -130,15 +130,15 @@ bool FileIO::updateTicketList() {
     return false;
 }
 
-bool FileIO::writeTransaction(vector<Entry*>* newList) {
+bool FileIO::writeTransaction(vector<Entry*> newList) {
     ofstream dtf(this->dtf, ios::app);
 
-    vector<Entry*>::size_type length = newList->size();
+    vector<Entry*>::size_type length = newList.size();
 
     if (dtf.is_open()) {
         for (vector<Entry*>::size_type i = 0; i < length; i++) {
             // Write to file given path
-            string entry = newList->at(i)->getDTFLine();
+            string entry = newList[i]->getDTFLine();
             dtf << entry;
         }
 
