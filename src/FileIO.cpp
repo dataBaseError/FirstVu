@@ -6,33 +6,32 @@ FileIO::FileIO(char* uao, char* ato, char* dtf) {
     this->ato = ato;
     this->dtf = dtf;
 
-	this->accountList = new vector<Account>();
-	this->ticketList = new vector<Ticket>();
+    this->accountList = new vector<Account>();
+    this->ticketList = new vector<Ticket>();
 }
 
 FileIO::~FileIO() {
-	delete accountList;
-	delete ticketList;
+    delete accountList;
+    delete ticketList;
 }
 
-
 bool FileIO::initialize() {
-	//TODO REMOVE
+    //TODO REMOVE
     //vector<Entry>* entries = this->readDailyTransaction();
-	//Read in lists
+    //Read in lists
     //throw "Not yet implemented";
     //this
-	return updateAccountList() && updateTicketList();
+    return updateAccountList() && updateTicketList();
 }
 
 vector<Entry>* FileIO::readDailyTransaction() {
-	/**
-	 * Read in the daily transaction file
-	 *
-	 * This will be implemented to allow for the program to be shut off and then
-	 * re-initialized. Currently not implemented for the prototype.
-	 */
-	throw "Not yet implemented";
+    /**
+     * Read in the daily transaction file
+     *
+     * This will be implemented to allow for the program to be shut off and then
+     * re-initialized. Currently not implemented for the prototype.
+     */
+    throw "Not yet implemented";
 }
 
 /**
@@ -40,7 +39,7 @@ vector<Entry>* FileIO::readDailyTransaction() {
  * daily transaction file
  */
 bool FileIO::updateAccountList() {
-	//TODO REMOVE
+    //TODO REMOVE
     //vector<Entry>* entries = this->readDailyTransaction();
 
     //for (vector<Entry>::iterator iterator = entries->begin(); iterator != entries->end(); iterator++) {
@@ -64,7 +63,7 @@ bool FileIO::updateAccountList() {
                     string username = accountV[0];
                     string type = accountV[1];
 
-                    stringstream ss (stringstream::in | stringstream::out);
+                    stringstream ss(stringstream::in | stringstream::out);
                     ss << accountV[2];
 
                     double balance;
@@ -107,7 +106,7 @@ bool FileIO::updateTicketList() {
                     string event = ticketV[0];
                     string username = ticketV[1];
 
-                    stringstream ss (stringstream::in | stringstream::out);
+                    stringstream ss(stringstream::in | stringstream::out);
                     ss << ticketV[2];
 
                     int num;
@@ -136,19 +135,19 @@ bool FileIO::updateTicketList() {
 
 bool FileIO::writeTransaction(vector<Entry>* newList) {
 
-	ofstream dtf (this->dtf, ios::app);
+    ofstream dtf(this->dtf, ios::app);
 
-	if(dtf.is_open()) {
-		for(vector<Entry>::size_type i = 0; i < newList->size(); i++) {
-			// Write to file given path
-			dtf << newList->at(i).getDTFLine();
-		}
+    if (dtf.is_open()) {
+        for (vector<Entry>::size_type i = 0; i < newList->size(); i++) {
+            // Write to file given path
+            dtf << newList->at(i).getDTFLine();
+        }
 
-		dtf << Entry::EMPTY_ENTRY;
-		dtf.close();
+        dtf << Entry::EMPTY_ENTRY;
+        dtf.close();
         return true;
-	}
-	return false;
+    }
+    return false;
 }
 
 int FileIO::findUser(string username) {
@@ -175,11 +174,13 @@ bool FileIO::isUserUnique(string username) {
     bool found = false;
 
     for (vector<Account>::size_type i = 0; i < this->accountList->size(); i++) {
-        if (found) {
-            return false;
-        }
-        else {
-            found = true;
+        if (this->accountList->at(i).getUsername() == username) {
+            if (found) {
+                return false;
+            }
+            else {
+                found = true;
+            }
         }
     }
 
@@ -190,11 +191,15 @@ bool FileIO::isEventUnique(string event, string sellName) {
     bool found = false;
 
     for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
-        if (found) {
-            return false;
-        }
-        else {
-            found = true;
+        Ticket item = this->ticketList->at(i);
+
+        if (item.getEvent() == event && item.getUsername() == sellName) {
+            if (found) {
+                return false;
+            }
+            else {
+                found = true;
+            }
         }
     }
 
@@ -202,9 +207,9 @@ bool FileIO::isEventUnique(string event, string sellName) {
 }
 
 vector<Account>* FileIO::getAccountList() {
-	return this->accountList;
+    return this->accountList;
 }
 
 vector<Ticket>* FileIO::getTicketList() {
-	return this->ticketList;
+    return this->ticketList;
 }
