@@ -59,9 +59,11 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 		return false;
 	}
 
+	vector<Account>* accountList = this->fileIO->getAccountList();
+	Account buyer = accountList->at(currentUser);
 
-	if(this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::SELL) == 0) {
+
+	if(buyer.getType().compare(Account::SELL) == 0) {
 		// User does not have buy privileges
 		return false;
 	}
@@ -71,8 +73,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 		return false;
 	}
 
-	if (this->fileIO->getAccountList()->at(currentUser).getType()
-			.compare(Account::ADMIN) != 0 && numTickets > 4) {
+	if (accountList->at(currentUser).getType().compare(Account::ADMIN) != 0 && numTickets > 4) {
 		// User cannot buy more than 4 tickets
 		return false;
 	}
@@ -93,41 +94,36 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 		return false;
 	}
 
-	double cost = this->fileIO->getTicketList()->at(ticket).getCost()
-			* numTickets;
+	vector<Ticket>* ticketList = this->fileIO->getTicketList();
+	Ticket eventTickets = ticketList->at(ticket);
 
-	if (this->fileIO->getAccountList()->at(currentUser).getBalance()
-			< cost) {
+	double cost = eventTickets.getCost() * numTickets;
+
+	if (buyer.getBalance() < cost) {
 		// User has insufficient funds
 		return false;
 	}
 
-	if ((this->fileIO->getAccountList()->at(currentUser).getBalance()
-			+ cost) > Account::MAX_CREDIT) {
+	if ((buyer.getBalance()	+ cost) > Account::MAX_CREDIT) {
 		// Seller's funds will exceed max price
 		return false;
 	}
 
+	// TODO: Add confirmation of purchase
+
 	// Buy Start
-	this->fileIO->getAccountList()->at(currentUser).setBalance(
-			this->fileIO->getAccountList()->at(currentUser).getBalance()
-			- cost);
+	buyer.setBalance(buyer.getBalance()	- cost);
 
-	this->fileIO->getAccountList()->at(seller).setBalance(
-			this->fileIO->getAccountList()->at(seller).getBalance()
-			+ cost);
+	accountList->at(seller).setBalance(accountList->at(seller).getBalance()	+ cost);
 
-	this->fileIO->getTicketList()->at(ticket).decreaseTicketNumber
-			(numTickets);
+	eventTickets.decreaseTicketNumber(numTickets);
 
-	if (this->fileIO->getTicketList()->at(ticket).getTicketNumber() == 0) {
+	if (eventTickets.getTicketNumber() == 0) {
 		// Delete ticket
-		this->fileIO->getTicketList()->erase(this->fileIO
-				->getTicketList()->begin() + (ticket - 1),
-				this->fileIO->getTicketList()->begin() + ticket);
+	    ticketList->erase(ticketList->begin() + (ticket - 1), ticketList->begin() + ticket);
 	}
 
-	double ticketCost = this->fileIO->getTicketList()->at(ticket).getCost();
+	double ticketCost = eventTickets.getCost();
 
 	// Add transaction to transaction list
 	EventTransaction* buy = new EventTransaction(Entry::BUY, event, sellName, ticketCost, numTickets);
