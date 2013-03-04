@@ -107,6 +107,7 @@ bool FileIO::updateTicketList() {
                 int num;
                 ss >> num;
 
+                ss.clear();
                 ss << lineV[3];
 
                 double price;
