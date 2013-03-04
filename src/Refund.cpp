@@ -39,7 +39,7 @@ string Refund::getDTFLine() {
     stringstream buffer;
 
     char amount[Account::MAX_CREDIT_SIZE];
-    char* format;
+    char format[5];
     sprintf(format, "%s%d%s", "%", Account::MAX_CREDIT_SIZE, ".2f");
     sprintf(amount, format, getCredit());
 

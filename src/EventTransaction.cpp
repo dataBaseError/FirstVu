@@ -48,7 +48,7 @@ string EventTransaction::getDTFLine() {
     stringstream buffer;
 
     char price[Ticket::MAX_PRICE_SIZE];
-    char* format;
+    char format[5];
     sprintf(format, "%s%d%s", "%", Ticket::MAX_PRICE_SIZE, ".2f");
     sprintf(price, format, getPrice());
 

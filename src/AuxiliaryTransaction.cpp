@@ -39,7 +39,7 @@ string AuxiliaryTransaction::getDTFLine() {
     stringstream buffer;
 
     char credit[Account::MAX_CREDIT_SIZE];
-    char* format;
+    char format[5];
     sprintf(format, "%s%d%s", "%0", Account::MAX_CREDIT_SIZE, ".2f");
     sprintf(credit, format, getCredit());
 
