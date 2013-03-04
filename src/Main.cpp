@@ -93,6 +93,7 @@ int main(int argc, char** argv) {
                         }
 
                         if (success) {
+                            cout << "new balance $" << balance << endl;
                             cout << "credit added" << endl;
                         }
                     }

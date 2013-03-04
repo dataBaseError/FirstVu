@@ -2,8 +2,6 @@
 
 export BINARY="$(readlink -f "./Debug/FirstVu")"
 TESTDIR="./tests"
-export GLOBAL_UAO="$TESTDIR/global/glob_account.inp"
-export GLOBAL_ATO="$TESTDIR/global/glob_available_tickets.inp"
 
 function clean() {
     find "$TESTDIR" -type f | grep ".dtf." | xargs rm 2> /dev/null
@@ -14,23 +12,14 @@ function testCase() {
     cd "$1"
     case="$(basename $PWD)"
 
-    # Input Files
-    # GLOBAL_UAO
-    # GLOBAL_ATO
+    uao="$case"".uao"
+    ato="$case"".ato"
     inp="$case"".inp"
-
-    # Output Files
     dtf="$(mktemp "$case"".dtf.XXX")"
     out="$(mktemp "$case"".out.XXX")"
 
-    # Expected Files
-    uao="$case"".uao"
-    ato="$case"".ato"
-    bto="$case"".bto"
-    etf="$case"".etF"
-
     echo "$case"
-    "$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" > "$out"
+    "$BINARY" "$uao" "$ato" "$dtf" < "$inp" > "$out"
 
     rm "$dtf"
     rm "$out"
