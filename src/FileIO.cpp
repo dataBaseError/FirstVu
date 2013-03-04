@@ -144,11 +144,6 @@ bool FileIO::writeTransaction(vector<Entry>* newList) {
 			dtf << newList->at(i).getDTFLine();
 		}
 
-		/*
-		 * TODO If this is being written every time, then it will have to be
-		 * removed every time following the first time. Unless we only wrote it
-		 * when a user 'quit' the system.
-		 */
 		dtf << Entry::EMPTY_ENTRY;
 		dtf.close();
         return true;
@@ -182,7 +177,8 @@ bool FileIO::isUserUnique(string username) {
     for (vector<Account>::size_type i = 0; i < this->accountList->size(); i++) {
         if (found) {
             return false;
-        } else {
+        }
+        else {
             found = true;
         }
     }
@@ -196,7 +192,8 @@ bool FileIO::isEventUnique(string event, string sellName) {
     for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
         if (found) {
             return false;
-        } else {
+        }
+        else {
             found = true;
         }
     }

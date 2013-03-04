@@ -30,9 +30,6 @@ bool Transaction::login(string username) {
 				return false;
 			}
 
-			// Initialize transaction list
-			//this->transaction = new vector<Entry>();
-
 			return true;
 		}
 	}
@@ -41,6 +38,11 @@ bool Transaction::login(string username) {
 }
 
 bool Transaction::logout() {
+
+	if(currentUser == -1) {
+		// No user logged in
+		return false;
+	}
 
 	AuxiliaryTransaction exitUser (Entry::LOGOUT, this->fileIO
 			->getAccountList()->at(this->currentUser).getUsername(),
@@ -364,8 +366,10 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 		return false;
 	}
 
-	double newBuyerBalance = this->fileIO->getAccountList()->at(buyer).getBalance() + amount;
-	double newSellerBalance = this->fileIO->getAccountList()->at(seller).getBalance() - amount;
+	double newBuyerBalance = this->fileIO->getAccountList()->at(buyer)
+			.getBalance() + amount;
+	double newSellerBalance = this->fileIO->getAccountList()->at(seller)
+			.getBalance() - amount;
 
 	if (newBuyerBalance > Account::MAX_CREDIT) {
 		// New balance will exceed maximum credit balance
