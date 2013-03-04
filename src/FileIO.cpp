@@ -69,6 +69,8 @@ bool FileIO::updateAccountList() {
                 Account* account = new Account(username, type, balance);
                 this->accountList->push_back(*account);
                 delete account;
+            } else {
+                break;
             }
         }
 
@@ -113,6 +115,8 @@ bool FileIO::updateTicketList() {
                 Ticket* ticket = new Ticket(event, username, num, price);
                 this->ticketList->push_back(*ticket);
                 delete ticket;
+            } else {
+                break;
             }
         }
         ato.close();
