@@ -64,7 +64,7 @@ public:
 	 *
 	 * @return the entry as it would show up in the daily transaction file
 	 */
-	virtual string getDTFLine();
+	virtual string getDTFLine() = 0;
 };
 
 #endif // _ENTRY_H_
