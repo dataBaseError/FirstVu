@@ -66,7 +66,7 @@ int main(int argc, char** argv) {
                 }
                 else if (input.compare("addcredit") == 0) {
                     if (session->isAdmin()) {
-                        cout << "enter username." << endl;
+                        cout << "enter username" << endl;
                         getline(cin, username);
                     }
 
@@ -75,6 +75,9 @@ int main(int argc, char** argv) {
                     cin >> balance;
 
                     success = false;
+
+                    success = validBalance(balance);
+
                     if (session->isAdmin()) {
                         success = session->addcredit(balance);
                     }
@@ -110,6 +113,9 @@ int main(int argc, char** argv) {
                     //getline(cin, ticketNum);
                     cin >> ticketNum;
 
+                    // Skip to next line
+                    while (cin.get() != '\n');
+
                     cout << "enter username of seller" << endl;
                     getline(cin, seller);
 
@@ -139,6 +145,8 @@ int main(int argc, char** argv) {
             //cout << endl;
         }
     }
+
+    cout << endl;
 
     return 0;
 }
