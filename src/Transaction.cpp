@@ -8,6 +8,8 @@ Transaction::Transaction(char* accountPath, char* availTicketPath,
 	this->transaction = new vector<Entry*>();
 
 	this->fileIO = new FileIO(accountPath, availTicketPath, dailyTransactionPath);
+
+	this->fileIO->initialize();
 }
 
 Transaction::~Transaction() {
@@ -21,7 +23,7 @@ bool Transaction::login(string username) {
 	if (currentUser == -1) {
 
 		// Read in uao and ato files
-		if (this->fileIO->initialize()) {
+		//if () {
 
 			currentUser = this->fileIO->findUser(username);
 			if (currentUser == -1) {
@@ -30,7 +32,7 @@ bool Transaction::login(string username) {
 			}
 
 			return true;
-		}
+		//}
 	}
 
     return false;
@@ -47,6 +49,7 @@ bool Transaction::logout() {
 	AuxiliaryTransaction* exitUser = new AuxiliaryTransaction (Entry::LOGOUT, currentUser.getUsername(),
 			currentUser.getBalance(),
 			currentUser.getType());
+
 	this->transaction->push_back(exitUser);
 	this->currentUser = -1;
 
@@ -237,8 +240,12 @@ bool Transaction::removeUser(string username) {
 	double balance = this->fileIO->getAccountList()->at(user).getBalance();
 
 	this->fileIO->getAccountList()->erase(this->fileIO
-					->getAccountList()->begin() + (user - 1),
-					this->fileIO->getAccountList()->begin() + user);
+					->getAccountList()->begin() + (user),
+					this->fileIO->getAccountList()->begin() + user+1);
+
+	/*for (int i = 0; i < fileIO->getAccountList()->size(); i++) {
+		cout << fileIO->getAccountList()->at(i).getUsername() << endl;
+	}*/
 
 	AuxiliaryTransaction* removeUser = new AuxiliaryTransaction(Entry::DEL, username, balance, type);
 	this->transaction->push_back(removeUser);
@@ -384,6 +391,8 @@ bool Transaction::quit() {
 		this->transaction->clear();
 		return true;
 	}
+
+
 
 	// Error writing dtf.
 	return false;
