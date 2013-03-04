@@ -2,8 +2,8 @@
 
 const double Transaction::maxAddCredit = 1000.00;
 
-//TODO add daily transaction file path as argument.
-Transaction::Transaction(char* accountPath, char* availTicketPath, char* dailyTransactionPath) {
+Transaction::Transaction(char* accountPath, char* availTicketPath,
+		char* dailyTransactionPath) {
 	this->currentUser = -1;
 	this->transaction = new vector<Entry>();
 
@@ -15,6 +15,7 @@ Transaction::~Transaction() {
     delete fileIO;
 }
 
+// TODO add error messages.
 bool Transaction::login(string username) {
 
 	// Check if transaction list is empty
@@ -30,7 +31,7 @@ bool Transaction::login(string username) {
 			}
 
 			// Initialize transaction list
-			this->transaction = new vector<Entry>();
+			//this->transaction = new vector<Entry>();
 
 			return true;
 		}
@@ -41,18 +42,14 @@ bool Transaction::login(string username) {
 
 bool Transaction::logout() {
 
-	// Write to daily transaction file
-	if (this->fileIO->writeTransaction(this->transaction)) {
-		transaction->clear();
-		//delete this;
-		this->currentUser = -1;
-	}
-	else {
-		// Error writing to transaction file
-		return false;
-	}
+	AuxiliaryTransaction exitUser (Entry::LOGOUT, this->fileIO
+			->getAccountList()->at(this->currentUser).getUsername(),
+			this->fileIO->getAccountList()->at(this->currentUser).getBalance(),
+			this->fileIO->getAccountList()->at(this->currentUser).getType());
+	this->transaction->push_back(exitUser);
+	this->currentUser = -1;
 
-	return false;
+	return true;
 }
 
 bool Transaction::buy(string event, int numTickets, string sellName) {
@@ -209,6 +206,10 @@ bool Transaction::create(string newUser, string accountType,
 	Account newAccount(newUser, accountType, accountBalance);
 	this->fileIO->getAccountList()->push_back(newAccount);
 
+	AuxiliaryTransaction createUser (Entry::CREATE, newUser, accountBalance,
+			accountType);
+	this->transaction->push_back(createUser);
+
 	return true;
 }
 
@@ -245,8 +246,8 @@ bool Transaction::removeUser(string username) {
 					->getAccountList()->begin() + (user - 1),
 					this->fileIO->getAccountList()->begin() + user);
 
-	AuxiliaryTransaction remove (Entry::DEL, username, balance, type);
-	this->transaction->push_back(remove);
+	AuxiliaryTransaction removeUser (Entry::DEL, username, balance, type);
+	this->transaction->push_back(removeUser);
 
 	return true;
 }
@@ -317,8 +318,8 @@ bool Transaction::addcredit(string username, double amount) {
 
 	// AddCredit Start
 	this->fileIO->getAccountList()->at(user).setBalance(newBalance);
-
 	string type = this->fileIO->getAccountList()->at(user).getType();
+
 	AuxiliaryTransaction add (Entry::ADDCREDIT, username, newBalance, type);
 	this->transaction->push_back(add);
     return true;
@@ -381,20 +382,19 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	this->fileIO->getAccountList()->at(buyer).setBalance(newBuyerBalance);
 
 	Refund refund (Entry::REFUND, buyName, sellName, amount);
-    throw "Not yet implemented";
+
+	return true;
 }
 
-bool Transaction::initTransaction() {
-    if (!transaction->empty()) {
-    	transaction->clear();
-    }
+bool Transaction::quit() {
 
-    /**
-     * TODO Read in user accounts and available tickets. Apply daily
-     * transactions to these files
-     */
+	if (this->fileIO->writeTransaction(this->transaction)) {
+		this->transaction->clear();
+		return true;
+	}
 
-    return true;
+	// Error writing dtf.
+	return false;
 }
 
 FileIO* Transaction::getFileIO() {
@@ -409,6 +409,7 @@ bool Transaction::isAdmin() {
 	if (this->currentUser == -1) {
 		return false;
 	}
+
 	if (this->fileIO->getAccountList()->at(currentUser).getType().compare(
 			Account::ADMIN) == 0) {
 		return true;

@@ -20,9 +20,11 @@ string &rtrim(string &s);
 
 // http://www.cplusplus.com/faq/sequences/strings/split/
 // puts the results in an already constructed vector
+// TODO document
 vector<string> &split(const string &s, char delim, vector<string> &elems);
 
 //returns a new vector
+// TODO document
 vector<string> split(const string &s, char delim);
 
 #endif /* UTILITY_H_ */

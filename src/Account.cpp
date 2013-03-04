@@ -11,6 +11,7 @@ const string Account::BUY   = "BS";
 const string Account::FULL  = "FS";
 
 const double Account::MAX_CREDIT = 999999.99;
+
 const int Account::MAX_CREDIT_SIZE = 9;
 const int Account::MAX_USERNAME_LENGTH = 15;
 
