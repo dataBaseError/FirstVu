@@ -1,10 +1,3 @@
-/*
- * utility.cpp
- *
- *  Created on: 2013-03-03
- *      Author: capncanuck
- */
-
 #include "../include/utility.h"
 
 string &rtrim(string &s) {

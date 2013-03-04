@@ -1,10 +1,11 @@
-/*
- * utility.h
+/**
+ * A file that contains static methods for string manipulation.
  *
- *  Created on: 2013-03-03
- *      Author: capncanuck
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
  */
-
 #ifndef UTILITY_H_
 #define UTILITY_H_
 

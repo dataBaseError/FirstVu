@@ -76,7 +76,10 @@ int main(int argc, char** argv) {
 
                     success = false;
 
-                    success = validBalance(balance);
+                    if(!validBalance(balance))
+                    {
+                    	return false;
+                    }
 
                     if (session->isAdmin()) {
                         success = session->addcredit(balance);
