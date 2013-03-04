@@ -26,7 +26,7 @@ int main(int argc, char** argv) {
                     }
                 }
                 else if (input.compare("quit") == 0) {
-                	session->quit();
+                    session->quit();
                     break;
                 }
                 else {
@@ -73,23 +73,28 @@ int main(int argc, char** argv) {
                     cout << "enter credit amount" << endl;
                     //getline(cin, balance);
                     cin >> balance;
+                    bool fail = cin.fail();
 
-                    success = false;
+                    // Skip to next line
+                    string dummy;
+                    getline(cin, dummy);
 
-                    if(!validBalance(balance))
-                    {
-                    	return false;
-                    }
-
-                    if (session->isAdmin()) {
-                        success = session->addcredit(balance);
+                    if (fail) {
+                        cout << "error: invalid credit amount" << endl;
                     }
                     else {
-                        success = session->addcredit(username, balance);
-                    }
+                        success = false;
 
-                    if (success) {
-                        cout << "credit added" << endl;
+                        if (!session->isAdmin()) {
+                            success = session->addcredit(balance);
+                        }
+                        else {
+                            success = session->addcredit(username, balance);
+                        }
+
+                        if (success) {
+                            cout << "credit added" << endl;
+                        }
                     }
                 }
                 else if (input.compare("sell") == 0) {
@@ -114,16 +119,23 @@ int main(int argc, char** argv) {
 
                     cout << "enter number of tickets" << endl;
                     //getline(cin, ticketNum);
+
                     cin >> ticketNum;
+                    bool fail = cin.fail();
 
                     // Skip to next line
-                    while (cin.get() != '\n');
+                    string dummy;
+                    getline(cin, dummy);
 
-                    cout << "enter username of seller" << endl;
-                    getline(cin, seller);
+                    if (!fail || ticketNum < 1) {
+                        cout << "error: invalid ticket number" << endl;
+                    } else {
+                        cout << "enter username of seller" << endl;
+                        getline(cin, seller);
 
-                    if (session->buy(event, ticketNum, seller)) {
-                        cout << "purchase successful" << endl;
+                        if (session->buy(event, ticketNum, seller)) {
+                            cout << "purchase successful" << endl;
+                        }
                     }
                 }
                 else if (input.compare("refund") == 0) {

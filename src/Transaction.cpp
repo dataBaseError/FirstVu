@@ -254,7 +254,6 @@ bool Transaction::removeUser(string username) {
 }
 
 bool Transaction::addcredit(double amount) {
-
 	if (currentUser == -1) {
 		// No user is logged in
 		return false;

@@ -8,6 +8,8 @@
  */
 #include "../include/validation.h"
 
+// Cast to string
+// match with [0-9]+\.[0-9]{2}
 bool validBalance(double balance) {
     throw "Needs to be implemented";
 }
