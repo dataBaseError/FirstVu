@@ -5,7 +5,7 @@ TESTDIR="./tests"
 
 function clean() {
     find "$TESTDIR" -type f | grep ".dtf." | xargs rm 2> /dev/null
-    find "$TESTDIR" -type f | grep ".out." | xargs rm 2> /dev/null
+    find "$TESTDIR" -type f | grep "\.out\." | xargs rm 2> /dev/null
 }
 
 function testCase() {
