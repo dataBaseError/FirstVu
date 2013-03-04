@@ -11,6 +11,6 @@
 
 using namespace std;
 
-int main (int argc, char** argv);
+int main(int argc, char** argv);
 
 #endif // _MAIN_H_
