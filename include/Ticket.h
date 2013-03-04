@@ -28,6 +28,7 @@ public:
     static const int MAX_TICKET;
     static const int MAX_TICKET_SIZE;
     static const int MAX_EVENT_LENGTH;
+
     /**
      * Constructor for making a ticket listing for an event.
      */
@@ -96,6 +97,13 @@ public:
      */
     void setCost(double cost);
 
+    /**
+	 * Implemented an equals operator to compare to tickets.
+	 *
+	 * @param left The account to the left of the equal signs
+	 * @param right The account to the right of the equal signs
+	 * @return Whether or not the tickets are equal
+	 */
     friend bool operator==(Ticket left, Ticket right);
 };
 

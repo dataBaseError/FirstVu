@@ -30,7 +30,7 @@ vector<Entry>* FileIO::readDailyTransaction() {
 	 * Read in the daily transaction file
 	 *
 	 * This will be implemented to allow for the program to be shut off and then
-	 * re-initialized. Currently not implmented for the prototype.
+	 * re-initialized. Currently not implemented for the prototype.
 	 */
 	throw "Not yet implemented";
 }
@@ -144,7 +144,8 @@ bool FileIO::writeTransaction(vector<Entry>* newList) {
 			dtf << newList->at(i).getDTFLine();
 		}
 
-		/* TODO If this is being written every time, then it will have to be
+		/*
+		 * TODO If this is being written every time, then it will have to be
 		 * removed every time following the first time. Unless we only wrote it
 		 * when a user 'quit' the system.
 		 */

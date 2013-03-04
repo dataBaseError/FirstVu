@@ -29,13 +29,6 @@ private:
 	vector<Entry>* transaction;
 	int currentUser;
 
-	/**
-	 * Initialization for a new session.
-	 *
-	 * @return whether the transaction successfully initialized.
-	 */
-	bool initTransaction();
-
 public:
 	static const double maxAddCredit;
 
@@ -136,6 +129,14 @@ public:
 	 * @return whether the refund was successful.
 	 */
 	bool refund(string buyName, string sellName, double amount);
+
+	/**
+	 * The transaction for exiting the system. When called the system writes out
+	 * to the daily transaction file.
+	 *
+	 * @return Whether the write to the daily transaction file was successful.
+	 */
+	bool quit();
 
 	/**
 	 * Accessor method for FileIO.

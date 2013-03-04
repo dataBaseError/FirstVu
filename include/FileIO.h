@@ -22,7 +22,6 @@ using namespace std;
  * @author Joseph Heron
  * @author Carly Marshall
  */
-
 class FileIO {
 
 private:

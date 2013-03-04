@@ -16,7 +16,6 @@ vector<string> &split(const string &s, char delim, vector<string> &elems) {
     return elems;
 }
 
-
 vector<std::string> split(const std::string &s, char delim) {
     std::vector<std::string> elems;
     return split(s, delim, elems);

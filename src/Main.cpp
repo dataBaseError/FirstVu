@@ -6,13 +6,8 @@ int main(int argc, char** argv) {
     if (argc == 4) {
         Transaction* session = new Transaction(argv[1], argv[2], argv[3]);
 
-        string input;
-        string username;
-        string type;
-        string event;
-        string seller;
-        double balance;
-        double price;
+        string input, username, type, event, seller;
+        double balance, price;
         int ticketNum;
         bool success = false;
 
@@ -32,12 +27,9 @@ int main(int argc, char** argv) {
                     }
                 }
                 else if (input.compare("quit") == 0) {
-                    if (session->isLoggedIn()) {
-                        cout << "error: invalid command" << endl;
-                    }
-                    else {
-                        break;
-                    }
+
+                	session->quit();
+                    break;
                 }
                 else {
                     cout << "error: invalid command" << endl;
@@ -76,8 +68,8 @@ int main(int argc, char** argv) {
                 }
                 else if (input.compare("addcredit") == 0) {
                     if (session->isAdmin()) {
-                        //cout << "Enter username." << endl;
-                        //getline(cin, username);
+                        cout << "enter username." << endl;
+                        getline(cin, username);
                     }
 
                     cout << "enter credit amount" << endl;
@@ -123,7 +115,6 @@ int main(int argc, char** argv) {
                     cout << "enter username of seller" << endl;
                     getline(cin, seller);
 
-                    // TODO add confirmation into buy transaction.
                     if (session->buy(event, ticketNum, seller)) {
                         cout << "purchase successful" << endl;
                     }
