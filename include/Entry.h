@@ -1,6 +1,7 @@
 #ifndef _ENTRY_H_
 #define _ENTRY_H_
 
+#include <cstdio>
 #include <iomanip>
 #include <string>
 #include <sstream>
