@@ -29,12 +29,18 @@ int main(int argc, char** argv) {
                     session->quit();
                     break;
                 }
+                else if (input.compare("logout") == 0) {
+                	cout << "error: no users logged in" << endl;
+                }
                 else {
                     cout << "error: invalid command" << endl;
                 }
             }
             else {
-                if (input.compare("logout") == 0) {
+            	if (input.compare("login") == 0) {
+            		cout << "error: user is already logged in" << endl;
+            	}
+            	else if (input.compare("logout") == 0) {
                     session->logout();
                     cout << "logout successful" << endl;
                 }
@@ -158,6 +164,7 @@ int main(int argc, char** argv) {
                     cout << "error: invalid command" << endl;
                 }
             }
+
             //cout << endl;
         }
     }

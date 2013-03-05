@@ -20,27 +20,29 @@ Transaction::~Transaction() {
 // TODO add error messages.
 bool Transaction::login(string username) {
 	// Check if transaction list is empty
-	if (currentUser == -1) {
+	//if (currentUser == -1) {
 
 		// Read in uao and ato files
 		//if () {
 
 			currentUser = this->fileIO->findUser(username);
 			if (currentUser == -1) {
-				// Invalid user
+				cout << "error: username does not exist" << endl;
 				return false;
 			}
 
 			return true;
 		//}
-	}
+	//}
 
-    return false;
+	//cout << "error: user is already logged in";
+    //return false;
 }
 
 bool Transaction::logout() {
 	if(currentUser == -1) {
 		// No user logged in
+		cout << "No user logged in" << endl;
 		return false;
 	}
 
@@ -58,7 +60,7 @@ bool Transaction::logout() {
 
 bool Transaction::buy(string event, int numTickets, string sellName) {
 	if (currentUser == -1) {
-		cout << "No user logged in";
+		cout << "No user logged in" << endl;
 		return false;
 	}
 
@@ -67,31 +69,31 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 
 
 	if(buyer.getType().compare(Account::SELL) == 0) {
-		cout << "User does not have buy privileges";
+		cout << "User does not have buy privileges" << endl;
 		return false;
 	}
 
 	if (numTickets <= 0) {
-		cout << "Not enough tickets purchased";
+		cout << "Not enough tickets purchased" << endl;
 		return false;
 	}
 
 	if (accountList->at(currentUser).getType().compare(Account::ADMIN) != 0 && numTickets > 4) {
-		cout << "User cannot buy more than 4 tickets";
+		cout << "User cannot buy more than 4 tickets" << endl;
 		return false;
 	}
 
 	int seller = this->fileIO->findUser(sellName);
 
 	if (seller == -1) {
-		cout << "Seller does not exist";
+		cout << "Seller does not exist" << endl;
 		return false;
 	}
 
 	int ticket = this->fileIO->findEvent(event, sellName);
 
 	if (ticket == -1) {
-		cout << "Event does not exist";
+		cout << "Event does not exist" << endl;
 		return false;
 	}
 
@@ -101,12 +103,12 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 	double cost = eventTickets.getCost() * numTickets;
 
 	if (buyer.getBalance() < cost) {
-		cout << "User has insufficient funds";
+		cout << "User has insufficient funds" << endl;
 		return false;
 	}
 
 	if ((buyer.getBalance()	+ cost) > Account::MAX_CREDIT) {
-		cout << "Seller's funds will exceed max price";
+		cout << "Seller's funds will exceed max price" << endl;
 		return false;
 	}
 
@@ -136,7 +138,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 
 bool Transaction::sell(string event, double salePrice, int availTicket) {
 	if (currentUser == -1) {
-		cout << "No user is logged in";
+		cout << "No user is logged in" << endl;
 		return false;
 	}
 
@@ -144,21 +146,21 @@ bool Transaction::sell(string event, double salePrice, int availTicket) {
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
 			.compare(Account::BUY) == 0){
-		cout << "Invalid privileges";
+		cout << "Invalid privileges" << endl;
 		return false;
 	}
 	if (availTicket <= 0 || availTicket > Ticket::MAX_TICKET) {
-		cout << "Invalid number of Tickets";
+		cout << "Invalid number of Tickets" << endl;
 		return false;
 	}
 
 	if (salePrice < 0 || salePrice > Ticket::MAX_PRICE) {
-		cout << "Invalid Ticket Price";
+		cout << "Invalid Ticket Price" << endl;
 		return false;
 	}
 
 	if (this->fileIO->findEvent(event, sellName) >= 0) {
-		cout << "Event already exists";
+		cout << "Event already exists" << endl;
 		return false;
 	}
 
@@ -177,7 +179,7 @@ bool Transaction::create(string newUser, string accountType,
 		double accountBalance) {
 
 	if (currentUser == -1) {
-		cout << "No user logged in";
+		cout << "No user logged in" << endl;
 		return false;
 	}
 
@@ -185,18 +187,18 @@ bool Transaction::create(string newUser, string accountType,
 			accountType.compare(Account::SELL) != 0 &&
 			accountType.compare(Account::FULL) != 0 &&
 			accountType.compare(Account::ADMIN) != 0) {
-		cout << "Invalid account type";
+		cout << "Invalid account type" << endl;
 		return false;
 	}
 
 	if (accountBalance < 0 || accountBalance > Account::MAX_CREDIT) {
-		cout << "Invalid credit";
+		cout << "Invalid credit" << endl;
 		return false;
 	}
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
 			.compare(Account::ADMIN) != 0) {
-		cout << "Invalid user privileges";
+		cout << "Invalid user privileges" << endl;
 		return false;
 	}
 
@@ -213,25 +215,25 @@ bool Transaction::create(string newUser, string accountType,
 
 bool Transaction::removeUser(string username) {
 	if (currentUser == -1) {
-		cout << "No user is logged in";
+		cout << "No user is logged in" << endl;
 		return false;
 	}
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
 			.compare(Account::ADMIN) != 0) {
-		 cout << "Invalid user privileges";
+		 cout << "Invalid user privileges" << endl;
 		return false;
 	}
 
 	int user = this->fileIO->findUser(username);
 
 	if (user == -1) {
-		cout << "User does not exist";
+		cout << "User does not exist" << endl;
 		return false;
 	}
 
 	if (currentUser == user) {
-		cout << "Cannot delete self";
+		cout << "Cannot delete self" << endl;
 		return false;
 	}
 
@@ -255,12 +257,12 @@ bool Transaction::removeUser(string username) {
 
 bool Transaction::addcredit(double amount) {
 	if (currentUser == -1) {
-		cout << "No user is logged in";
+		cout << "No user is logged in" << endl;
 		return false;
 	}
 
 	if (amount > Transaction::maxAddCredit) {
-		cout << "Invalid credit amount";
+		cout << "Invalid credit amount" << endl;
 		return false;
 	}
 
@@ -268,7 +270,7 @@ bool Transaction::addcredit(double amount) {
 			.getBalance() + amount;
 
 	if (newBalance > Account::MAX_CREDIT) {
-		cout << "Will exceed maximum credit balance";
+		cout << "Will exceed maximum credit balance" << endl;
 		return false;
 	}
 
@@ -286,32 +288,32 @@ bool Transaction::addcredit(double amount) {
 
 bool Transaction::addcredit(string username, double amount) {
 	if (currentUser == -1) {
-		cout << "No user is logged in";
+		cout << "No user is logged in" << endl;
 		return false;
 	}
 
 	int user = this->fileIO->findUser(username);
 	if (user == -1) {
-		cout << "User does not exist";
+		cout << "User does not exist" << endl;
 		return false;
 	}
 
 	if (amount > Transaction::maxAddCredit) {
-		cout << "Invalid credit amount";
+		cout << "Invalid credit amount" << endl;
 		return false;
 	}
 
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
 			.compare(Account::ADMIN) != 0) {
-		cout << "User is not admin";
+		cout << "User is not admin" << endl;
 		return false;
 	}
 
 	double newBalance = this->fileIO->getAccountList()->at(user).getBalance() + amount;
 
 	if (newBalance > Account::MAX_CREDIT) {
-		cout << "Will exceed maximum credit balance";
+		cout << "Will exceed maximum credit balance" << endl;
 		return false;
 	}
 
@@ -326,13 +328,13 @@ bool Transaction::addcredit(string username, double amount) {
 
 bool Transaction::refund(string buyName, string sellName, double amount) {
 	if (currentUser == -1) {
-		cout << "No user is logged in";
+		cout << "No user is logged in" << endl;
 		return false;
 	}
 
 	if (this->fileIO->getAccountList()->at(currentUser).getType()
 			.compare(Account::ADMIN) != 0) {
-		cout << "User is not admin";
+		cout << "User is not admin" << endl;
 		return false;
 	}
 
@@ -340,12 +342,12 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	int seller = this ->fileIO->findUser(sellName);
 
 	if (buyer == -1) {
-		cout << "Buyer does not exist";
+		cout << "Buyer does not exist" << endl;
 		return false;
 	}
 
 	if (seller == -1) {
-		cout <<  "Seller does not exist";
+		cout <<  "Seller does not exist" << endl;
 		return false;
 	}
 
@@ -353,12 +355,12 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 	string sellerType = this->fileIO->getAccountList()->at(seller).getType();
 
 	if (buyerType.compare(Account::SELL) == 0) {
-		cout << "Buyer does not have buy privileges";
+		cout << "Buyer does not have buy privileges" << endl;
 		return false;
 	}
 
 	if (sellerType.compare(Account::BUY) == 0) {
-		cout << "Seller does not have sell privileges";
+		cout << "Seller does not have sell privileges" << endl;
 		return false;
 	}
 
@@ -368,12 +370,12 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 			.getBalance() - amount;
 
 	if (newBuyerBalance > Account::MAX_CREDIT) {
-		cout << "New balance will exceed maximum credit balance";
+		cout << "New balance will exceed maximum credit balance" << endl;
 		return false;
 	}
 
 	if (newSellerBalance < 0) {
-		cout << "Seller does not have enough credit";
+		cout << "Seller does not have enough credit" << endl;
 		return false;
 	}
 
@@ -392,9 +394,7 @@ bool Transaction::quit() {
 		return true;
 	}
 
-
-
-	cout << "Error writing dtf.";
+	cout << "Error writing dtf." << endl;
 	return false;
 }
 
