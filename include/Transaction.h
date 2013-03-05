@@ -4,6 +4,7 @@
 #include <cstring>
 #include <string>
 #include <vector>
+#include <iostream>
 
 #include "Entry.h"
 #include "EventTransaction.h"
