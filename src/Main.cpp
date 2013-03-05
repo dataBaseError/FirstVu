@@ -106,171 +106,171 @@ int main(int argc, char** argv) {
                             }
                         }
                     }
-                    else if (input.compare("addcredit") == 0) {
-                        if (session->isAdmin()) {
-                            cout << "enter username" << endl;
-                            getline(cin, username);
-
-                            if (!validUsername(username)) {
-                                cout << "error: invalid username" << endl;
-                            }
-                            // else?
-                        }
-
-                        if (session->getFileIO()->findUser(username) != -1) {
-                            cout << "enter credit amount" << endl;
-                            //getline(cin, balance);
-                            cin >> balance;
-                            bool fail = cin.fail();
-
-                            // Skip to next line
-                            string dummy;
-                            getline(cin, dummy);
-
-                            if (fail) {
-                                cout << "error: invalid credit amount" << endl;
-                            }
-                            else {
-                                success = false;
-
-                                if (!validBalance(balance)) {
-                                    cout << "error: amound added cannot be greater than $1000.00" << endl;
-                                }
-                                else {
-                                    if (!session->isAdmin()) {
-                                        success = session->addcredit(balance);
-                                    }
-                                    else {
-                                        success = session->addcredit(username, balance);
-                                    }
-
-                                    if (success) {
-                                        //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
-                                        cout << "credit added" << endl;
-                                    }
-                                }
-                            }
-                        }
-                        else {
-                            cout << "error: username does not exist" << endl;
-                        }
-                    }
-                    else if (input.compare("sell") == 0) {
-                        cout << "enter event title" << endl;
-                        getline(cin, event);
-
-                        if (!validEventName(event)) {
-                            cout << "error: invalid event name" << endl;
-                        }
-                        else {
-                            cout << "enter sale price" << endl;
-                            //getline(cin, price);
-                            cin >> price;
-
-                            bool fail = cin.fail();
-
-                            // Skip to next line
-                            string dummy;
-                            getline(cin, dummy);
-
-                            if (!fail) {
-                                if (!validPrice(price)) {
-                                    cout << "error: invalid event price" << endl;
-                                }
-                                else {
-                                    cout << "enter number of tickets" << endl;
-                                    //getline(cin, ticketNum);
-                                    cin >> ticketNum;
-                                    fail = cin.fail();
-
-                                    // Skip to next line
-                                    getline(cin, dummy);
-
-                                    if (!fail) {
-                                        if (session->sell(event, price, ticketNum)) {
-                                            cout << "tickets added" << endl;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else if (input.compare("buy") == 0) {
-                        cout << "enter event title" << endl;
-                        getline(cin, event);
-
-                        if (!validEventName(event)) {
-                            cout << "error: invalid event name" << endl;
-                        }
-                        else {
-                            cout << "enter number of tickets" << endl;
-                            //getline(cin, ticketNum);
-
-                            cin >> ticketNum;
-                            bool fail = cin.fail();
-
-                            // Skip to next line
-                            string dummy;
-                            getline(cin, dummy);
-
-                            if (fail || ticketNum <= 0) {
-                                cout << "error: invalid ticket number" << endl;
-                            } else {
-                                cout << "enter username of seller" << endl;
-                                getline(cin, seller);
-
-                                if (!validUsername(seller)) {
-                                    cout << "error: invalid seller name" << endl;
-                                }
-                                else {
-                                    if (session->buy(event, ticketNum, seller)) {
-                                        cout << "purchase successful" << endl;
-                                    }
-                                }
-                            }
-                        }
-                    }
-                    else if (input.compare("refund") == 0) {
-                        cout << "enter buyer's username" << endl;
+                }
+                else if (input.compare("addcredit") == 0) {
+                    if (session->isAdmin()) {
+                        cout << "enter username" << endl;
                         getline(cin, username);
 
                         if (!validUsername(username)) {
                             cout << "error: invalid username" << endl;
                         }
-                        else {
-                            cout << "enter seller's username" << endl;
-                            getline(cin, seller);
+                        // else?
+                    }
 
-                            if (!validUsername(username)) {
-                                cout << "error: invalid username" << endl;
+                    if (session->getFileIO()->findUser(username) != -1) {
+                        cout << "enter credit amount" << endl;
+                        //getline(cin, balance);
+                        cin >> balance;
+                        bool fail = cin.fail();
+
+                        // Skip to next line
+                        string dummy;
+                        getline(cin, dummy);
+
+                        if (fail) {
+                            cout << "error: invalid credit amount" << endl;
+                        }
+                        else {
+                            success = false;
+
+                            if (!validBalance(balance)) {
+                                cout << "error: amound added cannot be greater than $1000.00" << endl;
                             }
                             else {
-                                cout << "enter amount to transfer" << endl;
-                                //getline(cin, balance);
-                                cin >> balance;
-
-                                if (!validBalance(balance)) {
-                                    cout << "error: invalid transfer amount" << endl;
+                                if (!session->isAdmin()) {
+                                    success = session->addcredit(balance);
                                 }
                                 else {
-                                    if (session->refund(username, seller, balance)) {
-                                        cout << "refund successful" << endl;
-                                    }
+                                    success = session->addcredit(username, balance);
+                                }
+
+                                if (success) {
+                                    //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
+                                    cout << "credit added" << endl;
                                 }
                             }
                         }
                     }
                     else {
-                        cout << "error: invalid command" << endl;
+                        cout << "error: username does not exist" << endl;
                     }
                 }
+                else if (input.compare("sell") == 0) {
+                    cout << "enter event title" << endl;
+                    getline(cin, event);
 
-                //cout << endl;
+                    if (!validEventName(event)) {
+                        cout << "error: invalid event name" << endl;
+                    }
+                    else {
+                        cout << "enter sale price" << endl;
+                        //getline(cin, price);
+                        cin >> price;
+
+                        bool fail = cin.fail();
+
+                        // Skip to next line
+                        string dummy;
+                        getline(cin, dummy);
+
+                        if (!fail) {
+                            if (!validPrice(price)) {
+                                cout << "error: invalid event price" << endl;
+                            }
+                            else {
+                                cout << "enter number of tickets" << endl;
+                                //getline(cin, ticketNum);
+                                cin >> ticketNum;
+                                fail = cin.fail();
+
+                                // Skip to next line
+                                getline(cin, dummy);
+
+                                if (!fail) {
+                                    if (session->sell(event, price, ticketNum)) {
+                                        cout << "tickets added" << endl;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (input.compare("buy") == 0) {
+                    cout << "enter event title" << endl;
+                    getline(cin, event);
+
+                    if (!validEventName(event)) {
+                        cout << "error: invalid event name" << endl;
+                    }
+                    else {
+                        cout << "enter number of tickets" << endl;
+                        //getline(cin, ticketNum);
+
+                        cin >> ticketNum;
+                        bool fail = cin.fail();
+
+                        // Skip to next line
+                        string dummy;
+                        getline(cin, dummy);
+
+                        if (fail || ticketNum <= 0) {
+                            cout << "error: invalid ticket number" << endl;
+                        } else {
+                            cout << "enter username of seller" << endl;
+                            getline(cin, seller);
+
+                            if (!validUsername(seller)) {
+                                cout << "error: invalid seller name" << endl;
+                            }
+                            else {
+                                if (session->buy(event, ticketNum, seller)) {
+                                    cout << "purchase successful" << endl;
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (input.compare("refund") == 0) {
+                    cout << "enter buyer's username" << endl;
+                    getline(cin, username);
+
+                    if (!validUsername(username)) {
+                        cout << "error: invalid username" << endl;
+                    }
+                    else {
+                        cout << "enter seller's username" << endl;
+                        getline(cin, seller);
+
+                        if (!validUsername(username)) {
+                            cout << "error: invalid username" << endl;
+                        }
+                        else {
+                            cout << "enter amount to transfer" << endl;
+                            //getline(cin, balance);
+                            cin >> balance;
+
+                            if (!validBalance(balance)) {
+                                cout << "error: invalid transfer amount" << endl;
+                            }
+                            else {
+                                if (session->refund(username, seller, balance)) {
+                                    cout << "refund successful" << endl;
+                                }
+                            }
+                        }
+                    }
+                }
+                else {
+                    cout << "error: invalid command" << endl;
+                }
             }
+
+            //cout << endl;
         }
-
-        //cout << endl;
-
-        return 0;
     }
+
+    //cout << endl;
+
+    return 0;
 }
