@@ -1,6 +1,5 @@
 #include "../include/FileIO.h"
 
-//TODO add daily transaction file path as argument.
 FileIO::FileIO(char* uao, char* ato, char* dtf) {
     this->uao = uao;
     this->ato = ato;
@@ -16,22 +15,7 @@ FileIO::~FileIO() {
 }
 
 bool FileIO::initialize() {
-    //TODO REMOVE
-    //vector<Entry>* entries = this->readDailyTransaction();
-    //Read in lists
-    //throw "Not yet implemented";
-    //this
     return updateAccountList() && updateTicketList();
-}
-
-vector<Entry>* FileIO::readDailyTransaction() {
-    /**
-     * Read in the daily transaction file
-     *
-     * This will be implemented to allow for the program to be shut off and then
-     * re-initialized. Currently not implemented for the prototype.
-     */
-    throw "Not yet implemented";
 }
 
 /**
@@ -39,13 +23,6 @@ vector<Entry>* FileIO::readDailyTransaction() {
  * daily transaction file
  */
 bool FileIO::updateAccountList() {
-    //TODO REMOVE
-    //vector<Entry>* entries = this->readDailyTransaction();
-
-    //for (vector<Entry>::iterator iterator = entries->begin(); iterator != entries->end(); iterator++) {
-    //    iterator->
-    //}
-
     ifstream uao;
     uao.open(this->uao);
 
@@ -160,7 +137,13 @@ int FileIO::findUser(string username) {
 }
 
 int FileIO::findEvent(string event, string sellName) {
+	cout << ticketList->size() << endl;
     for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
+
+    	cout << "eventX" << event << endl;
+    	cout << "sellNameX" << sellName << endl;
+    	cout << this->ticketList->at(i).getEvent() << endl;
+    	cout << this->ticketList->at(i).getUsername() << endl;
         if (this->ticketList->at(i).getEvent() == event && this->ticketList->at(i).getUsername() == sellName) {
             return i;
         }

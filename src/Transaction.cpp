@@ -17,26 +17,14 @@ Transaction::~Transaction() {
     delete fileIO;
 }
 
-// TODO add error messages.
 bool Transaction::login(string username) {
-	// Check if transaction list is empty
-	//if (currentUser == -1) {
+	currentUser = this->fileIO->findUser(username);
+	if (currentUser == -1) {
+		cout << "error: username does not exist" << endl;
+		return false;
+	}
 
-		// Read in uao and ato files
-		//if () {
-
-			currentUser = this->fileIO->findUser(username);
-			if (currentUser == -1) {
-				cout << "error: username does not exist" << endl;
-				return false;
-			}
-
-			return true;
-		//}
-	//}
-
-	//cout << "error: user is already logged in";
-    //return false;
+	return true;
 }
 
 bool Transaction::logout() {
@@ -106,33 +94,44 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 		return false;
 	}
 
-	if ((buyer.getBalance()	+ cost) > Account::MAX_CREDIT) {
+	if ((accountList->at(seller).getBalance()	+ cost) > Account::MAX_CREDIT) {
 		cout << "error: seller balance cannot be greater than $999,999" << endl;
 		return false;
 	}
 
-	// TODO: Add confirmation of purchase
+	string answer;
 
 	// Buy Start
-	buyer.setBalance(buyer.getBalance()	- cost);
+	cout << "cost per ticket: $" << eventTickets.getCost() << endl;
+	cout << "total cost: $" << cost << endl;
+	cout << "current balance: $" << buyer.getBalance() << endl;
+	cout << "confirm purchase: yes or no" << endl;
+	getline(cin, answer);
 
-	accountList->at(seller).setBalance(accountList->at(seller).getBalance()	+ cost);
+	if (answer.compare("yes") == 0) {
+		buyer.setBalance(buyer.getBalance()	- cost);
 
-	eventTickets.decreaseTicketNumber(numTickets);
+		cout << "current balance: $" << buyer.getBalance() << endl;
 
-	if (eventTickets.getTicketNumber() == 0) {
-		// Delete ticket
-	    ticketList->erase(ticketList->begin() + (ticket - 1), ticketList->begin() + ticket);
+		accountList->at(seller).setBalance(accountList->at(seller).getBalance()	+ cost);
+
+		eventTickets.decreaseTicketNumber(numTickets);
+
+		if (eventTickets.getTicketNumber() == 0) {
+			// Delete ticket
+			ticketList->erase(ticketList->begin() + (ticket - 1), ticketList->begin() + ticket);
+		}
+
+		double ticketCost = eventTickets.getCost();
+
+		// Add transaction to transaction list
+		EventTransaction* buy = new EventTransaction(Entry::BUY, event, sellName, ticketCost, numTickets);
+
+		this->transaction->push_back(buy);
+
+		return true;
 	}
-
-	double ticketCost = eventTickets.getCost();
-
-	// Add transaction to transaction list
-	EventTransaction* buy = new EventTransaction(Entry::BUY, event, sellName, ticketCost, numTickets);
-
-	this->transaction->push_back(buy);
-
-    return true;
+	return false;
 }
 
 bool Transaction::sell(string event, double salePrice, int availTicket) {
@@ -243,10 +242,6 @@ bool Transaction::removeUser(string username) {
 	this->fileIO->getAccountList()->erase(this->fileIO
 					->getAccountList()->begin() + (user),
 					this->fileIO->getAccountList()->begin() + user+1);
-	//TODO REMOVE
-	/*for (int i = 0; i < fileIO->getAccountList()->size(); i++) {
-		cout << fileIO->getAccountList()->at(i).getUsername() << endl;
-	}*/
 
 	AuxiliaryTransaction* removeUser = new AuxiliaryTransaction(Entry::DEL, username, balance, type);
 	this->transaction->push_back(removeUser);

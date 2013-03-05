@@ -14,7 +14,6 @@ int main(int argc, char** argv) {
         while (getline(cin, input)) {
             //cout << "Enter your command." << endl;
             input = rtrim(input);
-            // TODO Trim right side of the input
             if (!session->isLoggedIn()) {
                 if (input.compare("login") == 0) {
                     // Log in stuff.
@@ -47,9 +46,6 @@ int main(int argc, char** argv) {
                 else if (input.compare("create") == 0) {
                     cout << "enter username to create" << endl;
                     getline(cin, username);
-
-                    // TODO: Catch create1 testcase
-                    // username must be maximum 15 characters
 
                     cout << "enter account type" << endl;
                     getline(cin, type);
