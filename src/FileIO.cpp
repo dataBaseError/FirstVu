@@ -139,11 +139,6 @@ int FileIO::findUser(string username) {
 int FileIO::findEvent(string event, string sellName) {
 	cout << ticketList->size() << endl;
     for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
-
-    	cout << "eventX" << event << endl;
-    	cout << "sellNameX" << sellName << endl;
-    	cout << this->ticketList->at(i).getEvent() << endl;
-    	cout << this->ticketList->at(i).getUsername() << endl;
         if (this->ticketList->at(i).getEvent() == event && this->ticketList->at(i).getUsername() == sellName) {
             return i;
         }

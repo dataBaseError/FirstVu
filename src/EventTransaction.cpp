@@ -48,14 +48,14 @@ string EventTransaction::getDTFLine() {
     stringstream buffer;
 
     char price[Ticket::MAX_PRICE_SIZE];
-    char format[5];
+    char format[6];
     sprintf(format, "%s%d%s", "%", Ticket::MAX_PRICE_SIZE, ".2f");
     sprintf(price, format, getPrice());
 
     buffer << right << setfill('0') << setw(2) << getTransactionType() << " ";
     buffer << left << setfill(' ') << setw(Ticket::MAX_EVENT_LENGTH) << getEventName() << " ";
     buffer << left << setfill(' ') << setw(Account::MAX_USERNAME_LENGTH) << getSellName() << " ";
-    buffer << right << setfill('0') << setw(Ticket::MAX_TICKET_SIZE) << " ";
+    buffer << right << setfill('0') << setw(Ticket::MAX_TICKET_SIZE) << getNumTickets()<< " ";
     buffer << price << endl;
 
     return buffer.str();

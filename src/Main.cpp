@@ -156,7 +156,7 @@ int main(int argc, char** argv) {
                     string dummy;
                     getline(cin, dummy);
 
-                    if (!fail || ticketNum < 1) {
+                    if (fail || ticketNum <= 0) {
                         cout << "error: invalid ticket number" << endl;
                     } else {
                         cout << "enter username of seller" << endl;
