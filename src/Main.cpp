@@ -149,8 +149,6 @@ int main(int argc, char** argv) {
                     string dummy;
                     getline(cin, dummy);
 
-                    cout << fail << endl;
-
                     if (fail || ticketNum <= 0) {
                         cout << "error: invalid ticket number" << endl;
                     } else {
