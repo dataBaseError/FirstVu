@@ -28,7 +28,13 @@ int main(int argc, char** argv) {
                     session->quit();
                     break;
                 }
-                else if (input.compare("logout") == 0) {
+                else if (input.compare("logout") == 0
+                        || input.compare("buy") == 0
+                        || input.compare("create") == 0
+                        || input.compare("sell") == 0
+                        || input.compare("refund") == 0
+                        || input.compare("addcredit") == 0
+                        || input.compare("delete") == 0) {
                     cout << "error: no users logged in" << endl;
                 }
                 else {
