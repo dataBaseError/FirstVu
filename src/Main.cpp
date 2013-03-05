@@ -93,7 +93,7 @@ int main(int argc, char** argv) {
                         }
 
                         if (success) {
-                            cout << "new balance $" << balance << endl;
+                            cout << "new balance $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
                             cout << "credit added" << endl;
                         }
                     }
@@ -162,7 +162,7 @@ int main(int argc, char** argv) {
         }
     }
 
-    cout << endl;
+    //cout << endl;
 
     return 0;
 }
