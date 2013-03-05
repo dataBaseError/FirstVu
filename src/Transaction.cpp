@@ -111,7 +111,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 	if (answer.compare("yes") == 0) {
 		buyer.setBalance(buyer.getBalance()	- cost);
 
-		cout << "current balance: $" << buyer.getBalance() << endl;
+		cout << "new balance: $" << buyer.getBalance() << endl;
 
 		accountList->at(seller).setBalance(accountList->at(seller).getBalance()	+ cost);
 
@@ -119,7 +119,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 
 		if (eventTickets.getTicketNumber() == 0) {
 			// Delete ticket
-			ticketList->erase(ticketList->begin() + (ticket - 1), ticketList->begin() + ticket);
+			ticketList->erase(ticketList->begin() + ticket);
 		}
 
 		double ticketCost = eventTickets.getCost();
@@ -131,6 +131,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 
 		return true;
 	}
+
 	return false;
 }
 
