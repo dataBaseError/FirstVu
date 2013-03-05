@@ -249,13 +249,20 @@ int main(int argc, char** argv) {
                             cout << "enter amount to transfer" << endl;
                             //getline(cin, balance);
                             cin >> balance;
+                            bool fail = cin.fail();
 
-                            if (!validBalance(balance)) {
-                                cout << "error: invalid transfer amount" << endl;
-                            }
-                            else {
-                                if (session->refund(username, seller, balance)) {
-                                    cout << "refund successful" << endl;
+                            // Skip to next line
+                            string dummy;
+                            getline(cin, dummy);
+
+                            if (!fail) {
+                                if (!validBalance(balance)) {
+                                    cout << "error: invalid transfer amount" << endl;
+                                }
+                                else {
+                                    if (session->refund(username, seller, balance)) {
+                                        cout << "refund successful" << endl;
+                                    }
                                 }
                             }
                         }
