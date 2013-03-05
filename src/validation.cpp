@@ -11,23 +11,38 @@
 // Cast to string
 // match with [0-9]+\.[0-9]{2}
 bool validBalance(double balance) {
-    throw "Needs to be implemented";
+   return true;
+	/**
+	 * This method is current un-implemented but in the final build will be used to determine if a users balance is valid
+	 */
 }
 
 bool validUsername(string username) {
-	throw "Needs to be implemented";
+	return true;
+	/**
+	 * This method is current un-implemented but in the final build will be used to determine if a username is valid
+	 */
 }
 
 bool validEventName(string event) {
-	throw "Needs to be implemented";
+	return true;
+	/**
+	 * This method is current un-implemented but in the final build will be used to determine if an event name is valid
+	 */
 }
 
 
 bool validAccountType(string type) {
-	throw "Needs to be implemented";
+	return true;
+	/**
+	 * This method is current un-implemented but in the final build will be used to determine if an account type is valid
+	 */
 }
 
 
 bool validPrice(double price) {
-	throw "Needs to be implemented";
+	return true;
+	/**
+	 * This method is current un-implemented but in the final build will be used to determine if a price is valid
+	 */
 }
