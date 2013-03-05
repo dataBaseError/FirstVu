@@ -14,7 +14,6 @@ int main(int argc, char** argv) {
         while (getline(cin, input)) {
             //cout << "Enter your command." << endl;
             input = rtrim(input);
-            // TODO Trim right side of the input
             if (!session->isLoggedIn()) {
                 if (input.compare("login") == 0) {
                     // Log in stuff.
@@ -48,15 +47,12 @@ int main(int argc, char** argv) {
                     cout << "enter username to create" << endl;
                     getline(cin, username);
 
-                    // TODO: Catch create1 testcase
-                    // username must be maximum 15 characters
-
                     cout << "enter account type" << endl;
                     getline(cin, type);
 
-                    //cout << "enter user account balance" << endl;
+                    cout << "enter user account balance" << endl;
                     //getline(cin, balance);
-                    //cin >> balance;
+                    cin >> balance;
 
                     if (session->create(username, type, 0)) {
                         cout << "create successful" << endl;
@@ -153,7 +149,9 @@ int main(int argc, char** argv) {
                     string dummy;
                     getline(cin, dummy);
 
-                    if (!fail || ticketNum < 1) {
+                    cout << fail << endl;
+
+                    if (fail || ticketNum <= 0) {
                         cout << "error: invalid ticket number" << endl;
                     } else {
                         cout << "enter username of seller" << endl;
