@@ -72,11 +72,15 @@ int main(int argc, char** argv) {
                     }
                 }
                 else if (input.compare("delete") == 0) {
-                    cout << "enter username" << endl;
-                    getline(cin, username);
+                    if (session->isAdmin()) {
+                        cout << "enter username" << endl;
+                        getline(cin, username);
 
-                    if (session->removeUser(username)) {
-                        cout << "delete successful" << endl;
+                        if (session->removeUser(username)) {
+                            cout << "delete successful" << endl;
+                        }
+                    } else {
+                        cout << "error: only administrators delete accounts" << endl;
                     }
                 }
                 else if (input.compare("addcredit") == 0) {
