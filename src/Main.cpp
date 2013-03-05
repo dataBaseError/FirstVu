@@ -99,7 +99,7 @@ int main(int argc, char** argv) {
                         }
 
                         if (success) {
-                            cout << "new balance $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
+                            cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
                             cout << "credit added" << endl;
                         }
                     }
