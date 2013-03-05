@@ -87,6 +87,7 @@ error: invalid ticket number							//over 100 or less than 1
 error: tickets unavailable
 error: invalid username
 error: seller balance cannot be greater than $999,999
+error: invalid user privileges
 
 /* buy */
 error: user not authorized to buy
