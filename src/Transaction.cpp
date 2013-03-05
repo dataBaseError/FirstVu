@@ -9,7 +9,7 @@ Transaction::Transaction(char* accountPath, char* availTicketPath,
 
 	this->fileIO = new FileIO(accountPath, availTicketPath, dailyTransactionPath);
 
-	this->fileIO->initialize()
+	this->fileIO->initialize();
 }
 
 Transaction::~Transaction() {

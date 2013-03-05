@@ -126,7 +126,7 @@ int main(int argc, char** argv) {
                     string dummy;
                     getline(cin, dummy);
 
-                    if (fail) {
+                    if (!fail) {
                         cout << "enter number of tickets" << endl;
                         //getline(cin, ticketNum);
                         cin >> ticketNum;
@@ -135,7 +135,7 @@ int main(int argc, char** argv) {
                         // Skip to next line
                         getline(cin, dummy);
 
-                        if (fail) {
+                        if (!fail) {
                             if (session->sell(event, price, ticketNum)) {
                                 cout << "tickets added" << endl;
                             }
