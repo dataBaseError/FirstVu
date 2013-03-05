@@ -116,9 +116,32 @@ int main(int argc, char** argv) {
                             cout << "error: invalid username" << endl;
                         }
                         // else?
-                    }
 
-                    if (session->getFileIO()->findUser(username) != -1) {
+                        if (session->getFileIO()->findUser(username) != -1) {
+                            cout << "enter credit amount" << endl;
+                            //getline(cin, balance);
+                            cin >> balance;
+                            bool fail = cin.fail();
+
+                            // Skip to next line
+                            string dummy;
+                            getline(cin, dummy);
+
+                            if (fail) {
+                                cout << "error: invalid credit amount" << endl;
+                            }
+                            else {
+                                if (!validBalance(balance)) {
+                                    cout << "error: amount added cannot be greater than $1000.00" << endl;
+                                }
+                                else if (session->addcredit(username, balance)) {
+                                    //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
+                                    cout << "credit added" << endl;
+                                }
+                            }
+                        }
+                    }
+                    else {
                         cout << "enter credit amount" << endl;
                         //getline(cin, balance);
                         cin >> balance;
@@ -128,32 +151,17 @@ int main(int argc, char** argv) {
                         string dummy;
                         getline(cin, dummy);
 
-                        if (fail) {
-                            cout << "error: invalid credit amount" << endl;
-                        }
-                        else {
+                        if (!fail) {
                             success = false;
 
                             if (!validBalance(balance)) {
-                                cout << "error: amound added cannot be greater than $1000.00" << endl;
+                                cout << "error: amount added cannot be greater than $1000.00" << endl;
                             }
-                            else {
-                                if (!session->isAdmin()) {
-                                    success = session->addcredit(balance);
-                                }
-                                else {
-                                    success = session->addcredit(username, balance);
-                                }
-
-                                if (success) {
-                                    //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
-                                    cout << "credit added" << endl;
-                                }
+                            else if (session->addcredit(balance)) {
+                                //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
+                                cout << "credit added" << endl;
                             }
                         }
-                    }
-                    else {
-                        cout << "error: username does not exist" << endl;
                     }
                 }
                 else if (input.compare("sell") == 0) {
@@ -273,7 +281,7 @@ int main(int argc, char** argv) {
                 }
             }
 
-            //cout << endl;
+//cout << endl;
         }
     }
 
