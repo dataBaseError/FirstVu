@@ -110,10 +110,8 @@ bool FileIO::updateTicketList() {
 bool FileIO::writeTransaction(vector<Entry*> newList) {
     ofstream dtf(this->dtf, ios::app);
 
-    vector<Entry*>::size_type length = newList.size();
-
     if (dtf.is_open()) {
-        for (vector<Entry*>::size_type i = 0; i < length; i++) {
+        for (vector<Entry*>::size_type i = 0; i < newList.size(); i++) {
             // Write to file given path
             string entry = newList[i]->getDTFLine();
             dtf << entry;
@@ -137,7 +135,7 @@ int FileIO::findUser(string username) {
 }
 
 int FileIO::findEvent(string event, string sellName) {
-	cout << ticketList->size() << endl;
+	//cout << ticketList->size() << endl;
     for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
         if (this->ticketList->at(i).getEvent() == event && this->ticketList->at(i).getUsername() == sellName) {
             return i;
