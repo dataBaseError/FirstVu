@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 export BINARY="$(readlink -f "./Debug/FirstVu")"
-TESTDIR="./tests"
+TESTDIR="$(readlink -f ./tests)"
 export GLOBAL_UAO="$TESTDIR""/global/glob_account.inp"
 export GLOBAL_ATO="$TESTDIR""/global/glob_available_tickets.inp"
 
@@ -12,7 +12,7 @@ function clean() {
 
 function testCase() {
     cd "$1"
-    case="$(basename $PWD)"
+    case="$(basename "$1")"
 
     #Input
     #GLOBAL_UAO
@@ -29,9 +29,6 @@ function testCase() {
 
     echo "$case"
     "$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" > "$out"
-    #echo "$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" '<' "$inp" '>' "$out"
-
-    car ""
 
     echo "TEST: DTF"
     diff "$dtf" "$etf"
@@ -48,5 +45,9 @@ export -f clean
 export -f testCase
 
 clean
-find "$TESTDIR" -mindepth 2 -type d | sort | xargs -I {} bash -c 'testCase "$@"' "testCase" {}
-#testCase "$TESTDIR""/login/login1"
+
+if test $# -lt 1; then
+    find "$TESTDIR" -mindepth 2 -type d | sort | xargs -I {} bash -c 'testCase "$@"' "testCase" {}
+elif test $# -eq 1; then
+    testCase "$1"
+fi

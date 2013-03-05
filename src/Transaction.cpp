@@ -278,7 +278,7 @@ bool Transaction::addcredit(double amount) {
 	string username = this->fileIO->getAccountList()->at(currentUser).getUsername();
 	string type = this->fileIO->getAccountList()->at(currentUser).getType();
 
-	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, newBalance, type);
+	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, amount, type);
 	this->transaction->push_back(add);
 
 	return true;
@@ -319,7 +319,7 @@ bool Transaction::addcredit(string username, double amount) {
 	this->fileIO->getAccountList()->at(user).setBalance(newBalance);
 	string type = this->fileIO->getAccountList()->at(user).getType();
 
-	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, newBalance, type);
+	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, amount, type);
 	this->transaction->push_back(add);
     return true;
 }
