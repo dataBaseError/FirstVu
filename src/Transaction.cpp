@@ -102,9 +102,9 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 	string answer;
 
 	// Buy Start
-	cout << "cost per ticket: $" << eventTickets.getCost() << endl;
-	cout << "total cost: $" << cost << endl;
-	cout << "current balance: $" << buyer.getBalance() << endl;
+	cout << "cost per ticket: $" << setprecision(2) << eventTickets.getCost() << endl;
+	cout << "total cost: $" << setprecision(2) << cost << endl;
+	cout << "current balance: $" << setprecision(2) << buyer.getBalance() << endl;
 	cout << "confirm purchase: yes or no" << endl;
 	getline(cin, answer);
 
