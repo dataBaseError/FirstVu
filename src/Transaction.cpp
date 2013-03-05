@@ -20,7 +20,7 @@ Transaction::~Transaction() {
 // TODO add error messages.
 bool Transaction::login(string username) {
 	// Check if transaction list is empty
-	if (currentUser == -1) {
+	//if (currentUser == -1) {
 
 		// Read in uao and ato files
 		//if () {
@@ -33,9 +33,10 @@ bool Transaction::login(string username) {
 
 			return true;
 		//}
-	}
+	//}
 
-    return false;
+	//cout << "error: user is already logged in";
+    //return false;
 }
 
 bool Transaction::logout() {
@@ -278,7 +279,7 @@ bool Transaction::addcredit(double amount) {
 	string username = this->fileIO->getAccountList()->at(currentUser).getUsername();
 	string type = this->fileIO->getAccountList()->at(currentUser).getType();
 
-	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, newBalance, type);
+	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, amount, type);
 	this->transaction->push_back(add);
 
 	return true;
@@ -319,7 +320,7 @@ bool Transaction::addcredit(string username, double amount) {
 	this->fileIO->getAccountList()->at(user).setBalance(newBalance);
 	string type = this->fileIO->getAccountList()->at(user).getType();
 
-	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, newBalance, type);
+	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, amount, type);
 	this->transaction->push_back(add);
     return true;
 }
@@ -391,8 +392,6 @@ bool Transaction::quit() {
 		this->transaction->clear();
 		return true;
 	}
-
-
 
 	//cout << "Error writing dtf.";
 	return false;
