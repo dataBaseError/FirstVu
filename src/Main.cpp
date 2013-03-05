@@ -53,9 +53,16 @@ int main(int argc, char** argv) {
                     cout << "enter user account balance" << endl;
                     //getline(cin, balance);
                     cin >> balance;
+                    bool fail = cin.fail();
 
-                    if (session->create(username, type, 0)) {
-                        cout << "create successful" << endl;
+                    // Skip to next line
+                    string dummy;
+                    getline(cin, dummy);
+
+                    if (!fail) {
+                        if (session->create(username, type, balance)) {
+                            cout << "create successful" << endl;
+                        }
                     }
                 }
                 else if (input.compare("delete") == 0) {
@@ -149,7 +156,7 @@ int main(int argc, char** argv) {
                     string dummy;
                     getline(cin, dummy);
 
-                    if (fail || ticketNum <= 0) {
+                    if (!fail || ticketNum < 1) {
                         cout << "error: invalid ticket number" << endl;
                     } else {
                         cout << "enter username of seller" << endl;
