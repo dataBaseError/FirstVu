@@ -282,6 +282,8 @@ bool Transaction::addcredit(double amount) {
 	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, amount, type);
 	this->transaction->push_back(add);
 
+	cout << "new balance: $" << newBalance << endl;
+
 	return true;
 }
 
@@ -322,6 +324,8 @@ bool Transaction::addcredit(string username, double amount) {
 
 	AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, amount, type);
 	this->transaction->push_back(add);
+
+	cout << "new balance: $" << newBalance << endl;
     return true;
 }
 

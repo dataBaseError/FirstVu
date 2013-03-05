@@ -30,17 +30,17 @@ int main(int argc, char** argv) {
                     break;
                 }
                 else if (input.compare("logout") == 0) {
-                	cout << "error: no users logged in" << endl;
+                    cout << "error: no users logged in" << endl;
                 }
                 else {
                     cout << "error: invalid command" << endl;
                 }
             }
             else {
-            	if (input.compare("login") == 0) {
-            		cout << "error: user is already logged in" << endl;
-            	}
-            	else if (input.compare("logout") == 0) {
+                if (input.compare("login") == 0) {
+                    cout << "error: user is already logged in" << endl;
+                }
+                else if (input.compare("logout") == 0) {
                     session->logout();
                     cout << "logout successful" << endl;
                 }
@@ -54,11 +54,11 @@ int main(int argc, char** argv) {
                     cout << "enter account type" << endl;
                     getline(cin, type);
 
-                    cout << "enter user account balance" << endl;
+                    //cout << "enter user account balance" << endl;
                     //getline(cin, balance);
-                    cin >> balance;
+                    //cin >> balance;
 
-                    if (session->create(username, type, balance)) {
+                    if (session->create(username, type, 0)) {
                         cout << "create successful" << endl;
                     }
                 }
@@ -76,32 +76,37 @@ int main(int argc, char** argv) {
                         getline(cin, username);
                     }
 
-                    cout << "enter credit amount" << endl;
-                    //getline(cin, balance);
-                    cin >> balance;
-                    bool fail = cin.fail();
+                    if (session->getFileIO()->findUser(username) != -1) {
+                        cout << "enter credit amount" << endl;
+                        //getline(cin, balance);
+                        cin >> balance;
+                        bool fail = cin.fail();
 
-                    // Skip to next line
-                    string dummy;
-                    getline(cin, dummy);
+                        // Skip to next line
+                        string dummy;
+                        getline(cin, dummy);
 
-                    if (fail) {
-                        cout << "error: invalid credit amount" << endl;
-                    }
-                    else {
-                        success = false;
-
-                        if (!session->isAdmin()) {
-                            success = session->addcredit(balance);
+                        if (fail) {
+                            cout << "error: invalid credit amount" << endl;
                         }
                         else {
-                            success = session->addcredit(username, balance);
-                        }
+                            success = false;
 
-                        if (success) {
-                            cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
-                            cout << "credit added" << endl;
+                            if (!session->isAdmin()) {
+                                success = session->addcredit(balance);
+                            }
+                            else {
+                                success = session->addcredit(username, balance);
+                            }
+
+                            if (success) {
+                                //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
+                                cout << "credit added" << endl;
+                            }
                         }
+                    }
+                    else {
+                        cout << "error: username does not exist" << endl;
                     }
                 }
                 else if (input.compare("sell") == 0) {
