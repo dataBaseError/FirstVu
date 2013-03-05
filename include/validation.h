@@ -1,8 +1,10 @@
-/*
- * Validation.h
+/**
+ * A file that contains static methods for validating input from the user.
  *
- *  Created on: 2013-03-04
- *      Author: capncanuck
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
  */
 
 #ifndef VALIDATION_H_
