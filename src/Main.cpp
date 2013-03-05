@@ -54,12 +54,19 @@ int main(int argc, char** argv) {
                     cout << "enter account type" << endl;
                     getline(cin, type);
 
-                    //cout << "enter user account balance" << endl;
+                    cout << "enter user account balance" << endl;
                     //getline(cin, balance);
-                    //cin >> balance;
+                    cin >> balance;
+                    bool fail = cin.fail();
 
-                    if (session->create(username, type, 0)) {
-                        cout << "create successful" << endl;
+                    // Skip to next line
+                    string dummy;
+                    getline(cin, dummy);
+
+                    if (!fail) {
+                        if (session->create(username, type, balance)) {
+                            cout << "create successful" << endl;
+                        }
                     }
                 }
                 else if (input.compare("delete") == 0) {
@@ -123,7 +130,7 @@ int main(int argc, char** argv) {
                     string dummy;
                     getline(cin, dummy);
 
-                    if (fail) {
+                    if (!fail) {
                         cout << "enter number of tickets" << endl;
                         //getline(cin, ticketNum);
                         cin >> ticketNum;
@@ -132,7 +139,7 @@ int main(int argc, char** argv) {
                         // Skip to next line
                         getline(cin, dummy);
 
-                        if (fail) {
+                        if (!fail) {
                             if (session->sell(event, price, ticketNum)) {
                                 cout << "tickets added" << endl;
                             }
