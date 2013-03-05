@@ -9,7 +9,6 @@ export GLOBAL_ATO="$TESTDIR""/global/glob_available_tickets.inp"
 export RED='\e[1;31m'
 export GREEN='\e[1;32m'
 export WHITE='\e[1;37m'
-
 export RESET='\e[m'
 
 function clean() {
