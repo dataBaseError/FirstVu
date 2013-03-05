@@ -1,8 +1,8 @@
 enter username
 login successful
 enter buyer's username
+error: username does not exist
 enter seller's username
-error: Account does not exist
 error: invalid command
 error: invalid command
 logout successful
