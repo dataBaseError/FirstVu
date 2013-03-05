@@ -117,12 +117,26 @@ int main(int argc, char** argv) {
                     //getline(cin, price);
                     cin >> price;
 
-                    cout << "enter number of tickets" << endl;
-                    //getline(cin, ticketNum);
-                    cin >> ticketNum;
+                    bool fail = cin.fail();
 
-                    if (session->sell(event, price, ticketNum)) {
-                        cout << "tickets added" << endl;
+                    // Skip to next line
+                    string dummy;
+                    getline(cin, dummy);
+
+                    if (fail) {
+                        cout << "enter number of tickets" << endl;
+                        //getline(cin, ticketNum);
+                        cin >> ticketNum;
+                        fail = cin.fail();
+
+                        // Skip to next line
+                        getline(cin, dummy);
+
+                        if (fail) {
+                            if (session->sell(event, price, ticketNum)) {
+                                cout << "tickets added" << endl;
+                            }
+                        }
                     }
                 }
                 else if (input.compare("buy") == 0) {
