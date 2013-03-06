@@ -75,7 +75,7 @@ clean
 echo -ne "$WHITE"
 
 if test $# -lt 1; then
-    find "$TESTDIR" -mindepth 2 -type d | sort | xargs -I {} bash -c 'testCase "$@"' "testCase" {}
+    find "$TESTDIR" -mindepth 2 -type d | sed 's/\([a-z]\)\([0-9]\)$/\10\2/' | sort | sed 's/0\([0-9]\)$/\1/' | xargs -I {} bash -c 'testCase "$@"' "testCase" {}
 elif test $# -eq 1; then
     testCase "$1"
 fi
