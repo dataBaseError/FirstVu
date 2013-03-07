@@ -9,7 +9,7 @@ enter username
 login successful
 enter event title
 enter number of tickets
-enter username of seller
+enter seller's username
 error: seller balance cannot be greater than $999,999
 error: invalid command
 logout successful

@@ -2,7 +2,7 @@ enter username
 login successful
 enter event title
 enter number of tickets
-enter username of seller
+enter seller's username
 error: invalid user privileges
 error: invalid command
 logout successful

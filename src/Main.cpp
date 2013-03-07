@@ -1,5 +1,4 @@
 #include "../include/Main.h"
-#include "../include/Main.h"
 
 //using Poco::StringTokenizer;
 
@@ -18,15 +17,15 @@ int main(int argc, char** argv) {
             if (!session->isLoggedIn()) {
                 if (input.compare("login") == 0) {
                     // Log in stuff.
-                    cout << "enter username" << endl;
+                    cout << ENTER_USERNAME << endl;
                     getline(cin, input);
 
                     if (!validUsername(input)) {
-                        cout << "error: invalid username" << endl;
+                        cout << INVALID_USERNAME << endl;
                     }
                     else {
                         if (session->login(input)) {
-                            cout << "login successful" << endl;
+                            cout << LOGIN_SUCCESS << endl;
                         }
                     }
                 }
@@ -41,10 +40,10 @@ int main(int argc, char** argv) {
                         || input.compare("refund") == 0
                         || input.compare("addcredit") == 0
                         || input.compare("delete") == 0) {
-                    cout << "error: no users logged in" << endl;
+                    cout << USER_NOT_LOGGED_IN << endl;
                 }
                 else {
-                    cout << "error: invalid command" << endl;
+                    cout << INVALID_COMMAND << endl;
                 }
             }
             else {
@@ -162,6 +161,7 @@ int main(int argc, char** argv) {
                                 cout << "credit added" << endl;
                             }
                         }
+                        //todo add else condition
                     }
                 }
                 else if (input.compare("sell") == 0) {
@@ -200,6 +200,7 @@ int main(int argc, char** argv) {
                                         cout << "tickets added" << endl;
                                     }
                                 }
+                                //todo add else
                             }
                         }
                     }
@@ -225,6 +226,7 @@ int main(int argc, char** argv) {
                         if (fail || ticketNum <= 0) {
                             cout << "error: invalid ticket number" << endl;
                         } else {
+                        	// todo fix inconsistency
                             cout << "enter username of seller" << endl;
                             getline(cin, seller);
 
@@ -247,6 +249,7 @@ int main(int argc, char** argv) {
                         cout << "error: invalid username" << endl;
                     }
                     else {
+                    	// todo fix inconsistency
                         cout << "enter seller's username" << endl;
                         getline(cin, seller);
 
@@ -273,6 +276,7 @@ int main(int argc, char** argv) {
                                     }
                                 }
                             }
+                            //todo add else error
                         }
                     }
                 }
@@ -280,12 +284,8 @@ int main(int argc, char** argv) {
                     cout << "error: invalid command" << endl;
                 }
             }
-
-//cout << endl;
         }
     }
-
-    //cout << endl;
 
     return 0;
 }
