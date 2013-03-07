@@ -33,7 +33,7 @@ function testCase() {
     etf="$case"".etf"
     bto="$case"".bto"
 
-    "$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out"
+    time=$(time ("$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out") 2>&1 > '/dev/null')
 
     dtfTest="$(sdiff -st "$dtf" "$etf")"
     outTest="$(sdiff -st "$out" "$bto")"
@@ -61,6 +61,7 @@ function testCase() {
         echo "$outTest"
     fi
 
+    echo "$time"
     echo ""
 
     rm "$dtf"
