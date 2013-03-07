@@ -15,7 +15,7 @@ int main(int argc, char** argv) {
             //cout << "Enter your command." << endl;
             input = rtrim(input);
             if (!session->isLoggedIn()) {
-                if (input.compare("login") == 0) {
+                if (input.compare(LOGIN) == 0) {
                     // Log in stuff.
                     cout << ENTER_USERNAME << endl;
                     getline(cin, input);
@@ -29,17 +29,17 @@ int main(int argc, char** argv) {
                         }
                     }
                 }
-                else if (input.compare("quit") == 0) {
+                else if (input.compare(QUIT) == 0) {
                     session->quit();
                     break;
                 }
-                else if (input.compare("logout") == 0
-                        || input.compare("buy") == 0
-                        || input.compare("create") == 0
-                        || input.compare("sell") == 0
-                        || input.compare("refund") == 0
-                        || input.compare("addcredit") == 0
-                        || input.compare("delete") == 0) {
+                else if (input.compare(LOGOUT) == 0
+                        || input.compare(BUY) == 0
+                        || input.compare(CREATE) == 0
+                        || input.compare(SELL) == 0
+                        || input.compare(REFUND) == 0
+                        || input.compare(ADDCREDIT) == 0
+                        || input.compare(DELETE) == 0) {
                     cout << USER_NOT_LOGGED_IN << endl;
                 }
                 else {
@@ -47,14 +47,14 @@ int main(int argc, char** argv) {
                 }
             }
             else {
-                if (input.compare("login") == 0) {
+                if (input.compare(LOGIN) == 0) {
                     cout << USER_ALREADY_LOGGED << endl;
                 }
-                else if (input.compare("logout") == 0) {
+                else if (input.compare(LOGOUT) == 0) {
                     session->logout();
                     cout << LOGIN_SUCCESS << endl;
                 }
-                else if (input.compare("create") == 0) {
+                else if (input.compare(CREATE) == 0) {
                     cout << CREATE_ENTER_USERNAME << endl;
                     getline(cin, username);
 
@@ -91,7 +91,7 @@ int main(int argc, char** argv) {
                         }
                     }
                 }
-                else if (input.compare("delete") == 0) {
+                else if (input.compare(DELETE) == 0) {
                     if (session->isAdmin()) {
                         cout << ENTER_USERNAME << endl;
                         getline(cin, username);
@@ -106,7 +106,7 @@ int main(int argc, char** argv) {
                         }
                     }
                 }
-                else if (input.compare("addcredit") == 0) {
+                else if (input.compare(ADDCREDIT) == 0) {
                     if (session->isAdmin()) {
                         cout << ENTER_USERNAME << endl;
                         getline(cin, username);
@@ -166,7 +166,7 @@ int main(int argc, char** argv) {
                         }
                     }
                 }
-                else if (input.compare("sell") == 0) {
+                else if (input.compare(SELL) == 0) {
                     cout << ENTER_EVENT << endl;
                     getline(cin, event);
 
@@ -216,7 +216,7 @@ int main(int argc, char** argv) {
                         }
                     }
                 }
-                else if (input.compare("buy") == 0) {
+                else if (input.compare(BUY) == 0) {
                     cout << ENTER_EVENT << endl;
                     getline(cin, event);
 
@@ -256,7 +256,7 @@ int main(int argc, char** argv) {
                         }
                     }
                 }
-                else if (input.compare("refund") == 0) {
+                else if (input.compare(REFUND) == 0) {
                     cout << ENTER_BUYER << endl;
                     getline(cin, username);
 

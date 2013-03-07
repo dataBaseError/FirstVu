@@ -8,6 +8,16 @@
 
 #include "../Strings.h"
 
+const string LOGIN = "login";
+const string LOGOUT = "logout";
+const string BUY = "buy";
+const string CREATE = "create";
+const string SELL = "sell";
+const string REFUND = "refund";
+const string ADDCREDIT = "addcredit";
+const string DELETE = "delete";
+const string QUIT = "quit";
+
 const string ENTER_USERNAME = "enter username";
 const string CREATE_ENTER_USERNAME = "enter username to create";
 const string ENTER_ACCOUNT_TYPE = "enter account type";

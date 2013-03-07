@@ -13,6 +13,16 @@
 
 using namespace std;
 
+static const string LOGIN;
+static const string LOGOUT;
+static const string BUY;
+static const string CREATE;
+static const string SELL;
+static const string REFUND;
+static const string ADDCREDIT;
+static const string DELETE;
+static const string QUIT;
+
 static const string ENTER_USERNAME;
 static const string CREATE_ENTER_USERNAME;
 static const string ENTER_ACCOUNT_TYPE;
