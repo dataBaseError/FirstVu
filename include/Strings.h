@@ -37,8 +37,8 @@ static const string ENTER_TRANSFER_AMOUNT = "enter amount to transfer";
 
 static const string LOGIN_SUCCESS = "login successful";
 static const string LOGOUT_SUCCESS = "logout successful";
-static const string CREATE_SUCCESS = "create_successful";
-static const string DELETE_SUCCESS = "delete_successful";
+static const string CREATE_SUCCESS = "create successful";
+static const string DELETE_SUCCESS = "delete successful";
 static const string ADDCREDIT_SUCCESS = "credit added";
 static const string SELL_SUCCESS = "tickets added";
 static const string BUY_SUCCESS = "purchase successful";

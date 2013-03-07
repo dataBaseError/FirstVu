@@ -52,7 +52,7 @@ int main(int argc, char** argv) {
                 }
                 else if (input.compare(LOGOUT) == 0) {
                     session->logout();
-                    cout << LOGIN_SUCCESS << endl;
+                    cout << LOGOUT_SUCCESS << endl;
                 }
                 else if (input.compare(CREATE) == 0) {
                     cout << CREATE_ENTER_USERNAME << endl;
