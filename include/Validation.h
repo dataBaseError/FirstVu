@@ -47,6 +47,8 @@ bool validEventName(string event);
  */
 bool validAccountType(string type);
 
+bool validTicketNumber(int ticketNum);
+
 /**
  * Validate the price.
  *

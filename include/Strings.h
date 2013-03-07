@@ -37,7 +37,6 @@ static const string INVALID_USERNAME;
 static const string INVALID_ACCOUNT_TYPE;
 static const string INVALID_ACOUNT_BALANCE;
 static const string INVALID_CREDIT_AMOUNT;
-static const string INVALID_CREDIT_BALANCE;
 static const string INVALID_EVENT_TITLE;
 static const string INVALID_EVENT_PRICE;
 static const string INVALID_TICKET_NUMBER;
