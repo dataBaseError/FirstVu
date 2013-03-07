@@ -1,7 +1,7 @@
 #include "../include/Refund.h"
 
 Refund::Refund(int type, string buyName, string sellName, double credit)
-: Entry(type){
+: Entry(type) {
 	this->buyName = buyName;
 	this->sellName = sellName;
 	this->credit = credit;
@@ -37,9 +37,9 @@ void Refund::setCredit(double credit) {
 
 string Refund::getDTFLine() {
     stringstream buffer;
-
     char amount[Account::MAX_CREDIT_SIZE];
     char format[5];
+
     sprintf(format, "%s%d%s", "%", Account::MAX_CREDIT_SIZE, ".2f");
     sprintf(amount, format, getCredit());
 
