@@ -48,6 +48,14 @@ bool validEventName(string event);
 bool validAccountType(string type);
 
 /**
+ * Validate the number of tickets.
+ *
+ * @param type The entered number of tickets.
+ * @return Whether the number of tickets entered was valid.
+ */
+bool validTicketNumber(int ticketNum);
+
+/**
  * Validate the price.
  *
  * @param price The entered price of an event.
