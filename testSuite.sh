@@ -33,7 +33,7 @@ function testCase() {
     etf="$case"".etf"
     bto="$case"".bto"
 
-    "$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" > "$out"
+    "$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out"
 
     dtfTest="$(sdiff -st "$dtf" "$etf")"
     outTest="$(sdiff -st "$out" "$bto")"
