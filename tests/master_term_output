@@ -22,7 +22,7 @@ tickets added
 /* buy */
 enter event title
 enter number of tickets
-enter username of seller
+enter seller's username
 cost per ticket: $--
 total cost: $--
 current balance: $--
@@ -33,7 +33,7 @@ purchase successful
 /* sell buy back */
 enter event title
 enter number of tickets
-enter username of seller
+enter seller's username
 buy back: yes or no
 
 /* refund */

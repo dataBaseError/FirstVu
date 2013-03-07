@@ -162,6 +162,7 @@ int main(int argc, char** argv) {
                                 cout << "credit added" << endl;
                             }
                         }
+                        //todo add else condition
                     }
                 }
                 else if (input.compare("sell") == 0) {
@@ -200,6 +201,7 @@ int main(int argc, char** argv) {
                                         cout << "tickets added" << endl;
                                     }
                                 }
+                                //todo add else
                             }
                         }
                     }
@@ -225,6 +227,7 @@ int main(int argc, char** argv) {
                         if (fail || ticketNum <= 0) {
                             cout << "error: invalid ticket number" << endl;
                         } else {
+                        	// todo fix inconsistency
                             cout << "enter username of seller" << endl;
                             getline(cin, seller);
 
@@ -247,6 +250,7 @@ int main(int argc, char** argv) {
                         cout << "error: invalid username" << endl;
                     }
                     else {
+                    	// todo fix inconsistency
                         cout << "enter seller's username" << endl;
                         getline(cin, seller);
 
@@ -273,6 +277,7 @@ int main(int argc, char** argv) {
                                     }
                                 }
                             }
+                            //todo add else error
                         }
                     }
                 }
@@ -280,12 +285,8 @@ int main(int argc, char** argv) {
                     cout << "error: invalid command" << endl;
                 }
             }
-
-//cout << endl;
         }
     }
-
-    //cout << endl;
 
     return 0;
 }
