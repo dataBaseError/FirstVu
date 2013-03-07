@@ -8,6 +8,16 @@
 
 #include "../Strings.h"
 
+const string LOGIN = "login";
+const string LOGOUT = "logout";
+const string BUY = "buy";
+const string CREATE = "create";
+const string SELL = "sell";
+const string REFUND = "refund";
+const string ADDCREDIT = "addcredit";
+const string DELETE = "delete";
+const string QUIT = "quit";
+
 const string ENTER_USERNAME = "enter username";
 const string CREATE_ENTER_USERNAME = "enter username to create";
 const string ENTER_ACCOUNT_TYPE = "enter account type";
@@ -31,9 +41,8 @@ const string REFUND_SUCCESS = "refund successful";
 
 const string INVALID_USERNAME = "error: invalid username";
 const string INVALID_ACCOUNT_TYPE = "error: invalid account type";
-const string INVALID_ACCOUNT_BALANCE = "error: amount added cannot be greater than $1000.00";
+const string INVALID_ACCOUNT_BALANCE = "error: invalid account balance";
 const string INVALID_CREDIT_AMOUNT = "error: invalid credit amount";
-const string INVALID_CREDIT_BALANCE = "error: amount added cannot be greater than $1000.00";
 const string INVALID_EVENT_TITLE = "error: invalid event name";
 const string INVALID_EVENT_PRICE = "error: invalid event price";
 const string INVALID_TICKET_NUMBER = "error: invalid ticket number";
