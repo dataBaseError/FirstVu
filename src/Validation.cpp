@@ -43,6 +43,9 @@ bool validAccountType(string type) {
 	 */
 }
 
+bool validTicketNumber(int ticketNum) {
+	return true;
+}
 
 bool validPrice(double price) {
 	return true;
