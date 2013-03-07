@@ -1,3 +1,11 @@
+/**
+ *
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+
 #include "../Strings.h"
 
 const string ENTER_USERNAME = "enter username";
