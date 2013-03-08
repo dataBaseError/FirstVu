@@ -1,7 +1,7 @@
 enter username
 login successful
 enter username to create
-error: username must be maximum 15 characters
+error: invalid username
 error: invalid command
 error: invalid command
 logout successful
