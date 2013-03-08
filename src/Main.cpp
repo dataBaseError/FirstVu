@@ -9,7 +9,6 @@ int main(int argc, char** argv) {
         string input, username, type, event, seller;
         double balance, price;
         int ticketNum;
-        bool success = false;
 
         while (getline(cin, input)) {
             //cout << "Enter your command." << endl;
@@ -145,8 +144,6 @@ int main(int argc, char** argv) {
                         cout << INVALID_CREDIT_AMOUNT << endl;
                     }
                     else {
-                        success = false;
-
                         if (!validBalance(balance)) {
                             cout << INVALID_CREDIT_AMOUNT << endl;
                         }
