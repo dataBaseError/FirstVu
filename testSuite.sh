@@ -11,6 +11,8 @@ export GREEN='\e[1;32m'
 export WHITE='\e[1;37m'
 export RESET='\e[m'
 
+export PATH='/usr/bin/':$PATH
+
 function clean() {
     find "$TESTDIR" -type f | grep ".dtf" | xargs rm 2> /dev/null
     find "$TESTDIR" -type f | grep "\.out\." | xargs rm 2> /dev/null
@@ -33,7 +35,7 @@ function testCase() {
     etf="$case"".etf"
     bto="$case"".bto"
 
-    time=$(time ("$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out") 2>&1 > '/dev/null')
+    time=$(time -p ("$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out") 2>&1 > '/dev/null')
 
     dtfTest="$(sdiff -st "$dtf" "$etf")"
     outTest="$(sdiff -st "$out" "$bto")"
@@ -61,6 +63,7 @@ function testCase() {
         echo "$outTest"
     fi
 
+    echo ""
     echo "$time"
     echo ""
 
@@ -74,6 +77,16 @@ export -f testCase
 clean
 
 echo -ne "$WHITE"
+
+# Proposed Test Category Order:
+#   - login
+#   - logout
+#   - create
+#   - addcredit
+#   - sell
+#   - buy
+#   - delete
+#   - refund
 
 if test $# -lt 1; then
     find "$TESTDIR" -mindepth 2 -type d | sed 's/\([a-z]\)\([0-9]\)$/\10\2/' | sort | sed 's/0\([0-9]\)$/\1/' | xargs -I {} bash -c 'testCase "$@"' "testCase" {}
