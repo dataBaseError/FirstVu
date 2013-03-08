@@ -10,7 +10,12 @@
 #ifndef VALIDATION_H_
 #define VALIDATION_H_
 
+#include <iostream>
 #include <string>
+#include <regex>
+
+#include "Account.h"
+#include "Ticket.h"
 
 
 using namespace std;
