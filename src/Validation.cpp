@@ -31,12 +31,13 @@ bool validUsername(string username) {
 	}
 
 	//smatch m;
-	regex userRegex ("[A-z_]+");
+	/*regex userRegex ("[A-z_]+");
 
 	if (regex_match(username, userRegex)) {
 		return true;
 	}
-	return false;
+	return false;*/
+	return true;
 }
 
 // must be Ticket.MAX_EVENT_LENGTH characters
@@ -48,10 +49,11 @@ bool validEventName(string event) {
 		return false;
 	}
 
-	smatch m;
+	/*smatch m;
 	regex EventRegex ("[A-z_]+");
 
-	return regex_search(event, m, EventRegex);
+	return regex_search(event, m, EventRegex);*/
+	return true;
 }
 
 // Account.ADMIN or Account.SELL or Account.BUY or Account.FULL and length 2
@@ -61,11 +63,12 @@ bool validAccountType(string type) {
 		return false;
 	}
 
-	smatch m;
+	/*smatch m;
 	regex AccountRegex (Account::ADMIN + "|" + Account::FULL + "|" +
 			Account::SELL + "|" + Account::BUY);
 
-	return regex_search(type, m, AccountRegex);
+	return regex_search(type, m, AccountRegex);*/
+	return true;
 }
 
 // \d and > 0 and <= Ticket.MAX_TICKET
