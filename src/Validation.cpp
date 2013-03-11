@@ -30,14 +30,14 @@ bool validUsername(string username) {
 		return false;
 	}
 
-	//smatch m;
-	/*regex userRegex ("[A-z_]+");
+	Poco::RegularExpression re1("[A-z_]+");
 
-	if (regex_match(username, userRegex)) {
+	if(re1.match(username)) {
 		return true;
 	}
-	return false;*/
-	return true;
+	//cout << "" << endl;
+	// Error invalid username characters
+	return false;
 }
 
 // must be Ticket.MAX_EVENT_LENGTH characters
@@ -49,11 +49,15 @@ bool validEventName(string event) {
 		return false;
 	}
 
-	/*smatch m;
-	regex EventRegex ("[A-z_]+");
+	Poco::RegularExpression re1("[A-z_]+");
 
-	return regex_search(event, m, EventRegex);*/
-	return true;
+	if(re1.match(event)) {
+		// Valid username
+		return true;
+	}
+
+	// Invalid username
+	return false;
 }
 
 // Account.ADMIN or Account.SELL or Account.BUY or Account.FULL and length 2

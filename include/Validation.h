@@ -14,6 +14,8 @@
 #include <string>
 #include <regex>
 
+#include "../lib/include/Poco/RegularExpression.h"
+
 #include "Account.h"
 #include "Ticket.h"
 
