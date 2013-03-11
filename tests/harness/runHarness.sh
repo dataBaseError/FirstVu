@@ -1,9 +1,11 @@
 #! /usr/bin/env bash
 
-export BINARY="$(readlink -f "./Debug/FirstVu")"
-TESTDIR="$(readlink -f ./tests)"
+export BINARY="$(readlink -f "../../Debug/FirstVu")"
+TESTDIR="$(readlink -f "..")"
 export GLOBAL_UAO="$TESTDIR""/global/glob_account.inp"
 export GLOBAL_ATO="$TESTDIR""/global/glob_available_tickets.inp"
+
+# Log File
 
 # Colours
 export RED='\e[1;31m'
@@ -35,7 +37,7 @@ function testCase() {
     etf="$case"".etf"
     bto="$case"".bto"
 
-    time=$(time -p ("$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out") 2>&1 > '/dev/null')
+    time=$(time -p ("$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out" ) 2>&1 > '/dev/null')
 
     dtfTest="$(sdiff -st "$dtf" "$etf")"
     outTest="$(sdiff -st "$out" "$bto")"
@@ -46,6 +48,7 @@ function testCase() {
         echo -ne "$GREEN"
     fi
 
+    echo ""
     echo "$case"
     echo -ne "$WHITE"
 
@@ -65,7 +68,6 @@ function testCase() {
 
     echo ""
     echo "$time"
-    echo ""
 
     rm "$dtf"
     rm "$out"
@@ -89,9 +91,9 @@ echo -ne "$WHITE"
 #   - refund
 
 if test $# -lt 1; then
-    find "$TESTDIR" -mindepth 2 -type d | sed 's/\([a-z]\)\([0-9]\)$/\10\2/' | sort | sed 's/0\([0-9]\)$/\1/' | xargs -I {} bash -c 'testCase "$@"' "testCase" {}
+    find "$TESTDIR" -mindepth 2 -type d | sed 's/\([a-z]\)\([0-9]\)$/\10\2/' | sort | sed 's/0\([0-9]\)$/\1/' | xargs -I {} bash -c 'testCase "$@"' "testCase" {} | tee 'all.log'
 elif test $# -eq 1; then
-    testCase "$1"
+    testCase "$1" | tee "$(basename "$1")"'.log'
 fi
 
 echo -ne "$RESET"
