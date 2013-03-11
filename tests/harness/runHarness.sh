@@ -1,7 +1,7 @@
 #! /usr/bin/env bash
 
 export BINARY="$(readlink -f "../../Debug/FirstVu")"
-TESTDIR="$(readlink -f "..")"
+export TESTDIR="$(readlink -f "..")"
 export GLOBAL_UAO="$TESTDIR""/global/glob_account.inp"
 export GLOBAL_ATO="$TESTDIR""/global/glob_available_tickets.inp"
 
@@ -73,13 +73,6 @@ function testCase() {
     rm "$out"
 }
 
-export -f clean
-export -f testCase
-
-clean
-
-echo -ne "$WHITE"
-
 # Proposed Test Category Order:
 #   - login
 #   - logout
@@ -90,10 +83,22 @@ echo -ne "$WHITE"
 #   - delete
 #   - refund
 
-if test $# -lt 1; then
-    find "$TESTDIR" -mindepth 2 -type d | sed 's/\([a-z]\)\([0-9]\)$/\10\2/' | sort | sed 's/0\([0-9]\)$/\1/' | xargs -I {} bash -c 'testCase "$@"' "testCase" {} | tee 'all.log'
-elif test $# -eq 1; then
-    testCase "$1" | tee "$(basename "$1")"'.log'
-fi
+function testSuite() {
+    if [ -n "$1" ]; then
+        testCase "$1" | tee "$(basename "$1")"'.log'
+    else
+        find "$TESTDIR" -mindepth 2 -type d | sed 's/\([a-z]\)\([0-9]\)$/\10\2/' | sort | sed 's/0\([0-9]\)$/\1/' | xargs -I {} bash -c 'testCase "$@"' "testCase" {} | tee 'all.log'
+    fi
+}
+
+export -f clean
+export -f testCase
+export -f testSuite
+
+clean
+
+echo -ne "$WHITE"
+
+testSuite "$1"
 
 echo -ne "$RESET"
