@@ -62,7 +62,6 @@ Goodbye!
  */
 
 /* create */
-error: username must be a maximum of 15 characters
 error: username already exists
 error: invalid account type
 error: invalid username									//cannot use 'END '
