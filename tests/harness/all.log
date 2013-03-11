@@ -1,0 +1,719 @@
+[1;32m
+addcredit1
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+addcredit2
+[1;37mTEST: Output
+enter user account balance                                      |  create successful
+error: user is already logged in                                |  logout successful
+error: invalid command                                          <
+error: invalid command                                          |  login successful
+                                                                >  enter username
+                                                                >  enter credit amount
+                                                                >  new balance: $1
+                                                                >  credit added
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+addcredit3
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+addcredit4
+[1;37mTEST: Output
+                                                                >  enter username
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+addcredit5
+[1;37mTEST: Output
+                                                                >  error: username does not exist
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+addcredit6
+[1;37mTEST: Output
+error: total balance cannot be greater than $999,999            |  error: total balance can’t be greater than $999,999
+                                                                >
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+addcredit7
+[1;37mTEST: Output
+new balance: $999998                                            |  error: invalid credit amount
+credit added                                                    <
+                                                                >
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+addcredit8
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+addcredit9
+[1;37mTEST: Output
+error: total balance cannot be greater than $999,999            |  error: invalid credit amount
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+addcredit10
+[1;37mTEST: Output
+enter credit amount                                             |  enter username
+new balance: $101                                               |  error: invalid user privileges
+credit added                                                    |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy1
+[1;37mTEST: Output
+new balance: $700.00                                            |  current balance: $700.00
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy2
+[1;37mTEST: Output
+new balance: $700.00                                            |  current balance: $700.00
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy3
+[1;37mTEST: Output
+new balance: $999699.00                                         |  current balance: $999699.00
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy4
+[1;37mTEST: Output
+error: username does not exist                                  |  login successful
+error: no users logged in                                       |  enter event title
+                                                                >  enter number of tickets
+                                                                >  enter seller's username
+                                                                >  error: invalid user privileges
+error: invalid command                                          |  logout successful
+error: invalid command                                          <
+error: invalid command                                          <
+error: no users logged in                                       <
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy5
+[1;37mTEST: Output
+                                                                >  cost per ticket: $999.00
+                                                                >  total cost: $2997.00
+                                                                >  current balance: $1000.00
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy6
+[1;37mTEST: Output
+enter seller's username                                         |  error: maximum of 4 tickets can be purchased at a time
+error: a maximum of 4 tickets can be purchased                  |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy7
+[1;37mTEST: Output
+enter seller's username                                         |  error: not enough tickets left
+cost per ticket: $150.00                                        |  error: invalid command
+total cost: $600.00                                             |  error: invalid command
+current balance: $1000.00                                       <
+confirm purchase: yes or no                                     <
+new balance: $400.00                                            <
+purchase successful                                             <
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy8
+[1;37mTEST: Output
+new balance: $999974.00                                         <
+                                                                >  new balance: $999974.00
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy9
+[1;37mTEST: Output
+error: invalid event name                                       |  error: invalid event
+                                                                >
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy10
+[1;37mTEST: Output
+enter number of tickets                                         <
+                                                                >  enter username of seller
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy11
+[1;37mTEST: Output
+enter seller's username                                         |  error: invalid ticket number
+error: not enough tickets remaining                             |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy12
+[1;37mTEST: Output
+enter number of tickets                                         |  error: invalid event
+enter seller's username                                         |  error: invalid command
+error: invalid event name                                       |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy13
+[1;37mTEST: Output
+enter number of tickets                                         <
+error: invalid seller name                                      |  enter username of seller
+                                                                >  error: invalid username
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+buy14
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+buy15
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+buy16
+[1;37mTEST: Output
+error: user not authorized to buy                               |  buy back: yes or no
+error: invalid command                                          |  purchase successful
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create1
+[1;37mTEST: Output
+enter account type                                              |  error: username must be maximum 15 characters
+enter user account balance                                      |  error: invalid command
+create successful                                               |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create2
+[1;37mTEST: Output
+enter account type                                              |  error: username already exists
+enter user account balance                                      |  error: invalid command
+create successful                                               |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create3
+[1;37mTEST: Output
+enter user account balance                                      <
+                                                                >  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create4
+[1;37mTEST: Output
+enter account type                                              |  error: cannot use 'quit' as a username
+enter user account balance                                      |  error: invalid command
+create successful                                               |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create5
+[1;37mTEST: Output
+enter username to create                                        <
+enter account type                                              <
+enter user account balance                                      <
+                                                                >  error: invalid command
+                                                                >  error: invalid command
+                                                                >  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+create6
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+create7
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+create8
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+create9
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create10
+[1;37mTEST: Output
+                                                                >
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create11
+[1;37mTEST: Output
+error: invalid credit amount                                    |  error: invalid account balance
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create12
+[1;37mTEST: Output
+                                                                >  error: invalid account balance
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+create13
+[1;37mTEST: Output
+enter account type                                              |  error: invalid username
+enter user account balance                                      |  error: invalid command
+create successful                                               |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+delete1
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+delete2
+[1;37mTEST: Output
+error: cannot delete user currently logged in                   |  error: cannot delete currently logged in user
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+delete3
+[1;37mTEST: Output
+                                                                >  error: only administrators delete accounts
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+delete4
+[1;37mTEST: Output
+error: username does not exist                                  |  error: no such user
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+delete5
+[1;37mTEST: Output
+login successful                                                |  login  successful
+enter number of tickets                                         |  error: no such event
+enter seller's username                                         |  error: invalid command
+error: invalid seller name                                      |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+delete6
+[1;37mTEST: Output
+error: username does not exist                                  |  error: invalid username
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+login1
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+login2
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+login3
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+login4
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+login5
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+login6
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+login7
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+login8
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+logout1
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+logout2
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+logout3
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund1
+[1;37mTEST: Output
+enter buyer's username                                          |  error: Privileged transaction
+enter seller's username                                         |  error: invalid command
+enter amount to transfer                                        |  error: invalid command
+error: only administrators can make refunds                     |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund2
+[1;37mTEST: Output
+enter seller's username                                         |  enter username of seller
+current balance: $1000.00                                       <
+                                                                >  enter username
+                                                                >  logout successful
+                                                                >  login admin
+                                                                >  enter buyer's username
+                                                                >  enter seller's username
+                                                                >  enter amount to transfer
+                                                                >  refund successful
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+refund3
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund4
+[1;37mTEST: Output
+enter seller's username                                         <
+enter amount to transfer                                        <
+                                                                >  enter seller's username
+                                                                >  error: invalid command
+                                                                >  error: invalid command
+                                                                >
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund5
+[1;37mTEST: Output
+enter amount to transfer                                        <
+                                                                >  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund6
+[1;37mTEST: Output
+new balance: $999699.00                                         |  new balance: $993699.00
+error: total balance cannot be greater than $999,999            |  new balance: $999999.00
+                                                                >  credit added
+enter username                                                  <
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund7
+[1;37mTEST: Output
+cost per ticket: $150.00                                        |  cost per ticket: $150
+total cost: $300.00                                             |  total cost: $300
+current balance: $999999.00                                     |  current balance: $999999
+new balance: $999699.00                                         |  new balance: $999699
+error: total balance cannot be greater than $999,999            |  refund successful
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund8
+[1;37mTEST: Output
+refund successful                                               |  error: invalid amount requested
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+refund9
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund10
+[1;37mTEST: Output
+enter amount to transfer                                        |  error: invalid username
+error: username does not exist                                  |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+refund11
+[1;37mTEST: Output
+enter seller's username                                         |  error: invalid username
+enter amount to transfer                                        |  error: invalid command
+error: username does not exist                                  |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell1
+[1;37mTEST: Output
+enter sale price                                                |  error: Event name invalid
+enter number of tickets                                         |  error: invalid command
+tickets added                                                   |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell2
+[1;37mTEST: Output
+enter sale price                                                |  error: invalid event name
+enter number of tickets                                         |  error: invalid command
+error: event already exists                                     |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell3
+[1;37mTEST: Output
+enter event title                                               |  error: invalid user privileges
+enter sale price                                                |  error: invalid command
+enter number of tickets                                         |  error: invalid command
+error: user not authorized to sell                              |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell4
+[1;37mTEST: Output
+enter sale price                                                |  error: Event already exists
+enter number of tickets                                         |  error: invalid command
+error: event already exists                                     |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+sell5
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell6
+[1;37mTEST: Output
+enter number of tickets                                         <
+                                                                >  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell7
+[1;37mTEST: Output
+enter sale price                                                |  error: invalid event name
+enter number of tickets                                         |  error: invalid command
+tickets added                                                   |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell8
+[1;37mTEST: Output
+enter username                                                  |  login
+login successful                                                |  sell_standard
+enter event title                                               |  sell
+enter sale price                                                |  Turret_Tenors
+enter number of tickets                                         |  150.00
+error: invalid ticket number                                    |  200
+logout successful                                               |  logout
+                                                                >  quit
+
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell9
+[1;37mTEST: Output
+tickets added                                                   <
+enter number of tickets                                         |  error: Tickets not available
+enter seller's username                                         |  error: invalid command
+error: invalid event name                                       |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+sell10
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+sell11
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+sell12
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+sell13
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell14
+[1;37mTEST: Output
+enter number of tickets                                         <
+                                                                >  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+sell15
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;32m
+sell16
+[1;37m
+real 0.00
+user 0.00
+sys 0.00
+[1;31m
+sell17
+[1;37mTEST: Output
+enter sale price                                                |  error: invalid event name
+enter number of tickets                                         |  error: invalid command
+tickets added                                                   |  error: invalid command
+
+real 0.00
+user 0.00
+sys 0.00
