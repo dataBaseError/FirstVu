@@ -96,6 +96,7 @@ function testCase() {
 #   - delete
 #   - refund
 
+# Create a new log file and then append for each test category for every run of runHarness.sh
 function testSuite() {
     #allCases="$(find "$TESTDIR" -mindepth 2 -type d)"
     #sorted="$(sed 's/\([a-z]\)\([0-9]\)$/\10\2/' <<< "$allCases" | sort | sed 's/0\([0-9]\)$/\1/')"
