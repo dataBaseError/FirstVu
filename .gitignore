@@ -13,8 +13,12 @@
 # generated files
 bin/
 gen/
-Debug/
+front_end/Debug/src/
+makefile
+*.mk
+front_end/Debug/FirstVu*
 gmon.out
+all.log
 
 # Local configuration file (sdk path, etc)
 local.properties

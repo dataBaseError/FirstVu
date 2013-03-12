@@ -27,7 +27,7 @@ public:
     static const int MAX_PRICE_SIZE;
     static const int MAX_TICKET;
     static const int MAX_TICKET_SIZE;
-    static const int MAX_EVENT_LENGTH;
+    static const unsigned int MAX_EVENT_LENGTH;
 
     /**
      * Constructor for making a ticket listing for an event.

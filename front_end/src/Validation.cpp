@@ -1,3 +1,5 @@
+#include "Validation.h"
+
 /**
  * A file that contains methods for validating input.
  *
@@ -6,7 +8,6 @@
  * @author Joseph Heron
  * @author Carly Marshall
  */
-#include "../include/Validation.h"
 
 // Cast to string
 // match with [0-9]+\.[0-9]{2}

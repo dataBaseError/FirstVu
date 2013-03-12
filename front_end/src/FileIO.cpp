@@ -1,4 +1,4 @@
-#include "../include/FileIO.h"
+#include "FileIO.h"
 
 FileIO::FileIO(char* uao, char* ato, char* dtf) {
     this->uao = uao;
