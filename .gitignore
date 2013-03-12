@@ -13,8 +13,8 @@
 # generated files
 bin/
 gen/
-Debug/src
-Debug/FirstVu*
+front_end/Debug/src/
+front_end/Debug/FirstVu*
 gmon.out
 all.log
 
