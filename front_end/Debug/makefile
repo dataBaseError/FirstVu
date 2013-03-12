@@ -38,19 +38,19 @@ endif
 # Add inputs and outputs from these tool invocations to the build variables 
 
 # All Target
-all: FirstVu_frontend
+all: FirstVu_front_end
 
 # Tool invocations
-FirstVu_frontend: $(OBJS) $(USER_OBJS)
+FirstVu_front_end: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -L"/home/joseph/source_code/github/FirstVu/lib/static" -static -o "FirstVu_frontend" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L"/home/joseph/source_code/github/FirstVu/front_end/lib/static" -static -o "FirstVu_front_end" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) $(OBJS)$(C++_DEPS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) FirstVu_frontend
+	-$(RM) $(OBJS)$(C++_DEPS)$(C_DEPS)$(CC_DEPS)$(CPP_DEPS)$(EXECUTABLES)$(CXX_DEPS)$(C_UPPER_DEPS) FirstVu_front_end
 	-@echo ' '
 
 .PHONY: all clean dependents
