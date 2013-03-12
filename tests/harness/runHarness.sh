@@ -6,6 +6,7 @@ export GLOBAL_UAO="$TESTDIR""/global/glob_account.inp"
 export GLOBAL_ATO="$TESTDIR""/global/glob_available_tickets.inp"
 
 # Log File
+export LOGFILE='all.log'
 
 # Colours
 export RED='\e[1;31m'
@@ -52,8 +53,15 @@ function testCase() {
     echo "$case"
     echo -ne "$WHITE"
 
+    if [ -z "$difTest" -a -z "$outTest" ]; then
+        echo "Test Success"
+    fi
+
     if [ -n "$difTest" ]; then
-        echo "TEST: DTF"
+        echo "Test Failure: DTF"
+        echo ""
+        echo "Difference Between Actual and Expected DTF"
+        echo ""
         echo "$difTest"
     fi
 
@@ -62,10 +70,15 @@ function testCase() {
     fi
 
     if [ -n "$outTest" ]; then
-        echo "TEST: Output"
+        echo "Test Failure: Output"
+        echo ""
+        echo "Difference Between Actual and Expected Output"
+        echo ""
         echo "$outTest"
     fi
 
+    echo ""
+    echo "Time"
     echo ""
     echo "$time"
 
@@ -84,21 +97,34 @@ function testCase() {
 #   - refund
 
 function testSuite() {
-    if [ -n "$1" ]; then
-        testCase "$1" | tee "$(basename "$1")"'.log'
-    else
-        find "$TESTDIR" -mindepth 2 -type d | sed 's/\([a-z]\)\([0-9]\)$/\10\2/' | sort | sed 's/0\([0-9]\)$/\1/' | xargs -I {} bash -c 'testCase "$@"' "testCase" {} | tee 'all.log'
-    fi
+    #allCases="$(find "$TESTDIR" -mindepth 2 -type d)"
+    #sorted="$(sed 's/\([a-z]\)\([0-9]\)$/\10\2/' <<< "$allCases" | sort | sed 's/0\([0-9]\)$/\1/')"
+
+    for i in 'login' 'logout' 'create' 'addcredit' 'sell' 'buy' 'delete' 'refund'; do
+        case="$(find "$TESTDIR"/"$i" -mindepth 1 -type d)"
+        sorted="$(sed 's/\(.\)\([0-9]\)$/\10\2/' <<< "$case" | sort | sed 's/0\([0-9]\)$/\1/')"
+
+        echo "$sorted" | xargs -I {} bash -c 'testCase "$1"' 'testCase' {} | tee "$LOGFILE"
+    done
+
+    decolour "$LOGFILE"
+}
+
+# Remove characters which are used to show colours in bash from the log file
+# http://www.commandlinefu.com/commands/view/3584/remove-color-codes-special-characters-with-sed
+function decolour() {
+    sed -ri "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" "$1"
 }
 
 export -f clean
 export -f testCase
 export -f testSuite
+export -f decolour
 
 clean
 
 echo -ne "$WHITE"
 
-testSuite "$1"
+testSuite
 
 echo -ne "$RESET"
