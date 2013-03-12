@@ -49,7 +49,6 @@ function testCase() {
         echo -ne "$GREEN"
     fi
 
-    echo ""
     echo "$case"
     echo -ne "$WHITE"
 
@@ -81,6 +80,7 @@ function testCase() {
     echo "Time"
     echo ""
     echo "$time"
+    echo ""
 
     rm "$dtf"
     rm "$out"
@@ -100,11 +100,13 @@ function testSuite() {
     #allCases="$(find "$TESTDIR" -mindepth 2 -type d)"
     #sorted="$(sed 's/\([a-z]\)\([0-9]\)$/\10\2/' <<< "$allCases" | sort | sed 's/0\([0-9]\)$/\1/')"
 
+    rm "$LOGFILE"
+
     for i in 'login' 'logout' 'create' 'addcredit' 'sell' 'buy' 'delete' 'refund'; do
         case="$(find "$TESTDIR"/"$i" -mindepth 1 -type d)"
         sorted="$(sed 's/\(.\)\([0-9]\)$/\10\2/' <<< "$case" | sort | sed 's/0\([0-9]\)$/\1/')"
 
-        echo "$sorted" | xargs -I {} bash -c 'testCase "$1"' 'testCase' {} | tee "$LOGFILE"
+        echo "$sorted" | xargs -I {} bash -c 'testCase "$1"' 'testCase' {} | tee -a "$LOGFILE"
     done
 
     decolour "$LOGFILE"
