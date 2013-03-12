@@ -29,7 +29,7 @@ public:
     static const double MAX_CREDIT;
 
     static const int MAX_CREDIT_SIZE;
-    static const int MAX_USERNAME_LENGTH;
+    static const unsigned int MAX_USERNAME_LENGTH;
 
     /**
      * Constructor for creating a new account.

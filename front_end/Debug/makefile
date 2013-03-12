@@ -44,7 +44,7 @@ all: FirstVu_frontend
 FirstVu_frontend: $(OBJS) $(USER_OBJS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: GCC C++ Linker'
-	g++ -L"/home/joseph/source_code/github/FirstVu/front_end/lib/static" -static -o "FirstVu_frontend" $(OBJS) $(USER_OBJS) $(LIBS)
+	g++ -L"../lib/static" -o "FirstVu_frontend" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
