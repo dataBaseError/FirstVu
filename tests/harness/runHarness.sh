@@ -1,6 +1,6 @@
 #! /usr/bin/env bash
 
-export BINARY="$(readlink -f "../../Debug/FirstVu")"
+export BINARY="$(readlink -f "../../Debug/FirstVu_frontend")"
 export TESTDIR="$(readlink -f "..")"
 export GLOBAL_UAO="$TESTDIR""/global/glob_account.inp"
 export GLOBAL_ATO="$TESTDIR""/global/glob_available_tickets.inp"
@@ -38,7 +38,7 @@ function testCase() {
     etf="$case"".etf"
     bto="$case"".bto"
 
-    time=$(time -p ("$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out") 2>&1 > '/dev/null')
+    time=$(time -p ("$BINARY" "$GLOBAL_UAO" "$GLOBAL_ATO" "$dtf" < "$inp" &> "$out") 2>&1)
 
     dtfTest="$(sdiff -st "$dtf" "$etf")"
     outTest="$(sdiff -st "$out" "$bto")"
