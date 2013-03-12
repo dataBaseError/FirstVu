@@ -6,7 +6,7 @@ export GLOBAL_UAO="$TESTDIR""/global/glob_account.inp"
 export GLOBAL_ATO="$TESTDIR""/global/glob_available_tickets.inp"
 
 # Log File
-export LOGFILE='all.log'
+# export LOGFILE='all.log'
 
 # Colours
 export RED='\e[1;31m'
@@ -101,28 +101,28 @@ function testSuite() {
     #allCases="$(find "$TESTDIR" -mindepth 2 -type d)"
     #sorted="$(sed 's/\([a-z]\)\([0-9]\)$/\10\2/' <<< "$allCases" | sort | sed 's/0\([0-9]\)$/\1/')"
 
-    rm "$LOGFILE"
+    # rm "$LOGFILE"
 
     for i in 'login' 'logout' 'create' 'addcredit' 'sell' 'buy' 'delete' 'refund'; do
         case="$(find "$TESTDIR"/"$i" -mindepth 1 -type d)"
         sorted="$(sed 's/\(.\)\([0-9]\)$/\10\2/' <<< "$case" | sort | sed 's/0\([0-9]\)$/\1/')"
 
-        echo "$sorted" | xargs -I {} bash -c 'testCase "$1"' 'testCase' {} | tee -a "$LOGFILE"
+        echo "$sorted" | xargs -I {} bash -c 'testCase "$1"' 'testCase' {} # | tee -a "$LOGFILE"
     done
 
-    decolour "$LOGFILE"
+    # decolour "$LOGFILE"
 }
 
 # Remove characters which are used to show colours in bash from the log file
 # http://www.commandlinefu.com/commands/view/3584/remove-color-codes-special-characters-with-sed
-function decolour() {
-    sed -ri "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" "$1"
-}
+# function decolour() {
+#     sed -ri "s/\x1B\[([0-9]{1,2}(;[0-9]{1,2})?)?[m|K]//g" "$1"
+# }
 
 export -f clean
 export -f testCase
 export -f testSuite
-export -f decolour
+# export -f decolour
 
 clean
 
