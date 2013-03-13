@@ -12,7 +12,8 @@ int main(int argc, char** argv) {
 
         while (getline(cin, input)) {
             //cout << "Enter your command." << endl;
-            input = rtrim(input);
+            //input = rtrim(input);
+            input = Poco::trimRight(input);
 
             if (!session->isLoggedIn()) {
                 if (input.compare(LOGIN) == 0) {
