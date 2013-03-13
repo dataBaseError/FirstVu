@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #include "../include/AuxiliaryTransaction.h"
+=======
+#include <AuxiliaryTransaction.h>
+>>>>>>> 2f3d92f... CHANGED: #include style
 
 AuxiliaryTransaction::AuxiliaryTransaction(int type, string username,
 		double credit, string accountType) : Entry(type) {

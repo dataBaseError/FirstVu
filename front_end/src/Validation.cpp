@@ -1,4 +1,4 @@
-#include "../include/Validation.h"
+#include <Validation.h>
 
 /**
  * A file that contains methods for validating input.
@@ -31,14 +31,14 @@ bool validUsername(string username) {
 		return false;
 	}
 
-	//smatch m;
-	/*regex userRegex ("[A-z_]+");
+	Poco::RegularExpression re1("[A-z_]+");
 
-	if (regex_match(username, userRegex)) {
+	if(re1.match(username)) {
 		return true;
 	}
-	return false;*/
-	return true;
+	//cout << "" << endl;
+	// Error invalid username characters
+	return false;
 }
 
 // must be Ticket.MAX_EVENT_LENGTH characters
@@ -50,11 +50,15 @@ bool validEventName(string event) {
 		return false;
 	}
 
-	/*smatch m;
-	regex EventRegex ("[A-z_]+");
+	Poco::RegularExpression re1("[A-z_]+");
 
-	return regex_search(event, m, EventRegex);*/
-	return true;
+	if(re1.match(event)) {
+		// Valid username
+		return true;
+	}
+
+	// Invalid username
+	return false;
 }
 
 // Account.ADMIN or Account.SELL or Account.BUY or Account.FULL and length 2
@@ -64,12 +68,14 @@ bool validAccountType(string type) {
 		return false;
 	}
 
-	/*smatch m;
-	regex AccountRegex (Account::ADMIN + "|" + Account::FULL + "|" +
-			Account::SELL + "|" + Account::BUY);
+	if (type.compare(Account::ADMIN) == 0 || type.compare(Account::FULL) == 0 ||
+			type.compare(Account::SELL) == 0 || type.compare(Account::BUY) == 0) {
+		// Valid type
+		return true;
+	}
 
-	return regex_search(type, m, AccountRegex);*/
-	return true;
+	// Invalid user account type
+	return false;
 }
 
 // \d and > 0 and <= Ticket.MAX_TICKET

@@ -1,4 +1,4 @@
-#include "../include/Transaction.h"
+#include <Transaction.h>
 
 const double Transaction::maxAddCredit = 1000.00;
 
@@ -60,7 +60,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
     }
 
     if (numTickets <= 0) {
-        cout << INVALID_TICKET_NUMBER << endl;
+        cout << INVALID_TICKET_REMAINING << endl;
         return false;
     }
 

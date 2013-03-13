@@ -1,4 +1,4 @@
-#include "../include/FileIO.h"
+#include <FileIO.h>
 
 FileIO::FileIO(char* uao, char* ato, char* dtf) {
     this->uao = uao;
@@ -111,8 +111,6 @@ bool FileIO::updateTicketList() {
 
 bool FileIO::writeTransaction(vector<Entry*> newList) {
     ofstream dtf(this->dtf, ios::app);
-
-    //TODO Change to overwrite
 
     if (dtf.is_open()) {
         for (vector<Entry*>::size_type i = 0; i < newList.size(); i++) {

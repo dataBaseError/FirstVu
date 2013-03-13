@@ -14,11 +14,20 @@
 #include <string>
 #include <regex>
 
+#include "../lib/include/Poco/RegularExpression.h"
+
 #include "Account.h"
 #include "Ticket.h"
 
 
 using namespace std;
+
+//TODO create error messages
+//TODO change integer parameters to string parameters
+//TODO implement validBalance, validTicketNumber, validPrice
+//TODO convert string input to numbers where necessary
+	//TODO create conversion methods.
+//TODO change input for integers and doubles to string
 
 /**
  * Validate the entered balance.
