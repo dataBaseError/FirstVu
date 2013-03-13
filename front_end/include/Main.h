@@ -21,6 +21,7 @@
 #include <Strings.h>
 //#include "../lib/include/Poco/StringTokenizer.h"
 
+#include <Poco/DynamicAny.h>
 #include <Poco/String.h>
 
 using namespace std;
