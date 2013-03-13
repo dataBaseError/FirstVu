@@ -1,4 +1,4 @@
-#include "AuxiliaryTransaction.h"
+#include <AuxiliaryTransaction.h>
 
 AuxiliaryTransaction::AuxiliaryTransaction(int type, string username,
 		double credit, string accountType) : Entry(type) {
