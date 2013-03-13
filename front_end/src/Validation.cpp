@@ -9,17 +9,12 @@
  * @author Carly Marshall
  */
 
-// Cast to string
-// match with [0-9]+\.[0-9]{2}
-// < Account.MAX_CREDIT and >= 0 and has a max of 2 decimal points.
-// size of > 0 and =< Account.MAX_CREDIT_SIZE
-// decided whether we round or truncate
-bool validBalance(double balance) {
-   return true;
-	/**
-	 * This method is current un-implemented but in the final build will be used
-	 * to determine if a users balance is valid
-	 */
+// match with [0-9]{0,Account::MAX_CREDIT_SIZE}(.[0-9]{2})?
+bool validBalance(string balance) {
+   stringstream regex;
+   regex << "[0-9]{0," << Account::MAX_CREDIT_SIZE << "}(.[0-9]{2})?";
+
+   return Poco::RegularExpression(regex.str()).match(balance);
 }
 
 // must be Account.MAX_USERNAME_LENGTH characters

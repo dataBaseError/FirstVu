@@ -35,7 +35,7 @@ using namespace std;
  * @param balance The entered balance
  * @return Whether the entered balance is a valid balance.
  */
-bool validBalance(double balance);
+bool validBalance(string balance);
 
 /**
  * Validate the username.
