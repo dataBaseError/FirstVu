@@ -31,7 +31,8 @@ bool FileIO::updateAccountList() {
             string line;
 
             getline(uao, line);
-            vector<string> lineV = split(line, ' ');
+            //vector<string> lineV = split(line, ' ');
+            Poco::StringTokenizer lineV(line, " ", Poco::StringTokenizer::TOK_IGNORE_EMPTY);
 
             if (lineV[0] != "END") {
                 string username = lineV[0];
@@ -72,7 +73,8 @@ bool FileIO::updateTicketList() {
             string line;
 
             getline(ato, line);
-            vector<string> lineV = split(line, ' ');
+            //vector<string> lineV = split(line, ' ');
+            Poco::StringTokenizer lineV(line, " ", Poco::StringTokenizer::TOK_IGNORE_EMPTY);
 
             if (lineV[0] != "END") {
                 string event = lineV[0];
