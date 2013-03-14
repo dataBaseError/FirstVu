@@ -3,9 +3,5 @@ login successful
 enter buyer's username
 enter seller's username
 enter amount to transfer
-<<<<<<< HEAD
 error: username does not exist
-=======
-error: username doesn't exist
->>>>>>> 4b586c6... Merge branch 'unlinked' of github.com:dataBaseError/FirstVu into unlinked
 logout successful

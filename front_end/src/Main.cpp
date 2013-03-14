@@ -97,6 +97,7 @@ int main(int argc, char** argv) {
                         cout << DELETE_SUCCESS << endl;
                     }
                 }
+                // Output error
             }
             else if (input.compare(ADDCREDIT) == 0) {
                 if (session->isAdmin()) {
