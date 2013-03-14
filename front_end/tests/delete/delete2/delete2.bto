@@ -1,5 +1,5 @@
 enter username
 login successful
 enter username
-error: cannot delete currently logged in user
+error: cannot delete user currently logged in
 logout successful

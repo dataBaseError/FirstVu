@@ -1,7 +1,7 @@
 enter username
 login successful
-error: Privileged transaction
-error: invalid command
-error: invalid command
-error: invalid command
+enter buyer's username
+enter seller's username
+enter amount to transfer
+error: only administrators can make refunds
 logout successful

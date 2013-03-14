@@ -1,9 +1,8 @@
 enter username
 login successful
 enter buyer's username
-error: username does not exist
 enter seller's username
-error: invalid command
-error: invalid command
+enter amount to transfer
+error: username does not exist
 logout successful
 
