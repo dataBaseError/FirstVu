@@ -1,4 +1,4 @@
-#include "Refund.h"
+#include "../include/Refund.h"
 
 Refund::Refund(int type, string buyName, string sellName, double credit)
 : Entry(type) {

@@ -1,4 +1,4 @@
-#include "Ticket.h"
+#include "../include/Ticket.h"
 
 
 const double Ticket::MAX_PRICE = 999.99;
