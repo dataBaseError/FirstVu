@@ -4,4 +4,8 @@ enter event title
 enter sale price
 enter number of tickets
 error: invalid event price
+<<<<<<< HEAD
+=======
+enter number of tickets
+>>>>>>> 4b586c6... Merge branch 'unlinked' of github.com:dataBaseError/FirstVu into unlinked
 logout successful

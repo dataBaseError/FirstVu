@@ -4,5 +4,8 @@ enter event title
 enter number of tickets
 enter seller's username
 error: not enough tickets remaining
+<<<<<<< HEAD
 error: invalid command
+=======
+>>>>>>> 4b586c6... Merge branch 'unlinked' of github.com:dataBaseError/FirstVu into unlinked
 logout successful

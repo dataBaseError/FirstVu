@@ -4,5 +4,4 @@ enter event title
 enter number of tickets
 enter seller's username
 error: invalid seller name
-error: invalid command
 logout successful
