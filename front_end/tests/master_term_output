@@ -77,19 +77,14 @@ error: invalid user privileges
 
 /* sell */
 error: invalid event name								//contains invalid characters
-error: invalid parameters
-error: user not authorized to sell
 error: event already exists
 error: invalid event price								//price over 999.99 or less than 0
-error: event title must be a maximum of 25 characters
 error: invalid ticket number							//over 100 or less than 1
 error: tickets unavailable
 error: invalid username
-error: seller balance cannot be greater than $999,999
 error: invalid user privileges
 
 /* buy */
-error: user not authorized to buy
 error: insufficient funds
 error: a maximum of 4 tickets can be purchased
 error: not enough tickets remaining
@@ -97,6 +92,7 @@ error: invalid seller name
 error: invalid event
 error: invalid ticket number
 error: invalid user privileges
+error: seller balance cannot be greater than $999,999
 
 /* refund */
 error: only administrators can make refunds
