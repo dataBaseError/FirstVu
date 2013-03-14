@@ -1,7 +1,7 @@
 enter username
 login successful
 enter event title
-error: Event already exists
-error: invalid command
-error: invalid command
+enter sale price
+enter number of tickets
+error: event already exists
 logout successful
