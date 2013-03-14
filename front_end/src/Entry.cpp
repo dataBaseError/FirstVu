@@ -1,4 +1,4 @@
-#include "Entry.h"
+#include <Entry.h>
 
 const int Entry::LOGOUT    = 0;
 const int Entry::CREATE    = 1;

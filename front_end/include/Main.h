@@ -15,12 +15,14 @@
 #include <sstream>
 #include <iostream>
 
-#include "Transaction.h"
-#include "FileIO.h"
-#include "Utility.h"
-#include "Validation.h"
-#include "Strings.h"
+#include <Transaction.h>
+#include <FileIO.h>
+#include <Validation.h>
+#include <Strings.h>
 //#include "../lib/include/Poco/StringTokenizer.h"
+
+#include <Poco/DynamicAny.h>
+#include <Poco/String.h>
 
 using namespace std;
 

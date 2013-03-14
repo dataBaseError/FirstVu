@@ -14,10 +14,10 @@
 #include <string>
 #include <regex>
 
-#include "../lib/include/Poco/RegularExpression.h"
+#include <Poco/RegularExpression.h>
 
-#include "Account.h"
-#include "Ticket.h"
+#include <Account.h>
+#include <Ticket.h>
 
 
 using namespace std;
@@ -35,7 +35,7 @@ using namespace std;
  * @param balance The entered balance
  * @return Whether the entered balance is a valid balance.
  */
-bool validBalance(double balance);
+bool validBalance(string balance);
 
 /**
  * Validate the username.

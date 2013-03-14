@@ -43,7 +43,7 @@ function testCase() {
     dtfTest="$(sdiff -st "$dtf" "$etf")"
     outTest="$(sdiff -st "$out" "$bto")"
 
-    if [ -n "$difTest" -o -n "$outTest" ]; then
+    if [ -n "$dtfTest" -o -n "$outTest" ]; then
         echo -ne "$RED"
     else
         echo -ne "$GREEN"
@@ -52,19 +52,19 @@ function testCase() {
     echo "$case"
     echo -ne "$WHITE"
 
-    if [ -z "$difTest" -a -z "$outTest" ]; then
+    if [ -z "$dtfTest" -a -z "$outTest" ]; then
         echo "Test Success"
     fi
 
-    if [ -n "$difTest" ]; then
+    if [ -n "$dtfTest" ]; then
         echo "Test Failure: DTF"
         echo ""
         echo "Difference Between Actual and Expected DTF"
         echo ""
-        echo "$difTest"
+        echo "$dtfTest"
     fi
 
-    if [ -n "$difTest" -a -n "$outTest" ]; then
+    if [ -n "$dtfTest" -a -n "$outTest" ]; then
         echo ""
     fi
 
