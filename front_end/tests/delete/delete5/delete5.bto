@@ -6,7 +6,7 @@ logout successful
 enter username
 login  successful
 enter event title
-error: no such event
-error: invalid command
-error: invalid command
+enter number of tickets
+enter seller's username
+error: invalid seller name
 logout successful
