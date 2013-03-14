@@ -72,7 +72,6 @@ static const string USER_ALREADY_LOGGED = "error: user is already logged in";
 
 // Conflicts with User Accounts File or Available Tickets File
 static const string INVALID_USERNAME_EXIST = "error: username does not exist";
-static const string INVALID_ACCOUNT_BUY = "error: user not authorized to buy";
 static const string INVALID_ACCOUNT_SELL = "error: user not authorized to sell";
 static const string INVALID_TICKET_REMAINING = "error: not enough tickets remaining";
 static const string INVALID_TICKET_MAX = "error: a maximum of 4 tickets can be purchased";
