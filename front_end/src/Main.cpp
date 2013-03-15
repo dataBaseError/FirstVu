@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
                     getline(cin, input);
 
                     if (!validUsername(input)) {
-                        cout << INVALID_USERNAME << endl;
+                        cout << INVALID_USERNAME_EXIST << endl;
                     }
                     else if (session->login(input)) {
                         cout << LOGIN_SUCCESS << endl;
