@@ -1,7 +1,7 @@
 enter username
 login successful
 enter event title
-error: Event name invalid
+error: invalid event name
 error: invalid command
 error: invalid command
 logout successful
