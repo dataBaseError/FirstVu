@@ -1,8 +1,8 @@
 enter username
 login successful
 enter event title
+enter number of tickets
 enter seller's username
-enter username of seller
 error: invalid seller name
 error: invalid command
 logout successful

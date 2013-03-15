@@ -3,6 +3,6 @@ login successful
 enter event title
 enter number of tickets
 enter seller's username
-error: invalid user privileges
+error: user not authorized to buy
 error: invalid command
 logout successful

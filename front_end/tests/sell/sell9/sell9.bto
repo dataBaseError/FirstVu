@@ -4,7 +4,7 @@ enter event title
 enter sale price
 enter number of tickets
 enter event title
-error: Tickets not available
-error: invalid command
-error: invalid command
+enter number of tickets
+enter seller's username
+error: invalid event name
 logout successful

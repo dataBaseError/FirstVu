@@ -22,7 +22,7 @@ int main(int argc, char** argv) {
                     getline(cin, input);
 
                     if (!validUsername(input)) {
-                        cout << INVALID_USERNAME << endl;
+                        cout << INVALID_USERNAME_EXIST << endl;
                     }
                     else if (session->login(input)) {
                         cout << LOGIN_SUCCESS << endl;
@@ -97,6 +97,7 @@ int main(int argc, char** argv) {
                         cout << DELETE_SUCCESS << endl;
                     }
                 }
+                // Output error
             }
             else if (input.compare(ADDCREDIT) == 0) {
                 if (session->isAdmin()) {

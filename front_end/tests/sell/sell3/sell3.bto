@@ -1,7 +1,7 @@
 enter username
 login successful
-error: invalid user privileges
-error: invalid command
-error: invalid command
-error: invalid command
+enter event title
+enter sale price
+enter number of tickets
+error: user not authorized to sell
 logout successful

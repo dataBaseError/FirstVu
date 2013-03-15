@@ -60,7 +60,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
     }
 
     if (numTickets <= 0) {
-        cout << INVALID_TICKET_REMAINING << endl;
+        cout << INVALID_TICKET_NUMBER << endl;
         return false;
     }
 

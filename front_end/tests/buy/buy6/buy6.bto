@@ -2,7 +2,6 @@ enter username
 login successful
 enter event title
 enter number of tickets
+enter seller's username
 error: maximum of 4 tickets can be purchased at a time
-error: invalid command
-error: invalid command
 logout successful
