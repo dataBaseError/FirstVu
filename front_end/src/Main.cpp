@@ -86,7 +86,7 @@ int main(int argc, char** argv) {
                 }
             }
             else if (input.compare(DELETE) == 0) {
-                if (session->isAdmin()) {
+                //if (session->isAdmin()) {
                     cout << ENTER_USERNAME << endl;
                     getline(cin, username);
 
@@ -96,8 +96,7 @@ int main(int argc, char** argv) {
                     else if (session->removeUser(username)) {
                         cout << DELETE_SUCCESS << endl;
                     }
-                }
-                // Output error
+                //}
             }
             else if (input.compare(ADDCREDIT) == 0) {
                 if (session->isAdmin()) {
@@ -107,7 +106,8 @@ int main(int argc, char** argv) {
                     if (!validUsername(username)) {
                         cout << INVALID_USERNAME << endl;
                     }
-                    else if (session->getFileIO()->findUser(username) != -1) {
+                    //else if (session->getFileIO()->findUser(username) != -1) {
+                    else {
                         cout << ENTER_CREDIT_AMOUNT << endl;
                         getline(cin, balance);
                         //cin >> balance;
