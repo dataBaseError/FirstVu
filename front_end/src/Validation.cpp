@@ -28,7 +28,7 @@ bool validUsername(string username) {
 
 	Poco::RegularExpression re1("[A-z_]+");
 
-	if(re1.match(username)) {
+	if(re1.match(username) && username.compare("quit") != 0) {
 		return true;
 	}
 	//cout << "" << endl;
