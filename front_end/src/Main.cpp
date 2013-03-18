@@ -1,4 +1,4 @@
-#include "../include/Main.h"
+#include <Main.h>
 
 //using Poco::StringTokenizer;
 
@@ -6,13 +6,14 @@ int main(int argc, char** argv) {
     if (argc == 4) {
         Transaction* session = new Transaction(argv[1], argv[2], argv[3]);
 
-        string input, username, type, event, seller;
-        double balance, price;
+        string input, username, type, event, seller, balance;
+        double price;
         int ticketNum;
 
         while (getline(cin, input)) {
             //cout << "Enter your command." << endl;
-            input = rtrim(input);
+            //input = rtrim(input);
+            input = Poco::trimRight(input);
 
             if (!session->isLoggedIn()) {
                 if (input.compare(LOGIN) == 0) {
@@ -21,7 +22,7 @@ int main(int argc, char** argv) {
                     getline(cin, input);
 
                     if (!validUsername(input)) {
-                        cout << INVALID_USERNAME << endl;
+                        cout << INVALID_USERNAME_EXIST << endl;
                     }
                     else if (session->login(input)) {
                         cout << LOGIN_SUCCESS << endl;
@@ -67,21 +68,17 @@ int main(int argc, char** argv) {
                     }
                     else {
                         cout << ENTER_ACCOUT_BALANCE << endl;
-                        //getline(cin, balance);
-                        cin >> balance;
+                        getline(cin, balance);
+                        //cin >> balance;
 
-                        bool fail = cin.fail();
-                        cin.clear();
+                        if (!validBalance(balance)) {
+                            cout << INVALID_ACCOUNT_BALANCE << endl;
+                        }
+                        else {
+                            double validBalance;
+                            Poco::DynamicAny(balance).convert(validBalance);
 
-                        // Skip to next line
-                        string dummy;
-                        getline(cin, dummy);
-
-                        if (!fail) {
-                            if (!validBalance(balance)) {
-                                cout << INVALID_ACCOUNT_BALANCE << endl;
-                            }
-                            else if (session->create(username, type, balance)) {
+                            if (session->create(username, type, validBalance)) {
                                 cout << CREATE_SUCCESS << endl;
                             }
                         }
@@ -89,7 +86,7 @@ int main(int argc, char** argv) {
                 }
             }
             else if (input.compare(DELETE) == 0) {
-                if (session->isAdmin()) {
+                //if (session->isAdmin()) {
                     cout << ENTER_USERNAME << endl;
                     getline(cin, username);
 
@@ -99,8 +96,7 @@ int main(int argc, char** argv) {
                     else if (session->removeUser(username)) {
                         cout << DELETE_SUCCESS << endl;
                     }
-                }
-                // Output error
+                //}
             }
             else if (input.compare(ADDCREDIT) == 0) {
                 if (session->isAdmin()) {
@@ -110,45 +106,42 @@ int main(int argc, char** argv) {
                     if (!validUsername(username)) {
                         cout << INVALID_USERNAME << endl;
                     }
-                    else if (session->getFileIO()->findUser(username) != -1) {
+                    //else if (session->getFileIO()->findUser(username) != -1) {
+                    else {
                         cout << ENTER_CREDIT_AMOUNT << endl;
-                        //getline(cin, balance);
-                        cin >> balance;
+                        getline(cin, balance);
+                        //cin >> balance;
 
-                        bool fail = cin.fail();
-                        cin.clear();
-
-                        // Skip to next line
-                        string dummy;
-                        getline(cin, dummy);
-
-                        if (fail || !validBalance(balance)) {
+                        if (!validBalance(balance)) {
                             cout << INVALID_CREDIT_AMOUNT << endl;
                         }
-                        else if (session->addcredit(username, balance)) {
-                            //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
-                            cout << ADDCREDIT_SUCCESS << endl;
+                        else {
+                            double validBalance;
+                            Poco::DynamicAny(balance).convert(validBalance);
+
+                            if (session->addcredit(username, validBalance)) {
+                                //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
+                                cout << ADDCREDIT_SUCCESS << endl;
+                            }
                         }
                     }
                 }
                 else {
                     cout << ENTER_CREDIT_AMOUNT << endl;
                     //getline(cin, balance);
-                    cin >> balance;
+                    //cin >> balance;
 
-                    bool fail = cin.fail();
-                    cin.fail();
-
-                    // Skip to next line
-                    string dummy;
-                    getline(cin, dummy);
-
-                    if (fail || !validBalance(balance)) {
+                    if (getline(cin, balance) && !validBalance(balance)) {
                         cout << INVALID_CREDIT_AMOUNT << endl;
                     }
-                    else if (session->addcredit(balance)) {
-                        //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
-                        cout << ADDCREDIT_SUCCESS << endl;
+                    else {
+                        double validBalance;
+                        Poco::DynamicAny(balance).convert(validBalance);
+
+                        if (session->addcredit(validBalance)) {
+                            //cout << "new balance: $" << session->getFileIO()->getAccountList()->at(session->getCurrentUser()).getBalance() << endl;
+                            cout << ADDCREDIT_SUCCESS << endl;
+                        }
                     }
                 }
             }
@@ -246,21 +239,19 @@ int main(int argc, char** argv) {
                     }
                     else {
                         cout << ENTER_TRANSFER_AMOUNT << endl;
-                        //getline(cin, balance);
-                        cin >> balance;
+                        getline(cin, balance);
+                        //cin >> balance;
 
-                        bool fail = cin.fail();
-                        cin.clear();
-
-                        // Skip to next line
-                        string dummy;
-                        getline(cin, dummy);
-
-                        if (fail || !validBalance(balance)) {
+                        if (!validBalance(balance)) {
                             cout << INVALID_TRANSFER_AMOUNT << endl;
                         }
-                        else if (session->refund(username, seller, balance)) {
-                            cout << REFUND_SUCCESS << endl;
+                        else {
+                            double validBalance;
+                            Poco::DynamicAny(balance).convert(validBalance);
+
+                            if (session->refund(username, seller, validBalance)) {
+                                cout << REFUND_SUCCESS << endl;
+                            }
                         }
                     }
                 }

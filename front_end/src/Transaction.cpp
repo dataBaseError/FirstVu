@@ -1,4 +1,4 @@
-#include "../include/Transaction.h"
+#include <Transaction.h>
 
 const double Transaction::maxAddCredit = 1000.00;
 
@@ -88,6 +88,9 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
 
     double cost = eventTickets.getCost() * numTickets;
 
+    cout << TICKET_COST << setiosflags(ios::fixed) << setprecision(2) << eventTickets.getCost() << endl;
+    cout << TOTAL_COST << setiosflags(ios::fixed) << setprecision(2) << cost << endl;
+
     if (buyer.getBalance() < cost) {
         cout << INVALID_FUNDS << endl;
         return false;
@@ -98,11 +101,15 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
         return false;
     }
 
+    if ((eventTickets.getTicketNumber() - numTickets) < 0) {
+    	cout << INVALID_TICKET_REMAINING << endl;
+    	return false;
+    }
+
     string answer;
 
     // Buy Start
-    cout << TICKET_COST << setiosflags(ios::fixed) << setprecision(2) << eventTickets.getCost() << endl;
-    cout << TOTAL_COST << setiosflags(ios::fixed) << setprecision(2) << cost << endl;
+
     cout << CURRENT_BALANCE << setiosflags(ios::fixed) << setprecision(2) << buyer.getBalance() << endl;
     cout << CONFIRM_PURCHASE << endl;
     getline(cin, answer);
@@ -113,6 +120,7 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
         cout << NEW_BALANCE << buyer.getBalance() << endl;
 
         accountList->at(seller).setBalance(accountList->at(seller).getBalance() + cost);
+        accountList->at(currentUser).setBalance(buyer.getBalance());
 
         eventTickets.decreaseTicketNumber(numTickets);
 
@@ -199,7 +207,10 @@ bool Transaction::create(string newUser, string accountType,
         cout << INVALID_ADMIN_CREATE << endl;
         return false;
     }
-
+    if(!this->fileIO->isUserUnique(newUser)){
+    	cout << INVALID_UNIQUE_USERNAME << endl;
+    	return false;
+    }
     // Create Start
     Account newAccount(newUser, accountType, accountBalance);
     this->fileIO->getAccountList()->push_back(newAccount);
@@ -277,7 +288,7 @@ bool Transaction::addcredit(double amount) {
     AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, amount, type);
     this->transaction->push_back(add);
 
-    cout << NEW_BALANCE << newBalance << endl;
+    cout << NEW_BALANCE << setiosflags(ios::fixed) << setprecision(2) << newBalance << endl;
 
     return true;
 }
@@ -299,11 +310,11 @@ bool Transaction::addcredit(string username, double amount) {
         return false;
     }
 
-    if (this->fileIO->getAccountList()->at(currentUser).getType()
+    /*if (this->fileIO->getAccountList()->at(currentUser).getType()
             .compare(Account::ADMIN) != 0) {
         cout << INVALID_ADMIN_ADD << endl;
         return false;
-    }
+    }*/
 
     double newBalance = this->fileIO->getAccountList()->at(user).getBalance() + amount;
 
@@ -319,7 +330,7 @@ bool Transaction::addcredit(string username, double amount) {
     AuxiliaryTransaction* add = new AuxiliaryTransaction(Entry::ADDCREDIT, username, amount, type);
     this->transaction->push_back(add);
 
-    cout << NEW_BALANCE << newBalance << endl;
+    cout << NEW_BALANCE << setiosflags(ios::fixed) << setprecision(2) << newBalance << endl;
     return true;
 }
 

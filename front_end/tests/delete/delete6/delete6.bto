@@ -1,5 +1,5 @@
 enter username
 login successful
 enter username
-error: username does not exist
+error: invalid username
 logout successful

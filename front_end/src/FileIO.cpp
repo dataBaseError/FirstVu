@@ -1,4 +1,4 @@
-#include "../include/FileIO.h"
+#include <FileIO.h>
 
 FileIO::FileIO(char* uao, char* ato, char* dtf) {
     this->uao = uao;
@@ -31,7 +31,8 @@ bool FileIO::updateAccountList() {
             string line;
 
             getline(uao, line);
-            vector<string> lineV = split(line, ' ');
+            //vector<string> lineV = split(line, ' ');
+            Poco::StringTokenizer lineV(line, " ", Poco::StringTokenizer::TOK_IGNORE_EMPTY);
 
             if (lineV[0] != "END") {
                 string username = lineV[0];
@@ -72,7 +73,8 @@ bool FileIO::updateTicketList() {
             string line;
 
             getline(ato, line);
-            vector<string> lineV = split(line, ' ');
+            //vector<string> lineV = split(line, ' ');
+            Poco::StringTokenizer lineV(line, " ", Poco::StringTokenizer::TOK_IGNORE_EMPTY);
 
             if (lineV[0] != "END") {
                 string event = lineV[0];
@@ -148,39 +150,27 @@ int FileIO::findEvent(string event, string sellName) {
 }
 
 bool FileIO::isUserUnique(string username) {
-    bool found = false;
-
     for (vector<Account>::size_type i = 0; i < this->accountList->size(); i++) {
         if (this->accountList->at(i).getUsername() == username) {
-            if (found) {
-                return false;
-            }
-            else {
-                found = true;
-            }
+        	return false;
         }
     }
 
-    return found;
+    return true;
 }
 
 bool FileIO::isEventUnique(string event, string sellName) {
-    bool found = false;
+
 
     for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
         Ticket item = this->ticketList->at(i);
 
         if (item.getEvent() == event && item.getUsername() == sellName) {
-            if (found) {
                 return false;
-            }
-            else {
-                found = true;
-            }
         }
     }
 
-    return found;
+    return true;
 }
 
 vector<Account>* FileIO::getAccountList() {
