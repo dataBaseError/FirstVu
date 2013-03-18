@@ -150,39 +150,25 @@ int FileIO::findEvent(string event, string sellName) {
 }
 
 bool FileIO::isUserUnique(string username) {
-    bool found = false;
-
     for (vector<Account>::size_type i = 0; i < this->accountList->size(); i++) {
         if (this->accountList->at(i).getUsername() == username) {
-            if (found) {
-                return false;
-            }
-            else {
-                found = true;
-            }
+        	return false;
         }
     }
 
-    return found;
+    return true;
 }
 
 bool FileIO::isEventUnique(string event, string sellName) {
-    bool found = false;
-
     for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
         Ticket item = this->ticketList->at(i);
 
         if (item.getEvent() == event && item.getUsername() == sellName) {
-            if (found) {
                 return false;
-            }
-            else {
-                found = true;
-            }
         }
     }
 
-    return found;
+    return true;
 }
 
 vector<Account>* FileIO::getAccountList() {

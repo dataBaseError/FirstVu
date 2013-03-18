@@ -207,7 +207,10 @@ bool Transaction::create(string newUser, string accountType,
         cout << INVALID_ADMIN_CREATE << endl;
         return false;
     }
-
+    if(!this->fileIO->isUserUnique(newUser)){
+    	cout << INVALID_UNIQUE_USERNAME << endl;
+    	return false;
+    }
     // Create Start
     Account newAccount(newUser, accountType, accountBalance);
     this->fileIO->getAccountList()->push_back(newAccount);
