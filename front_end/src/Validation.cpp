@@ -17,6 +17,16 @@ bool validBalance(string balance) {
    return Poco::RegularExpression(regex.str()).match(balance);
 }
 
+// \d and < Ticket.MAX_PRICE and >= 0.00 and will contain max of 2 decimal points
+// must be of size > 0 and <= Ticket.MAX_PRICE_SIZE
+// also decide whether to round or truncate
+bool validPrice(string price) {
+    stringstream regex;
+    regex << "[0-9]{0," << Ticket::MAX_PRICE_SIZE << "}(.[0-9]{2})?";
+
+    return Poco::RegularExpression(regex.str()).match(price);
+}
+
 // must be Account.MAX_USERNAME_LENGTH characters
 // [A-z], _ and must not contain 'quit'
 bool validUsername(string username) {
@@ -73,18 +83,11 @@ bool validAccountType(string type) {
 	return false;
 }
 
-// \d and > 0 and <= Ticket.MAX_TICKET
+// \d and > 0 and <= Ticket::MAX_TICKET
 bool validTicketNumber(int ticketNum) {
-	return true;
-}
+	if(ticketNum > 0 && ticketNum <= Ticket::MAX_TICKET) {
+	    return true;
+	}
 
-// \d and < Ticket.MAX_PRICE and >= 0.00 and will contain max of 2 decimal points
-// must be of size > 0 and =< Ticket.MAX_PRICE_SIZE
-// also decide whether to round or truncate
-bool validPrice(double price) {
-	return true;
-	/**
-	 * This method is current un-implemented but in the final build will be used
-	 * to determine if a price is valid
-	 */
+	return false;
 }

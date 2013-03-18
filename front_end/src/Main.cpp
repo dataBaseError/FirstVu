@@ -6,8 +6,7 @@ int main(int argc, char** argv) {
     if (argc == 4) {
         Transaction* session = new Transaction(argv[1], argv[2], argv[3]);
 
-        string input, username, type, event, seller, balance;
-        double price;
+        string input, username, type, event, seller, balance, price;
         int ticketNum;
 
         while (getline(cin, input)) {
@@ -154,34 +153,31 @@ int main(int argc, char** argv) {
                 }
                 else {
                     cout << ENTER_PRICE << endl;
-                    //getline(cin, price);
-                    cin >> price;
+                    getline(cin, price);
+                    //cin >> price;
 
-                    bool fail = cin.fail();
-                    cin.clear();
-
-                    // Skip to next line
-                    string dummy;
-                    getline(cin, dummy);
-
-                    if (fail || !validPrice(price)) {
+                    if (!validPrice(price)) {
                         cout << INVALID_EVENT_PRICE << endl;
                     }
                     else {
+                        double validPrice;
+                        Poco::DynamicAny(price).convert(validPrice);
+
                         cout << ENTER_TICKET_NUMBER << endl;
                         //getline(cin, ticketNum);
                         cin >> ticketNum;
 
-                        fail = cin.fail();
+                        bool fail = cin.fail();
                         cin.clear();
 
                         // Skip to next line
+                        string dummy;
                         getline(cin, dummy);
 
                         if (fail || !validTicketNumber(ticketNum)) {
                             cout << INVALID_TICKET_NUMBER << endl;
                         }
-                        else if (session->sell(event, price, ticketNum)) {
+                        else if (session->sell(event, validPrice, ticketNum)) {
                             cout << SELL_SUCCESS << endl;
                         }
                     }
