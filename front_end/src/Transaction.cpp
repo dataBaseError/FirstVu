@@ -55,8 +55,43 @@ bool Transaction::buy(string event, int numTickets, string sellName) {
     Account buyer = accountList->at(currentUser);
 
     if (buyer.getType().compare(Account::SELL) == 0) {
-        cout << INVALID_ACCOUNT_BUY << endl;
-        return false;
+    	if (buyer.getUsername().compare(sellName) == 0) {
+
+    		int ticket = this->fileIO->findEvent(event, sellName);
+
+    		if (ticket == -1) {
+    			cout << INVALID_EVENT_TITLE << endl;
+    			return false;
+    		}
+    		vector<Ticket>* ticketList = this->fileIO->getTicketList();
+    		Ticket eventTickets = ticketList->at(ticket);
+
+    		if (eventTickets.getTicketNumber() < numTickets) {
+    			cout << INVALID_TICKET_REMAINING << endl;
+    			return false;
+    		}
+    		string answer;
+
+    		cout << CONFIRM_BUY_BACK << endl;
+    		getline(cin, answer);
+
+    		if (answer.compare("yes") == 0) {
+				eventTickets.setTicketNumber(eventTickets.getTicketNumber() - numTickets);
+
+				EventTransaction* buy = new EventTransaction(Entry::BUY, event, sellName,
+						eventTickets.getCost(), numTickets);
+
+				this->transaction->push_back(buy);
+
+				return true;
+    		}
+
+    		return false;
+    	}
+    	else {
+    		cout << INVALID_ACCOUNT_BUY << endl;
+    		return false;
+    	}
     }
 
     if (numTickets <= 0) {

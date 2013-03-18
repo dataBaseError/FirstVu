@@ -37,6 +37,7 @@ static const string ENTER_SELLER = "enter seller's username";
 static const string ENTER_BUYER = "enter buyer's username";
 static const string ENTER_TRANSFER_AMOUNT = "enter amount to transfer";
 static const string CONFIRM_PURCHASE = "confirm purchase: yes or no";
+static const string CONFIRM_BUY_BACK = "buy back: yes or no";
 
 // Informative Messages
 static const string TICKET_COST = "cost per ticket: $";
