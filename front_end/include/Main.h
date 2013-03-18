@@ -1,5 +1,5 @@
 /**
- * The main class of the front end system.
+ * The main class of the front end ticket purchasing system.
  *
  * @author Ryan Crawford
  * @author Khalil Fazal
