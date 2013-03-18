@@ -40,12 +40,12 @@ string Refund::getDTFLine() {
     char amount[Account::MAX_CREDIT_SIZE];
     char format[5];
 
-    sprintf(format, "%s%d%s", "%", Account::MAX_CREDIT_SIZE, ".2f");
+    sprintf(format, "%s%d%s", "%0", Account::MAX_CREDIT_SIZE, ".2f");
     sprintf(amount, format, getCredit());
 
     buffer << right << setfill('0') << setw(2) << getTransactionType() << " ";
-    buffer << left << setw(Account::MAX_USERNAME_LENGTH) << getBuyName() << " ";
-    buffer << left << setw(Account::MAX_USERNAME_LENGTH) << getSellName() << " ";
+    buffer << left << setfill(' ') << setw(Account::MAX_USERNAME_LENGTH) << getBuyName() << " ";
+    buffer << left << setfill(' ') << setw(Account::MAX_USERNAME_LENGTH) << getSellName() << " ";
     buffer << amount << endl;
 
     return buffer.str();
