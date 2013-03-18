@@ -271,6 +271,12 @@ bool Transaction::addcredit(double amount) {
         return false;
     }
 
+    if (this->fileIO->getAccountList()->at(currentUser).getType()
+    		.compare(Account::SELL) == 0) {
+    	cout << INVALID_USER_PRIVILEGES << endl;
+    	return false;
+    }
+
     double newBalance = this->fileIO->getAccountList()->at(currentUser)
             .getBalance() + amount;
 
@@ -364,7 +370,7 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
 
     if (buyerType.compare(Account::SELL) == 0
             || sellerType.compare(Account::BUY) == 0) {
-        cout << INVALID_ADMIN_ADD << endl;
+        cout << INVALID_USER_PRIVILEGES << endl;
         return false;
     }
 

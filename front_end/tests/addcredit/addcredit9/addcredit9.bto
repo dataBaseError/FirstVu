@@ -2,5 +2,5 @@ enter username
 login successful
 enter username
 enter credit amount
-error: total balance cannot be greater than $999,999
+error: invalid credit amount
 logout successful

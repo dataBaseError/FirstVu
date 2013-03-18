@@ -83,7 +83,7 @@ static const string INVALID_EVENT_EXIST = "error: event already exists";
 static const string INVALID_ADMIN_CREATE = "error: only administrators can create new accounts";
 static const string INVALID_ADMIN_DELETE = "error: only administrators can delete accounts";
 static const string INVALID_ADMIN_REFUND = "error: only administrators can make refunds";
-static const string INVALID_ADMIN_ADD = "error: invalid user privileges";
+static const string INVALID_USER_PRIVILEGES = "error: invalid user privileges";
 static const string INVALID_DELETE = "error: cannot delete user currently logged in";
 static const string INVALID_ADD_BALANCE = "error: total balance cannot be greater than $999,999";
 
