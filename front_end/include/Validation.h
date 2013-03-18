@@ -75,6 +75,6 @@ bool validTicketNumber(int ticketNum);
  * @param price The entered price of an event.
  * @return Whether the price was valid.
  */
-bool validPrice(double price);
+bool validPrice(string price);
 
 #endif /* VALIDATION_H_ */
