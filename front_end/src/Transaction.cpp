@@ -393,7 +393,8 @@ bool Transaction::refund(string buyName, string sellName, double amount) {
     this->fileIO->getAccountList()->at(seller).setBalance(newSellerBalance);
     this->fileIO->getAccountList()->at(buyer).setBalance(newBuyerBalance);
 
-    Refund refund(Entry::REFUND, buyName, sellName, amount);
+    Refund* refund = new Refund(Entry::REFUND, buyName, sellName, amount);
+    this->transaction->push_back(refund);
 
     return true;
 }
