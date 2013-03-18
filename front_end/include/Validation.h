@@ -14,10 +14,10 @@
 #include <string>
 #include <regex>
 
-#include "../lib/include/Poco/RegularExpression.h"
+#include <Poco/RegularExpression.h>
 
-#include "Account.h"
-#include "Ticket.h"
+#include <Account.h>
+#include <Ticket.h>
 
 
 using namespace std;
