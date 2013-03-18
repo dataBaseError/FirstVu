@@ -3,9 +3,5 @@ login successful
 enter buyer's username
 enter seller's username
 enter amount to transfer
-<<<<<<< HEAD
-refund successful
-=======
 error: invalid transfer amount
->>>>>>> 4609e765dcaf6b6d09333ac36d8ac7acc01d3a2e
 logout successful
