@@ -160,8 +160,6 @@ bool FileIO::isUserUnique(string username) {
 }
 
 bool FileIO::isEventUnique(string event, string sellName) {
-
-
     for (vector<Ticket>::size_type i = 0; i < this->ticketList->size(); i++) {
         Ticket item = this->ticketList->at(i);
 
