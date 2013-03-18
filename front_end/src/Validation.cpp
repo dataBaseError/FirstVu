@@ -9,10 +9,10 @@
  * @author Carly Marshall
  */
 
-// match with [0-9]{0,Account::MAX_CREDIT_SIZE}(.[0-9]{2})?
+// match with [1-9]{0,Account::MAX_CREDIT_SIZE}(.[0-9]{2})?
 bool validBalance(string balance) {
    stringstream regex;
-   regex << "[0-9]{0," << Account::MAX_CREDIT_SIZE << "}(.[0-9]{2})?";
+   regex << "[0-9]{1," << Account::MAX_CREDIT_SIZE << "}(.[0-9]{2})?";
 
    return Poco::RegularExpression(regex.str()).match(balance);
 }
@@ -22,7 +22,7 @@ bool validBalance(string balance) {
 // also decide whether to round or truncate
 bool validPrice(string price) {
     stringstream regex;
-    regex << "[0-9]{0," << Ticket::MAX_PRICE_SIZE << "}(.[0-9]{2})?";
+    regex << "[0-9]{1," << Ticket::MAX_PRICE_SIZE << "}(.[0-9]{2})?";
 
     return Poco::RegularExpression(regex.str()).match(price);
 }
