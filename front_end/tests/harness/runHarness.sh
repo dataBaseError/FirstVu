@@ -163,7 +163,8 @@ export -f testSuite
 
 clean
 
-testSuite
+# Run with the 'less' command so the output can be scrolled through
+testSuite | less -r
 
 # Reset the font colour back to default
 echo -ne "$RESET"
