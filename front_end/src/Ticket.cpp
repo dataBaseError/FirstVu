@@ -49,8 +49,3 @@ void Ticket::setCost(double cost) {
 void Ticket::decreaseTicketNumber(int ticketNumber) {
 	this->ticketNumber -= ticketNumber;
 }
-
-bool operator==(Ticket left, Ticket right) {
-    return left.getUsername() == right.getUsername()
-            && left.getEvent() == right.getEvent();
-}

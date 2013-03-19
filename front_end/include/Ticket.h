@@ -96,15 +96,6 @@ public:
      * @param cost Cost of one ticket
      */
     void setCost(double cost);
-
-    /**
-	 * Implemented an equals operator to compare to tickets.
-	 *
-	 * @param left The account to the left of the equal signs
-	 * @param right The account to the right of the equal signs
-	 * @return Whether or not the tickets are equal
-	 */
-    friend bool operator==(Ticket left, Ticket right);
 };
 
 #endif // _TICKET_H_
