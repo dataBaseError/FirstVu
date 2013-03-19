@@ -23,8 +23,6 @@ export GREEN='\e[1;32m'
 export WHITE='\e[1;37m'
 export RESET='\e[m'
 
-export PATH='/usr/bin/':$PATH
-
 ## Clean the test directory tree of any stale or extraneous files
 function clean() {
     find "$TESTDIR" -type f | grep ".dtf" | xargs rm 2> /dev/null
