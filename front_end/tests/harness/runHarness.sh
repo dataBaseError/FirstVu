@@ -170,9 +170,13 @@ function testSuite() {
         total=$(($total + 2 * $(echo -n "$sorted" | wc -l)))
     done
 
+    # Calculate Test Results
+    success="$(echo $total '-' $fails | bc)"
+    percentage="$(echo 'scale=2; 100*' $success '/' $total | bc)"
+
     # Display Test Results
     echo -ne "$BLUE"
-    echo 'Test Success Rate: '$((($total - $fails) * 100 / $total))'% ('$(($total - $fails))'/'$total')'
+    echo 'Test Success Rate: '$percentage'% ('$success'/'$total')'
 }
 
 export -f clean
