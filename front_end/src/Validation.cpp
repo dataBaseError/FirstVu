@@ -1,5 +1,3 @@
-#include <Validation.h>
-
 /**
  * A file that contains methods for validating input.
  *
@@ -9,26 +7,46 @@
  * @author Carly Marshall
  */
 
-// match with [1-9]{0,Account::MAX_CREDIT_SIZE}(.[0-9]{2})?
+#include <Validation.h>
+
+/**
+ *  A valid balance will match with only be digits and be a max size of
+ *  Account::Max_CREDIT_SIZE
+ *  Given by the regular expression:
+ *  	[1-9]{0,Account::MAX_CREDIT_SIZE-3}(.[0-9]{2})?
+ */
 bool validBalance(string balance) {
    stringstream regex;
-   regex << "[0-9]{1," << Account::MAX_CREDIT_SIZE << "}(.[0-9]{2})?";
+   regex << "[0-9]{1," << Account::MAX_CREDIT_SIZE - 3 << "}(.[0-9]{2})?";
 
    return Poco::RegularExpression(regex.str()).match(balance);
 }
 
-// \d and < Ticket.MAX_PRICE and >= 0.00 and will contain max of 2 decimal points
-// must be of size > 0 and <= Ticket.MAX_PRICE_SIZE
-// also decide whether to round or truncate
+/**
+ * A valid price will match will be only numbers and less than Ticket.MAX_PRICE
+ * and less than or equal to 0.00 and will contain max of 2 decimal points.
+ * Also, the size of the price must be greater than 0 and less than or equal to
+ * Ticket.MAX_PRICE_SIZE.
+ *
+ * Given by the regular expression:
+ * 		[0-9]{1,Ticket::MAX_PRICE_SIZE - 3}(.[0-9]{2})?
+ */
 bool validPrice(string price) {
     stringstream regex;
-    regex << "[0-9]{1," << Ticket::MAX_PRICE_SIZE << "}(.[0-9]{2})?";
+    regex << "[0-9]{1," << Ticket::MAX_PRICE_SIZE - 3 << "}(.[0-9]{2})?";
 
     return Poco::RegularExpression(regex.str()).match(price);
 }
 
-// must be Account.MAX_USERNAME_LENGTH characters
-// [A-z], _ and must not contain 'quit'
+/**
+ * A valid username must contain only characters A-Z upper or lower case
+ * or underscores. Also the username must not be 'quit' and finally, the
+ * username must be great then 0 characters long and less than or equal to
+ * Account::MAX_USERNAME_LENGTH
+ *
+ * Given by the regular expression:
+ * 		[A-z_]+
+ */
 bool validUsername(string username) {
 	if (username.length() <= 0 ||  username.length() >
 			Account::MAX_USERNAME_LENGTH) {
@@ -46,8 +64,15 @@ bool validUsername(string username) {
 	return false;
 }
 
-// must be Ticket.MAX_EVENT_LENGTH characters
-// [A-z], _ and must not contain 'quit'
+/**
+ * A valid event name must contain only characters A-Z upper or lower case
+ * or underscores. Also the event name must not be 'quit' and finally, the
+ * event name must be great then 0 characters long and less than or equal to
+ * Ticket.MAX_EVENT_LENGTH
+ *
+ * Given by the regular expression:
+ * 		[A-z_]+
+ */
 bool validEventName(string event) {
 	if (event.length() <= 0 || event.length() >
 			Ticket::MAX_EVENT_LENGTH) {
@@ -66,7 +91,15 @@ bool validEventName(string event) {
 	return false;
 }
 
-// Account.ADMIN or Account.SELL or Account.BUY or Account.FULL and length 2
+/**
+ * A valid account type can only be one of:
+ * 		Account::ADMIN
+ * 		Account::FULL
+ * 		Account::SELL
+ * 		Account::BUY
+ *
+ * The account type must also be 2 characters long.
+ */
 bool validAccountType(string type) {
 	if (type.length() != 2) {
 		// Account type too long
@@ -83,7 +116,10 @@ bool validAccountType(string type) {
 	return false;
 }
 
-// \d and > 0 and <= Ticket::MAX_TICKET
+/**
+ * A valid ticket number must be greater than 0 and less than or equal to
+ * Ticket::MAX_TICKET.
+ */
 bool validTicketNumber(int ticketNum) {
 	if(ticketNum > 0 && ticketNum <= Ticket::MAX_TICKET) {
 	    return true;

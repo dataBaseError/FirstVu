@@ -22,13 +22,6 @@
 
 using namespace std;
 
-//TODO create error messages
-//TODO change integer parameters to string parameters
-//TODO implement validBalance, validTicketNumber, validPrice
-//TODO convert string input to numbers where necessary
-	//TODO create conversion methods.
-//TODO change input for integers and doubles to string
-
 /**
  * Validate the entered balance.
  *

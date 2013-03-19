@@ -195,11 +195,6 @@ bool Transaction::sell(string event, double salePrice, int availTicket) {
         return false;
     }
 
-    if (salePrice < 0 || salePrice > Ticket::MAX_PRICE) {
-        cout << INVALID_EVENT_PRICE << endl;
-        return false;
-    }
-
     if (this->fileIO->findEvent(event, sellName) > -1) {
         cout << INVALID_EVENT_EXIST << endl;
         return false;
@@ -232,11 +227,6 @@ bool Transaction::create(string newUser, string accountType,
         return false;
     }
 
-    if (accountBalance < 0 || accountBalance > Account::MAX_CREDIT) {
-        cout << INVALID_CREDIT_AMOUNT << endl;
-        return false;
-    }
-
     if (this->fileIO->getAccountList()->at(currentUser).getType()
             .compare(Account::ADMIN) != 0) {
         cout << INVALID_ADMIN_CREATE << endl;
@@ -246,6 +236,7 @@ bool Transaction::create(string newUser, string accountType,
     	cout << INVALID_UNIQUE_USERNAME << endl;
     	return false;
     }
+
     // Create Start
     Account newAccount(newUser, accountType, accountBalance);
     this->fileIO->getAccountList()->push_back(newAccount);
@@ -350,12 +341,6 @@ bool Transaction::addcredit(string username, double amount) {
         cout << INVALID_CREDIT_AMOUNT << endl;
         return false;
     }
-
-    /*if (this->fileIO->getAccountList()->at(currentUser).getType()
-            .compare(Account::ADMIN) != 0) {
-        cout << INVALID_ADMIN_ADD << endl;
-        return false;
-    }*/
 
     double newBalance = this->fileIO->getAccountList()->at(user).getBalance() + amount;
 

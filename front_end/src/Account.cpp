@@ -4,7 +4,6 @@
 
 using namespace std;
 
-// ‘static’ may not be used when defining (as opposed to declaring) a static data member [-fpermissive]
 const string Account::ADMIN = "AA";
 const string Account::SELL  = "SS";
 const string Account::BUY   = "BS";
