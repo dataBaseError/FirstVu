@@ -17,6 +17,7 @@ export GLOBAL_UAO="$TESTDIR""/global/glob_account.inp"
 export GLOBAL_ATO="$TESTDIR""/global/glob_available_tickets.inp"
 
 # Colour Your World
+export BLUE='\e[1;36m'
 export RED='\e[1;31m'
 export GREEN='\e[1;32m'
 export WHITE='\e[1;37m'
@@ -139,6 +140,12 @@ function testCase() {
 ##   8. refund
 function testSuite() {
 
+    # A counter for the number of test failures
+    fails=0
+
+    # A counter for the total number of test cases
+    total=0
+
     # Loop through each category
     for i in 'login' 'logout' 'create' 'addcredit' 'sell' 'buy' 'delete' 'refund'; do
 
@@ -153,8 +160,19 @@ function testSuite() {
         sorted="$(sed 's/\(.\)\([0-9]\)$/\10\2/' <<< "$category" | sort | sed 's/0\([0-9]\)$/\1/')"
 
         # Test each member of the test category
-        echo "$sorted" | xargs -I {} bash -c 'testCase "$1"' 'testCase' {}
+        result="$(echo "$sorted" | xargs -I {} bash -c 'testCase "$1"' 'testCase' {})"
+        echo "$result"
+        echo ""
+        #echo "$sorted" | xargs -I {} bash -c 'testCase "$1"' 'testCase' {}
+
+        # Update the counters
+        fails=$(($fails + $(echo -n $result | grep 'Failure' | wc -l)))
+        total=$(($total + 2 * $(echo -n "$sorted" | wc -l)))
     done
+
+    # Display Test Results
+    echo -ne "$BLUE"
+    echo 'Test Success Rate: '$((($total - $fails) * 100 / $total))'% ('$(($total - $fails))'/'$total')'
 }
 
 export -f clean
