@@ -1,7 +1,7 @@
 public class Account {
 
-	private string username;
-	private string type;
+	private String username;
+	private String type;
 	private double balance;
 
 	/**
@@ -10,11 +10,11 @@ public class Account {
 	 * @param type
 	 * @param balance
 	 */
-	public Account(string username, string type, double balance) {
+	public Account(String username, String type, double balance) {
 		throw new UnsupportedOperationException();
 	}
 
-	public string getType() {
+	public String getType() {
 		return this.type;
 	}
 
@@ -22,7 +22,7 @@ public class Account {
 	 * 
 	 * @param type
 	 */
-	public void setType(string type) {
+	public void setType(String type) {
 		this.type = type;
 	}
 
@@ -38,7 +38,7 @@ public class Account {
 		this.balance = balance;
 	}
 
-	public string getUsername() {
+	public String getUsername() {
 		return this.username;
 	}
 
@@ -46,7 +46,7 @@ public class Account {
 	 * 
 	 * @param username
 	 */
-	public void setUsername(string username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 

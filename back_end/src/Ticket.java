@@ -8,8 +8,8 @@
 
 public class Ticket {
 
-	private string event;
-	private string username;
+	private String event;
+	private String username;
 	private int ticketNumber;
 	private double cost;
 
@@ -20,7 +20,7 @@ public class Ticket {
 	 * @param ticketNumber The number of tickets available.
 	 * @param cost The cost per ticket.
 	 */
-	public Ticket(string event, string username, int ticketNumber, double cost) {
+	public Ticket(String event, String username, int ticketNumber, double cost) {
 		this.event = event;
 		this.username = username;
 		this.ticketNumber = ticketNumber;
@@ -31,7 +31,7 @@ public class Ticket {
 	 * Accessor method for getting the event name.
 	 * @return The name of the event.
 	 */
-	public string getEvent() {
+	public String getEvent() {
 		return this.event;
 	}
 
@@ -39,7 +39,7 @@ public class Ticket {
 	 * Mutator method for the event name.
 	 * @param event The name of the event.
 	 */
-	public void setEvent(string event) {
+	public void setEvent(String event) {
 		this.event = event;
 	}
 
@@ -47,7 +47,7 @@ public class Ticket {
 	 * Accessor method for getting the seller’s username.
 	 * @return The username of the seller.
 	 */
-	public string getUsername() {
+	public String getUsername() {
 		return this.username;
 	}
 
@@ -55,7 +55,7 @@ public class Ticket {
 	 * Mutator method for the seller’s username.
 	 * @param username The username of the seller.
 	 */
-	public void setUsername(string username) {
+	public void setUsername(String username) {
 		this.username = username;
 	}
 
