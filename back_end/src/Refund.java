@@ -51,10 +51,4 @@ public class Refund extends Entry {
     public void setCredit(final double credit) {
         this.credit = credit;
     }
-
-    @Override
-    public String getDTFLine() {
-        throw new UnsupportedOperationException();
-    }
-
 }

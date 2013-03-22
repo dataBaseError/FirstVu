@@ -65,10 +65,4 @@ public class EventTransaction extends Entry {
     public void setNumTickets(final int numTickets) {
         this.numTickets = numTickets;
     }
-
-    @Override
-    public String getDTFLine() {
-        throw new UnsupportedOperationException();
-    }
-
 }

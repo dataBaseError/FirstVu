@@ -51,10 +51,4 @@ public class AuxiliaryTransaction extends Entry {
     public void setAccountType(final String accountType) {
         this.accountType = accountType;
     }
-
-    @Override
-    public String getDTFLine() {
-        throw new UnsupportedOperationException();
-    }
-
 }
