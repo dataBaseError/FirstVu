@@ -30,7 +30,7 @@ public class Account {
 
 	/**
 	 * This accessor method will return the type of the account
-	 * @param type
+	 * @return type
 	 */
 	public String getType() {
 		return this.type;
@@ -45,7 +45,7 @@ public class Account {
 	}	
 	/**
 	 * 
-	 * @param balance
+	 * @return balance
 	 * This accessor method will return the available balance for the account
 	 */
 
@@ -63,7 +63,7 @@ public class Account {
 	}
 	/**
 	 * 
-	 * @param username
+	 * @return username
 	 * This accessor method will retrieve the username for the account
 	 */
 	public String getUsername() {
