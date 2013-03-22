@@ -3,6 +3,8 @@ import java.util.ArrayList;
 public class Transactions {
 
     private ArrayList<Entry> transactions;
+    private FileIO fileIO;
+    private String transactionLocation;
 
     /**
      * 
@@ -10,8 +12,10 @@ public class Transactions {
      * @param ticketLocation
      * @param transactionLocation
      */
-    public Transactions(final String accountLocation, final String ticketLocation, final String transactionLocation) {
-        throw new UnsupportedOperationException();
+    public Transactions(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
+        this.transactionLocation = transactionLocation;
+        this.fileIO = new FileIO(accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
+        this.transactions = new ArrayList<Entry>();
     }
 
     public ArrayList<Entry> getTransactions() {
