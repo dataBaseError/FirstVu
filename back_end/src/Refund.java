@@ -1,9 +1,12 @@
 /**
  * The class for holding information about refund transactions from the daily
  * transaction file
- * @author joseph
- *
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
  */
+
 public class Refund extends Entry {
 
     private String buyName;
@@ -11,48 +14,62 @@ public class Refund extends Entry {
     private double credit;
 
     /**
-     * 
-     * @param type
-     * @param buyName
-     * @param sellName
-     * @param credit
+     * Constructor for creating a refund transactions
+     * @param type The type of transaction.
+     * @param buyName The buyer's username.
+     * @param sellName The seller's username.
+     * @param credit The credit transferred from the seller to the buyer.
      */
     public Refund(final int type, final String buyName, final String sellName, final double credit) {
         super(type);
-        throw new UnsupportedOperationException();
+        this.buyName = buyName;
+        this.sellName = sellName;
+        this.credit = credit;
     }
 
+    /**
+     * Accessor for the buyer's username.
+     * @return The buyer's username.
+     */
     public String getBuyName() {
         return this.buyName;
     }
 
     /**
-     * 
-     * @param buyName
+     * Mutator method for the buyer's username.
+     * @param buyName The buyer's new username.
      */
     public void setBuyName(final String buyName) {
         this.buyName = buyName;
     }
 
+    /**
+     * Accessor for the seller's username.
+     * @return The seller's username.
+     */
     public String getSellName() {
         return this.sellName;
     }
 
     /**
-     * 
-     * @param sellName
+     * Mutator method for the seller's username.
+     * @param sellName The seller's new username.
      */
     public void setSellName(final String sellName) {
         this.sellName = sellName;
     }
 
+    /**
+     * Accessor for the credit transfered in the refund.
+     * @return The credit amount transferred.
+     */
     public double getCredit() {
         return this.credit;
     }
 
     /**
-     * 
-     * @param credit
+     * Mutator method for the credit transferred in the refund.
+     * @param credit The new amount of credit transferred.
      */
     public void setCredit(final double credit) {
         this.credit = credit;

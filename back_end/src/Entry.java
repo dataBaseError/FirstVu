@@ -1,6 +1,6 @@
 public abstract class Entry {
 
-    private int transactionType;
+    protected int transactionType;
 
     /**
      * 
