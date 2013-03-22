@@ -7,10 +7,12 @@ public class Transactions {
     private String transactionLocation;
 
     /**
-     * 
-     * @param accountLocation
-     * @param ticketLocation
-     * @param transactionLocation
+     * Constructor for creating a transaction session.
+     * @param transactionLocation The location of the daily transaction file.
+     * @param accountLocation The location of the user accounts file.
+     * @param ticketLocation The location of the available tickets file.
+     * @param newAccountLocation The location of the output user accounts file.
+     * @param newTicketLocation The location of the output available tickets file.
      */
     public Transactions(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
         this.transactionLocation = transactionLocation;
