@@ -1,7 +1,7 @@
 public class Ticket {
 
-	private string event;
-	private string userName;
+	private String event;
+	private String userName;
 	private int ticketNumber;
 	private double cost;
 
@@ -12,11 +12,11 @@ public class Ticket {
 	 * @param ticketNumber
 	 * @param cost
 	 */
-	public Ticket(string event, string username, int ticketNumber, double cost) {
+	public Ticket(String event, String username, int ticketNumber, double cost) {
 		throw new UnsupportedOperationException();
 	}
 
-	public string getEvent() {
+	public String getEvent() {
 		return this.event;
 	}
 
@@ -24,11 +24,11 @@ public class Ticket {
 	 * 
 	 * @param event
 	 */
-	public void setEvent(string event) {
+	public void setEvent(String event) {
 		this.event = event;
 	}
 
-	public string getUsername() {
+	public String getUsername() {
 		throw new UnsupportedOperationException();
 	}
 
@@ -36,7 +36,7 @@ public class Ticket {
 	 * 
 	 * @param username
 	 */
-	public void setUsername(string username) {
+	public void setUsername(String username) {
 		throw new UnsupportedOperationException();
 	}
 

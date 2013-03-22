@@ -22,7 +22,7 @@ public class Entry {
 		this.transactionType = transactionType;
 	}
 
-	public string getDTFLine() {
+	public String getDTFLine() {
 		throw new UnsupportedOperationException();
 	}
 

@@ -1,90 +1,92 @@
+import java.util.ArrayList;
+
 public class Transactions {
 
-	private ArrayList<Entry> transactions;
+    private ArrayList<Entry> transactions;
 
-	/**
-	 * 
-	 * @param accountLocation
-	 * @param ticketLocation
-	 * @param transactionLocation
-	 */
-	public Transactions(String accountLocation, String ticketLocation, String transactionLocation) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param accountLocation
+     * @param ticketLocation
+     * @param transactionLocation
+     */
+    public Transactions(final String accountLocation, final String ticketLocation, final String transactionLocation) {
+        throw new UnsupportedOperationException();
+    }
 
-	public ArrayList<Entry> getTransactions() {
-		return this.transactions;
-	}
+    public ArrayList<Entry> getTransactions() {
+        return this.transactions;
+    }
 
-	/**
-	 * 
-	 * @param transactions
-	 */
-	public void setTransactions(ArrayList<Entry> transactions) {
-		this.transactions = transactions;
-	}
+    /**
+     * 
+     * @param transactions
+     */
+    public void setTransactions(final ArrayList<Entry> transactions) {
+        this.transactions = transactions;
+    }
 
-	public void logout() {
-		throw new UnsupportedOperationException();
-	}
+    public void logout() {
+        throw new UnsupportedOperationException();
+    }
 
-	/**
-	 * 
-	 * @param buyName
-	 * @param event
-	 * @param numTickets
-	 * @param sellName
-	 */
-	public boolean buy(String buyName, String event, int numTickets, String sellName) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param buyName
+     * @param event
+     * @param numTickets
+     * @param sellName
+     */
+    public boolean buy(final String buyName, final String event, final int numTickets, final String sellName) {
+        throw new UnsupportedOperationException();
+    }
 
-	/**
-	 * 
-	 * @param sellName
-	 * @param event
-	 * @param sellPrice
-	 * @param availTicket
-	 */
-	public boolean sell(String sellName, String event, double sellPrice, int availTicket) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param sellName
+     * @param event
+     * @param sellPrice
+     * @param availTicket
+     */
+    public boolean sell(final String sellName, final String event, final double sellPrice, final int availTicket) {
+        throw new UnsupportedOperationException();
+    }
 
-	/**
-	 * 
-	 * @param newUser
-	 * @param accountType
-	 * @param accountBalance
-	 */
-	public boolean create(String newUser, String accountType, double accountBalance) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param newUser
+     * @param accountType
+     * @param accountBalance
+     */
+    public boolean create(final String newUser, final String accountType, final double accountBalance) {
+        throw new UnsupportedOperationException();
+    }
 
-	/**
-	 * 
-	 * @param username
-	 */
-	public boolean delete(String username) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param username
+     */
+    public boolean delete(final String username) {
+        throw new UnsupportedOperationException();
+    }
 
-	/**
-	 * 
-	 * @param buyName
-	 * @param sellName
-	 * @param account
-	 */
-	public boolean refund(String buyName, String sellName, double account) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param buyName
+     * @param sellName
+     * @param account
+     */
+    public boolean refund(final String buyName, final String sellName, final double account) {
+        throw new UnsupportedOperationException();
+    }
 
-	/**
-	 * 
-	 * @param username
-	 * @param amount
-	 */
-	public boolean addcredit(String username, double amount) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param username
+     * @param amount
+     */
+    public boolean addcredit(final String username, final double amount) {
+        throw new UnsupportedOperationException();
+    }
 
 }

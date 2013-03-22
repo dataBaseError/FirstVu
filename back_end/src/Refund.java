@@ -1,58 +1,60 @@
 public class Refund extends Entry {
 
-	private string buyName;
-	private string sellName;
-	private double credit;
+    private String buyName;
+    private String sellName;
+    private double credit;
 
-	/**
-	 * 
-	 * @param type
-	 * @param buyName
-	 * @param sellName
-	 * @param credit
-	 */
-	public Refund(int type, string buyName, string sellName, double credit) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param type
+     * @param buyName
+     * @param sellName
+     * @param credit
+     */
+    public Refund(final int type, final String buyName, final String sellName, final double credit) {
+        super(type);
+        throw new UnsupportedOperationException();
+    }
 
-	public string getBuyName() {
-		return this.buyName;
-	}
+    public String getBuyName() {
+        return this.buyName;
+    }
 
-	/**
-	 * 
-	 * @param buyName
-	 */
-	public void setBuyName(string buyName) {
-		this.buyName = buyName;
-	}
+    /**
+     * 
+     * @param buyName
+     */
+    public void setBuyName(final String buyName) {
+        this.buyName = buyName;
+    }
 
-	public string getSellName() {
-		return this.sellName;
-	}
+    public String getSellName() {
+        return this.sellName;
+    }
 
-	/**
-	 * 
-	 * @param sellName
-	 */
-	public void setSellName(string sellName) {
-		this.sellName = sellName;
-	}
+    /**
+     * 
+     * @param sellName
+     */
+    public void setSellName(final String sellName) {
+        this.sellName = sellName;
+    }
 
-	public double getCredit() {
-		return this.credit;
-	}
+    public double getCredit() {
+        return this.credit;
+    }
 
-	/**
-	 * 
-	 * @param credit
-	 */
-	public void setCredit(double credit) {
-		this.credit = credit;
-	}
+    /**
+     * 
+     * @param credit
+     */
+    public void setCredit(final double credit) {
+        this.credit = credit;
+    }
 
-	public string getDTFLine() {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public String getDTFLine() {
+        throw new UnsupportedOperationException();
+    }
 
 }

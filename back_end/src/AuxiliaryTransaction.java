@@ -1,58 +1,60 @@
 public class AuxiliaryTransaction extends Entry {
 
-	private string username;
-	private double credit;
-	private string accountType;
+    private String username;
+    private double credit;
+    private String accountType;
 
-	/**
-	 * 
-	 * @param type
-	 * @param username
-	 * @param credit
-	 * @param accountType
-	 */
-	public AuxiliaryTransaction(int type, string username, double credit, string accountType) {
-		throw new UnsupportedOperationException();
-	}
+    /**
+     * 
+     * @param type
+     * @param username
+     * @param credit
+     * @param accountType
+     */
+    public AuxiliaryTransaction(final int type, final String username, final double credit, final String accountType) {
+        super(type);
+        throw new UnsupportedOperationException();
+    }
 
-	public string getUsername() {
-		return this.username;
-	}
+    public String getUsername() {
+        return this.username;
+    }
 
-	/**
-	 * 
-	 * @param username
-	 */
-	public void setUsername(string username) {
-		this.username = username;
-	}
+    /**
+     * 
+     * @param username
+     */
+    public void setUsername(final String username) {
+        this.username = username;
+    }
 
-	public double getCredit() {
-		return this.credit;
-	}
+    public double getCredit() {
+        return this.credit;
+    }
 
-	/**
-	 * 
-	 * @param credit
-	 */
-	public void setCredit(double credit) {
-		this.credit = credit;
-	}
+    /**
+     * 
+     * @param credit
+     */
+    public void setCredit(final double credit) {
+        this.credit = credit;
+    }
 
-	public string getAccountType() {
-		return this.accountType;
-	}
+    public String getAccountType() {
+        return this.accountType;
+    }
 
-	/**
-	 * 
-	 * @param accountType
-	 */
-	public void setAccountType(string accountType) {
-		this.accountType = accountType;
-	}
+    /**
+     * 
+     * @param accountType
+     */
+    public void setAccountType(final String accountType) {
+        this.accountType = accountType;
+    }
 
-	public string getDTFLine() {
-		throw new UnsupportedOperationException();
-	}
+    @Override
+    public String getDTFLine() {
+        throw new UnsupportedOperationException();
+    }
 
 }
