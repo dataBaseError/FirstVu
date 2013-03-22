@@ -1,3 +1,9 @@
+/**
+ * The class for holding information about refund transactions from the daily
+ * transaction file
+ * @author joseph
+ *
+ */
 public class Refund extends Entry {
 
     private String buyName;
