@@ -9,6 +9,8 @@
 
 public class Refund extends Entry {
 
+	public static final String REFUND = "05";
+	
     private String buyName;
     private String sellName;
     private double credit;

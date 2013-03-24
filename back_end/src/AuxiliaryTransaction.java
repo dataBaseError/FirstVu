@@ -8,6 +8,11 @@
  */
 public class AuxiliaryTransaction extends Entry {
 
+	public static final String LOGOUT = "00";
+	public static final String CREATE = "01";
+	public static final String DELETE = "02";
+	public static final String ADDCREDIT = "06";
+	
     private String username;
     private double credit;
     private String accountType;

@@ -111,5 +111,14 @@ public class Transactions {
     public boolean addcredit(final String username, final double amount) {
         throw new UnsupportedOperationException();
     }
+    
+    /**
+     * Find the next logout in the daily transaction list.
+     * @return The location of the next logout transaction.
+     */
+    public int findNextLogout(int startLocation)
+    {
+    	return -1;
+    }
 
 }

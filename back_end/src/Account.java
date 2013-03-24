@@ -9,6 +9,18 @@
  */
 
 public class Account {
+	
+	// The account type for administrative users
+	public static final String ADMIN = "AA";
+	
+	// The account type for full standard users
+	public static final String FULL = "FS";
+	
+	// The account type for sell standard users
+	public static final String SELL = "SS";
+	
+	// The account type for buy standard users
+	public static final String BUY = "BS";
 
 	private String username;
 	private String type;
