@@ -79,4 +79,13 @@ public class Account {
 		this.username = username;
 	}
 
+	/**
+	 * Get the account information as a line of the User Accounts file. This
+	 * will be used to store the update account into the new accounts file. 
+	 * @return The account's information formatted for the User Accounts file.
+	 */
+	public String getAccountEntry() {
+		return null;
+	}
+	
 }

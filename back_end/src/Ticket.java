@@ -98,5 +98,16 @@ public class Ticket {
 	public void setCost(double cost) {
 		this.cost = cost;
 	}
+	
+	/**
+	 * Get the ticket information as a line of the Available Tickets file. This
+	 * will be used to store the update tickets into the new Available Tickets
+	 * file. 
+	 * @return The ticket's information formatted for the Available Tickets
+	 * file.
+	 */
+	public String getTicketEntry() {
+		return null;
+	}
 
 }
