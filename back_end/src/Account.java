@@ -30,6 +30,16 @@ public class Account {
     public static final String BUY = "BS";
 
     /**
+     * The maximum length of a username's length
+     */
+    public static final int MAX_USERNAME_LENGTH = 15;
+
+    /**
+     * The maximum length of a balance if represented as a string
+     */
+    public static final int MAX_BALANCE_LENGTH = 6;
+
+    /**
      * The current account's username
      */
     private final String username;
@@ -103,14 +113,13 @@ public class Account {
         return this.username;
     }
 
-	/**
-	 * Get the account information as a line of the User Accounts file. This
-	 * will be used to store the update account into the new accounts file. 
-	 * @return The account's information formatted for the User Accounts file.
-	 */
-	public String getAccountEntry() {
-		return this.username + Utility.createLine(' ', MAX_USERNAME_LENGTH
-				- username.length()) + " " + this.type + " " 
-				+ String.format("%09.2f", this.balance);		
-	}	
+    /**
+     * Get the account information as a line of the User Accounts file. This
+     * will be used to store the update account into the new accounts file. 
+     * @return The account's information formatted for the User Accounts file.
+     */
+    public String getAccountEntry() {
+        return this.username + Utility.createLine(' ', MAX_USERNAME_LENGTH - this.username.length()) + " " + this.type + " "
+                + String.format("%09.2f", this.balance);
+    }
 }
