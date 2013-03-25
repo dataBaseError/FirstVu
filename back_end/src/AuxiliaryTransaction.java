@@ -8,12 +8,34 @@
  */
 public class AuxiliaryTransaction extends Entry {
 
-	public static final String LOGOUT = "00";
-	public static final String CREATE = "01";
-	public static final String DELETE = "02";
-	public static final String ADDCREDIT = "06";
-	
+    /**
+     * A symbol for a logout entry in the Daily Transaction File
+     */
+    public static final String LOGOUT = "00";
+
+    /**
+     * A symbol for a create entry in the Daily Transaction File
+     */
+    public static final String CREATE = "01";
+
+    /**
+     * A symbol for a delete entry in the Daily Transaction File
+     */
+    public static final String DELETE = "02";
+
+    /**
+     * A symbol for an addcredit entry in the Daily Transaction File
+     */
+    public static final String ADDCREDIT = "06";
+
+    /**
+     * The username of the affected account during the transaction
+     */
     private String username;
+
+    /**
+     * The credit amount involved during a transaction
+     */
     private double credit;
     private String accountType;
 
