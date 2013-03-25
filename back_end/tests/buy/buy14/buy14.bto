@@ -1,0 +1,17 @@
+enter username
+login successful
+enter event title
+enter sale price
+enter number of tickets
+tickets added
+logout successful
+enter username
+login successful
+enter event title
+enter number of tickets
+enter seller's username
+cost per ticket: $1.00
+total cost: $1.00
+error: seller balance cannot be greater than $999,999
+error: invalid command
+logout successful
