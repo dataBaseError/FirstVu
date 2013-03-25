@@ -48,6 +48,8 @@ public class Transactions {
     }
 
     /**
+     * TODO add seller buy back.
+     * 
      * Transaction for buy tickets. 
      * @param buyName The buyer's username.
      * @param event The name of the event the tickets are for.
@@ -56,7 +58,35 @@ public class Transactions {
      * @return Whether the transaction succeeded or not.
      */
     public boolean buy(final String buyName, final String event, final int numTickets, final String sellName) {
-        throw new UnsupportedOperationException();
+        
+    	int buyerLocation = this.fileIO.findUser(buyName);
+    	Account buyer = this.fileIO.getAccountList().get(buyerLocation);
+    	
+    	int sellerLocation = this.fileIO.findUser(sellName);
+    	Account seller = this.fileIO.getAccountList().get(sellerLocation);
+    	
+    	int ticketLocation = this.fileIO.fintEvent(event, sellName);
+    	Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
+    	
+    	double cost = numTickets*eventTicket.getCost();
+    	
+    	buyer.decreaseBalance(cost);
+    	
+    	seller.increaseBalance(cost);
+    	
+    	eventTicket.decreaseTicketNumber(numTickets);
+    	    	
+    	this.fileIO.getAccountList().set(buyerLocation, buyer);
+    	this.fileIO.getAccountList().set(sellerLocation, seller);
+    	
+    	if(eventTicket.getTicketNumber() == 0) {
+    		this.fileIO.getEventList().remove(ticketLocation);
+    	}
+    	else {
+    		this.fileIO.getEventList().set(ticketLocation, eventTicket);   	
+    	}
+    	
+    	return true;
     }
 
     /**
@@ -68,7 +98,12 @@ public class Transactions {
      * @return Whether the transaction succeeded or not.
      */
     public boolean sell(final String sellName, final String event, final double sellPrice, final int availTicket) {
-        throw new UnsupportedOperationException();
+        
+    	Ticket newEvent = new Ticket(event, sellName, availTicket, sellPrice);
+    	
+    	this.fileIO.getEventList().add(newEvent);
+    	
+    	return true;
     }
 
     /**
@@ -79,7 +114,12 @@ public class Transactions {
      * @return Whether the transaction succeeded or not.
      */
     public boolean create(final String newUser, final String accountType, final double accountBalance) {
-        throw new UnsupportedOperationException();
+        
+    	Account user = new Account(newUser, accountType, accountBalance);
+    	
+    	this.fileIO.getAccountList().add(user);
+    	
+    	return true;
     }
 
     /**
@@ -88,7 +128,12 @@ public class Transactions {
      * @return Whether the transaction succeeded or not.
      */
     public boolean delete(final String username) {
-        throw new UnsupportedOperationException();
+        
+    	int userLocation = this.fileIO.findUser(username);
+    	
+    	this.fileIO.getAccountList().remove(userLocation);
+    	
+    	return true;
     }
 
     /**
@@ -99,7 +144,21 @@ public class Transactions {
      * @return Whether the transaction succeeded or not.
      */
     public boolean refund(final String buyName, final String sellName, final double account) {
-        throw new UnsupportedOperationException();
+        
+    	int buyerLocation = this.fileIO.findUser(buyName);
+    	Account buyer = this.fileIO.getAccountList().get(buyerLocation);
+    	
+    	int sellerLocation = this.fileIO.findUser(sellName);
+    	Account seller = this.fileIO.getAccountList().get(sellerLocation);
+    	
+    	buyer.decreaseBalance(account);
+    	
+    	seller.increaseBalance(account);
+    	
+    	this.fileIO.getAccountList().set(buyerLocation, buyer);
+    	this.fileIO.getAccountList().set(sellerLocation, seller);
+    	
+    	return true;
     }
 
     /**
@@ -109,15 +168,30 @@ public class Transactions {
      * @return Whether the transaction succeeded or not.
      */
     public boolean addcredit(final String username, final double amount) {
-        throw new UnsupportedOperationException();
+       
+    	int userLocation = this.fileIO.findUser(username);
+        Account user = this.fileIO.getAccountList().get(userLocation);
+        
+        user.increaseBalance(amount);
+        
+        this.fileIO.getAccountList().set(userLocation, user);
+        
+        return true;
     }
     
     /**
      * Find the next logout in the daily transaction list.
      * @return The location of the next logout transaction.
      */
-    public int findNextLogout(int startLocation)
-    {
+    public int findNextLogout(int startLocation) {
+    	for(int i = startLocation; i < this.transactions.size(); i++) {
+    		if(transactions.get(i).getTransactionType() == AuxiliaryTransaction
+    				.LOGOUT) {
+    			return i;
+    		}
+    	}
+    	
+    	// No logout found
     	return -1;
     }
 

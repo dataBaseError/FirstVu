@@ -9,7 +9,7 @@
 
 public class Refund extends Entry {
 
-	public static final String REFUND = "05";
+	public static final int REFUND = 5;
 	
     private String buyName;
     private String sellName;

@@ -21,6 +21,10 @@ public class Account {
 	
 	// The account type for buy standard users
 	public static final String BUY = "BS";
+	
+	public static final int MAX_USERNAME_LENGTH = 15;
+	public static final int MAX_BALANCE_LENGTH = 6;
+	
 
 	private String username;
 	private String type;
@@ -56,36 +60,48 @@ public class Account {
 		this.type = type;
 	}	
 	/**
-	 * 
-	 * @return balance
 	 * This accessor method will return the available balance for the account
+	 * @return balance 
 	 */
-
 	public double getBalance() {
 		return this.balance;
 	}
 
 	/**
-	 * 
-	 * @param balance
 	 * This mutator method will be called when the balance is changed
+	 * @param balance
 	 */
 	public void setBalance(double balance) {
 		this.balance = balance;
 	}
+	
 	/**
-	 * 
-	 * @return username
+	 * Increase the balance by the given amount.
+	 * @param balance The amount to increase the user's balance by.
+	 */
+	public void increaseBalance(double balance) {
+		this.balance += balance;
+	}
+	
+	/**
+	 * Decrease the balance by the given amount.
+	 * @param balance The amount to decrease the user's balance by.
+	 */
+	public void decreaseBalance(double balance) {
+		this.balance -= balance;
+	}
+	
+	/**
 	 * This accessor method will retrieve the username for the account
+	 * @return username
 	 */
 	public String getUsername() {
 		return this.username;
 	}
 
 	/**
-	 * 
-	 * @param username
 	 * This mutator method sets the username for the account
+	 * @param username
 	 */
 	public void setUsername(String username) {
 		this.username = username;
@@ -97,7 +113,9 @@ public class Account {
 	 * @return The account's information formatted for the User Accounts file.
 	 */
 	public String getAccountEntry() {
-		return null;
+		return this.username + Utility.createLine(' ', MAX_USERNAME_LENGTH
+				- username.length()) + " " + this.type + " " 
+				+ String.format("%09.2f", this.balance);		
 	}
 	
 }
