@@ -220,7 +220,7 @@ public class FileIO {
      * @param sellName The name of the seller.
      * @return The location of the ticket in the available tickets list.
      */
-    public int fintEvent(final String event, final String sellName) {
+    public int findEvent(final String event, final String sellName) {
         throw new UnsupportedOperationException();
     }
 

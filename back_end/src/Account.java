@@ -61,7 +61,6 @@ public class Account {
      * @param type the account's type
      * @param balance the account's balance
      */
-
     public Account(final String username, final String type, final double balance) {
         this.type = type;
         this.username = username;

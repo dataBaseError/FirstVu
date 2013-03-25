@@ -69,7 +69,7 @@ public class Transactions {
         final int sellerLocation = this.fileIO.findUser(sellName);
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
-        final int ticketLocation = this.fileIO.fintEvent(event, sellName);
+        final int ticketLocation = this.fileIO.findEvent(event, sellName);
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
         final double cost = numTickets * eventTicket.getCost();
