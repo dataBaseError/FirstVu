@@ -143,14 +143,56 @@ public class FileIO {
     public ArrayList<Entry> readTransactions() {
     	String line = "";
     	String[] lineArray = new String[5];
-    	int type;
-    	
+    	double balance;
+    	int numTickets;
+    	double price;
     	try{
     	BufferedReader fStream = new BufferedReader (new FileReader(this.transactionLocation));
     	while((line = fStream.readLine()) != null){
     		lineArray =line.split("\\s+");
-    		type = (Integer.parseInt(lineArray[0]));
-
+    		int transaction = (Integer.parseInt(lineArray[0]));
+    		String username = lineArray[1];
+    		
+    		switch(transaction) {
+    		case 0:    		
+    			balance = (Double.parseDouble(lineArray[3]));
+    			new AuxiliaryTransaction(transaction,username,balance,lineArray[2]);
+    			break;
+    			//logout
+    		case 1:
+    			balance = (Double.parseDouble(lineArray[3]));
+    			new AuxiliaryTransaction(transaction,username,balance,lineArray[2]);
+    			break;
+    			//create
+    		case 2:
+    			balance = (Double.parseDouble(lineArray[3]));
+    			new AuxiliaryTransaction(transaction,username,balance,lineArray[2]);
+    			break;
+    			//delete
+    		case 3:
+    			numTickets = (Integer.parseInt(lineArray[3]));
+    			price = (Double.parseDouble(lineArray[4]));
+    			new EventTransaction(transaction,lineArray[1],lineArray[2],price,numTickets);
+    			break;
+    			//sell
+    		case 4:
+    			numTickets = (Integer.parseInt(lineArray[3]));
+    			price = (Double.parseDouble(lineArray[4]));
+    			new EventTransaction(transaction,lineArray[1],lineArray[2],price,numTickets);
+    			break;   
+    			//buy
+    		case 5:
+    			double amount = (Double.parseDouble(lineArray[3]));
+    			new Refund(transaction,lineArray[1],lineArray[2],amount);
+    			break;
+    			//refund
+    		case 6:
+    			balance = (Double.parseDouble(lineArray[3]));
+    			new AuxiliaryTransaction(transaction,username,balance,lineArray[2]);
+    			break;
+    			//addcredit
+    		
+    		}
     		
     	}
     	
