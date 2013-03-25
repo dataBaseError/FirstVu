@@ -1,6 +1,7 @@
 /**
 * This class is responsible for setting the initial conditions for the account (type, balance, username)
 * and is responsible for changing any of these values
+* 
 * @author Ryan Crawford
 * @author Khalil Fazal
 * @author Joseph Heron
