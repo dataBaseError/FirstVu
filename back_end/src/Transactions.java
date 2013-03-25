@@ -17,7 +17,7 @@ public class Transactions {
      */
     public Transactions(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
         this.transactionLocation = transactionLocation;
-        this.fileIO = new FileIO(accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
+        this.fileIO = new FileIO(accountLocation, ticketLocation, newAccountLocation, transactionLocation, newTicketLocation);
         this.transactions = new ArrayList<Entry>();
     }
 
@@ -183,8 +183,15 @@ public class Transactions {
      * Find the next logout in the daily transaction list.
      * @return The location of the next logout transaction.
      */
-    public int findNextLogout(int startLocation)
-    {
+    public int findNextLogout(int startLocation) {
+    	for(int i = startLocation; i < this.transactions.size(); i++) {
+    		if(transactions.get(i).getTransactionType() == AuxiliaryTransaction
+    				.LOGOUT) {
+    			return i;
+    		}
+    	}
+    	
+    	// No logout found
     	return -1;
     }
 

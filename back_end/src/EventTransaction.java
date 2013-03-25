@@ -9,8 +9,8 @@
 
 public class EventTransaction extends Entry {
 
-	public static final String SELL = "03";
-	public static final String BUY = "04";
+	public static final int SELL = 3;
+	public static final int BUY = 4;
 	
     private String eventName;
     private String sellName;
