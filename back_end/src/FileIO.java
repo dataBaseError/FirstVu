@@ -21,7 +21,7 @@ public class FileIO {
      * @param newTicketLocation The location for the new Available Tickets file
      * to be stored to.
      */
-    public FileIO(final String accountLocation, final String ticketLocation, final String newAccountLocation,final String transactionLocation, final String newTicketLocation) {
+    public FileIO(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
         this.accountList = new ArrayList<Account>();
         this.eventList = new ArrayList<Ticket>();
         
@@ -182,12 +182,4 @@ public class FileIO {
         throw new UnsupportedOperationException();
     }
 
-    /**
-     * Check whether another user already has the given username.
-     * @param username The username to look for.
-     * @return Whether another user already has the given username or not.
-     */
-    public boolean isUserUnique(final String username) {
-        throw new UnsupportedOperationException();
-    }
 }
