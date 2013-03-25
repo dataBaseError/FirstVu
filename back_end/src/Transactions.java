@@ -17,7 +17,7 @@ public class Transactions {
      */
     public Transactions(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
         this.transactionLocation = transactionLocation;
-        this.fileIO = new FileIO(accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
+        this.fileIO = new FileIO(accountLocation, ticketLocation, newAccountLocation, transactionLocation, newTicketLocation);
         this.transactions = new ArrayList<Entry>();
     }
 
