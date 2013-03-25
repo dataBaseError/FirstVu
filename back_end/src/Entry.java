@@ -1,5 +1,6 @@
 /**
  * Class that allows for entries to the daily transaction file.
+ * 
  * @author Ryan Crawford
  * @author Khalil Fazal
  * @author Joseph Heron
@@ -8,6 +9,9 @@
  */
 public abstract class Entry {
 
+    /**
+     * The type of entry in the daily transaction file
+     */
     protected int transactionType;
 
     /**

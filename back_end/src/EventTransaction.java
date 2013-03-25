@@ -1,17 +1,17 @@
- /**
- *
- * This class covers the basic transactions for the sale of events 
- * @author Ryan Crawford
- * @author Khalil Fazal
- * @author Joseph Heron
- * @author Carly Marshall
- */
+/**
+* This class covers the basic transactions for the sale of events 
+* 
+* @author Ryan Crawford
+* @author Khalil Fazal
+* @author Joseph Heron
+* @author Carly Marshall
+*/
 
 public class EventTransaction extends Entry {
 
-	public static final int SELL = 3;
-	public static final int BUY = 4;
-	
+    public static final int SELL = 3;
+    public static final int BUY = 4;
+
     private String eventName;
     private String sellName;
     private double price;
@@ -52,6 +52,7 @@ public class EventTransaction extends Entry {
     public void setSellName(final String sellName) {
         this.sellName = sellName;
     }
+
     /**
      * 
      * @return eventName
@@ -69,6 +70,7 @@ public class EventTransaction extends Entry {
     public void setEventName(final String eventName) {
         this.eventName = eventName;
     }
+
     /**
      * 
      * @return numTickets
@@ -86,6 +88,7 @@ public class EventTransaction extends Entry {
     public void setPrice(final double price) {
         this.price = price;
     }
+
     /**
      * 
      * @return numTickets

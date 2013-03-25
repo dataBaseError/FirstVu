@@ -1,5 +1,6 @@
 /**
  * A class to hold information for a create, delete, addcredit, or end transaction.
+ *
  * @author Ryan Crawford
  * @author Khalil Fazal
  * @author Joseph Heron
@@ -8,13 +9,39 @@
  */
 public class AuxiliaryTransaction extends Entry {
 
-	public static final int LOGOUT = 0;
-	public static final int CREATE = 1;
-	public static final int DELETE = 2;
-	public static final int ADDCREDIT = 6;
-	
+    /**
+     * A symbol for a logout entry in the Daily Transaction File
+     */
+    public static final int LOGOUT = 0;
+
+    /**
+     * A symbol for a create entry in the Daily Transaction File
+     */
+    public static final int CREATE = 1;
+
+    /**
+     * A symbol for a delete entry in the Daily Transaction File
+     */
+    public static final int DELETE = 2;
+
+    /**
+     * A symbol for an addcredit entry in the Daily Transaction File
+     */
+    public static final int ADDCREDIT = 6;
+
+    /**
+     * The username of the affected account during the transaction
+     */
     private String username;
+
+    /**
+     * The credit amount involved during a transaction
+     */
     private double credit;
+
+    /**
+     * The account type of the account being manipulated during a transaction
+     */
     private String accountType;
 
     /**
