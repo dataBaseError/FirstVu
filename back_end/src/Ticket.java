@@ -12,6 +12,8 @@ public class Ticket {
 	private String username;
 	private int ticketNumber;
 	private double cost;
+	
+	public static final int MAX_EVENT_LENGTH = 19;
 
 	/**
 	 * Constructor for making a ticket listing for an event.
@@ -107,7 +109,12 @@ public class Ticket {
 	 * file.
 	 */
 	public String getTicketEntry() {
-		return null;
+		return this.event + Utility.createLine(' ', MAX_EVENT_LENGTH -
+				this.event.length()) + " " + this.username 
+				+ Utility.createLine(' ', Account.MAX_USERNAME_LENGTH - 
+				this.username.length()) + " " + 
+				String.format("%03.0f", (double)this.ticketNumber) + " " +
+				String.format("%03.2f", this.cost);
 	}
 
 }
