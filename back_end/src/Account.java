@@ -21,6 +21,10 @@ public class Account {
 	
 	// The account type for buy standard users
 	public static final String BUY = "BS";
+	
+	public static final int MAX_USERNAME_LENGTH = 15;
+	public static final int MAX_BALANCE_LENGTH = 6;
+	
 
 	private String username;
 	private String type;
@@ -109,7 +113,9 @@ public class Account {
 	 * @return The account's information formatted for the User Accounts file.
 	 */
 	public String getAccountEntry() {
-		return null;
+		return this.username + Utility.createLine(' ', MAX_USERNAME_LENGTH
+				- username.length()) + " " + this.type + " " 
+				+ String.format("%09.2f", this.balance);		
 	}
 	
 }
