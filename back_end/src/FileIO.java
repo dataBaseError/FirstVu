@@ -1,11 +1,14 @@
 import java.util.ArrayList;
-
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 public class FileIO {
 
     private ArrayList<Account> accountList;
     private ArrayList<Ticket> eventList;
     private String accountLocation;
     private String ticketLocation;
+    private String transactionLocation;
     private String newAccountLocation;
     private String newTicketLocation;
 
@@ -18,11 +21,12 @@ public class FileIO {
      * @param newTicketLocation The location for the new Available Tickets file
      * to be stored to.
      */
-    public FileIO(final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
+    public FileIO(final String accountLocation, final String ticketLocation, final String newAccountLocation,final String transactionLocation, final String newTicketLocation) {
         this.accountList = new ArrayList<Account>();
         this.eventList = new ArrayList<Ticket>();
         
     	this.accountLocation = accountLocation;
+    	this.transactionLocation = transactionLocation;
         this.ticketLocation = ticketLocation;
         this.newAccountLocation = newAccountLocation;
         this.newTicketLocation = newTicketLocation;
@@ -67,7 +71,24 @@ public class FileIO {
      * @return Whether the file was successfully read or not.
      */
     public boolean readAccountFile() {
-        throw new UnsupportedOperationException();
+    	String line = "";
+    	String[] lineArray = new String[3];
+    	Double balance;
+    	try{
+    	BufferedReader fStream = new BufferedReader (new FileReader(this.accountLocation));
+    	while((line = fStream.readLine()) != null){
+    		lineArray =line.split("\\s+");
+    		balance = (Double.parseDouble(lineArray[2]));
+    		accountList.add(new Account(lineArray[0],lineArray[1],balance));
+    	}
+    	
+    	fStream.close();
+    	}catch(IOException e){
+    		e.printStackTrace();
+    		return false;
+    	}
+    	return true;
+    	
     }
 
     /**
@@ -75,7 +96,26 @@ public class FileIO {
      * @return Whether the file was successfully read or not.
      */
     public boolean readTicketFile() {
-        throw new UnsupportedOperationException();
+    	String line = "";
+    	String[] lineArray = new String[4];
+    	int ticketNumber;
+    	Double cost;
+    	try{
+    	BufferedReader fStream = new BufferedReader (new FileReader(this.ticketLocation));
+    	while((line = fStream.readLine()) != null){
+    		lineArray =line.split("\\s+");
+    		ticketNumber = (Integer.parseInt(lineArray[2]));
+    		cost = (Double.parseDouble(lineArray[3]));
+    		eventList.add(new Ticket(lineArray[0],lineArray[1],ticketNumber,cost));
+    	}
+    	
+    	fStream.close();
+    	}catch(IOException e){
+    		e.printStackTrace();
+    		return false;
+    	}
+    	return true;
+        
     }
 
     /**
@@ -99,8 +139,28 @@ public class FileIO {
      * @return The list of transactions to apply to the User Accounts and 
      * Available Tickets file. 
      */
+    //UNFINISHED
     public ArrayList<Entry> readTransactions() {
-        throw new UnsupportedOperationException();
+    	String line = "";
+    	String[] lineArray = new String[5];
+    	int type;
+    	
+    	try{
+    	BufferedReader fStream = new BufferedReader (new FileReader(this.transactionLocation));
+    	while((line = fStream.readLine()) != null){
+    		lineArray =line.split("\\s+");
+    		type = (Integer.parseInt(lineArray[0]));
+
+    		
+    	}
+    	
+    	fStream.close();
+    	}catch(IOException e){
+    		e.printStackTrace();
+    		
+    	}
+		return null;
+    	
     }
 
     /**
