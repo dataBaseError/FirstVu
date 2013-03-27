@@ -1,5 +1,6 @@
 /**
  * A class to hold information for a create, delete, addcredit, or end transaction.
+ *
  * @author Ryan Crawford
  * @author Khalil Fazal
  * @author Joseph Heron
@@ -37,6 +38,10 @@ public class AuxiliaryTransaction extends Entry {
      * The credit amount involved during a transaction
      */
     private double credit;
+
+    /**
+     * The account type of the account being manipulated during a transaction
+     */
     private String accountType;
 
     /**

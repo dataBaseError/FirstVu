@@ -1,0 +1,10 @@
+enter username
+login successful
+enter event title
+enter number of tickets
+enter seller's username
+cost per ticket: $150.00
+total cost: $600.00
+error: not enough tickets remaining
+error: invalid command
+logout successful
