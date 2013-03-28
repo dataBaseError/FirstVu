@@ -91,7 +91,7 @@ public class FileIO {
      * Read in the User Accounts file.
      * @return Whether the file was successfully read or not.
      */
-    private boolean readAccountFile() {
+    public boolean readAccountFile() {
         String line = "";
         String[] lineArray = new String[3];
         Double balance;
@@ -116,7 +116,7 @@ public class FileIO {
      * Read in the Available Tickets file.
      * @return Whether the file was successfully read or not.
      */
-    private boolean readTicketFile() {
+    public boolean readTicketFile() {
         String line = "";
         String[] lineArray = new String[4];
         int ticketNumber;
@@ -161,16 +161,15 @@ public class FileIO {
      * Available Tickets file. 
      */
     // UNFINISHED
-    private ArrayList<Entry> readTransactions() {
-        String line = "";
-        String[] lineArray = new String[5];
-        double balance;
-        int numTickets;
-        double price;
+    public ArrayList<Entry> readTransactions() {
+        final ArrayList<Entry> entries = new ArrayList<Entry>();
+
         try {
             final BufferedReader fStream = new BufferedReader(new FileReader(this.transactionLocation));
+            String line;
+
             while ((line = fStream.readLine()) != null) {
-                lineArray = line.split("\\s+");
+                final String[] lineArray = line.split("\\s+");
                 final int transaction = Integer.parseInt(lineArray[0]);
                 final String username = lineArray[1];
 
@@ -183,33 +182,34 @@ public class FileIO {
                         // delete
                     case 6:
                         // addcredit
-                        balance = Double.parseDouble(lineArray[3]);
-                        new AuxiliaryTransaction(transaction, username, balance, lineArray[2]);
+                        final double balance = Double.parseDouble(lineArray[3]);
+
+                        entries.add(new AuxiliaryTransaction(transaction, username, balance, lineArray[2]));
                         break;
                     case 3:
                         // sell
                     case 4:
                         // buy
-                        numTickets = Integer.parseInt(lineArray[3]);
-                        price = Double.parseDouble(lineArray[4]);
-                        new EventTransaction(transaction, lineArray[1], lineArray[2], price, numTickets);
+                        final int numTickets = Integer.parseInt(lineArray[3]);
+                        final double price = Double.parseDouble(lineArray[4]);
+
+                        entries.add(new EventTransaction(transaction, lineArray[1], lineArray[2], price, numTickets));
                         break;
                     case 5:
                         // refund
                         final double amount = Double.parseDouble(lineArray[3]);
-                        new Refund(transaction, lineArray[1], lineArray[2], amount);
+
+                        entries.add(new Refund(transaction, lineArray[1], lineArray[2], amount));
                         break;
                 }
-
             }
 
             fStream.close();
         } catch (final IOException e) {
             e.printStackTrace();
-
         }
-        return null;
 
+        return entries;
     }
 
     /**
