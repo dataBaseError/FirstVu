@@ -5,6 +5,7 @@ public class Transactions {
     private ArrayList<Entry> transactions;
     private final FileIO fileIO;
     private final String transactionLocation;
+    private int currentUser; 
 
     /**
      * Constructor for creating a transaction session.
@@ -20,6 +21,34 @@ public class Transactions {
         this.transactionLocation = transactionLocation;
         this.fileIO = new FileIO(accountLocation, ticketLocation, newAccountLocation, transactionLocation, newTicketLocation);
         this.transactions = new ArrayList<Entry>();
+        this.currentUser = -1;
+    }
+    
+    
+    /**
+     * Initialize the transaction session by reading in the needed files.
+     * @return Whether the initialization was successful.
+     */
+    public boolean initTransactionList() {
+    	
+    	this.transactions = this.fileIO.readTransactions();
+    	
+    	if(this.transactions == null) {
+    		// Error reading dtf
+    		return false;
+    	}
+    		
+    	if(!this.fileIO.readAccountFile()) {
+    		// Error reading account file
+    		return false;
+    	}
+    	
+    	if(!this.fileIO.readTicketFile()) {
+    		// Error reading ticket file
+    		return false;
+    	}
+    	
+    	return true;
     }
 
     /**
@@ -40,6 +69,10 @@ public class Transactions {
     public void setTransactions(final ArrayList<Entry> transactions) {
         this.transactions = transactions;
     }
+    
+    public void login(int userIndex) {
+    	this.currentUser = userIndex;
+    }
 
     /**
      * Transaction to log out. This transaction is used to identify which user
@@ -47,7 +80,7 @@ public class Transactions {
      * transactions applied to.
      */
     public void logout() {
-        throw new UnsupportedOperationException();
+    	this.currentUser = -1;
     }
 
     /**
@@ -72,6 +105,13 @@ public class Transactions {
         final int ticketLocation = this.fileIO.findEvent(event, sellName);
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
+        // Check that the event has enough tickets left.
+        if(eventTicket.getTicketNumber() < numTickets) {
+        	
+        	// Not enough tickets available.
+        	return false;
+        }
+        
         final double cost = numTickets * eventTicket.getCost();
 
         buyer.decreaseBalance(cost);

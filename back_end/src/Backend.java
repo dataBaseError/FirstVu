@@ -22,7 +22,15 @@ public class Backend {
      *      </ul>
      */
     public static void main(final String[] args) {
-
+    	Transactions activityLog = new Transactions(args[2], args[0], args[1], args[3], args[4]);
+    	
+    	if(!activityLog.initTransactionList())
+    	{
+    		// Error reading input files.
+    	}
+    	
+    	
+    	
     }
 
 }
