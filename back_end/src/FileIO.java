@@ -1,5 +1,7 @@
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -144,7 +146,28 @@ public class FileIO {
      * @return Whether the file was successfully read or not.
      */
     private boolean writeAccountFile() {
-        throw new UnsupportedOperationException();
+        try {
+            final BufferedWriter writer = new BufferedWriter(new FileWriter(this.newAccountLocation));
+
+            // %-15s %2s %09.2f
+            final String format = String.format("%s%d%s%d%s", "%-", Account.MAX_USERNAME_LENGTH, "s %2s %0", Account.MAX_BALANCE_LENGTH + 3, ".2f");
+
+            for (final Account account : this.accountList) {
+                final String username = account.getUsername();
+                final String type = account.getType();
+                final double balance = account.getBalance();
+
+                writer.write(String.format(format + "\n", username, type, balance));
+            }
+
+            writer.write(String.format(format, "END", "", 0));
+
+            writer.close();
+        } catch (final IOException e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -152,7 +175,29 @@ public class FileIO {
      * @return Whether the file was successfully read or not.
      */
     private boolean writeTicketFile() {
-        throw new UnsupportedOperationException();
+        try {
+            final BufferedWriter writer = new BufferedWriter(new FileWriter(this.newAccountLocation));
+
+            // %-19s %-15s %03d %06.2f
+            final String format = String.format("%s%d%s%d%s%d%s%d%s", "%-", Ticket.MAX_EVENT_LENGTH, "s %-", Account.MAX_USERNAME_LENGTH, "s %0", Ticket.MAX_TICKET_LENGTH, "d %0", Account.MAX_BALANCE_LENGTH, ".2f");
+
+            for (final Ticket ticket : this.eventList) {
+                final String event = ticket.getEvent();
+                final String seller = ticket.getUsername();
+                final int quantity = ticket.getTicketNumber();
+                final double cost = ticket.getCost();
+
+                writer.write(String.format(format + "\n", event, seller, quantity, cost));
+            }
+
+            writer.write(String.format(format, "END", "", 0, 0));
+
+            writer.close();
+        } catch (final IOException e) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
