@@ -143,7 +143,7 @@ public class FileIO {
      * Write out to the new User Accounts file.
      * @return Whether the file was successfully read or not.
      */
-    public boolean writeAccountFile() {
+    private boolean writeAccountFile() {
         throw new UnsupportedOperationException();
     }
 
@@ -151,7 +151,7 @@ public class FileIO {
      * Write out to the new Available Tickets file.
      * @return Whether the file was successfully read or not.
      */
-    public boolean writeTicketFile() {
+    private boolean writeTicketFile() {
         throw new UnsupportedOperationException();
     }
 
@@ -162,15 +162,14 @@ public class FileIO {
      */
     // UNFINISHED
     public ArrayList<Entry> readTransactions() {
-        String line = "";
-        String[] lineArray = new String[5];
-        double balance;
-        int numTickets;
-        double price;
+        final ArrayList<Entry> entries = new ArrayList<Entry>();
+
         try {
             final BufferedReader fStream = new BufferedReader(new FileReader(this.transactionLocation));
+            String line;
+
             while ((line = fStream.readLine()) != null) {
-                lineArray = line.split("\\s+");
+                final String[] lineArray = line.split("\\s+");
                 final int transaction = Integer.parseInt(lineArray[0]);
                 final String username = lineArray[1];
 
@@ -183,33 +182,34 @@ public class FileIO {
                         // delete
                     case 6:
                         // addcredit
-                        balance = Double.parseDouble(lineArray[3]);
-                        new AuxiliaryTransaction(transaction, username, balance, lineArray[2]);
+                        final double balance = Double.parseDouble(lineArray[3]);
+
+                        entries.add(new AuxiliaryTransaction(transaction, username, balance, lineArray[2]));
                         break;
                     case 3:
                         // sell
                     case 4:
                         // buy
-                        numTickets = Integer.parseInt(lineArray[3]);
-                        price = Double.parseDouble(lineArray[4]);
-                        new EventTransaction(transaction, lineArray[1], lineArray[2], price, numTickets);
+                        final int numTickets = Integer.parseInt(lineArray[3]);
+                        final double price = Double.parseDouble(lineArray[4]);
+
+                        entries.add(new EventTransaction(transaction, lineArray[1], lineArray[2], price, numTickets));
                         break;
                     case 5:
                         // refund
                         final double amount = Double.parseDouble(lineArray[3]);
-                        new Refund(transaction, lineArray[1], lineArray[2], amount);
+
+                        entries.add(new Refund(transaction, lineArray[1], lineArray[2], amount));
                         break;
                 }
-
             }
 
             fStream.close();
         } catch (final IOException e) {
             e.printStackTrace();
-
         }
-        return null;
 
+        return entries;
     }
 
     /**
@@ -218,17 +218,31 @@ public class FileIO {
      * @return The location of that user in the user accounts list.
      */
     public int findUser(final String username) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < this.accountList.size(); i++) {
+            if (this.accountList.get(i).getUsername().equals(username)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     /**
      * Find a ticket given the event's name and the seller's name.
-     * @param event The name of the event.
+     * @param eventName The name of the event.
      * @param sellName The name of the seller.
      * @return The location of the ticket in the available tickets list.
      */
-    public int findEvent(final String event, final String sellName) {
-        throw new UnsupportedOperationException();
+    public int findEvent(final String eventName, final String sellName) {
+        for (int i = 0; i < this.eventList.size(); i++) {
+            final Ticket event = this.eventList.get(i);
+
+            if (event.getEvent().equals(event) && event.getUsername().equals(sellName)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
 }
