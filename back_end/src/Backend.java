@@ -14,15 +14,16 @@ public class Backend {
      * 
      * @param args
      *      <ul>
-     *          <li>args[0]: current user account file</li>
+     *          <li>args[0]: current daily transaction file</li>
      *          <li>args[1]: current ticket file</li>
-     *          <li>args[2]: current daily transaction file</li>
+     *          <li>args[2]: current user account file</li>
      *          <li>args[3]: new user account file</li>
      *          <li>args[4]: new ticket file</li>
      *      </ul>
      */
     public static void main(final String[] args) {
-    	Transactions activityLog = new Transactions(args[2], args[0], args[1], args[3], args[4]);
+    	
+    	Transactions activityLog = new Transactions(args[0], args[1], args[2], args[3], args[4]);
     	int nextLogout = 0;
     	int previousLogout = 0;
     	int transactionType = -1;

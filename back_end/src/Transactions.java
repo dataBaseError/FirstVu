@@ -1,3 +1,12 @@
+/**
+ * A class for applying the transactions in the daily transaction file to the 
+ * user accounts file and available tickets file.
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
 import java.util.ArrayList;
 
 public class Transactions {
