@@ -91,7 +91,7 @@ public class FileIO {
      * Read in the User Accounts file.
      * @return Whether the file was successfully read or not.
      */
-    public boolean readAccountFile() {
+    private boolean readAccountFile() {
         String line = "";
         String[] lineArray = new String[3];
         Double balance;
@@ -116,7 +116,7 @@ public class FileIO {
      * Read in the Available Tickets file.
      * @return Whether the file was successfully read or not.
      */
-    public boolean readTicketFile() {
+    private boolean readTicketFile() {
         String line = "";
         String[] lineArray = new String[4];
         int ticketNumber;
@@ -143,7 +143,7 @@ public class FileIO {
      * Write out to the new User Accounts file.
      * @return Whether the file was successfully read or not.
      */
-    public boolean writeAccountFile() {
+    private boolean writeAccountFile() {
         throw new UnsupportedOperationException();
     }
 
@@ -151,7 +151,7 @@ public class FileIO {
      * Write out to the new Available Tickets file.
      * @return Whether the file was successfully read or not.
      */
-    public boolean writeTicketFile() {
+    private boolean writeTicketFile() {
         throw new UnsupportedOperationException();
     }
 
@@ -161,7 +161,7 @@ public class FileIO {
      * Available Tickets file. 
      */
     // UNFINISHED
-    public ArrayList<Entry> readTransactions() {
+    private ArrayList<Entry> readTransactions() {
         String line = "";
         String[] lineArray = new String[5];
         double balance;
@@ -218,17 +218,31 @@ public class FileIO {
      * @return The location of that user in the user accounts list.
      */
     public int findUser(final String username) {
-        throw new UnsupportedOperationException();
+        for (int i = 0; i < this.accountList.size(); i++) {
+            if (this.accountList.get(i).getUsername().equals(username)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
     /**
      * Find a ticket given the event's name and the seller's name.
-     * @param event The name of the event.
+     * @param eventName The name of the event.
      * @param sellName The name of the seller.
      * @return The location of the ticket in the available tickets list.
      */
-    public int findEvent(final String event, final String sellName) {
-        throw new UnsupportedOperationException();
+    public int findEvent(final String eventName, final String sellName) {
+        for (int i = 0; i < this.eventList.size(); i++) {
+            final Ticket event = this.eventList.get(i);
+
+            if (event.getEvent().equals(event) && event.getUsername().equals(sellName)) {
+                return i;
+            }
+        }
+
+        return -1;
     }
 
 }
