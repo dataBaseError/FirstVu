@@ -70,8 +70,11 @@ public class Transactions {
         this.transactions = transactions;
     }
     
-    public void login(int userIndex) {
-    	this.currentUser = userIndex;
+    public void login(int loginEntry) {
+    	
+    	this.currentUser = this.fileIO.findUser(
+    			((AuxiliaryTransaction)this.transactions.get(loginEntry))
+    			.getUsername());    	
     }
 
     /**
@@ -236,7 +239,8 @@ public class Transactions {
      */
     public int findNextLogout(final int startLocation) {
         for (int i = startLocation; i < this.transactions.size(); i++) {
-            if (this.transactions.get(i).getTransactionType() == AuxiliaryTransaction.LOGOUT) {
+            if (this.transactions.get(i).getTransactionType() == AuxiliaryTransaction.LOGOUT
+            		&& ((AuxiliaryTransaction)this.transactions.get(i)).getUsername() != null) {
                 return i;
             }
         }

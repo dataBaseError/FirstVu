@@ -23,13 +23,19 @@ public class Backend {
      */
     public static void main(final String[] args) {
     	Transactions activityLog = new Transactions(args[2], args[0], args[1], args[3], args[4]);
-    	
-    	if(!activityLog.initTransactionList())
-    	{
+    	int nextLogout = 0;
+    	if(!activityLog.initTransactionList()) {
     		// Error reading input files.
     	}
     	
-    	
+    	while(nextLogout != -1) {
+    			
+    		nextLogout = activityLog.findNextLogout(nextLogout);
+    		//activityLog.login(activityLog.get)
+    		for(int i = 0; i < nextLogout; i++) {
+    			
+    		}    		
+    	}
     	
     }
 
