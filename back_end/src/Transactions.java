@@ -97,33 +97,33 @@ public class Transactions {
      * @param sellName The seller's username.
      * @return Whether the transaction succeeded or not.
      */
-    public boolean buy(final String buyName, final String event, final int numTickets, final String sellName) {
+    public boolean buy(EventTransaction buyTransaction) {
 
-        final int buyerLocation = this.fileIO.findUser(buyName);
-        final Account buyer = this.fileIO.getAccountList().get(buyerLocation);
+        //final int buyerLocation = this.fileIO.findUser(buyName); // current user
+        final Account buyer = this.fileIO.getAccountList().get(currentUser);
 
-        final int sellerLocation = this.fileIO.findUser(sellName);
+        final int sellerLocation = this.fileIO.findUser(buyTransaction.getSellName());
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
-        final int ticketLocation = this.fileIO.findEvent(event, sellName);
+        final int ticketLocation = this.fileIO.findEvent(buyTransaction.getEventName(), buyTransaction.getSellName());
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
         // Check that the event has enough tickets left.
-        if(eventTicket.getTicketNumber() < numTickets) {
+        if(eventTicket.getTicketNumber() < buyTransaction.getNumTickets()) {
         	
         	// Not enough tickets available.
         	return false;
         }
-        
-        final double cost = numTickets * eventTicket.getCost();
+
+        final double cost = buyTransaction.getNumTickets() * eventTicket.getCost();
 
         buyer.decreaseBalance(cost);
 
         seller.increaseBalance(cost);
 
-        eventTicket.decreaseTicketNumber(numTickets);
+        eventTicket.decreaseTicketNumber(buyTransaction.getNumTickets());
 
-        this.fileIO.getAccountList().set(buyerLocation, buyer);
+        this.fileIO.getAccountList().set(currentUser, buyer);
         this.fileIO.getAccountList().set(sellerLocation, seller);
 
         if (eventTicket.getTicketNumber() == 0) {
@@ -145,9 +145,11 @@ public class Transactions {
      * @param availTicket The number of tickets available to for the event.
      * @return Whether the transaction succeeded or not.
      */
-    public boolean sell(final String sellName, final String event, final double sellPrice, final int availTicket) {
+    public boolean sell(EventTransaction sellTransaction) {
 
-        final Ticket newEvent = new Ticket(event, sellName, availTicket, sellPrice);
+        final Ticket newEvent = new Ticket(sellTransaction.getEventName(), 
+        		sellTransaction.getSellName(), sellTransaction.getNumTickets(),
+        		sellTransaction.getPrice());
 
         this.fileIO.getEventList().add(newEvent);
 
@@ -162,9 +164,10 @@ public class Transactions {
      * @param accountBalance The new user's account balance.
      * @return Whether the transaction succeeded or not.
      */
-    public boolean create(final String newUser, final String accountType, final double accountBalance) {
+    public boolean create(AuxiliaryTransaction createTransaction) {
 
-        final Account user = new Account(newUser, accountType, accountBalance);
+        final Account user = new Account(createTransaction.getUsername(), 
+        		createTransaction.getAccountType(), createTransaction.getCredit());
 
         this.fileIO.getAccountList().add(user);
 
@@ -177,9 +180,10 @@ public class Transactions {
      * @param username The username of the user to be deleted.
      * @return Whether the transaction succeeded or not.
      */
-    public boolean delete(final String username) {
+    public boolean delete(AuxiliaryTransaction deleteTransaction) {
 
-        final int userLocation = this.fileIO.findUser(username);
+        final int userLocation = this.fileIO.findUser
+        		(deleteTransaction.getUsername());
 
         this.fileIO.getAccountList().remove(userLocation);
 
@@ -194,17 +198,19 @@ public class Transactions {
      * @param account The amount of money to transfer as part of the refund.
      * @return Whether the transaction succeeded or not.
      */
-    public boolean refund(final String buyName, final String sellName, final double account) {
+    public boolean refund(Refund refundTransaction) {
 
-        final int buyerLocation = this.fileIO.findUser(buyName);
+        final int buyerLocation = this.fileIO.findUser
+        		(refundTransaction.getBuyName());
         final Account buyer = this.fileIO.getAccountList().get(buyerLocation);
 
-        final int sellerLocation = this.fileIO.findUser(sellName);
+        final int sellerLocation = this.fileIO.findUser
+        		(refundTransaction.getSellName());
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
-        buyer.decreaseBalance(account);
+        buyer.decreaseBalance(refundTransaction.getCredit());
 
-        seller.increaseBalance(account);
+        seller.increaseBalance(refundTransaction.getCredit());
 
         this.fileIO.getAccountList().set(buyerLocation, buyer);
         this.fileIO.getAccountList().set(sellerLocation, seller);
@@ -219,12 +225,13 @@ public class Transactions {
      * @param amount The amount of money added to the user's account.
      * @return Whether the transaction succeeded or not.
      */
-    public boolean addcredit(final String username, final double amount) {
+    public boolean addcredit(AuxiliaryTransaction addcreditTransaction) {
 
-        final int userLocation = this.fileIO.findUser(username);
+        final int userLocation = this.fileIO.findUser
+        		(addcreditTransaction.getUsername());
         final Account user = this.fileIO.getAccountList().get(userLocation);
 
-        user.increaseBalance(amount);
+        user.increaseBalance(addcreditTransaction.getCredit());
 
         this.fileIO.getAccountList().set(userLocation, user);
 
