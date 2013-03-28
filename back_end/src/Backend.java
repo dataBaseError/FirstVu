@@ -26,7 +26,6 @@ public class Backend {
             final Transactions activityLog = new Transactions(args[2], args[0], args[1], args[3], args[4]);
             int nextLogout = 0;
             int previousLogout = 0;
-            int transactionType = -1;
 
             if (!activityLog.initTransactionList()) {
                 // Error reading input files.
@@ -39,28 +38,29 @@ public class Backend {
 
                 for (int i = previousLogout; i < nextLogout; i++) {
                     final Entry currentTransaction = activityLog.getTransactions().get(i);
-                    transactionType = currentTransaction.getTransactionType();
 
-                    if (transactionType == AuxiliaryTransaction.LOGOUT) {
-                        activityLog.logout();
-                    }
-                    else if (transactionType == AuxiliaryTransaction.CREATE) {
-                        activityLog.create((AuxiliaryTransaction) currentTransaction);
-                    }
-                    else if (transactionType == AuxiliaryTransaction.DELETE) {
-                        activityLog.delete((AuxiliaryTransaction) currentTransaction);
-                    }
-                    else if (transactionType == EventTransaction.SELL) {
-                        activityLog.sell((EventTransaction) currentTransaction);
-                    }
-                    else if (transactionType == EventTransaction.BUY) {
-                        activityLog.buy((EventTransaction) currentTransaction);
-                    }
-                    else if (transactionType == Refund.REFUND) {
-                        activityLog.refund((Refund) currentTransaction);
-                    }
-                    else if (transactionType == AuxiliaryTransaction.ADDCREDIT) {
-                        activityLog.addcredit((AuxiliaryTransaction) currentTransaction);
+                    switch (currentTransaction.getTransactionType()) {
+                        case AuxiliaryTransaction.LOGOUT:
+                            activityLog.logout();
+                            break;
+                        case AuxiliaryTransaction.CREATE:
+                            activityLog.create((AuxiliaryTransaction) currentTransaction);
+                            break;
+                        case AuxiliaryTransaction.DELETE:
+                            activityLog.delete((AuxiliaryTransaction) currentTransaction);
+                            break;
+                        case AuxiliaryTransaction.ADDCREDIT:
+                            activityLog.addcredit((AuxiliaryTransaction) currentTransaction);
+                            break;
+                        case EventTransaction.SELL:
+                            activityLog.sell((EventTransaction) currentTransaction);
+                            break;
+                        case EventTransaction.BUY:
+                            activityLog.buy((EventTransaction) currentTransaction);
+                            break;
+                        case Refund.REFUND:
+                            activityLog.refund((Refund) currentTransaction);
+                            break;
                     }
                 }
 
