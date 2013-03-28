@@ -58,6 +58,21 @@ public class Transactions {
 
         return true;
     }
+    
+    public boolean endSession() {
+    	
+    	if(!this.fileIO.writeAccountFile()) {
+    		// Error writing to current account file
+    		return false;
+    	}
+    	
+    	if(!this.fileIO.writeTicketFile()) {
+    		// Error writing to available ticket file
+    		return false;
+    	}
+
+    	return true;
+    }
 
     /**
      * Accessor for the transaction list
@@ -69,20 +84,19 @@ public class Transactions {
     }
 
     /**
-     * MIGHT NOT BE NEEDED
-     * Mutator for the list of transactions.
-     * 
-     * @param transactions The new list of transactions.
+     * Transaction to set the current user who is calling the transactions. This
+     * is primarily needed for the buy transaction where the user who is
+     * actually buying the tickets is not included in the daily transaction
+     * file.
+     * @param loginEntry The index of the transaction that contains the username
+     * of the user to apply the next set of transactions to.
      */
-    public void setTransactions(final ArrayList<Entry> transactions) {
-        this.transactions = transactions;
-    }
-
     public void login(final int loginEntry) {
-
-        this.currentUser = this.fileIO.findUser(
+    	if(loginEntry >= 0) {
+    		this.currentUser = this.fileIO.findUser(
                 ((AuxiliaryTransaction) this.transactions.get(loginEntry))
-                        .getUsername());
+                .getUsername());
+    	}
     }
 
     /**

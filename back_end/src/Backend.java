@@ -31,12 +31,13 @@ public class Backend {
                 // Error reading input files.
             }
 
+            nextLogout = activityLog.findNextLogout(nextLogout);
+            
             while (nextLogout != -1) {
-
-                nextLogout = activityLog.findNextLogout(nextLogout);
+                
                 activityLog.login(nextLogout);
 
-                for (int i = previousLogout; i < nextLogout; i++) {
+                for (int i = previousLogout; i <= nextLogout; i++) {
                     final Entry currentTransaction = activityLog.getTransactions().get(i);
 
                     switch (currentTransaction.getTransactionType()) {
@@ -65,8 +66,10 @@ public class Backend {
                 }
 
                 previousLogout = nextLogout;
+                nextLogout = activityLog.findNextLogout(nextLogout+1);
             }
 
+            activityLog.endSession();
         }
     }
 }
