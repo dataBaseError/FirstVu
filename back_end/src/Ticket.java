@@ -19,6 +19,7 @@ public class Ticket {
 
     /**
      * Constructor for making a ticket listing for an event.
+     * 
      * @param event The name of the event.
      * @param username The username of the seller.
      * @param ticketNumber The number of tickets available.
@@ -33,6 +34,7 @@ public class Ticket {
 
     /**
      * Accessor method for getting the event name.
+     * 
      * @return The name of the event.
      */
     public String getEvent() {
@@ -41,6 +43,7 @@ public class Ticket {
 
     /**
      * Accessor method for getting the seller’s username.
+     * 
      * @return The username of the seller.
      */
     public String getUsername() {
@@ -49,6 +52,7 @@ public class Ticket {
 
     /**
      * Accessor method for getting the number of tickets available for the show.
+     * 
      * @return The number of available tickets.
      */
     public int getTicketNumber() {
@@ -57,6 +61,7 @@ public class Ticket {
 
     /**
      * Decrement the number of tickets for sale for the event.
+     * 
      * @param ticketNumber The number of available tickets.
      */
     public void decreaseTicketNumber(final int ticketNumber) {
@@ -65,6 +70,7 @@ public class Ticket {
 
     /**
      * Accessor method for getting the cost of the event per ticket.
+     * 
      * @return Cost per ticket.
      */
     public double getCost() {
@@ -74,7 +80,8 @@ public class Ticket {
     /**
      * Get the ticket information as a line of the Available Tickets file. This
      * will be used to store the update tickets into the new Available Tickets
-     * file. 
+     * file.
+     * 
      * @return The ticket's information formatted for the Available Tickets
      * file.
      */

@@ -54,6 +54,7 @@ public class FileIO {
 
     /**
      * Constructor for the file input and output.
+     * 
      * @param transactionLocation The location of the daily transaction file.
      * @param accountLocation The location of the current User Accounts file.
      * @param ticketLocation The location of the current Available Tickets file.
@@ -75,6 +76,7 @@ public class FileIO {
 
     /**
      * Accessor for the current list of user accounts.
+     * 
      * @return The current list of user accounts.
      */
     public ArrayList<Account> getAccountList() {
@@ -83,6 +85,7 @@ public class FileIO {
 
     /**
      * Accessor for the list of currently available tickets.
+     * 
      * @return The list of currently available tickets.
      */
     public ArrayList<Ticket> getEventList() {
@@ -91,6 +94,7 @@ public class FileIO {
 
     /**
      * Read in the User Accounts file.
+     * 
      * @return Whether the file was successfully read or not.
      */
     public boolean readAccountFile() {
@@ -119,6 +123,7 @@ public class FileIO {
 
     /**
      * Read in the Available Tickets file.
+     * 
      * @return Whether the file was successfully read or not.
      */
     public boolean readTicketFile() {
@@ -150,6 +155,7 @@ public class FileIO {
 
     /**
      * Write out to the new User Accounts file.
+     * 
      * @return Whether the file was successfully read or not.
      */
     public boolean writeAccountFile() {
@@ -179,6 +185,7 @@ public class FileIO {
 
     /**
      * Write out to the new Available Tickets file.
+     * 
      * @return Whether the file was successfully read or not.
      */
     public boolean writeTicketFile() {
@@ -209,6 +216,7 @@ public class FileIO {
 
     /**
      * Read in the daily transaction file.
+     * 
      * @return The list of transactions to apply to the User Accounts and 
      * Available Tickets file. 
      */
@@ -267,6 +275,7 @@ public class FileIO {
 
     /**
      * Find the user in the list of user accounts given their username.
+     * 
      * @param username The username of the user to find.
      * @return The location of that user in the user accounts list.
      */
@@ -282,6 +291,7 @@ public class FileIO {
 
     /**
      * Find a ticket given the event's name and the seller's name.
+     * 
      * @param eventName The name of the event.
      * @param sellName The name of the seller.
      * @return The location of the ticket in the available tickets list.

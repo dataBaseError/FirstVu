@@ -16,6 +16,7 @@ public abstract class Entry {
 
     /**
      * Constructor for creating an entry.
+     * 
      * @param transactionType A number indicating the type of transaction.
      */
     public Entry(final int transactionType) {
@@ -24,6 +25,7 @@ public abstract class Entry {
 
     /**
      * Accessor method for getting the type of transaction.
+     * 
      * @return A number indicating the type of transaction.
      */
     public int getTransactionType() {

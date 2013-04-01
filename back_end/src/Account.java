@@ -56,7 +56,7 @@ public class Account {
     private double balance;
 
     /**
-     * Account contructor to set the username, type and balance for the account
+     * Account constructor to set the username, type and balance for the account.
      * 
      * @param username the account's username
      * @param type the account's type
@@ -115,7 +115,8 @@ public class Account {
 
     /**
      * Get the account information as a line of the User Accounts file. This
-     * will be used to store the update account into the new accounts file. 
+     * will be used to store the update account into the new accounts file.
+     *  
      * @return The account's information formatted for the User Accounts file.
      */
     public String getAccountEntry() {
