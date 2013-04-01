@@ -245,9 +245,10 @@ public class Transactions {
                 (refundTransaction.getSellName());
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
-        buyer.decreaseBalance(refundTransaction.getCredit());
+        
+        seller.decreaseBalance(refundTransaction.getCredit());
 
-        seller.increaseBalance(refundTransaction.getCredit());
+        buyer.increaseBalance(refundTransaction.getCredit());
 
         this.fileIO.getAccountList().set(buyerLocation, buyer);
         this.fileIO.getAccountList().set(sellerLocation, seller);
