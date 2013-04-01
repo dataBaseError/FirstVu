@@ -9,22 +9,44 @@
 
 public class EventTransaction extends Entry {
 
+    /**
+     * Sell transactions are noted in the daily transaction file by the number 3.
+     */
     public static final int SELL = 3;
+
+    /**
+     * Buy transactions are noted in the daily transaction file by the number 4.
+     */
     public static final int BUY = 4;
 
-    private String eventName;
-    private String sellName;
-    private double price;
+    /**
+     * The name of the event a ticket is for in a transaction
+     */
+    private final String eventName;
+
+    /**
+     * The username of the ticket vendor
+     */
+    private final String sellName;
+
+    /**
+     * The price of each ticket
+     */
+    private final double price;
+
+    /**
+     * The number of tickets being sold
+     */
     private int numTickets;
 
     /**
-     * 
-     * @param type
-     * @param eventName
-     * @param sellName
-     * @param price
-     * @param numTickets
      * Constructor sets the initial conditions for the transaction
+     * 
+     * @param type the type of transaction, could be either BUY or SELL
+     * @param eventName the name of the event a ticket is for in a transaction
+     * @param sellName the username of the ticket vendor
+     * @param price the price of each ticket
+     * @param numTickets the number of tickets being sold
      * 
      */
     public EventTransaction(final int type, final String eventName, final String sellName, final double price, final int numTickets) {
@@ -46,15 +68,6 @@ public class EventTransaction extends Entry {
 
     /**
      * 
-     * @param sellName
-     * Mutator method responsible for setting the event seller's name
-     */
-    public void setSellName(final String sellName) {
-        this.sellName = sellName;
-    }
-
-    /**
-     * 
      * @return eventName
      * Accessor method responsible for returnig the event name 
      */
@@ -64,29 +77,11 @@ public class EventTransaction extends Entry {
 
     /**
      * 
-     * @param eventName
-     * Mutator method responsible for setting the event name 
-     */
-    public void setEventName(final String eventName) {
-        this.eventName = eventName;
-    }
-
-    /**
-     * 
      * @return numTickets
      * accessor method responsible for returning the price per ticket of an event
      */
     public double getPrice() {
         return this.price;
-    }
-
-    /**
-     * 
-     * @param price
-     * Mutator method for setting the ticket price of an event
-     */
-    public void setPrice(final double price) {
-        this.price = price;
     }
 
     /**
