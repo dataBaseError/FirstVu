@@ -29,12 +29,5 @@ public abstract class Entry {
     public int getTransactionType() {
         return this.transactionType;
     }
-
-    /**
-     * Mutator method for setting the transaction type.
-     * @param transactionType A number indicating the type of transaction.
-     */
-    public void setTransactionType(final int transactionType) {
-        this.transactionType = transactionType;
-    }
+    
 }

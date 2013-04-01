@@ -40,14 +40,6 @@ public class Ticket {
     }
 
     /**
-     * Mutator method for the event name.
-     * @param event The name of the event.
-     */
-    public void setEvent(final String event) {
-        this.event = event;
-    }
-
-    /**
      * Accessor method for getting the seller’s username.
      * @return The username of the seller.
      */
@@ -56,27 +48,11 @@ public class Ticket {
     }
 
     /**
-     * Mutator method for the seller’s username.
-     * @param username The username of the seller.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
-    }
-
-    /**
      * Accessor method for getting the number of tickets available for the show.
      * @return The number of available tickets.
      */
     public int getTicketNumber() {
         return this.ticketNumber;
-    }
-
-    /**
-     * Mutator method for number of remaining tickets for sale.
-     * @param ticketNumber The number of available tickets.
-     */
-    public void setTicketNumber(final int ticketNumber) {
-        this.ticketNumber = ticketNumber;
     }
 
     /**
@@ -93,14 +69,6 @@ public class Ticket {
      */
     public double getCost() {
         return this.cost;
-    }
-
-    /**
-     * Mutator method for the cost per ticket for the event.
-     * @param cost Cost per ticket.
-     */
-    public void setCost(final double cost) {
-        this.cost = cost;
     }
 
     /**
