@@ -11,7 +11,12 @@ import java.util.ArrayList;
  */
 
 public class Transactions {
-
+    /**
+     * 
+     * @param transactions An array list of type entry to store entries
+     * @param FileIo instance of the fileio class
+     * @param currentuser index of the current user in the array list  
+      */
     private ArrayList<Entry> transactions;
     private final FileIO fileIO;
     private int currentUser;
@@ -58,7 +63,10 @@ public class Transactions {
 
         return true;
     }
-    
+    /**
+     * writes to the global account and global tickets file
+     * @return whether the end of session was successful
+     */
     public boolean endSession() {
     	
     	if(!this.fileIO.writeAccountFile()) {
@@ -113,10 +121,7 @@ public class Transactions {
      * 
      * Transaction for buy tickets. 
      * 
-     * @param buyName The buyer's username.
-     * @param event The name of the event the tickets are for.
-     * @param numTickets The number of tickets being purchased.
-     * @param sellName The seller's username.
+     * @param buyTransaction an instance of the EventTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean buy(final EventTransaction buyTransaction) {
@@ -162,10 +167,7 @@ public class Transactions {
     /**
      * Transaction for selling tickets.
      * 
-     * @param sellName The sell'er username.
-     * @param event The name of the event the tickets are for.
-     * @param sellPrice The price per ticket.
-     * @param availTicket The number of tickets available to for the event.
+     * @param sellTransaction an instance of the EventTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean sell(final EventTransaction sellTransaction) {
@@ -182,9 +184,7 @@ public class Transactions {
     /**
      * Transaction for creating new user accounts.
      * 
-     * @param newUser The new user's username.
-     * @param accountType The account type of the new user.
-     * @param accountBalance The new user's account balance.
+     * @param createTransaction An instance of the AuxiliaryTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean create(final AuxiliaryTransaction createTransaction) {
@@ -200,7 +200,7 @@ public class Transactions {
     /**
      * Transaction for deleting user accounts.
      * 
-     * @param username The username of the user to be deleted.
+     * @param deleteTransaction an instance of the AuxiliaryTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean delete(final AuxiliaryTransaction deleteTransaction) {
@@ -216,9 +216,7 @@ public class Transactions {
     /**
      * Transaction for refunding a buyer of a previous transaction.
      * 
-     * @param buyName The buyer's username.
-     * @param sellName The seller's username.
-     * @param account The amount of money to transfer as part of the refund.
+     * @param refundTransaction an instance of the Refund class
      * @return Whether the transaction succeeded or not.
      */
     public boolean refund(final Refund refundTransaction) {
@@ -244,8 +242,7 @@ public class Transactions {
     /**
      * Transaction for adding credit to a user's account.
      * 
-     * @param username The username of the user to add the credit to.
-     * @param amount The amount of money added to the user's account.
+     * @param addcreditTransaction an instance of the AuxiliaryTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean addcredit(final AuxiliaryTransaction addcreditTransaction) {
