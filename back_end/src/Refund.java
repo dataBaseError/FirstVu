@@ -1,6 +1,7 @@
 /**
  * The class for holding information about refund transactions from the daily
- * transaction file
+ * transaction file.
+ * 
  * @author Ryan Crawford
  * @author Khalil Fazal
  * @author Joseph Heron
@@ -9,10 +10,24 @@
 
 public class Refund extends Entry {
 
-	public static final int REFUND = 5;
-	
-    private String buyName;
-    private String sellName;
+    /**
+     * Refund transactions are noted in the daily transaction file by the number 5.
+     */
+    public static final int REFUND = 5;
+
+    /**
+     * The username of the user who is meant to receive the refund
+     */
+    private final String buyName;
+
+    /**
+     * The username of the user who's account is where the refund will come from
+     */
+    private final String sellName;
+
+    /**
+     * The amount of credit that needs to be transferred
+     */
     private double credit;
 
     /**
