@@ -1,7 +1,6 @@
 /**
  * The class for holding information about refund transactions from the daily
- * transaction file.
- * 
+ * transaction file
  * @author Ryan Crawford
  * @author Khalil Fazal
  * @author Joseph Heron
