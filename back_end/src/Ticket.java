@@ -5,16 +5,36 @@
  * @author Joseph Heron
  * @author Carly Marshall
  */
-
 public class Ticket {
 
-    private String event;
-    private String username;
-    private int ticketNumber;
-    private double cost;
+    /**
+     * The name of the event the ticket is for
+     */
+    private final String event;
 
+    /**
+     * The username of the seller of the ticket
+     */
+    private final String username;
+
+    /**
+     * The number of tickets being sold
+     */
+    private int ticketNumber;
+
+    /**
+     * The cost of each ticket
+     */
+    private final double cost;
+
+    /**
+     * The maximum number of characters in each event's name
+     */
     public static final int MAX_EVENT_LENGTH = 19;
 
+    /**
+     * The maximum length of the number of tickets that can be sold if represented as a string
+     */
     public static final int MAX_TICKET_LENGTH = 3;
 
     /**
