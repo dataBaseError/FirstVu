@@ -153,7 +153,6 @@ public class Transactions {
         final int ticketLocation = this.fileIO.findEvent(buyTransaction.getEventName(), buyTransaction.getSellName());
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
-        // Check that the event has enough tickets left.
         if (eventTicket.getTicketNumber() < buyTransaction.getNumTickets()) {
 
             // Not enough tickets available.

@@ -17,7 +17,10 @@ public class ErrorMessages {
 	
 	public static final String UNABLE_TO_READ = "cannot read to ";
 	public static final String UNABLE_TO_WRITE = "cannot write to ";
+	
     /**
+     * Create an error message given the type of message and the error message.
+     * 
      * @param type the type of error message
      * @param message the error message
      */
