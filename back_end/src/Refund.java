@@ -38,27 +38,11 @@ public class Refund extends Entry {
     }
 
     /**
-     * Mutator method for the buyer's username.
-     * @param buyName The buyer's new username.
-     */
-    public void setBuyName(final String buyName) {
-        this.buyName = buyName;
-    }
-
-    /**
      * Accessor for the seller's username.
      * @return The seller's username.
      */
     public String getSellName() {
         return this.sellName;
-    }
-
-    /**
-     * Mutator method for the seller's username.
-     * @param sellName The seller's new username.
-     */
-    public void setSellName(final String sellName) {
-        this.sellName = sellName;
     }
 
     /**

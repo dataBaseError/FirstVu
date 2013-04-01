@@ -67,14 +67,6 @@ public class AuxiliaryTransaction extends Entry {
     }
 
     /**
-     * Mutator method for setting the username.
-     * @param username Username used for transaction.
-     */
-    public void setUsername(final String username) {
-        this.username = username;
-    }
-
-    /**
      * Accessor method for getting the credit amount associated with the transaction.
      * @return Amount of credit used for transaction.
      */
@@ -82,13 +74,6 @@ public class AuxiliaryTransaction extends Entry {
         return this.credit;
     }
 
-    /**
-     * Mutator method for setting the amount of credit.
-     * @param credit Amount of credit used for transaction.
-     */
-    public void setCredit(final double credit) {
-        this.credit = credit;
-    }
 
     /**
      * Accessor method for getting the user account type.
@@ -98,11 +83,4 @@ public class AuxiliaryTransaction extends Entry {
         return this.accountType;
     }
 
-    /**
-     * Mutator method for setting the account type.
-     * @param accountType Type of the account.
-     */
-    public void setAccountType(final String accountType) {
-        this.accountType = accountType;
-    }
 }
