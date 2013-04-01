@@ -9,10 +9,13 @@
 
 public class Refund extends Entry {
 
-	public static final int REFUND = 5;
-	
-    private String buyName;
-    private String sellName;
+    /**
+     * Refund transactions are noted in the daily transaction file by the number 5.
+     */
+    public static final int REFUND = 5;
+
+    private final String buyName;
+    private final String sellName;
     private double credit;
 
     /**
