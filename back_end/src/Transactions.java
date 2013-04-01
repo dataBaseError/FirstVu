@@ -45,6 +45,7 @@ public class Transactions {
 
     /**
      * Initialize the transaction session by reading in the needed files.
+     * 
      * @return Whether the initialization was successful.
      */
     public boolean initTransactionList() {
@@ -53,16 +54,22 @@ public class Transactions {
 
         if (this.transactions == null) {
             // Error reading dtf
+        	ErrorMessages.printError(ErrorMessages.DAILY_TRANSACTION_FILE,
+        			ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
         if (!this.fileIO.readAccountFile()) {
             // Error reading account file
+        	ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
+        			ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
         if (!this.fileIO.readTicketFile()) {
             // Error reading ticket file
+        	ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
+        			ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
@@ -70,18 +77,23 @@ public class Transactions {
     }
 
     /**
-     * writes to the global account and global tickets file
+     * Writes to the global account and global tickets file.
+     * 
      * @return whether the end of session was successful
      */
     public boolean endSession() {
 
         if (!this.fileIO.writeAccountFile()) {
             // Error writing to current account file
+        	ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
+        			ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
         }
 
         if (!this.fileIO.writeTicketFile()) {
             // Error writing to available ticket file
+        	ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
+        			ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
         }
 
@@ -89,7 +101,7 @@ public class Transactions {
     }
 
     /**
-     * Accessor for the transaction list
+     * Accessor for the transaction list.
      * 
      * @return The list of transactions.
      */
@@ -102,6 +114,7 @@ public class Transactions {
      * is primarily needed for the buy transaction where the user who is
      * actually buying the tickets is not included in the daily transaction
      * file.
+     * 
      * @param loginEntry The index of the transaction that contains the username
      * of the user to apply the next set of transactions to.
      */
@@ -132,8 +145,6 @@ public class Transactions {
      */
     public boolean buy(final EventTransaction buyTransaction) {
 
-        // final int buyerLocation = this.fileIO.findUser(buyName); // current
-        // user
         final Account buyer = this.fileIO.getAccountList().get(this.currentUser);
 
         final int sellerLocation = this.fileIO.findUser(buyTransaction.getSellName());

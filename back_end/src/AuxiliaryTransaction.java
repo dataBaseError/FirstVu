@@ -1,5 +1,6 @@
 /**
- * A class to hold information for a create, delete, addcredit, or end transaction.
+ * A class to hold information for a create, delete, addcredit, or end
+ * transaction.
  *
  * @author Ryan Crawford
  * @author Khalil Fazal
@@ -46,6 +47,7 @@ public class AuxiliaryTransaction extends Entry {
 
     /**
      * Constructor for creating a new transaction.
+     * 
      * @param type The transaction type.
      * @param username The username used during transaction.
      * @param credit Amount of credit used during transaction.
@@ -60,6 +62,7 @@ public class AuxiliaryTransaction extends Entry {
 
     /**
      * Accessor method for getting the username.
+     * 
      * @return Username used for transaction.
      */
     public String getUsername() {
@@ -67,16 +70,18 @@ public class AuxiliaryTransaction extends Entry {
     }
 
     /**
-     * Accessor method for getting the credit amount associated with the transaction.
+     * Accessor method for getting the credit amount associated with the
+     * transaction.
+     * 
      * @return Amount of credit used for transaction.
      */
     public double getCredit() {
         return this.credit;
     }
 
-
     /**
      * Accessor method for getting the user account type.
+     * 
      * @return Type of the account.
      */
     public String getAccountType() {

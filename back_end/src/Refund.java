@@ -66,12 +66,4 @@ public class Refund extends Entry {
     public double getCredit() {
         return this.credit;
     }
-
-    /**
-     * Mutator method for the credit transferred in the refund.
-     * @param credit The new amount of credit transferred.
-     */
-    public void setCredit(final double credit) {
-        this.credit = credit;
-    }
 }
