@@ -12,13 +12,18 @@ import java.util.ArrayList;
 
 public class Transactions {
     /**
-     * 
-     * @param transactions An array list of type entry to store entries
-     * @param FileIo instance of the fileio class
-     * @param currentuser index of the current user in the array list  
+     * An array list of type entry to store entries  
       */
     private ArrayList<Entry> transactions;
+
+    /**
+     * instance of the fileio class
+     */
     private final FileIO fileIO;
+
+    /**
+     * index of the current user in the array list  
+     */
     private int currentUser;
 
     /**
@@ -32,7 +37,7 @@ public class Transactions {
      * file.
      */
     public Transactions(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
-        
+
         this.fileIO = new FileIO(transactionLocation, accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
         this.transactions = new ArrayList<Entry>();
         this.currentUser = -1;
@@ -63,23 +68,24 @@ public class Transactions {
 
         return true;
     }
+
     /**
      * writes to the global account and global tickets file
      * @return whether the end of session was successful
      */
     public boolean endSession() {
-    	
-    	if(!this.fileIO.writeAccountFile()) {
-    		// Error writing to current account file
-    		return false;
-    	}
-    	
-    	if(!this.fileIO.writeTicketFile()) {
-    		// Error writing to available ticket file
-    		return false;
-    	}
 
-    	return true;
+        if (!this.fileIO.writeAccountFile()) {
+            // Error writing to current account file
+            return false;
+        }
+
+        if (!this.fileIO.writeTicketFile()) {
+            // Error writing to available ticket file
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -100,11 +106,11 @@ public class Transactions {
      * of the user to apply the next set of transactions to.
      */
     public void login(final int loginEntry) {
-    	if(loginEntry >= 0) {
-    		this.currentUser = this.fileIO.findUser(
-                ((AuxiliaryTransaction) this.transactions.get(loginEntry))
-                .getUsername());
-    	}
+        if (loginEntry >= 0) {
+            this.currentUser = this.fileIO.findUser(
+                    ((AuxiliaryTransaction) this.transactions.get(loginEntry))
+                            .getUsername());
+        }
     }
 
     /**
