@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A class for applying the transactions in the daily transaction file to the 
  * user accounts file and available tickets file.
@@ -7,13 +9,11 @@
  * @author Joseph Heron
  * @author Carly Marshall
  */
-import java.util.ArrayList;
 
 public class Transactions {
 
     private ArrayList<Entry> transactions;
     private final FileIO fileIO;
-    private final String transactionLocation;
     private int currentUser;
 
     /**
@@ -27,7 +27,7 @@ public class Transactions {
      * file.
      */
     public Transactions(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
-        this.transactionLocation = transactionLocation;
+        
         this.fileIO = new FileIO(transactionLocation, accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
         this.transactions = new ArrayList<Entry>();
         this.currentUser = -1;
