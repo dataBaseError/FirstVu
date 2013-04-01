@@ -1,5 +1,14 @@
 import java.util.Arrays;
 
+/**
+ * a helper class responsible for adding the additional spaces for output formatting
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+
 public class Utility {
 
 	 /**

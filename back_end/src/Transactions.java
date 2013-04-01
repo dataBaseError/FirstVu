@@ -1,3 +1,5 @@
+import java.util.ArrayList;
+
 /**
  * A class for applying the transactions in the daily transaction file to the 
  * user accounts file and available tickets file.
@@ -7,13 +9,21 @@
  * @author Joseph Heron
  * @author Carly Marshall
  */
-import java.util.ArrayList;
 
 public class Transactions {
-
+    /**
+     * An array list of type entry to store entries  
+      */
     private ArrayList<Entry> transactions;
+
+    /**
+     * instance of the fileio class
+     */
     private final FileIO fileIO;
-    private final String transactionLocation;
+
+    /**
+     * index of the current user in the array list  
+     */
     private int currentUser;
 
     /**
@@ -27,7 +37,7 @@ public class Transactions {
      * file.
      */
     public Transactions(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
-        this.transactionLocation = transactionLocation;
+
         this.fileIO = new FileIO(transactionLocation, accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
         this.transactions = new ArrayList<Entry>();
         this.currentUser = -1;
@@ -58,20 +68,24 @@ public class Transactions {
 
         return true;
     }
-    
-    public boolean endSession() {
-    	
-    	if(!this.fileIO.writeAccountFile()) {
-    		// Error writing to current account file
-    		return false;
-    	}
-    	
-    	if(!this.fileIO.writeTicketFile()) {
-    		// Error writing to available ticket file
-    		return false;
-    	}
 
-    	return true;
+    /**
+     * writes to the global account and global tickets file
+     * @return whether the end of session was successful
+     */
+    public boolean endSession() {
+
+        if (!this.fileIO.writeAccountFile()) {
+            // Error writing to current account file
+            return false;
+        }
+
+        if (!this.fileIO.writeTicketFile()) {
+            // Error writing to available ticket file
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -92,11 +106,11 @@ public class Transactions {
      * of the user to apply the next set of transactions to.
      */
     public void login(final int loginEntry) {
-    	if(loginEntry >= 0) {
-    		this.currentUser = this.fileIO.findUser(
-                ((AuxiliaryTransaction) this.transactions.get(loginEntry))
-                .getUsername());
-    	}
+        if (loginEntry >= 0) {
+            this.currentUser = this.fileIO.findUser(
+                    ((AuxiliaryTransaction) this.transactions.get(loginEntry))
+                            .getUsername());
+        }
     }
 
     /**
@@ -113,10 +127,7 @@ public class Transactions {
      * 
      * Transaction for buy tickets. 
      * 
-     * @param buyName The buyer's username.
-     * @param event The name of the event the tickets are for.
-     * @param numTickets The number of tickets being purchased.
-     * @param sellName The seller's username.
+     * @param buyTransaction an instance of the EventTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean buy(final EventTransaction buyTransaction) {
@@ -162,10 +173,7 @@ public class Transactions {
     /**
      * Transaction for selling tickets.
      * 
-     * @param sellName The sell'er username.
-     * @param event The name of the event the tickets are for.
-     * @param sellPrice The price per ticket.
-     * @param availTicket The number of tickets available to for the event.
+     * @param sellTransaction an instance of the EventTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean sell(final EventTransaction sellTransaction) {
@@ -182,9 +190,7 @@ public class Transactions {
     /**
      * Transaction for creating new user accounts.
      * 
-     * @param newUser The new user's username.
-     * @param accountType The account type of the new user.
-     * @param accountBalance The new user's account balance.
+     * @param createTransaction An instance of the AuxiliaryTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean create(final AuxiliaryTransaction createTransaction) {
@@ -200,7 +206,7 @@ public class Transactions {
     /**
      * Transaction for deleting user accounts.
      * 
-     * @param username The username of the user to be deleted.
+     * @param deleteTransaction an instance of the AuxiliaryTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean delete(final AuxiliaryTransaction deleteTransaction) {
@@ -216,9 +222,7 @@ public class Transactions {
     /**
      * Transaction for refunding a buyer of a previous transaction.
      * 
-     * @param buyName The buyer's username.
-     * @param sellName The seller's username.
-     * @param account The amount of money to transfer as part of the refund.
+     * @param refundTransaction an instance of the Refund class
      * @return Whether the transaction succeeded or not.
      */
     public boolean refund(final Refund refundTransaction) {
@@ -244,8 +248,7 @@ public class Transactions {
     /**
      * Transaction for adding credit to a user's account.
      * 
-     * @param username The username of the user to add the credit to.
-     * @param amount The amount of money added to the user's account.
+     * @param addcreditTransaction an instance of the AuxiliaryTransaction class
      * @return Whether the transaction succeeded or not.
      */
     public boolean addcredit(final AuxiliaryTransaction addcreditTransaction) {
