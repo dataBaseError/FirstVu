@@ -64,8 +64,8 @@ public class FileIO {
      * to be stored to.
      */
     public FileIO(final String transactionLocation,
-    		final String accountLocation, final String ticketLocation,
-    		final String newAccountLocation, final String newTicketLocation) {
+            final String accountLocation, final String ticketLocation,
+            final String newAccountLocation, final String newTicketLocation) {
         this.accountList = new ArrayList<Account>();
         this.eventList = new ArrayList<Ticket>();
 
@@ -101,28 +101,40 @@ public class FileIO {
      */
     public boolean readAccountFile() {
         String line = "";
-        String[] lineArray = new String[3];
+        String[] lineArray;
         Double balance;
+
         try {
-            final BufferedReader fStream = new BufferedReader(
-            		new FileReader(this.accountLocation));
+
+            // Open the user account file
+            final BufferedReader fStream = new BufferedReader(new FileReader(this.accountLocation));
+
+            // Read lines from the user accounts file one-by-one until the end
+            // of the file
             while ((line = fStream.readLine()) != null) {
+
+                // Split the line, delimited by whitespace
                 lineArray = line.split("\\s+");
-                
-                if (lineArray.length > 2) {
-	                balance = Double.parseDouble(lineArray[2]);
-	                this.accountList.add(new Account(lineArray[0], lineArray[1],
-	                		balance));
+
+                if (lineArray.length == 3) {
+                    balance = Double.parseDouble(lineArray[2]);
+
+                    // Add the discovered account information to the list of
+                    // accounts
+                    this.accountList.add(new Account(lineArray[0], lineArray[1], balance));
                 }
             }
 
+            // Close the user account file
             fStream.close();
         } catch (final IOException e) {
-            e.printStackTrace();
+            // Error reading account file
+
+            ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS, ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
-        return true;
 
+        return true;
     }
 
     /**
@@ -132,31 +144,34 @@ public class FileIO {
      */
     public boolean readTicketFile() {
         String line = "";
-        String[] lineArray = new String[4];
+        String[] lineArray;
         int ticketNumber;
         Double cost;
+
         try {
             final BufferedReader fStream = new BufferedReader(
-            		new FileReader(this.ticketLocation));
+                    new FileReader(this.ticketLocation));
             while ((line = fStream.readLine()) != null) {
                 lineArray = line.split("\\s+");
-                
+
                 if (lineArray.length > 3) {
-                	
-	                ticketNumber = Integer.parseInt(lineArray[2]);
-	                cost = Double.parseDouble(lineArray[3]);
-	                this.eventList.add(new Ticket(lineArray[0], lineArray[1],
-	                		ticketNumber, cost));
+
+                    ticketNumber = Integer.parseInt(lineArray[2]);
+                    cost = Double.parseDouble(lineArray[3]);
+                    this.eventList.add(new Ticket(lineArray[0], lineArray[1],
+                            ticketNumber, cost));
                 }
             }
 
             fStream.close();
         } catch (final IOException e) {
-            e.printStackTrace();
+            // Error reading ticket file
+
+            ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE, ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
-        return true;
 
+        return true;
     }
 
     /**
@@ -167,12 +182,12 @@ public class FileIO {
     public boolean writeAccountFile() {
         try {
             final BufferedWriter writer = new BufferedWriter(
-            		new FileWriter(this.newAccountLocation));
+                    new FileWriter(this.newAccountLocation));
 
             // %-15s %2s %09.2f
             final String format = String.format("%s%d%s%d%s", "%-",
-            		Account.MAX_USERNAME_LENGTH, "s %2s %0",
-            		Account.MAX_BALANCE_LENGTH + 3, ".2f");
+                    Account.MAX_USERNAME_LENGTH, "s %2s %0",
+                    Account.MAX_BALANCE_LENGTH + 3, ".2f");
 
             for (final Account account : this.accountList) {
                 final String username = account.getUsername();
@@ -180,7 +195,7 @@ public class FileIO {
                 final double balance = account.getBalance();
 
                 writer.write(String.format(format + "\n", username, type,
-                		balance));
+                        balance));
             }
 
             writer.write(String.format(format, "END", "", 0.0));
@@ -201,13 +216,13 @@ public class FileIO {
     public boolean writeTicketFile() {
         try {
             final BufferedWriter writer = new BufferedWriter(
-            		new FileWriter(this.newTicketLocation));
+                    new FileWriter(this.newTicketLocation));
 
             // %-19s %-15s %03d %06.2f
             final String format = String.format("%s%d%s%d%s%d%s%d%s", "%-",
-            		Ticket.MAX_EVENT_LENGTH, "s %-", Account.MAX_USERNAME_LENGTH,
-            		"s %0", Ticket.MAX_TICKET_LENGTH, "d %0",
-            		Account.MAX_BALANCE_LENGTH, ".2f");
+                    Ticket.MAX_EVENT_LENGTH, "s %-", Account.MAX_USERNAME_LENGTH,
+                    "s %0", Ticket.MAX_TICKET_LENGTH, "d %0",
+                    Account.MAX_BALANCE_LENGTH, ".2f");
 
             for (final Ticket ticket : this.eventList) {
                 final String event = ticket.getEvent();
@@ -216,7 +231,7 @@ public class FileIO {
                 final double cost = ticket.getCost();
 
                 writer.write(String.format(format + "\n", event, seller,
-                		quantity, cost));
+                        quantity, cost));
             }
 
             writer.write(String.format(format, "END", "", 0, 0.0));
@@ -240,48 +255,48 @@ public class FileIO {
 
         try {
             final BufferedReader fStream = new BufferedReader(
-            		new FileReader(this.transactionLocation));
+                    new FileReader(this.transactionLocation));
             String line;
 
             while ((line = fStream.readLine()) != null) {
                 final String[] lineArray = line.split("\\s+");
                 final int transaction = Integer.parseInt(lineArray[0]);
-                
+
                 if (lineArray.length > 1) {
-	                final String username = lineArray[1];
-	                switch (transaction) {
-	                    case 0:
-	                        // logout
-	                    case 1:
-	                        // create
-	                    case 2:
-	                        // delete
-	                    case 6:
-	                        // addcredit
-	                        final double balance = Double.parseDouble(lineArray[3]);
-	
-	                        entries.add(new AuxiliaryTransaction(transaction,
-	                        		username, balance, lineArray[2]));
-	                        break;
-	                    case 3:
-	                        // sell
-	                    case 4:
-	                        // buy
-	                        final int numTickets = Integer.parseInt(lineArray[3]);
-	                        final double price = Double.parseDouble(lineArray[4]);
-	
-	                        entries.add(new EventTransaction(transaction,
-	                        		lineArray[1], lineArray[2], price,
-	                        		numTickets));
-	                        break;
-	                    case 5:
-	                        // refund
-	                        final double amount = Double.parseDouble(lineArray[3]);
-	
-	                        entries.add(new Refund(transaction, lineArray[1],
-	                        		lineArray[2], amount));
-	                        break;
-	                }
+                    final String username = lineArray[1];
+                    switch (transaction) {
+                        case 0:
+                            // logout
+                        case 1:
+                            // create
+                        case 2:
+                            // delete
+                        case 6:
+                            // addcredit
+                            final double balance = Double.parseDouble(lineArray[3]);
+
+                            entries.add(new AuxiliaryTransaction(transaction,
+                                    username, balance, lineArray[2]));
+                            break;
+                        case 3:
+                            // sell
+                        case 4:
+                            // buy
+                            final int numTickets = Integer.parseInt(lineArray[3]);
+                            final double price = Double.parseDouble(lineArray[4]);
+
+                            entries.add(new EventTransaction(transaction,
+                                    lineArray[1], lineArray[2], price,
+                                    numTickets));
+                            break;
+                        case 5:
+                            // refund
+                            final double amount = Double.parseDouble(lineArray[3]);
+
+                            entries.add(new Refund(transaction, lineArray[1],
+                                    lineArray[2], amount));
+                            break;
+                    }
                 }
             }
 
@@ -320,7 +335,7 @@ public class FileIO {
         for (int i = 0; i < this.eventList.size(); i++) {
             final Ticket event = this.eventList.get(i);
             if (event.getEvent().equals(eventName) && event.getUsername()
-            		.equals(sellName)) {
+                    .equals(sellName)) {
                 return i;
             }
         }

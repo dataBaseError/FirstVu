@@ -36,12 +36,12 @@ public class Transactions {
      * @param newTicketLocation The location of the output available tickets
      * file.
      */
-    public Transactions(final String transactionLocation, 
-    		final String accountLocation, final String ticketLocation,
-    		final String newAccountLocation, final String newTicketLocation) {
+    public Transactions(final String transactionLocation,
+            final String accountLocation, final String ticketLocation,
+            final String newAccountLocation, final String newTicketLocation) {
 
         this.fileIO = new FileIO(transactionLocation, accountLocation,
-        		ticketLocation, newAccountLocation, newTicketLocation);
+                ticketLocation, newAccountLocation, newTicketLocation);
         this.transactions = new ArrayList<Entry>();
         this.currentUser = -1;
     }
@@ -55,28 +55,18 @@ public class Transactions {
 
         this.transactions = this.fileIO.readTransactions();
 
-        if (this.transactions == null) {
+        if (this.transactions.isEmpty()) {
             // Error reading dtf
-        	ErrorMessages.printError(ErrorMessages.DAILY_TRANSACTION_FILE,
-        			ErrorMessages.INPUT_ERROR_TYPE);
+            ErrorMessages.printError(ErrorMessages.DAILY_TRANSACTION_FILE,
+                    ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
         if (!this.fileIO.readAccountFile()) {
-            // Error reading account file
-        	ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
-        			ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
-        if (!this.fileIO.readTicketFile()) {
-            // Error reading ticket file
-        	ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
-        			ErrorMessages.INPUT_ERROR_TYPE);
-            return false;
-        }
-
-        return true;
+        return this.fileIO.readTicketFile();
     }
 
     /**
@@ -88,15 +78,15 @@ public class Transactions {
 
         if (!this.fileIO.writeAccountFile()) {
             // Error writing to current account file
-        	ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
-        			ErrorMessages.OUTPUT_ERROR_TYPE);
+            ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
+                    ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
         }
 
         if (!this.fileIO.writeTicketFile()) {
             // Error writing to available ticket file
-        	ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
-        			ErrorMessages.OUTPUT_ERROR_TYPE);
+            ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
+                    ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
         }
 
@@ -153,8 +143,8 @@ public class Transactions {
         final int sellerLocation = this.fileIO.findUser(buyTransaction.getSellName());
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
-        final int ticketLocation = this.fileIO.findEvent(buyTransaction.getEventName(), 
-        		buyTransaction.getSellName());
+        final int ticketLocation = this.fileIO.findEvent(buyTransaction.getEventName(),
+                buyTransaction.getSellName());
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
         if (eventTicket.getTicketNumber() < buyTransaction.getNumTickets()) {
@@ -249,7 +239,6 @@ public class Transactions {
                 (refundTransaction.getSellName());
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
-        
         seller.decreaseBalance(refundTransaction.getCredit());
 
         buyer.increaseBalance(refundTransaction.getCredit());
@@ -287,9 +276,9 @@ public class Transactions {
      */
     public int findNextLogout(final int startLocation) {
         for (int i = startLocation; i < this.transactions.size(); i++) {
-            if (this.transactions.get(i).getTransactionType() == 
-            		AuxiliaryTransaction.LOGOUT && ((AuxiliaryTransaction)
-            				this.transactions.get(i)).getUsername() != null) {
+            if (this.transactions.get(i).getTransactionType() ==
+                    AuxiliaryTransaction.LOGOUT && ((AuxiliaryTransaction)
+                    this.transactions.get(i)).getUsername() != null) {
                 return i;
             }
         }
