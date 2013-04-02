@@ -49,7 +49,8 @@ public class EventTransaction extends Entry {
      * @param numTickets the number of tickets being sold
      * 
      */
-    public EventTransaction(final int type, final String eventName, final String sellName, final double price, final int numTickets) {
+    public EventTransaction(final int type, final String eventName,
+    		final String sellName, final double price, final int numTickets) {
         super(type);
         this.eventName = eventName;
         this.sellName = sellName;

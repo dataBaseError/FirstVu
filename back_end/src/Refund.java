@@ -36,7 +36,8 @@ public class Refund extends Entry {
      * @param sellName The seller's username.
      * @param credit The credit transferred from the seller to the buyer.
      */
-    public Refund(final int type, final String buyName, final String sellName, final double credit) {
+    public Refund(final int type, final String buyName, final String sellName,
+    		final double credit) {
         super(type);
         this.buyName = buyName;
         this.sellName = sellName;

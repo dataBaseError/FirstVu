@@ -36,9 +36,12 @@ public class Transactions {
      * @param newTicketLocation The location of the output available tickets
      * file.
      */
-    public Transactions(final String transactionLocation, final String accountLocation, final String ticketLocation, final String newAccountLocation, final String newTicketLocation) {
+    public Transactions(final String transactionLocation, 
+    		final String accountLocation, final String ticketLocation,
+    		final String newAccountLocation, final String newTicketLocation) {
 
-        this.fileIO = new FileIO(transactionLocation, accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
+        this.fileIO = new FileIO(transactionLocation, accountLocation,
+        		ticketLocation, newAccountLocation, newTicketLocation);
         this.transactions = new ArrayList<Entry>();
         this.currentUser = -1;
     }
@@ -150,7 +153,8 @@ public class Transactions {
         final int sellerLocation = this.fileIO.findUser(buyTransaction.getSellName());
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
-        final int ticketLocation = this.fileIO.findEvent(buyTransaction.getEventName(), buyTransaction.getSellName());
+        final int ticketLocation = this.fileIO.findEvent(buyTransaction.getEventName(), 
+        		buyTransaction.getSellName());
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
         if (eventTicket.getTicketNumber() < buyTransaction.getNumTickets()) {
@@ -283,8 +287,9 @@ public class Transactions {
      */
     public int findNextLogout(final int startLocation) {
         for (int i = startLocation; i < this.transactions.size(); i++) {
-            if (this.transactions.get(i).getTransactionType() == AuxiliaryTransaction.LOGOUT
-                    && ((AuxiliaryTransaction) this.transactions.get(i)).getUsername() != null) {
+            if (this.transactions.get(i).getTransactionType() == 
+            		AuxiliaryTransaction.LOGOUT && ((AuxiliaryTransaction)
+            				this.transactions.get(i)).getUsername() != null) {
                 return i;
             }
         }

@@ -120,7 +120,8 @@ public class Account {
      * @return The account's information formatted for the User Accounts file.
      */
     public String getAccountEntry() {
-        return this.username + Utility.createLine(' ', MAX_USERNAME_LENGTH - this.username.length()) + " " + this.type + " "
+        return this.username + Utility.createLine(' ', MAX_USERNAME_LENGTH -
+        		this.username.length()) + " " + this.type + " "
                 + String.format("%09.2f", this.balance);
     }
 }

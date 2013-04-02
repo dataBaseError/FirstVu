@@ -45,7 +45,8 @@ public class Ticket {
      * @param ticketNumber The number of tickets available.
      * @param cost The cost per ticket.
      */
-    public Ticket(final String event, final String username, final int ticketNumber, final double cost) {
+    public Ticket(final String event, final String username,
+    		final int ticketNumber, final double cost) {
         this.event = event;
         this.username = username;
         this.ticketNumber = ticketNumber;

@@ -53,7 +53,8 @@ public class AuxiliaryTransaction extends Entry {
      * @param credit Amount of credit used during transaction.
      * @param accountType Type of account.
      */
-    public AuxiliaryTransaction(final int type, final String username, final double credit, final String accountType) {
+    public AuxiliaryTransaction(final int type, final String username,
+    		final double credit, final String accountType) {
         super(type);
         this.username = username;
         this.credit = credit;
