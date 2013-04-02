@@ -18,7 +18,7 @@ public class Backend {
 
     /**
      * Runs the backend.
-     * Any errors will appear in the standard error stream.
+     * Any errors will appear in the standard output stream.
      * 
      * @param args
      *      <ul>
@@ -31,6 +31,8 @@ public class Backend {
      */
     public static void main(final String[] args) {
         if (args.length > 4) {
+        	
+        	// Initialize 
             final Transactions activityLog = new Transactions(args[0], args[1],
             		args[2], args[3], args[4]);
             int nextLogout = 0;
@@ -38,8 +40,8 @@ public class Backend {
 
             if (activityLog.initTransactionList()) {
 
+            	// Parse through transactions and apply them
             	nextLogout = activityLog.findNextLogout(nextLogout);
-	            
 	            while (nextLogout != -1) {
 	                
 	                activityLog.login(nextLogout);
@@ -77,6 +79,7 @@ public class Backend {
 	                            break;
 	                    }
 	                }
+	                
 	                previousLogout = nextLogout;
 	                nextLogout = activityLog.findNextLogout(nextLogout+1);
 	            }

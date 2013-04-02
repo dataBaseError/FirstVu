@@ -56,9 +56,7 @@ public class Transactions {
         this.transactions = this.fileIO.readTransactions();
 
         if (this.transactions.isEmpty()) {
-            // Error reading dtf
-            ErrorMessages.printError(ErrorMessages.DAILY_TRANSACTION_FILE,
-                    ErrorMessages.INPUT_ERROR_TYPE);
+            
             return false;
         }
 
@@ -77,20 +75,10 @@ public class Transactions {
     public boolean endSession() {
 
         if (!this.fileIO.writeAccountFile()) {
-            // Error writing to current account file
-            ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
-                    ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
         }
-
-        if (!this.fileIO.writeTicketFile()) {
-            // Error writing to available ticket file
-            ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
-                    ErrorMessages.OUTPUT_ERROR_TYPE);
-            return false;
-        }
-
-        return true;
+        
+        return this.fileIO.writeTicketFile();
     }
 
     /**

@@ -107,7 +107,8 @@ public class FileIO {
         try {
 
             // Open the user account file
-            final BufferedReader fStream = new BufferedReader(new FileReader(this.accountLocation));
+            final BufferedReader fStream = new BufferedReader(
+            		new FileReader(this.accountLocation));
 
             // Read lines from the user accounts file one-by-one until the end
             // of the file
@@ -121,7 +122,8 @@ public class FileIO {
 
                     // Add the discovered account information to the list of
                     // accounts
-                    this.accountList.add(new Account(lineArray[0], lineArray[1], balance));
+                    this.accountList.add(new Account(lineArray[0], lineArray[1],
+                    		balance));
                 }
             }
 
@@ -130,7 +132,8 @@ public class FileIO {
         } catch (final IOException e) {
             // Error reading account file
 
-            ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS, ErrorMessages.INPUT_ERROR_TYPE);
+            ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
+            		ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
@@ -167,7 +170,8 @@ public class FileIO {
         } catch (final IOException e) {
             // Error reading ticket file
 
-            ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE, ErrorMessages.INPUT_ERROR_TYPE);
+            ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
+            		ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
@@ -202,6 +206,9 @@ public class FileIO {
 
             writer.close();
         } catch (final IOException e) {
+        	// Error writing to current account file
+            ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
+                    ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
         }
 
@@ -238,6 +245,9 @@ public class FileIO {
 
             writer.close();
         } catch (final IOException e) {
+        	// Error writing to available ticket file
+            ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
+                    ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
         }
 
@@ -302,7 +312,9 @@ public class FileIO {
 
             fStream.close();
         } catch (final IOException e) {
-            e.printStackTrace();
+        	// Error reading dtf
+            ErrorMessages.printError(ErrorMessages.DAILY_TRANSACTION_FILE,
+                    ErrorMessages.INPUT_ERROR_TYPE);
         }
 
         return entries;
