@@ -1,13 +1,12 @@
 /**
  * This program is designed to read in 3 files: the user accounts file, the
- * daily transaction file, and the daily transaction file. The transactions
+ * available tickets file, and the daily transaction file. The transactions
  * found in the daily transaction file will be executed sequentially starting at
- * the top of the list of transactions until the final transaction. The
- * execution of these transactions will apply changes to the user accounts and
- * available tickets. Messages will be created and displayed for transactions
- * that are invalid. Once every valid transaction has been executed the updated
- * user accounts file and available tickets file will be written to the location
- * provided (as arguments 4 and 5 respectively). 
+ * the top of the list. The execution of these transactions will apply changes
+ * to the user accounts list and available tickets list. Error messages will be
+ * displayed for transactions that are invalid. Once every valid transaction has
+ * been executed the updated user accounts list and available tickets list will
+ * be written to the location provided (as arguments 4 and 5 respectively). 
  * 
  * @author Ryan Crawford
  * @author Khalil Fazal

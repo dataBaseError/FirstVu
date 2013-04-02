@@ -131,7 +131,6 @@ public class FileIO {
             fStream.close();
         } catch (final IOException e) {
             // Error reading account file
-
             ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
             		ErrorMessages.INPUT_ERROR_TYPE);
             return false;
@@ -169,7 +168,6 @@ public class FileIO {
             fStream.close();
         } catch (final IOException e) {
             // Error reading ticket file
-
             ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
             		ErrorMessages.INPUT_ERROR_TYPE);
             return false;
@@ -188,7 +186,7 @@ public class FileIO {
             final BufferedWriter writer = new BufferedWriter(
                     new FileWriter(this.newAccountLocation));
 
-            // %-15s %2s %09.2f
+            // The format of the line is %-15s %2s %09.2f
             final String format = String.format("%s%d%s%d%s", "%-",
                     Account.MAX_USERNAME_LENGTH, "s %2s %0",
                     Account.MAX_BALANCE_LENGTH + 3, ".2f");
@@ -225,7 +223,7 @@ public class FileIO {
             final BufferedWriter writer = new BufferedWriter(
                     new FileWriter(this.newTicketLocation));
 
-            // %-19s %-15s %03d %06.2f
+            // The format of the line is %-19s %-15s %03d %06.2f
             final String format = String.format("%s%d%s%d%s%d%s%d%s", "%-",
                     Ticket.MAX_EVENT_LENGTH, "s %-", Account.MAX_USERNAME_LENGTH,
                     "s %0", Ticket.MAX_TICKET_LENGTH, "d %0",
@@ -276,11 +274,11 @@ public class FileIO {
                     final String username = lineArray[1];
                     switch (transaction) {
                         case 0:
-                            // logout
+                            // logout or
                         case 1:
-                            // create
+                            // create or
                         case 2:
-                            // delete
+                            // delete or
                         case 6:
                             // addcredit
                             final double balance = Double.parseDouble(lineArray[3]);
@@ -289,7 +287,7 @@ public class FileIO {
                                     username, balance, lineArray[2]));
                             break;
                         case 3:
-                            // sell
+                            // sell or
                         case 4:
                             // buy
                             final int numTickets = Integer.parseInt(lineArray[3]);
