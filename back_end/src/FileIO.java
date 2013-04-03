@@ -110,18 +110,13 @@ public class FileIO {
             final BufferedReader fStream = new BufferedReader(
             		new FileReader(this.accountLocation));
 
-            // Read lines from the user accounts file one-by-one until the end
-            // of the file
+            // Read lines from the user accounts from the file
             while ((line = fStream.readLine()) != null) {
 
-                // Split the line, delimited by whitespace
                 lineArray = line.split("\\s+");
 
                 if (lineArray.length == 3) {
                     balance = Double.parseDouble(lineArray[2]);
-
-                    // Add the discovered account information to the list of
-                    // accounts
                     this.accountList.add(new Account(lineArray[0], lineArray[1],
                     		balance));
                 }
@@ -151,8 +146,11 @@ public class FileIO {
         Double cost;
 
         try {
+        	// Open the available tickets file
             final BufferedReader fStream = new BufferedReader(
                     new FileReader(this.ticketLocation));
+            
+            // Read lines from the tickets available from the file
             while ((line = fStream.readLine()) != null) {
                 lineArray = line.split("\\s+");
 
@@ -191,6 +189,7 @@ public class FileIO {
                     Account.MAX_USERNAME_LENGTH, "s %2s %0",
                     Account.MAX_BALANCE_LENGTH + 3, ".2f");
 
+            // Add the user accounts to the output file
             for (final Account account : this.accountList) {
                 final String username = account.getUsername();
                 final String type = account.getType();
@@ -229,6 +228,7 @@ public class FileIO {
                     "s %0", Ticket.MAX_TICKET_LENGTH, "d %0",
                     Account.MAX_BALANCE_LENGTH, ".2f");
 
+            // Add the tickets available to the output file
             for (final Ticket ticket : this.eventList) {
                 final String event = ticket.getEvent();
                 final String seller = ticket.getUsername();
@@ -262,10 +262,12 @@ public class FileIO {
         final ArrayList<Entry> entries = new ArrayList<Entry>();
 
         try {
+        	// Open the daily transaction file
             final BufferedReader fStream = new BufferedReader(
                     new FileReader(this.transactionLocation));
             String line;
 
+            // Read the lines of the daily transaction file
             while ((line = fStream.readLine()) != null) {
                 final String[] lineArray = line.split("\\s+");
                 final int transaction = Integer.parseInt(lineArray[0]);
