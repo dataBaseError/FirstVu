@@ -129,10 +129,22 @@ public class Transactions {
         final Account buyer = this.fileIO.getAccountList().get(this.currentUser);
 
         final int sellerLocation = this.fileIO.findUser(buyTransaction.getSellName());
+        
+        if (sellerLocation == -1) {
+        	// Seller does not exist
+        	return false;
+        }
+        
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
         final int ticketLocation = this.fileIO.findEvent(buyTransaction.getEventName(),
                 buyTransaction.getSellName());
+        
+        if (ticketLocation == -1) {
+        	// Event does not exist
+        	return false;
+        }
+        
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
         if (eventTicket.getTicketNumber() < buyTransaction.getNumTickets()) {
@@ -140,28 +152,31 @@ public class Transactions {
             // Not enough tickets available.
             return false;
         }
-
-        final double cost = buyTransaction.getNumTickets() * eventTicket.getCost();
         
-        if (buyer.getBalance() < cost) {
-        	// Buyer does not have enough money
-        	return false;
+        if (this.currentUser != sellerLocation) {
+	
+	        final double cost = buyTransaction.getNumTickets() * eventTicket.getCost();
+	        
+	        if (buyer.getBalance() < cost) {
+	        	// Buyer does not have enough money
+	        	return false;
+	        }
+	        
+	        if (seller.getBalance() + cost > Account.MAX_BALANCE) {
+	        	// Seller balance will exceed max balance
+	        	return false;
+	        }
+	
+	        buyer.decreaseBalance(cost);
+	
+	        seller.increaseBalance(cost);
+        
+		    this.fileIO.getAccountList().set(this.currentUser, buyer);
+	        this.fileIO.getAccountList().set(sellerLocation, seller);
         }
         
-        if (seller.getBalance() + cost > Account.MAX_BALANCE) {
-        	// Seller balance will exceed max balance
-        	return false;
-        }
-
-        buyer.decreaseBalance(cost);
-
-        seller.increaseBalance(cost);
-
         eventTicket.decreaseTicketNumber(buyTransaction.getNumTickets());
-
-        this.fileIO.getAccountList().set(this.currentUser, buyer);
-        this.fileIO.getAccountList().set(sellerLocation, seller);
-
+        
         if (eventTicket.getTicketNumber() == 0) {
             this.fileIO.getEventList().remove(ticketLocation);
         }
@@ -230,7 +245,11 @@ public class Transactions {
         	// User does not exist
         	return false;
         }
+        
         this.fileIO.getAccountList().remove(userLocation);
+        
+        // TODO Remove tickets that are related to the user
+        
 
         return true;
     }
