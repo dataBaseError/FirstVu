@@ -39,6 +39,11 @@ public class Account {
      * The maximum length of a balance if represented as a string
      */
     public static final int MAX_BALANCE_LENGTH = 6;
+    
+    /**
+     * The maximum balance a user can have
+     */
+    public static final double MAX_BALANCE = 999999.99;
 
     /**
      * The current account's username

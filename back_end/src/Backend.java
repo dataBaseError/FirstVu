@@ -41,6 +41,8 @@ public class Backend {
 
             	// Parse through transactions and apply them
             	nextLogout = activityLog.findNextLogout(nextLogout);
+            	
+            	// TODO fix to go till end of transaction list
 	            while (nextLogout != -1) {
 	                
 	                activityLog.login(nextLogout);
