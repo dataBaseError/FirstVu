@@ -108,7 +108,7 @@ public class FileIO {
 
             // Open the user account file
             final BufferedReader fStream = new BufferedReader(
-            		new FileReader(this.accountLocation));
+                    new FileReader(this.accountLocation));
 
             // Read lines from the user accounts from the file
             while ((line = fStream.readLine()) != null) {
@@ -118,7 +118,7 @@ public class FileIO {
                 if (lineArray.length == 3) {
                     balance = Double.parseDouble(lineArray[2]);
                     this.accountList.add(new Account(lineArray[0], lineArray[1],
-                    		balance));
+                            balance));
                 }
             }
 
@@ -127,7 +127,7 @@ public class FileIO {
         } catch (final IOException e) {
             // Error reading account file
             ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
-            		ErrorMessages.INPUT_ERROR_TYPE);
+                    ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
@@ -146,10 +146,10 @@ public class FileIO {
         Double cost;
 
         try {
-        	// Open the available tickets file
+            // Open the available tickets file
             final BufferedReader fStream = new BufferedReader(
                     new FileReader(this.ticketLocation));
-            
+
             // Read lines from the tickets available from the file
             while ((line = fStream.readLine()) != null) {
                 lineArray = line.split("\\s+");
@@ -167,7 +167,7 @@ public class FileIO {
         } catch (final IOException e) {
             // Error reading ticket file
             ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
-            		ErrorMessages.INPUT_ERROR_TYPE);
+                    ErrorMessages.INPUT_ERROR_TYPE);
             return false;
         }
 
@@ -203,7 +203,7 @@ public class FileIO {
 
             writer.close();
         } catch (final IOException e) {
-        	// Error writing to current account file
+            // Error writing to current account file
             ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
                     ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
@@ -243,7 +243,7 @@ public class FileIO {
 
             writer.close();
         } catch (final IOException e) {
-        	// Error writing to available ticket file
+            // Error writing to available ticket file
             ErrorMessages.printError(ErrorMessages.AVAILABLE_TICKET_FILE,
                     ErrorMessages.OUTPUT_ERROR_TYPE);
             return false;
@@ -262,7 +262,7 @@ public class FileIO {
         final ArrayList<Entry> entries = new ArrayList<Entry>();
 
         try {
-        	// Open the daily transaction file
+            // Open the daily transaction file
             final BufferedReader fStream = new BufferedReader(
                     new FileReader(this.transactionLocation));
             String line;
@@ -312,7 +312,7 @@ public class FileIO {
 
             fStream.close();
         } catch (final IOException e) {
-        	// Error reading dtf
+            // Error reading dtf
             ErrorMessages.printError(ErrorMessages.DAILY_TRANSACTION_FILE,
                     ErrorMessages.INPUT_ERROR_TYPE);
         }
@@ -353,6 +353,19 @@ public class FileIO {
         }
 
         return -1;
+    }
+
+    /**
+     * Removes all events who's tickets are sold by a user
+     * 
+     * @param username the event's ticket's seller
+     */
+    public void removeUserTickets(final String username) {
+        for (int i = 0; i < this.eventList.size(); i++) {
+            if (this.eventList.get(i).getUsername().equals(username)) {
+                this.eventList.remove(i);
+            }
+        }
     }
 
 }
