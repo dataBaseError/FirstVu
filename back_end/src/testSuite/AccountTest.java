@@ -1,58 +1,74 @@
 package testSuite;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 import main.Account;
 
-import org.junit.Test;
+/**
+ * Tests the functionality of the Account class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+public class AccountTest extends TestCase {
 
-public class AccountTest {
+    /**
+     * A sample account that will be tested
+     */
+    private Account adminAccount;
 
-    @Test
-    public void getType() {
-
-        final Account testAccount = new Account("test", Account.ADMIN, 0.0);
-        assertSame(testAccount.getType(), Account.ADMIN);
+    /**
+     * @see junit.framework.TestCase#setUp()
+     */
+    @Override
+    public void setUp() {
+        this.adminAccount = new Account("test", Account.ADMIN, 1.0);
     }
 
-    @Test
-    public void getBalance() {
-
-        final Account testAccount = new Account("test", Account.ADMIN, 0.0);
-        assertTrue(testAccount.getBalance() == 0.0);
+    /**
+     * Tests the account's type
+     */
+    public void testGetType() {
+        assertSame(this.adminAccount.getType(), Account.ADMIN);
     }
 
-    @Test
-    public void increaseBalance() {
-
-        final Account testAccount = new Account("test", Account.ADMIN, 0.0);
-        testAccount.increaseBalance(1.0);
-
-        assertTrue(testAccount.getBalance() == 1.0);
+    /**
+     * Tests the account's balance
+     */
+    public void testGetBalance() {
+        assertTrue(this.adminAccount.getBalance() == 1.0);
     }
 
-    @Test
-    public void decreaseBalance() {
+    /**
+     * Tests the way the account's balance increases
+     */
+    public void testIncreaseBalance() {
+        this.adminAccount.increaseBalance(1.0);
 
-        final Account testAccount = new Account("test", Account.ADMIN, 1.0);
-        testAccount.decreaseBalance(1.0);
-
-        assertTrue(testAccount.getBalance() == 0.0);
+        assertTrue(this.adminAccount.getBalance() == 2.0);
     }
 
-    @Test
-    public void getUsername() {
+    /**
+     * Test the way the account's balance decreases
+     */
+    public void testDecreaseBalance() {
+        this.adminAccount.decreaseBalance(1.0);
 
-        final Account testAccount = new Account("test", Account.ADMIN, 0.0);
-
-        assertSame(testAccount.getUsername(), "test");
+        assertTrue(this.adminAccount.getBalance() == 0.0);
     }
 
-    @Test
-    public void getAccountEntry() {
+    /**
+     * Tests the account's username
+     */
+    public void testGetUsername() {
+        assertSame(this.adminAccount.getUsername(), "test");
+    }
 
-        final Account testAccount = new Account("test", Account.ADMIN, 0.0);
-
-        assertTrue(testAccount.getAccountEntry().equals("test            AA 000000.00"));
+    /**
+     * Tests the format of the account's entry in the User Accounts File
+     */
+    public void testGetAccountEntry() {
+        assertTrue(this.adminAccount.getAccountEntry().equals("test            AA 000001.00"));
     }
 }

@@ -1,49 +1,72 @@
 package testSuite;
 
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
+import junit.framework.TestCase;
 import main.Ticket;
 
-import org.junit.Test;
+/**
+ * Tests the functionality of the Ticket class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+public class TicketTest extends TestCase {
 
-public class TicketTest {
+    /**
+     * A sample ticket entry that will be tested
+     */
+    private Ticket ticket;
 
-    private final Ticket ticket;
-
-    public TicketTest() {
+    /**
+     * @see junit.framework.TestCase#setUp()
+     */
+    @Override
+    public void setUp() {
         this.ticket = new Ticket("event", "seller", 1, 1.0);
     }
 
-    @Test
-    public void getType() {
+    /**
+     * Tests the ticket's type
+     */
+    public void testGetType() {
         assertSame(this.ticket.getEvent(), "event");
     }
 
-    @Test
-    public void getUsernames() {
+    /**
+     * Tests the ticket's seller's username
+     */
+    public void testGetUsernames() {
         assertSame(this.ticket.getUsername(), "seller");
     }
 
-    @Test
-    public void getTicketNumber() {
+    /**
+     * Tests the quantity of tickets for the same event
+     */
+    public void testGetTicketNumber() {
         assertTrue(this.ticket.getTicketNumber() == 1);
     }
 
-    @Test
-    public void decreaseTicketNumber() {
-        final Ticket testTicket = new Ticket("event", "seller", 1, 1.0);
-        testTicket.decreaseTicketNumber(1);
+    /**
+     * Tests the way the ticket quantity increases
+     */
+    public void testDecreaseTicketNumber() {
+        this.ticket.decreaseTicketNumber(1);
 
-        assertTrue(testTicket.getTicketNumber() == 0);
+        assertTrue(this.ticket.getTicketNumber() == 0);
     }
 
-    @Test
-    public void getCost() {
+    /**
+     * Tests the ticket's cost
+     */
+    public void testGetCost() {
         assertTrue(this.ticket.getCost() == 1.0);
     }
 
-    @Test
-    public void getTicketEntry() {
+    /**
+     * Tests the format of the account's entry in the Tickets file
+     */
+    public void testGetTicketEntry() {
         assertTrue(this.ticket.getTicketEntry().equals("event               seller          001 001.00"));
     }
 }
