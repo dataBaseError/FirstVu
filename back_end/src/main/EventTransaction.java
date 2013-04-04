@@ -1,3 +1,4 @@
+package main;
 /**
 * This class covers the basic transactions for the sale of events.
 * 

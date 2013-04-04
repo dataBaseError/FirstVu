@@ -1,3 +1,4 @@
+package main;
 /**
  * Class for holding information involving tickets for sale in the program. 
  * @author Ryan Crawford

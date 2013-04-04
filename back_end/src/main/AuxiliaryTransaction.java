@@ -1,3 +1,4 @@
+package main;
 /**
  * A class to hold information for a create, delete, addcredit, or end
  * transaction.

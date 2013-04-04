@@ -1,3 +1,4 @@
+package main;
 /**
  * Used to print error messages to the console's output
  * 

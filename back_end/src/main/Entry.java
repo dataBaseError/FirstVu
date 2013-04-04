@@ -1,3 +1,4 @@
+package main;
 /**
  * Class that allows for entries to the daily transaction file.
  * 

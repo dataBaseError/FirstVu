@@ -1,7 +1,8 @@
-package JUnit;
+package test;
 
 import static org.junit.Assert.*;
-import Account;
+
+import main.Account;
 
 import org.junit.Test;
 

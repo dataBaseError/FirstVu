@@ -1,6 +1,7 @@
-package JUnit;
+package test;
 import static org.junit.Assert.*;
-import Ticket;
+
+import main.Ticket;
 
 import org.junit.Test;
 
