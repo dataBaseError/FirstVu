@@ -55,8 +55,7 @@ public class Transactions {
 
         this.transactions = this.fileIO.readTransactions();
 
-        if (this.transactions.isEmpty()) {
-            
+        if (this.transactions.isEmpty()) {   
             return false;
         }
 
@@ -132,6 +131,7 @@ public class Transactions {
         
         if (sellerLocation == -1) {
         	// Seller does not exist
+        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.SELLER_DNE);
         	return false;
         }
         
@@ -142,14 +142,15 @@ public class Transactions {
         
         if (ticketLocation == -1) {
         	// Event does not exist
+        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.EVENT_DNE);
         	return false;
         }
         
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
         if (eventTicket.getTicketNumber() < buyTransaction.getNumTickets()) {
-
-            // Not enough tickets available.
+            // Not enough tickets available
+        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.NOT_ENOUGH_TICKETS);
             return false;
         }
         
@@ -159,11 +160,13 @@ public class Transactions {
 	        
 	        if (buyer.getBalance() < cost) {
 	        	// Buyer does not have enough money
+	        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.BUYER_FUNDS);
 	        	return false;
 	        }
 	        
 	        if (seller.getBalance() + cost > Account.MAX_BALANCE) {
 	        	// Seller balance will exceed max balance
+	        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.SELLER_BALANCE);
 	        	return false;
 	        }
 	
@@ -201,6 +204,7 @@ public class Transactions {
         
         if(this.fileIO.findEvent(newEvent.getEvent(), newEvent.getUsername()) != -1) {
         	// Seller is already selling tickets for the event
+        	ErrorMessages.printError(ErrorMessages.SELL_ERROR_TYPE, ErrorMessages.ALREADY_SELLING);
         	return false;
         }
 
@@ -222,6 +226,7 @@ public class Transactions {
         
         if (this.fileIO.findUser(user.getUsername()) != -1) {
         	// User already exists with username
+        	ErrorMessages.printError(ErrorMessages.CREATE_ERROR_TYPE, ErrorMessages.USER_ALREADY_EXISTS);
         	return false;
         }
 
@@ -243,6 +248,7 @@ public class Transactions {
         
         if (userLocation == -1) {
         	// User does not exist
+        	ErrorMessages.printError(ErrorMessages.DELETE_ERROR_TYPE, ErrorMessages.USER_DNE);
         	return false;
         }
         
@@ -267,6 +273,7 @@ public class Transactions {
         
         if (buyerLocation == -1) {
         	// Buyer does not exist
+        	ErrorMessages.printError(ErrorMessages.REFUND_ERROR_TYPE, ErrorMessages.BUYER_DNE);
         	return false;
         }
         
@@ -277,6 +284,7 @@ public class Transactions {
         
         if (sellerLocation == -1) {
         	// Seller does not exist
+        	ErrorMessages.printError(ErrorMessages.REFUND_ERROR_TYPE, ErrorMessages.SELLER_DNE);
         	return false;
         }
         
@@ -284,12 +292,14 @@ public class Transactions {
         
         if (seller.getBalance() < refundTransaction.getCredit()) {
         	// Seller has insufficent funds
+        	ErrorMessages.printError(ErrorMessages.REFUND_ERROR_TYPE, ErrorMessages.SELLER_FUNDS);
         	return false;
         }
-        
+      
         if (buyer.getBalance() + refundTransaction.getCredit() >
         		Account.MAX_BALANCE) {
         	// Buyer will exceed max funds
+        	ErrorMessages.printError(ErrorMessages.REFUND_ERROR_TYPE, ErrorMessages.BUYER_BALANCE);
         	return false;
         }
 
@@ -316,6 +326,7 @@ public class Transactions {
         
         if (userLocation == -1) {
         	// User does not exist
+        	ErrorMessages.printError(ErrorMessages.ADDCREDIT_ERROR_TYPE, ErrorMessages.USER_DNE);
         	return false;
         }
         
@@ -324,6 +335,7 @@ public class Transactions {
         if (user.getBalance() + addcreditTransaction.getCredit()
         		> Account.MAX_BALANCE) {
         	// User balance will exceed max balance
+        	ErrorMessages.printError(ErrorMessages.ADDCREDIT_ERROR_TYPE, ErrorMessages.USER_BALANCE);
         	return false;
         }
         user.increaseBalance(addcreditTransaction.getCredit());
