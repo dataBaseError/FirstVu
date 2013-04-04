@@ -8,30 +8,29 @@ import org.junit.Test;
 
 public class TicketTest {
 
-    @Test
-    public void testGetType() {
+    private final Ticket ticket;
 
-        final Ticket testTicket = new Ticket("event", "seller", 1, 1.0);
-        assertSame(testTicket.getEvent(), "event");
+    public TicketTest() {
+        this.ticket = new Ticket("event", "seller", 1, 1.0);
     }
 
     @Test
-    public void testGetUsernames() {
-
-        final Ticket testTicket = new Ticket("event", "seller", 1, 1.0);
-        assertSame(testTicket.getUsername(), "seller");
+    public void getType() {
+        assertSame(this.ticket.getEvent(), "event");
     }
 
     @Test
-    public void testGetTicketNumber() {
-
-        final Ticket testTicket = new Ticket("event", "seller", 1, 1.0);
-        assertTrue(testTicket.getTicketNumber() == 1);
+    public void getUsernames() {
+        assertSame(this.ticket.getUsername(), "seller");
     }
 
     @Test
-    public void testDecreaseTicketNumber() {
+    public void getTicketNumber() {
+        assertTrue(this.ticket.getTicketNumber() == 1);
+    }
 
+    @Test
+    public void decreaseTicketNumber() {
         final Ticket testTicket = new Ticket("event", "seller", 1, 1.0);
         testTicket.decreaseTicketNumber(1);
 
@@ -39,19 +38,12 @@ public class TicketTest {
     }
 
     @Test
-    public void testGetCost() {
-
-        final Ticket testTicket = new Ticket("event", "seller", 1, 1.0);
-
-        assertTrue(testTicket.getCost() == 1.0);
+    public void getCost() {
+        assertTrue(this.ticket.getCost() == 1.0);
     }
 
     @Test
-    public void testGetTicketEntry() {
-
-        final Ticket testTicket = new Ticket("event", "seller", 1, 1.0);
-
-        System.out.println(testTicket.getTicketEntry() + "\n" + "event               seller          001 001.00");
-        assertTrue(testTicket.getTicketEntry().equals("event               seller          001 001.00"));
+    public void getTicketEntry() {
+        assertTrue(this.ticket.getTicketEntry().equals("event               seller          001 001.00"));
     }
 }

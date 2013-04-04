@@ -9,21 +9,21 @@ import org.junit.Test;
 public class AccountTest {
 
     @Test
-    public void testGetType() {
+    public void getType() {
 
         final Account testAccount = new Account("test", Account.ADMIN, 0.0);
         assertSame(testAccount.getType(), Account.ADMIN);
     }
 
     @Test
-    public void testGetBalance() {
+    public void getBalance() {
 
         final Account testAccount = new Account("test", Account.ADMIN, 0.0);
         assertTrue(testAccount.getBalance() == 0.0);
     }
 
     @Test
-    public void testIncreaseBalance() {
+    public void increaseBalance() {
 
         final Account testAccount = new Account("test", Account.ADMIN, 0.0);
         testAccount.increaseBalance(1.0);
@@ -32,7 +32,7 @@ public class AccountTest {
     }
 
     @Test
-    public void testDecreaseBalance() {
+    public void decreaseBalance() {
 
         final Account testAccount = new Account("test", Account.ADMIN, 1.0);
         testAccount.decreaseBalance(1.0);
@@ -41,7 +41,7 @@ public class AccountTest {
     }
 
     @Test
-    public void testGetUsername() {
+    public void getUsername() {
 
         final Account testAccount = new Account("test", Account.ADMIN, 0.0);
 
@@ -49,7 +49,7 @@ public class AccountTest {
     }
 
     @Test
-    public void testGetAccountEntry() {
+    public void getAccountEntry() {
 
         final Account testAccount = new Account("test", Account.ADMIN, 0.0);
 
