@@ -78,7 +78,7 @@ public class Transactions {
         if (!this.fileIO.writeAccountFile()) {
             return false;
         }
-        
+
         return this.fileIO.writeTicketFile();
     }
 
@@ -128,7 +128,7 @@ public class Transactions {
         final Account buyer = this.fileIO.getAccountList().get(this.currentUser);
 
         final int sellerLocation = this.fileIO.findUser(buyTransaction.getSellName());
-        
+
         if (sellerLocation == -1) {
         	// Seller does not exist
         	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.SELLER_DNE);
