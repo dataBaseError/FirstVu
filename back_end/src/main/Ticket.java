@@ -1,3 +1,4 @@
+package main;
 /**
  * Class for holding information involving tickets for sale in the program. 
  * @author Ryan Crawford
@@ -112,7 +113,7 @@ public class Ticket {
                 + Utility.createLine(' ', Account.MAX_USERNAME_LENGTH -
                         this.username.length()) + " " +
                 String.format("%03.0f", (double) this.ticketNumber) + " " +
-                String.format("%03.2f", this.cost);
+                String.format("%05.2f", this.cost);
     }
 
 }

@@ -1,3 +1,4 @@
+package main;
 import java.util.ArrayList;
 
 /**
@@ -55,8 +56,7 @@ public class Transactions {
 
         this.transactions = this.fileIO.readTransactions();
 
-        if (this.transactions.isEmpty()) {
-
+        if (this.transactions.isEmpty()) {   
             return false;
         }
 
@@ -117,8 +117,6 @@ public class Transactions {
     }
 
     /**
-     * TODO add seller buy back.
-     * 
      * Transaction for buy tickets. 
      * 
      * @param buyTransaction an instance of the EventTransaction class
@@ -131,52 +129,56 @@ public class Transactions {
         final int sellerLocation = this.fileIO.findUser(buyTransaction.getSellName());
 
         if (sellerLocation == -1) {
-            // Seller does not exist
-            return false;
+        	// Seller does not exist
+        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.SELLER_DNE);
+        	return false;
         }
-
+        
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
 
         final int ticketLocation = this.fileIO.findEvent(buyTransaction.getEventName(),
                 buyTransaction.getSellName());
-
+        
         if (ticketLocation == -1) {
-            // Event does not exist
-            return false;
+        	// Event does not exist
+        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.EVENT_DNE);
+        	return false;
         }
-
+        
         final Ticket eventTicket = this.fileIO.getEventList().get(ticketLocation);
 
         if (eventTicket.getTicketNumber() < buyTransaction.getNumTickets()) {
-
-            // Not enough tickets available.
+            // Not enough tickets available
+        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.NOT_ENOUGH_TICKETS);
             return false;
         }
-
+        
         if (this.currentUser != sellerLocation) {
-
-            final double cost = buyTransaction.getNumTickets() * eventTicket.getCost();
-
-            if (buyer.getBalance() < cost) {
-                // Buyer does not have enough money
-                return false;
-            }
-
-            if (seller.getBalance() + cost > Account.MAX_BALANCE) {
-                // Seller balance will exceed max balance
-                return false;
-            }
-
-            buyer.decreaseBalance(cost);
-
-            seller.increaseBalance(cost);
-
-            this.fileIO.getAccountList().set(this.currentUser, buyer);
-            this.fileIO.getAccountList().set(sellerLocation, seller);
+	
+	        final double cost = buyTransaction.getNumTickets() * eventTicket.getCost();
+	        
+	        if (buyer.getBalance() < cost) {
+	        	// Buyer does not have enough money
+	        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.BUYER_FUNDS);
+	        	return false;
+	        }
+	        
+	        if (seller.getBalance() + cost > Account.MAX_BALANCE) {
+	        	// Seller balance will exceed max balance
+	        	ErrorMessages.printError(ErrorMessages.BUY_ERROR_TYPE, ErrorMessages.SELLER_BALANCE);
+	        	return false;
+	        }
+	
+	        buyer.decreaseBalance(cost);
+	
+	        seller.increaseBalance(cost);
+        
+		    this.fileIO.getAccountList().set(this.currentUser, buyer);
+	        this.fileIO.getAccountList().set(sellerLocation, seller);
         }
-
+        
         eventTicket.decreaseTicketNumber(buyTransaction.getNumTickets());
-
+        
         if (eventTicket.getTicketNumber() == 0) {
             this.fileIO.getEventList().remove(ticketLocation);
         }
@@ -198,10 +200,11 @@ public class Transactions {
         final Ticket newEvent = new Ticket(sellTransaction.getEventName(),
                 sellTransaction.getSellName(), sellTransaction.getNumTickets(),
                 sellTransaction.getPrice());
-
-        if (this.fileIO.findEvent(newEvent.getEvent(), newEvent.getUsername()) != -1) {
-            // Seller is already selling tickets for the event
-            return false;
+        
+        if(this.fileIO.findEvent(newEvent.getEvent(), newEvent.getUsername()) != -1) {
+        	// Seller is already selling tickets for the event
+        	ErrorMessages.printError(ErrorMessages.SELL_ERROR_TYPE, ErrorMessages.ALREADY_SELLING);
+        	return false;
         }
 
         this.fileIO.getEventList().add(newEvent);
@@ -219,10 +222,11 @@ public class Transactions {
 
         final Account user = new Account(createTransaction.getUsername(),
                 createTransaction.getAccountType(), createTransaction.getCredit());
-
+        
         if (this.fileIO.findUser(user.getUsername()) != -1) {
-            // User already exists with username
-            return false;
+        	// User already exists with username
+        	ErrorMessages.printError(ErrorMessages.CREATE_ERROR_TYPE, ErrorMessages.USER_ALREADY_EXISTS);
+        	return false;
         }
 
         this.fileIO.getAccountList().add(user);
@@ -240,15 +244,17 @@ public class Transactions {
 
         final int userLocation = this.fileIO.findUser
                 (deleteTransaction.getUsername());
-
+        
         if (userLocation == -1) {
-            // User does not exist
-            return false;
+        	// User does not exist
+        	ErrorMessages.printError(ErrorMessages.DELETE_ERROR_TYPE, ErrorMessages.USER_DNE);
+        	return false;
         }
-
+        
         this.fileIO.getAccountList().remove(userLocation);
-
-        this.fileIO.removeUserTickets(deleteTransaction.getUsername());
+        
+        // Remove tickets that are related to the user
+        this.fileIO.removeUserTickets(deleteTransaction.getUsername());       
 
         return true;
     }
@@ -262,33 +268,38 @@ public class Transactions {
     public boolean refund(final Refund refundTransaction) {
 
         final int buyerLocation = this.fileIO.findUser
-                (refundTransaction.getBuyName());
-
+        		(refundTransaction.getBuyName());
+        
         if (buyerLocation == -1) {
-            // Buyer does not exist
-            return false;
+        	// Buyer does not exist
+        	ErrorMessages.printError(ErrorMessages.REFUND_ERROR_TYPE, ErrorMessages.BUYER_DNE);
+        	return false;
         }
-
+        
         final Account buyer = this.fileIO.getAccountList().get(buyerLocation);
 
         final int sellerLocation = this.fileIO.findUser
                 (refundTransaction.getSellName());
-
+        
         if (sellerLocation == -1) {
-            // Seller does not exist
-            return false;
+        	// Seller does not exist
+        	ErrorMessages.printError(ErrorMessages.REFUND_ERROR_TYPE, ErrorMessages.SELLER_DNE);
+        	return false;
         }
-
+        
         final Account seller = this.fileIO.getAccountList().get(sellerLocation);
-
+        
         if (seller.getBalance() < refundTransaction.getCredit()) {
-            // Seller has insufficent funds
-            return false;
+        	// Seller has insufficent funds
+        	ErrorMessages.printError(ErrorMessages.REFUND_ERROR_TYPE, ErrorMessages.SELLER_FUNDS);
+        	return false;
         }
-
-        if (buyer.getBalance() + refundTransaction.getCredit() > Account.MAX_BALANCE) {
-            // Buyer will exceed max funds
-            return false;
+      
+        if (buyer.getBalance() + refundTransaction.getCredit() >
+        		Account.MAX_BALANCE) {
+        	// Buyer will exceed max funds
+        	ErrorMessages.printError(ErrorMessages.REFUND_ERROR_TYPE, ErrorMessages.BUYER_BALANCE);
+        	return false;
         }
 
         seller.decreaseBalance(refundTransaction.getCredit());
@@ -311,18 +322,20 @@ public class Transactions {
 
         final int userLocation = this.fileIO.findUser
                 (addcreditTransaction.getUsername());
-
+        
         if (userLocation == -1) {
-            // User does not exist
-            return false;
+        	// User does not exist
+        	ErrorMessages.printError(ErrorMessages.ADDCREDIT_ERROR_TYPE, ErrorMessages.USER_DNE);
+        	return false;
         }
-
+        
         final Account user = this.fileIO.getAccountList().get(userLocation);
 
         if (user.getBalance() + addcreditTransaction.getCredit()
-        > Account.MAX_BALANCE) {
-            // User balance will exceed max balance
-            return false;
+        		> Account.MAX_BALANCE) {
+        	// User balance will exceed max balance
+        	ErrorMessages.printError(ErrorMessages.ADDCREDIT_ERROR_TYPE, ErrorMessages.USER_BALANCE);
+        	return false;
         }
         user.increaseBalance(addcreditTransaction.getCredit());
 
