@@ -117,8 +117,6 @@ public class Transactions {
     }
 
     /**
-     * TODO add seller buy back.
-     * 
      * Transaction for buy tickets. 
      * 
      * @param buyTransaction an instance of the EventTransaction class
@@ -248,8 +246,8 @@ public class Transactions {
         
         this.fileIO.getAccountList().remove(userLocation);
         
-        // TODO Remove tickets that are related to the user
-        
+        // Remove tickets that are related to the user
+        this.fileIO.removeUserTickets(deleteTransaction.getUsername());       
 
         return true;
     }
