@@ -113,7 +113,7 @@ public class Ticket {
                 + Utility.createLine(' ', Account.MAX_USERNAME_LENGTH -
                         this.username.length()) + " " +
                 String.format("%03.0f", (double) this.ticketNumber) + " " +
-                String.format("%05.2f", this.cost);
+                String.format("%06.2f", this.cost);
     }
 
 }

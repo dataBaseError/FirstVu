@@ -1,6 +1,7 @@
 package main;
 import java.util.ArrayList;
 
+
 /**
  * A class for applying the transactions in the daily transaction file to the 
  * user accounts file and available tickets file.

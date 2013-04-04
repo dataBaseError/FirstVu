@@ -1,4 +1,6 @@
 package main;
+
+
 /**
  * This program is designed to read in 3 files: the user accounts file, the
  * available tickets file, and the daily transaction file. The transactions
