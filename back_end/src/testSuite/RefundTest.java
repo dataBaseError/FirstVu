@@ -1,31 +1,25 @@
-package test;
+package testSuite;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertSame;
 import main.Refund;
 
 import org.junit.Test;
 
 public class RefundTest {
 
-	/*@Test
-	public void test() {
-		testGetBuyName();
-		testGetSellName();
-	}*/
+    private final Refund refund;
 
-	@Test
-	public void testGetBuyName()
-	{
-		Refund testRefund = new Refund(Refund.REFUND, "buyer", "seller", 1.0);
-		
-		assertSame(testRefund.getBuyName(), "buyer");
-	}
-	
-	@Test
-	public void testGetSellName()
-	{
-		Refund testRefund = new Refund(Refund.REFUND, "buyer", "seller", 1.0);
-		
-		assertSame(testRefund.getSellName(), "seller");
-	}	
+    public RefundTest() {
+        this.refund = new Refund(Refund.REFUND, "buyer", "seller", 1.0);
+    }
+
+    @Test
+    public void getBuyName() {
+        assertSame(this.refund.getBuyName(), "buyer");
+    }
+
+    @Test
+    public void getSellName() {
+        assertSame(this.refund.getSellName(), "seller");
+    }
 }
