@@ -1,7 +1,11 @@
 package testSuite;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
 import main.Account;
+
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests the functionality of the Account class
@@ -11,7 +15,7 @@ import main.Account;
  * @author Joseph Heron
  * @author Carly Marshall
  */
-public class AccountTest extends TestCase {
+public class AccountTest {
 
     /**
      * A sample account that will be tested
@@ -19,9 +23,9 @@ public class AccountTest extends TestCase {
     private Account adminAccount;
 
     /**
-     * @see junit.framework.TestCase#setUp()
+     * Set up the test account
      */
-    @Override
+    @Before
     public void setUp() {
         this.adminAccount = new Account("test", Account.ADMIN, 1.0);
     }
@@ -29,21 +33,24 @@ public class AccountTest extends TestCase {
     /**
      * Tests the account's type
      */
-    public void testGetType() {
+    @Test
+    public void getType() {
         assertSame(this.adminAccount.getType(), Account.ADMIN);
     }
 
     /**
      * Tests the account's balance
      */
-    public void testGetBalance() {
+    @Test
+    public void getBalance() {
         assertTrue(this.adminAccount.getBalance() == 1.0);
     }
 
     /**
      * Tests the way the account's balance increases
      */
-    public void testIncreaseBalance() {
+    @Test
+    public void increaseBalance() {
         this.adminAccount.increaseBalance(1.0);
 
         assertTrue(this.adminAccount.getBalance() == 2.0);
@@ -52,7 +59,8 @@ public class AccountTest extends TestCase {
     /**
      * Test the way the account's balance decreases
      */
-    public void testDecreaseBalance() {
+    @Test
+    public void decreaseBalance() {
         this.adminAccount.decreaseBalance(1.0);
 
         assertTrue(this.adminAccount.getBalance() == 0.0);
@@ -61,14 +69,16 @@ public class AccountTest extends TestCase {
     /**
      * Tests the account's username
      */
-    public void testGetUsername() {
+    @Test
+    public void getUsername() {
         assertSame(this.adminAccount.getUsername(), "test");
     }
 
     /**
      * Tests the format of the account's entry in the User Accounts File
      */
-    public void testGetAccountEntry() {
+    @Test
+    public void getAccountEntry() {
         assertTrue(this.adminAccount.getAccountEntry().equals("test            AA 000001.00"));
     }
 }

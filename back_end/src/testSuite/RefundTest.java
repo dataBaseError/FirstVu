@@ -1,7 +1,10 @@
 package testSuite;
 
-import junit.framework.TestCase;
+import static org.junit.Assert.assertSame;
 import main.Refund;
+
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * Tests the functionality of how refunds are handled
@@ -11,7 +14,7 @@ import main.Refund;
  * @author Joseph Heron
  * @author Carly Marshall
  */
-public class RefundTest extends TestCase {
+public class RefundTest {
 
     /**
      * A sample refund transaction which will be tested
@@ -19,9 +22,9 @@ public class RefundTest extends TestCase {
     private Refund refund;
 
     /**
-     * @see junit.framework.TestCase#setUp()
+     * Set up a test refund transaction
      */
-    @Override
+    @Before
     public void setUp() {
         this.refund = new Refund(Refund.REFUND, "buyer", "seller", 1.0);
     }
@@ -29,14 +32,16 @@ public class RefundTest extends TestCase {
     /**
      * Tests the debtor of a refund
      */
-    public void testGetBuyName() {
+    @Test
+    public void getBuyName() {
         assertSame(this.refund.getBuyName(), "buyer");
     }
 
     /**
      * Tests the creditor of a refund
      */
-    public void testGetSellName() {
+    @Test
+    public void getSellName() {
         assertSame(this.refund.getSellName(), "seller");
     }
 }
