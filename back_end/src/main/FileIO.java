@@ -1,11 +1,11 @@
 package main;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 /**
  * Handles all file inputs and output
@@ -128,8 +128,7 @@ public class FileIO {
             fStream.close();
         } catch (final IOException e) {
             // Error reading account file
-            ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
-                    ErrorMessages.INPUT_ERROR_TYPE);
+            ErrorMessages.printError(ErrorMessages.INPUT_ERROR_TYPE, ErrorMessages.USER_ACCOUNTS);
             return false;
         }
 

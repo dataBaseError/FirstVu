@@ -4,8 +4,6 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
-import com.sun.corba.se.impl.util.Utility;
-
 /**
  * Runs all test cases.
  * 
@@ -16,13 +14,14 @@ import com.sun.corba.se.impl.util.Utility;
  */
 @RunWith(Suite.class)
 @SuiteClasses({
-		UtilityTest.class,
+        UtilityTest.class,
         AccountTest.class,
         TicketTest.class,
         RefundTest.class,
         AuxiliaryTransactionTest.class,
         EventTransactionTest.class,
-        ErrorMessagesTest.class        
+        ErrorMessagesTest.class,
+        FileIOTest.class
 })
 public class AllTests {
 
