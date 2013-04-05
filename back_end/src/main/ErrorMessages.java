@@ -12,6 +12,8 @@ public class ErrorMessages {
     public static final String USER_ACCOUNTS = "user accounts file";
     public static final String AVAILABLE_TICKET_FILE = "available tickets file";
     public static final String DAILY_TRANSACTION_FILE = "daily transaction file";
+    public static final String INPUT_FILES_MISSING = "not enough input files provided";
+    public static final String INPUT_FILES_INVALID = "input files provided are invalid";
     public static final String USER_DNE = "User does not exist";
     public static final String BUYER_DNE = "Buyer does not exist";
     public static final String SELLER_DNE = "Seller does not exist";
@@ -25,6 +27,7 @@ public class ErrorMessages {
     public static final String ALREADY_SELLING = "Seller is already selling tickets for the event";
     public static final String USER_ALREADY_EXISTS = "User already exists with username";
     
+    public static final String INPUTS_ERROR_TYPE = "Input Files";
     public static final String INPUT_ERROR_TYPE = "Input File";
     public static final String OUTPUT_ERROR_TYPE = "Output File";
     public static final String BUY_ERROR_TYPE = "Buy transaction";
