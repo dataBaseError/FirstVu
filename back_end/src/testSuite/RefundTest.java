@@ -53,4 +53,12 @@ public class RefundTest {
     public void getCredit() {
         assertEquals(this.refund.getCredit(), 1.0, 0.1);
     }
+
+    /**
+     * Tests the transaction type
+     */
+    @Test
+    public void getTransactionType() {
+        assertEquals(this.refund.getTransactionType(), Refund.REFUND);
+    }
 }
