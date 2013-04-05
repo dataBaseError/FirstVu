@@ -21,20 +21,12 @@ public class UtilityTest {
      */
     private String line;
 
-    /**
-     * Set up the AuxiliaryTransaction transaction
+    /** 
+     * Set up the expected line
      */
     @Before
     public void setUp() {
         this.line = "0000000000";
-    }
-
-    /**
-     * Test to see if Utility's constructor is visible
-     */
-    @Test()
-    public void coverUtility() {
-        new Utility();
     }
 
     /**

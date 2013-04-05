@@ -263,8 +263,7 @@ public class FileIO {
 
         try {
             // Open the daily transaction file
-            final BufferedReader fStream = new BufferedReader(
-                    new FileReader(this.transactionLocation));
+            final BufferedReader fStream = new BufferedReader(new FileReader(this.transactionLocation));
             String line;
 
             // Read the lines of the daily transaction file
@@ -346,8 +345,7 @@ public class FileIO {
     public int findEvent(final String eventName, final String sellName) {
         for (int i = 0; i < this.eventList.size(); i++) {
             final Ticket event = this.eventList.get(i);
-            if (event.getEvent().equals(eventName) && event.getUsername()
-                    .equals(sellName)) {
+            if (event.getEvent().equals(eventName) && event.getUsername().equals(sellName)) {
                 return i;
             }
         }
@@ -361,9 +359,11 @@ public class FileIO {
      * @param username the event's ticket's seller
      */
     public void removeUserTickets(final String username) {
-        for (int i = 0; i < this.eventList.size(); i++) {
+        for (int i = 0; i < this.eventList.size();) {
             if (this.eventList.get(i).getUsername().equals(username)) {
                 this.eventList.remove(i);
+            } else {
+                i++;
             }
         }
     }
