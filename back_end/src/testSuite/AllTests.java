@@ -20,7 +20,9 @@ import com.sun.corba.se.impl.util.Utility;
         AccountTest.class,
         TicketTest.class,
         RefundTest.class,
-        AuxiliaryTransactionTest.class
+        AuxiliaryTransactionTest.class,
+        EventTransactionTest.class,
+        ErrorMessagesTest.class        
 })
 public class AllTests {
 
