@@ -10,7 +10,7 @@ import java.util.Arrays;
  * @author Carly Marshall
  */
 
-public class Utility {
+public abstract class Utility {
 
 	 /**
      * A static method for creating a series of characters of arbitrary length
