@@ -90,5 +90,9 @@ public class Backend {
 	            activityLog.endSession();
             }
         }
+        else {
+        	ErrorMessages.printError(ErrorMessages.INPUTS_ERROR_TYPE,
+        			ErrorMessages.INPUT_FILES_MISSING);        	
+        }
     }
 }
