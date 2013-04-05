@@ -16,7 +16,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({
         AccountTest.class,
         TicketTest.class,
-        RefundTest.class
+        RefundTest.class,
+        AuxiliaryTransactionTest.class
 })
 public class AllTests {
 
