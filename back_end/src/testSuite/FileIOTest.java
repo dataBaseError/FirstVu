@@ -152,4 +152,31 @@ public class FileIOTest {
 
         // the dummy directory is eventually deleted in tearDown.
     }
+
+    /**
+     * See if the new ticket file can be written to 
+     */
+    @Test
+    public void writeTicketFile() {
+        this.fileIO.readTicketFile();
+        this.fileIO.writeTicketFile();
+
+        FileAssert.assertEquals(new File(ato), this.atoSampleFile);
+    }
+
+    /**
+     * {@link FileIO#writeTicketFile} can fail if the path to the new ticket file is a directory.
+     */
+    @Test
+    public void failWriteTicketFile() {
+        this.fileIO.readTicketFile();
+
+        // Block the creation of the output ticket file by making a
+        // directory in its place
+        new File(atoSample).mkdir();
+
+        Assert.assertFalse(this.fileIO.writeTicketFile());
+
+        // the dummy directory is eventually deleted in tearDown.
+    }
 }
