@@ -1,5 +1,6 @@
 package testSuite;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import main.Ticket;
@@ -51,7 +52,7 @@ public class TicketTest {
      */
     @Test
     public void testGetTicketNumber() {
-        assertTrue(this.ticket.getTicketNumber() == 1);
+        assertEquals(this.ticket.getTicketNumber(), 1);
     }
 
     /**
@@ -61,7 +62,7 @@ public class TicketTest {
     public void testDecreaseTicketNumber() {
         this.ticket.decreaseTicketNumber(1);
 
-        assertTrue(this.ticket.getTicketNumber() == 0);
+        assertEquals(this.ticket.getTicketNumber(), 0);
     }
 
     /**
@@ -69,7 +70,7 @@ public class TicketTest {
      */
     @Test
     public void testGetCost() {
-        assertTrue(this.ticket.getCost() == 1.0);
+        assertEquals(this.ticket.getCost(), 1.0, 0.1);
     }
 
     /**

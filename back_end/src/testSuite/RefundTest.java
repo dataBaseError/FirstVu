@@ -1,5 +1,6 @@
 package testSuite;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import main.Refund;
 
@@ -43,5 +44,13 @@ public class RefundTest {
     @Test
     public void getSellName() {
         assertSame(this.refund.getSellName(), "seller");
+    }
+
+    /**
+     * Tests the amount refunded
+     */
+    @Test
+    public void getCredit() {
+        assertEquals(this.refund.getCredit(), 1.0, 0.1);
     }
 }

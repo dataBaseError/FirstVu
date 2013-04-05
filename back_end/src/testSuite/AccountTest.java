@@ -1,5 +1,6 @@
 package testSuite;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 import main.Account;
@@ -43,7 +44,7 @@ public class AccountTest {
      */
     @Test
     public void getBalance() {
-        assertTrue(this.adminAccount.getBalance() == 1.0);
+        assertEquals(this.adminAccount.getBalance(), 1.0, 0.1);
     }
 
     /**
@@ -53,7 +54,7 @@ public class AccountTest {
     public void increaseBalance() {
         this.adminAccount.increaseBalance(1.0);
 
-        assertTrue(this.adminAccount.getBalance() == 2.0);
+        assertEquals(this.adminAccount.getBalance(), 2.0, 0.1);
     }
 
     /**
@@ -63,7 +64,7 @@ public class AccountTest {
     public void decreaseBalance() {
         this.adminAccount.decreaseBalance(1.0);
 
-        assertTrue(this.adminAccount.getBalance() == 0.0);
+        assertEquals(this.adminAccount.getBalance(), 0.0, 0.1);
     }
 
     /**
