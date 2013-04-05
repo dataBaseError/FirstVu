@@ -1,4 +1,5 @@
 package main;
+
 /**
  * Class that allows for entries to the daily transaction file.
  * 
@@ -32,5 +33,4 @@ public abstract class Entry {
     public int getTransactionType() {
         return this.transactionType;
     }
-    
 }
