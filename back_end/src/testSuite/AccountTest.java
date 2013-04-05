@@ -1,10 +1,8 @@
 package testSuite;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 import main.Account;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -36,7 +34,7 @@ public class AccountTest {
      */
     @Test
     public void getType() {
-        assertSame(this.adminAccount.getType(), Account.ADMIN);
+        Assert.assertSame(this.adminAccount.getType(), Account.ADMIN);
     }
 
     /**
@@ -44,7 +42,7 @@ public class AccountTest {
      */
     @Test
     public void getBalance() {
-        assertEquals(this.adminAccount.getBalance(), 1.0, 0.1);
+        Assert.assertEquals(this.adminAccount.getBalance(), 1.0, 0.1);
     }
 
     /**
@@ -54,7 +52,7 @@ public class AccountTest {
     public void increaseBalance() {
         this.adminAccount.increaseBalance(1.0);
 
-        assertEquals(this.adminAccount.getBalance(), 2.0, 0.1);
+        Assert.assertEquals(this.adminAccount.getBalance(), 2.0, 0.1);
     }
 
     /**
@@ -64,7 +62,7 @@ public class AccountTest {
     public void decreaseBalance() {
         this.adminAccount.decreaseBalance(1.0);
 
-        assertEquals(this.adminAccount.getBalance(), 0.0, 0.1);
+        Assert.assertEquals(this.adminAccount.getBalance(), 0.0, 0.1);
     }
 
     /**
@@ -72,7 +70,7 @@ public class AccountTest {
      */
     @Test
     public void getUsername() {
-        assertSame(this.adminAccount.getUsername(), "test");
+        Assert.assertSame(this.adminAccount.getUsername(), "test");
     }
 
     /**
@@ -80,6 +78,6 @@ public class AccountTest {
      */
     @Test
     public void getAccountEntry() {
-        assertTrue(this.adminAccount.getAccountEntry().equals("test            AA 000001.00"));
+        Assert.assertTrue(this.adminAccount.getAccountEntry().equals("test            AA 000001.00"));
     }
 }

@@ -1,8 +1,8 @@
 package testSuite;
 
-import static org.junit.Assert.assertEquals;
 import main.Utility;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -42,6 +42,6 @@ public class UtilityTest {
      */
     @Test
     public void createLine() {
-        assertEquals(Utility.createLine('0', 10), this.line);
+        Assert.assertEquals(Utility.createLine('0', 10), this.line);
     }
 }

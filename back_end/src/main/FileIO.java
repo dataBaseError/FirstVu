@@ -182,8 +182,7 @@ public class FileIO {
      */
     public boolean writeAccountFile() {
         try {
-            final BufferedWriter writer = new BufferedWriter(
-                    new FileWriter(this.newAccountLocation));
+            final BufferedWriter writer = new BufferedWriter(new FileWriter(this.newAccountLocation));
 
             // The format of the line is %-15s %2s %09.2f
             final String format = String.format("%s%d%s%d%s", "%-",
