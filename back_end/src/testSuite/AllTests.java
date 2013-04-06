@@ -15,13 +15,14 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @SuiteClasses({
         UtilityTest.class,
+        ErrorMessagesTest.class,
         AccountTest.class,
         TicketTest.class,
         RefundTest.class,
         AuxiliaryTransactionTest.class,
         EventTransactionTest.class,
-        ErrorMessagesTest.class,
-        FileIOTest.class
+        FileIOTest.class,
+        TransactionsTest.class
 })
 public class AllTests {
 

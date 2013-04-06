@@ -42,9 +42,7 @@ public class Transactions {
             final String accountLocation, final String ticketLocation,
             final String newAccountLocation, final String newTicketLocation) {
 
-        this.fileIO = new FileIO(transactionLocation, accountLocation,
-                ticketLocation, newAccountLocation, newTicketLocation);
-        this.transactions = new ArrayList<Entry>();
+        this.fileIO = new FileIO(transactionLocation, accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
         this.currentUser = -1;
     }
 
@@ -54,7 +52,6 @@ public class Transactions {
      * @return Whether the initialization was successful.
      */
     public boolean initTransactionList() {
-
         this.transactions = this.fileIO.readTransactions();
 
         if (this.transactions.isEmpty()) {
@@ -74,7 +71,6 @@ public class Transactions {
      * @return whether the end of session was successful
      */
     public boolean endSession() {
-
         if (!this.fileIO.writeAccountFile()) {
             return false;
         }

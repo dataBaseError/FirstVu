@@ -60,17 +60,17 @@ public class FileIOTest {
     private FileIO fileIO;
 
     /**
-     * A sample new User Account file
+     * A sample new user accounts file
      */
     private File uaoSampleFile;
 
     /**
-     * A sample new Tickets file
+     * A sample new ticket file
      */
     private File atoSampleFile;
 
     /**
-     * Setup a test instance of the FileIO class 
+     * Setup a test case
      */
     @Before
     public void setUp() {
@@ -80,7 +80,7 @@ public class FileIOTest {
     }
 
     /**
-     * Delete the files created by FileIO
+     * Delete the files created by {@link FileIO}
      */
     @After
     public void tearDown() {
