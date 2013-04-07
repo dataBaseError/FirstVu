@@ -1,4 +1,5 @@
 package main;
+
 /**
 * This class is responsible for setting the initial conditions for the account (type, balance, username)
 * and is responsible for changing any of these values
@@ -40,7 +41,7 @@ public class Account {
      * The maximum length of a balance if represented as a string
      */
     public static final int MAX_BALANCE_LENGTH = 6;
-    
+
     /**
      * The maximum balance a user can have
      */
@@ -127,7 +128,7 @@ public class Account {
      */
     public String getAccountEntry() {
         return this.username + Utility.createLine(' ', MAX_USERNAME_LENGTH -
-        		this.username.length()) + " " + this.type + " "
+                this.username.length()) + " " + this.type + " "
                 + String.format("%09.2f", this.balance);
     }
 }

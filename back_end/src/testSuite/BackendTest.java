@@ -41,13 +41,12 @@ public class BackendTest {
         Backend.main(this.args);
         // System.out.println("ERROR: " + ErrorMessages.INPUTS_ERROR_TYPE + " "
         // + ErrorMessages.INPUT_FILES_MISSING);
-        assertEquals("ERROR: " + ErrorMessages.INPUTS_ERROR_TYPE + " "
-                + ErrorMessages.INPUT_FILES_MISSING + "\n", this.outContent.toString());
+        assertEquals("ERROR: " + ErrorMessages.INPUTS_ERROR_TYPE + " " + ErrorMessages.INPUT_FILES_MISSING + "\n", this.outContent.toString());
     }
 
     /*@Test
-    public void mainInputFail() {
-    	// Should print out
+    public void mainInputFail() { 
+    	// Should print out 
     	// ERROR: ErrorMessages.INPUTS_ERROR_TYPE ErrorMessages.INPUT_FILES_INVALID
     	Backend.main(argsFail);
     	assertEquals("ERROR: " + ErrorMessages.DAILY_TRANSACTION_FILE + " " 
@@ -60,8 +59,7 @@ public class BackendTest {
         // ERROR: ErrorMessages.INPUTS_ERROR_TYPE
         // ErrorMessages.INPUT_FILES_INVALID
         Backend.main(this.argsSuccess);
-        assertEquals("ERROR: " + ErrorMessages.DAILY_TRANSACTION_FILE + " "
-                + ErrorMessages.INPUT_ERROR_TYPE + "\n", this.outContent.toString());
+        assertEquals("ERROR: " + ErrorMessages.DAILY_TRANSACTION_FILE + " " + ErrorMessages.INPUT_ERROR_TYPE + "\n", this.outContent.toString());
     }
 
     @After

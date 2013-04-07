@@ -34,6 +34,6 @@ public class UtilityTest {
      */
     @Test
     public void createLine() {
-        Assert.assertEquals(Utility.createLine('0', 10), this.line);
+        Assert.assertEquals(this.line, Utility.createLine('0', 10));
     }
 }

@@ -16,7 +16,7 @@ import org.junit.Test;
  * 
  * @author Ryan Crawford
  * @author Khalil Fazal
- * @author Joseph Heron
+ * @author Joseph Heron 
  * @author Carly Marshall
  */
 public class FileIOTest {
@@ -125,7 +125,7 @@ public class FileIOTest {
      */
     @Test
     public void readTransactions() {
-        Assert.assertNotEquals(this.fileIO.readTransactions(), Collections.emptyList());
+        Assert.assertNotEquals(Collections.emptyList(), this.fileIO.readTransactions());
     }
 
     /**
@@ -136,7 +136,7 @@ public class FileIOTest {
         this.fileIO.readAccountFile();
         this.fileIO.writeAccountFile();
 
-        FileAssert.assertEquals(new File(uao), this.uaoSampleFile);
+        FileAssert.assertEquals(this.uaoSampleFile, new File(uao));
     }
 
     /**
@@ -147,7 +147,7 @@ public class FileIOTest {
         this.fileIO.readTicketFile();
         this.fileIO.writeTicketFile();
 
-        FileAssert.assertEquals(new File(ato), this.atoSampleFile);
+        FileAssert.assertEquals(this.atoSampleFile, new File(ato));
     }
 
     /**
@@ -185,7 +185,7 @@ public class FileIOTest {
         final File transactionsBackup = new File(dtf + "~");
 
         transactionsFile.renameTo(transactionsBackup);
-        Assert.assertEquals(this.fileIO.readTransactions(), Collections.emptyList());
+        Assert.assertEquals(Collections.emptyList(), this.fileIO.readTransactions());
         transactionsBackup.renameTo(transactionsFile);
     }
 
@@ -227,7 +227,7 @@ public class FileIOTest {
     @Test
     public void findUser() {
         this.fileIO.readAccountFile();
-        Assert.assertEquals(this.fileIO.findUser("full_standard"), 1);
+        Assert.assertEquals(1, this.fileIO.findUser("full_standard"));
     }
 
     /**
@@ -236,7 +236,7 @@ public class FileIOTest {
     @Test
     public void failFindUser() {
         this.fileIO.readAccountFile();
-        Assert.assertEquals(this.fileIO.findUser("Kim Jong il"), -1);
+        Assert.assertEquals(-1, this.fileIO.findUser("Kim Jong il"));
     }
 
     /**
@@ -245,7 +245,7 @@ public class FileIOTest {
     @Test
     public void findEvent() {
         this.fileIO.readTicketFile();
-        Assert.assertEquals(this.fileIO.findEvent("JB_Cubed", "sell_standard"), 1);
+        Assert.assertEquals(1, this.fileIO.findEvent("JB_Cubed", "sell_standard"));
     }
 
     /**
@@ -254,7 +254,7 @@ public class FileIOTest {
     @Test
     public void failFindEvent() {
         this.fileIO.readTicketFile();
-        Assert.assertEquals(this.fileIO.findEvent("Aaron's Party", "Kim Jong il"), -1);
+        Assert.assertEquals(-1, this.fileIO.findEvent("Aaron's Party", "Kim Jong il"));
     }
 
     /**
@@ -263,7 +263,7 @@ public class FileIOTest {
     @Test
     public void failFindSeller() {
         this.fileIO.readTicketFile();
-        Assert.assertEquals(this.fileIO.findEvent("Captain_Canary", "Kim Jong il"), -1);
+        Assert.assertEquals(-1, this.fileIO.findEvent("Captain_Canary", "Kim Jong il"));
     }
 
     /**
@@ -274,6 +274,6 @@ public class FileIOTest {
         this.fileIO.readTicketFile();
         this.fileIO.removeUserTickets("sell_standard");
 
-        Assert.assertEquals(this.fileIO.getEventList().size(), 1);
+        Assert.assertEquals(1, this.fileIO.getEventList().size());
     }
 }
