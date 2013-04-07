@@ -6,7 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import main.Backend;
-import main.ErrorMessages;
+import main.Messages;
 
 import org.junit.After;
 import org.junit.Before;
@@ -36,32 +36,33 @@ public class BackendTest {
     @Test
     public void mainToFewArugements() {
         // Should print out
-        // ERROR: ErrorMessages.INPUTS_ERROR_TYPE
-        // ErrorMessages.INPUT_FILES_MISSING
+        // ERROR: Messages.getString("INPUTS_ERROR_TYPE")
+        // Messages.getString("INPUT_FILES_MISSING")
         Backend.main(this.args);
-        // System.out.println("ERROR: " + ErrorMessages.INPUTS_ERROR_TYPE + " "
-        // + ErrorMessages.INPUT_FILES_MISSING);
-        assertEquals("ERROR: " + ErrorMessages.INPUTS_ERROR_TYPE + " "
-                + ErrorMessages.INPUT_FILES_MISSING + "\n", this.outContent.toString());
+        // System.out.println("ERROR: " +
+        // Messages.getString("INPUTS_ERROR_TYPE") + " "
+        // + Messages.getString("INPUT_FILES_MISSING") );
+        assertEquals("ERROR: " + Messages.getString("INPUTS_ERROR_TYPE") + " "
+                + Messages.getString("INPUT_FILES_MISSING") + "\n", this.outContent.toString());
     }
 
     /*@Test
     public void mainInputFail() {
     	// Should print out
-    	// ERROR: ErrorMessages.INPUTS_ERROR_TYPE ErrorMessages.INPUT_FILES_INVALID
+    	// ERROR: Messages.getString("INPUTS_ERROR_TYPE")  Messages.getString("INPUT_FILES_INVALID") 
     	Backend.main(argsFail);
-    	assertEquals("ERROR: " + ErrorMessages.DAILY_TRANSACTION_FILE + " " 
-    			+ ErrorMessages.INPUT_ERROR_TYPE + "\n", outContent.toString());
+    	assertEquals("ERROR: " + Messages.getString("DAILY_TRANSACTION_FILE")  + " " 
+    			+ Messages.getString("INPUT_ERROR_TYPE")  + "\n", outContent.toString());
     }*/
 
     @Test
     public void mainInputFail() {
         // Should print out
-        // ERROR: ErrorMessages.INPUTS_ERROR_TYPE
-        // ErrorMessages.INPUT_FILES_INVALID
+        // ERROR: Messages.getString("INPUTS_ERROR_TYPE")
+        // Messages.getString("INPUT_FILES_INVALID")
         Backend.main(this.argsSuccess);
-        assertEquals("ERROR: " + ErrorMessages.DAILY_TRANSACTION_FILE + " "
-                + ErrorMessages.INPUT_ERROR_TYPE + "\n", this.outContent.toString());
+        assertEquals("ERROR: " + Messages.getString("DAILY_TRANSACTION_FILE") + " "
+                + Messages.getString("INPUT_ERROR_TYPE") + "\n", this.outContent.toString());
     }
 
     @After
