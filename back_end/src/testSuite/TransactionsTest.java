@@ -150,6 +150,6 @@ public class TransactionsTest {
     @Test
     public void getTransactions() {
         this.transaction.initTransactionList();
-        Assert.assertEquals(this.transaction.getTransactions().size(), 1);
+        Assert.assertEquals(1, this.transaction.getTransactions().size());
     }
 }

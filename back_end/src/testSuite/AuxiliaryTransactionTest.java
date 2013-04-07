@@ -16,27 +16,27 @@ public class AuxiliaryTransactionTest {
      */
     @Before
     public void setUp() {
-        this.AuxiliaryTransactionTest = new AuxiliaryTransaction(AuxiliaryTransaction.CREATE, "test", 0.0, Account.ADMIN);
+        this.AuxiliaryTransactionTest = new AuxiliaryTransaction(AuxiliaryTransaction.CREATE, "test", 0.00, Account.ADMIN);
     }
 
     @Test
     public void testGetUsername() {
-        Assert.assertSame(this.AuxiliaryTransactionTest.getUsername(), "test");
+        Assert.assertEquals("test", this.AuxiliaryTransactionTest.getUsername());
     }
 
     @Test
     public void testGetCredit() {
-        Assert.assertEquals(this.AuxiliaryTransactionTest.getCredit(), 0.0, 0.1);
+        Assert.assertEquals(0.00, this.AuxiliaryTransactionTest.getCredit(), 0.01);
     }
 
     @Test
     public void testGetAccountType() {
-        Assert.assertSame(this.AuxiliaryTransactionTest.getAccountType(), Account.ADMIN);
+        Assert.assertEquals(Account.ADMIN, this.AuxiliaryTransactionTest.getAccountType());
     }
 
     @Test
     public void testGetTransactionType() {
-        Assert.assertSame(this.AuxiliaryTransactionTest.getTransactionType(), AuxiliaryTransaction.CREATE);
+        Assert.assertEquals(AuxiliaryTransaction.CREATE, this.AuxiliaryTransactionTest.getTransactionType());
     }
 
 }

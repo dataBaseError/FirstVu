@@ -15,32 +15,32 @@ public class EventTransactionTest {
      */
     @Before
     public void setUp() {
-        this.EventTransactionTest = new EventTransaction(EventTransaction.BUY, "event", "seller", 1.0, 1);
+        this.EventTransactionTest = new EventTransaction(EventTransaction.BUY, "event", "seller", 1.00, 1);
     }
 
     @Test
     public void getSellName() {
-        Assert.assertSame(this.EventTransactionTest.getSellName(), "seller");
+        Assert.assertEquals("seller", this.EventTransactionTest.getSellName());
     }
 
     @Test
     public void getEventName() {
-        Assert.assertSame(this.EventTransactionTest.getEventName(), "event");
+        Assert.assertEquals("event", this.EventTransactionTest.getEventName());
     }
 
     @Test
     public void getPrice() {
-        Assert.assertEquals(this.EventTransactionTest.getPrice(), 1.0, 0.1);
+        Assert.assertEquals(1.00, this.EventTransactionTest.getPrice(), 0.01);
     }
 
     @Test
     public void getNumTickets() {
-        Assert.assertEquals(this.EventTransactionTest.getNumTickets(), 1);
+        Assert.assertEquals(1, this.EventTransactionTest.getNumTickets());
     }
 
     @Test
     public void getTransactionType() {
-        Assert.assertEquals(this.EventTransactionTest.getTransactionType(), EventTransaction.BUY);
+        Assert.assertEquals(EventTransaction.BUY, this.EventTransactionTest.getTransactionType());
     }
 
 }

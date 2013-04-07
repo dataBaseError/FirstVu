@@ -26,7 +26,7 @@ public class AccountTest {
      */
     @Before
     public void setUp() {
-        this.adminAccount = new Account("test", Account.ADMIN, 1.0);
+        this.adminAccount = new Account("test", Account.ADMIN, 1.00);
     }
 
     /**
@@ -34,7 +34,7 @@ public class AccountTest {
      */
     @Test
     public void getType() {
-        Assert.assertSame(this.adminAccount.getType(), Account.ADMIN);
+        Assert.assertEquals(Account.ADMIN, this.adminAccount.getType());
     }
 
     /**
@@ -42,17 +42,17 @@ public class AccountTest {
      */
     @Test
     public void getBalance() {
-        Assert.assertEquals(this.adminAccount.getBalance(), 1.0, 0.1);
+        Assert.assertEquals(1.00, this.adminAccount.getBalance(), 0.01);
     }
 
-    /**
+    /** 
      * Tests the way the account's balance increases
      */
     @Test
     public void increaseBalance() {
         this.adminAccount.increaseBalance(1.0);
 
-        Assert.assertEquals(this.adminAccount.getBalance(), 2.0, 0.1);
+        Assert.assertEquals(2.00, this.adminAccount.getBalance(), 0.01);
     }
 
     /**
@@ -62,7 +62,7 @@ public class AccountTest {
     public void decreaseBalance() {
         this.adminAccount.decreaseBalance(1.0);
 
-        Assert.assertEquals(this.adminAccount.getBalance(), 0.0, 0.1);
+        Assert.assertEquals(0.00, this.adminAccount.getBalance(), 0.01);
     }
 
     /**
@@ -70,7 +70,7 @@ public class AccountTest {
      */
     @Test
     public void getUsername() {
-        Assert.assertSame(this.adminAccount.getUsername(), "test");
+        Assert.assertEquals("test", this.adminAccount.getUsername());
     }
 
     /**
@@ -78,6 +78,6 @@ public class AccountTest {
      */
     @Test
     public void getAccountEntry() {
-        Assert.assertTrue(this.adminAccount.getAccountEntry().equals("test            AA 000001.00"));
+        Assert.assertEquals("test            AA 000001.00", this.adminAccount.getAccountEntry());
     }
 }

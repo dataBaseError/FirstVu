@@ -24,7 +24,7 @@ public class Backend {
      * @param args
      *      <ul>
      *          <li>args[0]: current daily transaction file</li>
-     *          <li>args[1]: current ticket file</li>
+     *          <li>args[1]: current ticket file</li> 
      *          <li>args[2]: current user account file</li>
      *          <li>args[3]: new user account file</li>
      *          <li>args[4]: new ticket file</li>
@@ -90,8 +90,7 @@ public class Backend {
             }
         }
         else {
-            ErrorMessages.printError(Messages.getString("INPUTS_ERROR_TYPE") ,
-                    Messages.getString("INPUT_FILES_MISSING") );
+            ErrorMessages.printError(Messages.getString("INPUTS_ERROR_TYPE"), Messages.getString("INPUT_FILES_MISSING"));
         }
     }
 }

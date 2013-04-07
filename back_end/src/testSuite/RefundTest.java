@@ -26,7 +26,7 @@ public class RefundTest {
      */
     @Before
     public void setUp() {
-        this.refund = new Refund(Refund.REFUND, "buyer", "seller", 1.0);
+        this.refund = new Refund(Refund.REFUND, "buyer", "seller", 1.00);
     }
 
     /**
@@ -34,7 +34,7 @@ public class RefundTest {
      */
     @Test
     public void getBuyName() {
-        Assert.assertSame(this.refund.getBuyName(), "buyer");
+        Assert.assertEquals("buyer", this.refund.getBuyName());
     }
 
     /**
@@ -42,15 +42,15 @@ public class RefundTest {
      */
     @Test
     public void getSellName() {
-        Assert.assertSame(this.refund.getSellName(), "seller");
+        Assert.assertEquals("seller", this.refund.getSellName());
     }
 
-    /**
+    /** 
      * Tests the amount refunded
      */
     @Test
     public void getCredit() {
-        Assert.assertEquals(this.refund.getCredit(), 1.0, 0.1);
+        Assert.assertEquals(1.00, this.refund.getCredit(), 0.01);
     }
 
     /**
@@ -58,6 +58,6 @@ public class RefundTest {
      */
     @Test
     public void getTransactionType() {
-        Assert.assertEquals(this.refund.getTransactionType(), Refund.REFUND);
+        Assert.assertEquals(Refund.REFUND, this.refund.getTransactionType());
     }
 }

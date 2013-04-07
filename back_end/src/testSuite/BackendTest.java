@@ -42,8 +42,7 @@ public class BackendTest {
         // System.out.println("ERROR: " +
         // Messages.getString("INPUTS_ERROR_TYPE") + " "
         // + Messages.getString("INPUT_FILES_MISSING") );
-        assertEquals("ERROR: " + Messages.getString("INPUTS_ERROR_TYPE") + " "
-                + Messages.getString("INPUT_FILES_MISSING") + "\n", this.outContent.toString());
+        assertEquals("ERROR: " + Messages.getString("INPUTS_ERROR_TYPE") + " " + Messages.getString("INPUT_FILES_MISSING") + "\n", this.outContent.toString());
     }
 
     /*@Test
@@ -61,8 +60,7 @@ public class BackendTest {
         // ERROR: Messages.getString("INPUTS_ERROR_TYPE")
         // Messages.getString("INPUT_FILES_INVALID")
         Backend.main(this.argsSuccess);
-        assertEquals("ERROR: " + Messages.getString("DAILY_TRANSACTION_FILE") + " "
-                + Messages.getString("INPUT_ERROR_TYPE") + "\n", this.outContent.toString());
+        assertEquals("ERROR: " + Messages.getString("DAILY_TRANSACTION_FILE") + " " + Messages.getString("INPUT_ERROR_TYPE") + "\n", this.outContent.toString());
     }
 
     @After
