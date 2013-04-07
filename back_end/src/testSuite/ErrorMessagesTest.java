@@ -1,6 +1,6 @@
 package testSuite;
 
-import main.ErrorMessages;
+import main.Messages;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,13 +14,14 @@ public class ErrorMessagesTest {
      */
     @Before
     public void setUp() {
-        this.output = "ERROR: " + ErrorMessages.INPUT_ERROR_TYPE + " " + ErrorMessages.DAILY_TRANSACTION_FILE;
+        this.output = "ERROR: " + Messages.getString("INPUT_ERROR_TYPE") + " " + Messages.getString("DAILY_TRANSACTION_FILE");
     }
 
     @Test
     public void testPrintError() {
-        // assertSame(ErrorMessages.printError(ErrorMessages.INPUT_ERROR_TYPE,
-        // ErrorMessages.DAILY_TRANSACTION_FILE), output);
+        // assertSame(ErrorMessages.printError(Messages.getString("INPUT_ERROR_TYPE")
+        // ,
+        // Messages.getString("DAILY_TRANSACTION_FILE") ), output);
     }
 
 }
