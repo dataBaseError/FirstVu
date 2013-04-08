@@ -1,8 +1,8 @@
 package testSuite;
 
-import static org.junit.Assert.assertEquals;
 import main.Utility;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -21,8 +21,8 @@ public class UtilityTest {
      */
     private String line;
 
-    /**
-     * Set up the AuxiliaryTransaction transaction
+    /** 
+     * Set up the expected line
      */
     @Before
     public void setUp() {
@@ -30,18 +30,10 @@ public class UtilityTest {
     }
 
     /**
-     * Test to see if Utility's constructor is visible
-     */
-    @Test()
-    public void coverUtility() {
-        new Utility();
-    }
-
-    /**
      * Tests the creation of a line of characters
      */
     @Test
     public void createLine() {
-        assertEquals(Utility.createLine('0', 10), this.line);
+        Assert.assertEquals(this.line, Utility.createLine('0', 10));
     }
 }

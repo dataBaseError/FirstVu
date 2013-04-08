@@ -1,10 +1,8 @@
 package testSuite;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
-import static org.junit.Assert.assertTrue;
 import main.Ticket;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -28,7 +26,7 @@ public class TicketTest {
      */
     @Before
     public void setUp() {
-        this.ticket = new Ticket("event", "seller", 1, 1.0);
+        this.ticket = new Ticket("event", "seller", 1, 1.00);
     }
 
     /**
@@ -36,7 +34,7 @@ public class TicketTest {
      */
     @Test
     public void testGetType() {
-        assertSame(this.ticket.getEvent(), "event");
+        Assert.assertEquals("event", this.ticket.getEvent());
     }
 
     /**
@@ -44,7 +42,7 @@ public class TicketTest {
      */
     @Test
     public void testGetUsernames() {
-        assertSame(this.ticket.getUsername(), "seller");
+        Assert.assertEquals("seller", this.ticket.getUsername());
     }
 
     /**
@@ -52,7 +50,7 @@ public class TicketTest {
      */
     @Test
     public void testGetTicketNumber() {
-        assertEquals(this.ticket.getTicketNumber(), 1);
+        Assert.assertEquals(1, this.ticket.getTicketNumber());
     }
 
     /**
@@ -62,7 +60,7 @@ public class TicketTest {
     public void testDecreaseTicketNumber() {
         this.ticket.decreaseTicketNumber(1);
 
-        assertEquals(this.ticket.getTicketNumber(), 0);
+        Assert.assertEquals(0, this.ticket.getTicketNumber());
     }
 
     /**
@@ -70,7 +68,7 @@ public class TicketTest {
      */
     @Test
     public void testGetCost() {
-        assertEquals(this.ticket.getCost(), 1.0, 0.1);
+        Assert.assertEquals(1.00, this.ticket.getCost(), 0.01);
     }
 
     /**
@@ -78,6 +76,6 @@ public class TicketTest {
      */
     @Test
     public void testGetTicketEntry() {
-        assertTrue(this.ticket.getTicketEntry().equals("event               seller          001 001.00"));
+        Assert.assertEquals("event               seller          001 001.00", this.ticket.getTicketEntry());
     }
 }

@@ -1,11 +1,11 @@
 package main;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-
 
 /**
  * Handles all file inputs and output
@@ -128,8 +128,7 @@ public class FileIO {
             fStream.close();
         } catch (final IOException e) {
             // Error reading account file
-            ErrorMessages.printError(ErrorMessages.USER_ACCOUNTS,
-                    ErrorMessages.INPUT_ERROR_TYPE);
+            ErrorMessages.printError(ErrorMessages.INPUT_ERROR_TYPE, ErrorMessages.USER_ACCOUNTS);
             return false;
         }
 
@@ -183,8 +182,7 @@ public class FileIO {
      */
     public boolean writeAccountFile() {
         try {
-            final BufferedWriter writer = new BufferedWriter(
-                    new FileWriter(this.newAccountLocation));
+            final BufferedWriter writer = new BufferedWriter(new FileWriter(this.newAccountLocation));
 
             // The format of the line is %-15s %2s %09.2f
             final String format = String.format("%s%d%s%d%s", "%-",
@@ -265,8 +263,7 @@ public class FileIO {
 
         try {
             // Open the daily transaction file
-            final BufferedReader fStream = new BufferedReader(
-                    new FileReader(this.transactionLocation));
+            final BufferedReader fStream = new BufferedReader(new FileReader(this.transactionLocation));
             String line;
 
             // Read the lines of the daily transaction file
@@ -348,8 +345,7 @@ public class FileIO {
     public int findEvent(final String eventName, final String sellName) {
         for (int i = 0; i < this.eventList.size(); i++) {
             final Ticket event = this.eventList.get(i);
-            if (event.getEvent().equals(eventName) && event.getUsername()
-                    .equals(sellName)) {
+            if (event.getEvent().equals(eventName) && event.getUsername().equals(sellName)) {
                 return i;
             }
         }
@@ -363,9 +359,11 @@ public class FileIO {
      * @param username the event's ticket's seller
      */
     public void removeUserTickets(final String username) {
-        for (int i = 0; i < this.eventList.size(); i++) {
+        for (int i = 0; i < this.eventList.size();) {
             if (this.eventList.get(i).getUsername().equals(username)) {
                 this.eventList.remove(i);
+            } else {
+                i++;
             }
         }
     }

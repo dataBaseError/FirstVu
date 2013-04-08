@@ -1,6 +1,5 @@
 package main;
 
-
 /**
  * This program is designed to read in 3 files: the user accounts file, the
  * available tickets file, and the daily transaction file. The transactions
@@ -25,7 +24,7 @@ public class Backend {
      * @param args
      *      <ul>
      *          <li>args[0]: current daily transaction file</li>
-     *          <li>args[1]: current ticket file</li>
+     *          <li>args[1]: current ticket file</li> 
      *          <li>args[2]: current user account file</li>
      *          <li>args[3]: new user account file</li>
      *          <li>args[4]: new ticket file</li>
@@ -33,66 +32,65 @@ public class Backend {
      */
     public static void main(final String[] args) {
         if (args.length > 4) {
-        	
-        	// Initialize 
-            final Transactions activityLog = new Transactions(args[0], args[1],
-            		args[2], args[3], args[4]);
+
+            // Initialize
+            final Transactions activityLog = new Transactions(args[0], args[1], args[2], args[3], args[4]);
             int nextLogout = 0;
             int previousLogout = 0;
 
             if (activityLog.initTransactionList()) {
 
-            	// Parse through transactions and apply them
-            	nextLogout = activityLog.findNextLogout(nextLogout);
-            	
-            	for (int j = 0; j < activityLog.getTransactions().size(); j++) {
-	                
-	                activityLog.login(nextLogout);
-	                
-	                for (int i = previousLogout; i <= nextLogout; i++) {
-	                    final Entry currentTransaction = activityLog
-	                    		.getTransactions().get(i);
-	
-	                    switch (currentTransaction.getTransactionType()) {
-	                        case AuxiliaryTransaction.LOGOUT:
-	                            activityLog.logout();
-	                            break;
-	                        case AuxiliaryTransaction.CREATE:
-	                            activityLog.create((AuxiliaryTransaction)
-	                            		currentTransaction);
-	                            break;
-	                        case AuxiliaryTransaction.DELETE:
-	                            activityLog.delete((AuxiliaryTransaction)
-	                            		currentTransaction);
-	                            break;
-	                        case AuxiliaryTransaction.ADDCREDIT:
-	                            activityLog.addcredit((AuxiliaryTransaction)
-	                            		currentTransaction);
-	                            break;
-	                        case EventTransaction.SELL:
-	                        	activityLog.sell((EventTransaction)
-	                            		currentTransaction);
-	                            break;
-	                        case EventTransaction.BUY:
-	                            activityLog.buy((EventTransaction)
-	                            		currentTransaction);
-	                            break;
-	                        case Refund.REFUND:
-	                            activityLog.refund((Refund) currentTransaction);
-	                            break;
-	                    }
-	                }
-	                
-	                previousLogout = nextLogout;
-	                nextLogout = activityLog.findNextLogout(nextLogout+1);
-	            }
-	
-	            activityLog.endSession();
+                // Parse through transactions and apply them
+                nextLogout = activityLog.findNextLogout(nextLogout);
+
+                for (int j = 0; j < activityLog.getTransactions().size(); j++) {
+
+                    activityLog.login(nextLogout);
+
+                    for (int i = previousLogout; i <= nextLogout; i++) {
+                        final Entry currentTransaction = activityLog
+                                .getTransactions().get(i);
+
+                        switch (currentTransaction.getTransactionType()) {
+                            case AuxiliaryTransaction.LOGOUT:
+                                activityLog.logout();
+                                break;
+                            case AuxiliaryTransaction.CREATE:
+                                activityLog.create((AuxiliaryTransaction)
+                                        currentTransaction);
+                                break;
+                            case AuxiliaryTransaction.DELETE:
+                                activityLog.delete((AuxiliaryTransaction)
+                                        currentTransaction);
+                                break;
+                            case AuxiliaryTransaction.ADDCREDIT:
+                                activityLog.addcredit((AuxiliaryTransaction)
+                                        currentTransaction);
+                                break;
+                            case EventTransaction.SELL:
+                                activityLog.sell((EventTransaction)
+                                        currentTransaction);
+                                break;
+                            case EventTransaction.BUY:
+                                activityLog.buy((EventTransaction)
+                                        currentTransaction);
+                                break;
+                            case Refund.REFUND:
+                                activityLog.refund((Refund) currentTransaction);
+                                break;
+                        }
+                    }
+
+                    previousLogout = nextLogout;
+                    nextLogout = activityLog.findNextLogout(nextLogout + 1);
+                }
+
+                activityLog.endSession();
             }
         }
         else {
-        	ErrorMessages.printError(ErrorMessages.INPUTS_ERROR_TYPE,
-        			ErrorMessages.INPUT_FILES_MISSING);        	
+            ErrorMessages.printError(ErrorMessages.INPUTS_ERROR_TYPE,
+                    ErrorMessages.INPUT_FILES_MISSING);
         }
     }
 }

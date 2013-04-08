@@ -1,9 +1,8 @@
 package testSuite;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertSame;
 import main.Refund;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -27,7 +26,7 @@ public class RefundTest {
      */
     @Before
     public void setUp() {
-        this.refund = new Refund(Refund.REFUND, "buyer", "seller", 1.0);
+        this.refund = new Refund(Refund.REFUND, "buyer", "seller", 1.00);
     }
 
     /**
@@ -35,7 +34,7 @@ public class RefundTest {
      */
     @Test
     public void getBuyName() {
-        assertSame(this.refund.getBuyName(), "buyer");
+        Assert.assertEquals("buyer", this.refund.getBuyName());
     }
 
     /**
@@ -43,15 +42,15 @@ public class RefundTest {
      */
     @Test
     public void getSellName() {
-        assertSame(this.refund.getSellName(), "seller");
+        Assert.assertEquals("seller", this.refund.getSellName());
     }
 
-    /**
+    /** 
      * Tests the amount refunded
      */
     @Test
     public void getCredit() {
-        assertEquals(this.refund.getCredit(), 1.0, 0.1);
+        Assert.assertEquals(1.00, this.refund.getCredit(), 0.01);
     }
 
     /**
@@ -59,6 +58,6 @@ public class RefundTest {
      */
     @Test
     public void getTransactionType() {
-        assertEquals(this.refund.getTransactionType(), Refund.REFUND);
+        Assert.assertEquals(Refund.REFUND, this.refund.getTransactionType());
     }
 }

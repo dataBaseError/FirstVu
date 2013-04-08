@@ -13,6 +13,9 @@ import java.util.Arrays;
 
 public final class Utility {
 
+    private Utility() {
+    }
+
     /**
     * A static method for creating a series of characters of arbitrary length
     * 

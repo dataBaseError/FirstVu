@@ -16,13 +16,14 @@ import com.sun.corba.se.impl.util.Utility;
  */
 @RunWith(Suite.class)
 @SuiteClasses({
-		UtilityTest.class,
+        UtilityTest.class,
+        ErrorMessagesTest.class,
         AccountTest.class,
         TicketTest.class,
         RefundTest.class,
         AuxiliaryTransactionTest.class,
         EventTransactionTest.class,
-        ErrorMessagesTest.class,
+		FileIOTest.class,
         BackendTest.class
 })
 public class AllTests {
