@@ -1,0 +1,13 @@
+06 buy_standard    BS 000100.00
+00 buy_standard    BS 001100.00
+04 JB_Squared          sell_standard   002 150.00
+00 buy_standard    BS 000800.00
+01 new_admin       AA 000000.00
+00 admin           AA 999999.00
+02 new_admin       AA 000000.00
+00 admin           AA 999999.00
+05 buy_standard    sell_standard   000100.00
+00 buy_standard    BS 000900.00
+03 JB_Squared          full_standard   005 100.00
+00 full_standard   FS 001000.00
+00                             

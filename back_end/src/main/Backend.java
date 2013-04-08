@@ -44,7 +44,13 @@ public class Backend {
                 nextLogout = activityLog.findNextLogout(nextLogout);
 
                 for (int j = 0; j < activityLog.getTransactions().size(); j++) {
-
+                	if(previousLogout > 0) {
+                		j = previousLogout;
+                		
+                		/*if(activityLog.getTransactions().size() < j) {
+                			break;
+                		}*/
+                	}
                     activityLog.login(nextLogout);
 
                     for (int i = previousLogout; i <= nextLogout; i++) {
@@ -81,7 +87,7 @@ public class Backend {
                         }
                     }
 
-                    previousLogout = nextLogout;
+                    previousLogout = nextLogout+1;
                     nextLogout = activityLog.findNextLogout(nextLogout + 1);
                 }
 

@@ -36,7 +36,7 @@ public class BackendTest {
     	System.setOut(new PrintStream(outContent));
         System.setErr(new PrintStream(errContent));
         
-        argsSuccess[0] = "./tests/addcredit/addcredit.etf";
+        argsSuccess[0] = "./tests/full_test/full.etf";
         argsSuccess[1] = "./tests/global/glob_account.inp";
         argsSuccess[2] = "./tests/global/glob_available_tickets.inp";
         argsSuccess[3] = "./tests/output/newaccounts.out";
@@ -72,7 +72,7 @@ public class BackendTest {
 			accountOutput = new BufferedReader(
 			        new FileReader(argsSuccess[3]));
 			accountExpected = new BufferedReader(
-                new FileReader("./tests/addcredit/addcredit.uao"));
+                new FileReader("./tests/full_test/full.uao"));
 			
 			String actual = "";
 			String expected = "";
@@ -95,7 +95,7 @@ public class BackendTest {
 			final BufferedReader ticketOutput = new BufferedReader(
 	                new FileReader(argsSuccess[4]));
 			final BufferedReader ticketExpected = new BufferedReader(
-	                new FileReader("./tests/addcredit/addcredit.ato"));
+	                new FileReader("./tests/full_test/full.ato"));
 			String actual = "";
 			String expected = "";
 			
@@ -105,6 +105,7 @@ public class BackendTest {
 					
 				assertEquals(actual, expected);
 			}while(actual != null && expected != null);
+			
 			ticketOutput.close();
 			ticketExpected.close();
 		} catch (final IOException e) {
