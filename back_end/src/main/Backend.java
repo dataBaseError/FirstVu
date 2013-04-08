@@ -95,8 +95,7 @@ public class Backend {
             }
         }
         else {
-            ErrorMessages.printError(ErrorMessages.INPUTS_ERROR_TYPE,
-                    ErrorMessages.INPUT_FILES_MISSING);
+            ErrorMessages.printError("INPUTS_ERROR_TYPE", "INPUT_FILES_MISSING");
         }
     }
 }

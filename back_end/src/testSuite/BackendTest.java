@@ -27,6 +27,7 @@ public class BackendTest {
 	
 	private BufferedReader accountOutput;
 	private BufferedReader accountExpected;
+
 	
 	/**
      * Set up the AuxiliaryTransaction transaction
