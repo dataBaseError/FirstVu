@@ -127,7 +127,7 @@ public class Transactions {
 
         if (sellerLocation == -1) {
             // Seller does not exist
-            ErrorMessages.printError(Messages.getString("BUY_ERROR_TYPE") , Messages.getString("SELLER_DNE") );
+            ErrorMessages.printError("BUY_ERROR_TYPE", "SELLER_DNE");
             return false;
         }
 
@@ -138,7 +138,7 @@ public class Transactions {
 
         if (ticketLocation == -1) {
             // Event does not exist
-            ErrorMessages.printError(Messages.getString("BUY_ERROR_TYPE") , Messages.getString("EVENT_DNE") );
+            ErrorMessages.printError("BUY_ERROR_TYPE", "EVENT_DNE");
             return false;
         }
 
@@ -146,7 +146,7 @@ public class Transactions {
 
         if (eventTicket.getTicketNumber() < buyTransaction.getNumTickets()) {
             // Not enough tickets available
-            ErrorMessages.printError(Messages.getString("BUY_ERROR_TYPE") , Messages.getString("NOT_ENOUGH_TICKETS") );
+            ErrorMessages.printError("BUY_ERROR_TYPE", "NOT_ENOUGH_TICKETS");
             return false;
         }
 
@@ -156,13 +156,13 @@ public class Transactions {
 
             if (buyer.getBalance() < cost) {
                 // Buyer does not have enough money
-                ErrorMessages.printError(Messages.getString("BUY_ERROR_TYPE") , Messages.getString("BUYER_FUNDS") );
+                ErrorMessages.printError("BUY_ERROR_TYPE", "BUYER_FUNDS");
                 return false;
             }
 
             if (seller.getBalance() + cost > Account.MAX_BALANCE) {
                 // Seller balance will exceed max balance
-                ErrorMessages.printError(Messages.getString("BUY_ERROR_TYPE") , Messages.getString("SELLER_BALANCE") );
+                ErrorMessages.printError("BUY_ERROR_TYPE", "SELLER_BALANCE");
                 return false;
             }
 
@@ -200,7 +200,7 @@ public class Transactions {
 
         if (this.fileIO.findEvent(newEvent.getEvent(), newEvent.getUsername()) != -1) {
             // Seller is already selling tickets for the event
-            ErrorMessages.printError(Messages.getString("SELL_ERROR_TYPE") , Messages.getString("ALREADY_SELLING") );
+            ErrorMessages.printError("SELL_ERROR_TYPE", "ALREADY_SELLING");
             return false;
         }
 
@@ -222,7 +222,7 @@ public class Transactions {
 
         if (this.fileIO.findUser(user.getUsername()) != -1) {
             // User already exists with username
-            ErrorMessages.printError(Messages.getString("CREATE_ERROR_TYPE") , Messages.getString("USER_ALREADY_EXISTS") );
+            ErrorMessages.printError("CREATE_ERROR_TYPE", "USER_ALREADY_EXISTS");
             return false;
         }
 
@@ -244,7 +244,7 @@ public class Transactions {
 
         if (userLocation == -1) {
             // User does not exist
-            ErrorMessages.printError(Messages.getString("DELETE_ERROR_TYPE") , Messages.getString("USER_DNE") );
+            ErrorMessages.printError("DELETE_ERROR_TYPE", "USER_DNE");
             return false;
         }
 
@@ -269,7 +269,7 @@ public class Transactions {
 
         if (buyerLocation == -1) {
             // Buyer does not exist
-            ErrorMessages.printError(Messages.getString("REFUND_ERROR_TYPE") , Messages.getString("BUYER_DNE") );
+            ErrorMessages.printError("REFUND_ERROR_TYPE", "BUYER_DNE");
             return false;
         }
 
@@ -280,7 +280,7 @@ public class Transactions {
 
         if (sellerLocation == -1) {
             // Seller does not exist
-            ErrorMessages.printError(Messages.getString("REFUND_ERROR_TYPE") , Messages.getString("SELLER_DNE") );
+            ErrorMessages.printError("REFUND_ERROR_TYPE", "SELLER_DNE");
             return false;
         }
 
@@ -288,13 +288,13 @@ public class Transactions {
 
         if (seller.getBalance() < refundTransaction.getCredit()) {
             // Seller has insufficent funds
-            ErrorMessages.printError(Messages.getString("REFUND_ERROR_TYPE") , Messages.getString("SELLER_FUNDS") );
+            ErrorMessages.printError("REFUND_ERROR_TYPE", "SELLER_FUNDS");
             return false;
         }
 
         if (buyer.getBalance() + refundTransaction.getCredit() > Account.MAX_BALANCE) {
             // Buyer will exceed max funds
-            ErrorMessages.printError(Messages.getString("REFUND_ERROR_TYPE") , Messages.getString("BUYER_BALANCE") );
+            ErrorMessages.printError("REFUND_ERROR_TYPE", "BUYER_BALANCE");
             return false;
         }
 
@@ -321,7 +321,7 @@ public class Transactions {
 
         if (userLocation == -1) {
             // User does not exist
-            ErrorMessages.printError(Messages.getString("ADDCREDIT_ERROR_TYPE") , Messages.getString("USER_DNE") );
+            ErrorMessages.printError("ADDCREDIT_ERROR_TYPE", "USER_DNE");
             return false;
         }
 
@@ -330,7 +330,7 @@ public class Transactions {
         if (user.getBalance() + addcreditTransaction.getCredit()
         > Account.MAX_BALANCE) {
             // User balance will exceed max balance
-            ErrorMessages.printError(Messages.getString("ADDCREDIT_ERROR_TYPE") , Messages.getString("USER_BALANCE") );
+            ErrorMessages.printError("ADDCREDIT_ERROR_TYPE", "USER_BALANCE");
             return false;
         }
         user.increaseBalance(addcreditTransaction.getCredit());

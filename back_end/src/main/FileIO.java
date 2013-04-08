@@ -128,7 +128,7 @@ public class FileIO {
             fStream.close();
         } catch (final IOException e) {
             // Error reading account file
-            ErrorMessages.printError(Messages.getString("INPUT_ERROR_TYPE") , Messages.getString("USER_ACCOUNTS") );
+            ErrorMessages.printError("INPUT_ERROR_TYPE", "USER_ACCOUNTS");
             return false;
         }
 
@@ -167,8 +167,8 @@ public class FileIO {
             fStream.close();
         } catch (final IOException e) {
             // Error reading ticket file
-            ErrorMessages.printError(Messages.getString("AVAILABLE_TICKET_FILE") ,
-                    Messages.getString("INPUT_ERROR_TYPE") );
+            ErrorMessages.printError("AVAILABLE_TICKET_FILE",
+                    "INPUT_ERROR_TYPE");
             return false;
         }
 
@@ -204,8 +204,8 @@ public class FileIO {
             writer.close();
         } catch (final IOException e) {
             // Error writing to current account file
-            ErrorMessages.printError(Messages.getString("USER_ACCOUNTS") ,
-                    Messages.getString("OUTPUT_ERROR_TYPE") );
+            ErrorMessages.printError("USER_ACCOUNTS",
+                    "OUTPUT_ERROR_TYPE");
             return false;
         }
 
@@ -244,8 +244,8 @@ public class FileIO {
             writer.close();
         } catch (final IOException e) {
             // Error writing to available ticket file
-            ErrorMessages.printError(Messages.getString("AVAILABLE_TICKET_FILE") ,
-                    Messages.getString("OUTPUT_ERROR_TYPE") );
+            ErrorMessages.printError("AVAILABLE_TICKET_FILE",
+                    "OUTPUT_ERROR_TYPE");
             return false;
         }
 
@@ -312,8 +312,8 @@ public class FileIO {
             fStream.close();
         } catch (final IOException e) {
             // Error reading dtf
-            ErrorMessages.printError(Messages.getString("DAILY_TRANSACTION_FILE") ,
-                    Messages.getString("INPUT_ERROR_TYPE") );
+            ErrorMessages.printError("DAILY_TRANSACTION_FILE",
+                    "INPUT_ERROR_TYPE");
         }
 
         return entries;

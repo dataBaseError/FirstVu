@@ -1,5 +1,8 @@
 package main;
 
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
 /**
  * Used to print error messages to the console's output
  *
@@ -10,6 +13,10 @@ package main;
  */
 public class ErrorMessages {
 
+    private static final String BUNDLE_NAME = "main.messages"; //$NON-NLS-1$
+
+    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
+
     /**
      * Create an error message given the type of message and the error message.
      *
@@ -17,6 +24,14 @@ public class ErrorMessages {
      * @param message the error message
      */
     public static void printError(final String type, final String message) {
-        System.out.printf("ERROR: %s %s%n", type, message);
+        System.out.printf("ERROR: %s %s%n", getString(type), getString(message));
+    }
+
+    public static String getString(final String key) {
+        try {
+            return RESOURCE_BUNDLE.getString(key);
+        } catch (final MissingResourceException e) {
+            return '!' + key + '!';
+        }
     }
 }

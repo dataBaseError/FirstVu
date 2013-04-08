@@ -1,6 +1,6 @@
 package testSuite;
 
-import main.Messages;
+import main.ErrorMessages;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -14,7 +14,7 @@ public class ErrorMessagesTest {
      */
     @Before
     public void setUp() {
-        this.output = "ERROR: " + Messages.getString("INPUT_ERROR_TYPE") + " " + Messages.getString("DAILY_TRANSACTION_FILE");
+        this.output = "ERROR: " + ErrorMessages.getString("INPUT_ERROR_TYPE") + " " + ErrorMessages.getString("DAILY_TRANSACTION_FILE");
     }
 
     @Test

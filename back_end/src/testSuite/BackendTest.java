@@ -6,7 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
 import main.Backend;
-import main.Messages;
+import main.ErrorMessages;
 
 import org.junit.After;
 import org.junit.Before;
@@ -42,7 +42,8 @@ public class BackendTest {
         // System.out.println("ERROR: " +
         // Messages.getString("INPUTS_ERROR_TYPE") + " "
         // + Messages.getString("INPUT_FILES_MISSING") );
-        assertEquals("ERROR: " + Messages.getString("INPUTS_ERROR_TYPE") + " " + Messages.getString("INPUT_FILES_MISSING") + "\n", this.outContent.toString());
+        final String expected = "ERROR: " + ErrorMessages.getString("INPUTS_ERROR_TYPE") + " " + ErrorMessages.getString("INPUT_FILES_MISSING") + "\n";
+        assertEquals(expected, this.outContent.toString());
     }
 
     /*@Test
@@ -60,7 +61,8 @@ public class BackendTest {
         // ERROR: Messages.getString("INPUTS_ERROR_TYPE")
         // Messages.getString("INPUT_FILES_INVALID")
         Backend.main(this.argsSuccess);
-        assertEquals("ERROR: " + Messages.getString("DAILY_TRANSACTION_FILE") + " " + Messages.getString("INPUT_ERROR_TYPE") + "\n", this.outContent.toString());
+        final String expected = "ERROR: " + ErrorMessages.getString("DAILY_TRANSACTION_FILE") + " " + ErrorMessages.getString("INPUT_ERROR_TYPE") + "\n";
+        assertEquals(expected, this.outContent.toString());
     }
 
     @After
