@@ -13,9 +13,10 @@ import java.util.ResourceBundle;
  */
 public class ErrorMessages {
 
-    private static final String BUNDLE_NAME = "main.messages"; //$NON-NLS-1$
-
-    private static final ResourceBundle RESOURCE_BUNDLE = ResourceBundle.getBundle(BUNDLE_NAME);
+    /**
+     * The location of all of the error string
+     */
+    private static final ResourceBundle bundle = ResourceBundle.getBundle("main.messages");
 
     /**
      * Create an error message given the type of message and the error message.
@@ -27,9 +28,15 @@ public class ErrorMessages {
         System.out.printf("ERROR: %s %s%n", getString(type), getString(message));
     }
 
+    /**
+     * Get an error string
+     * 
+     * @param key a key for an error string
+     * @return the string corresponding to the key
+     */
     public static String getString(final String key) {
         try {
-            return RESOURCE_BUNDLE.getString(key);
+            return bundle.getString(key);
         } catch (final MissingResourceException e) {
             return '!' + key + '!';
         }
