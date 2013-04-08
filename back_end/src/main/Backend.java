@@ -34,8 +34,7 @@ public class Backend {
         if (args.length > 4) {
 
             // Initialize
-            final Transactions activityLog = new Transactions(args[0], args[1],
-                    args[2], args[3], args[4]);
+            final Transactions activityLog = new Transactions(args[0], args[1], args[2], args[3], args[4]);
             int nextLogout = 0;
             int previousLogout = 0;
 
