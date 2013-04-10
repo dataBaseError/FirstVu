@@ -19,14 +19,14 @@ public class Ticket {
     private final String username;
 
     /**
-     * The number of tickets being sold
-     */
-    private int ticketNumber;
-
-    /**
      * The cost of each ticket
      */
     private final double cost;
+
+    /**
+     * The number of tickets being sold
+     */
+    private int ticketNumber;
 
     /**
      * The maximum number of characters in each event's name
