@@ -20,22 +20,22 @@ public class AuxiliaryTransactionTest {
     }
 
     @Test
-    public void testGetUsername() {
+    public void getUsername() {
         Assert.assertEquals("test", this.AuxiliaryTransactionTest.getUsername());
     }
 
     @Test
-    public void testGetCredit() {
+    public void getCredit() {
         Assert.assertEquals(0.00, this.AuxiliaryTransactionTest.getCredit(), 0.01);
     }
 
     @Test
-    public void testGetAccountType() {
+    public void getAccountType() {
         Assert.assertEquals(Account.ADMIN, this.AuxiliaryTransactionTest.getAccountType());
     }
 
     @Test
-    public void testGetTransactionType() {
+    public void getTransactionType() {
         Assert.assertEquals(AuxiliaryTransaction.CREATE, this.AuxiliaryTransactionTest.getTransactionType());
     }
 
