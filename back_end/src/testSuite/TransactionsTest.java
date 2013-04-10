@@ -19,9 +19,9 @@ import org.junit.Test;
  */
 public class TransactionsTest {
     /** 
-     * The location of the input files
+     * The location of the input files 
      */
-    private static String filePrefix = "./tests/login/login";
+    private static String filePrefix = "./tests/full_test/full";
 
     /**
      * The input Daily Transaction File.
@@ -144,12 +144,12 @@ public class TransactionsTest {
         // the dummy directory is eventually deleted in tearDown.
     }
 
-    /**
+    /** 
      * Check that there is one transaction in the daily transaction file
      */
     @Test
     public void getTransactions() {
         this.transaction.initTransactionList();
-        Assert.assertEquals(1, this.transaction.getTransactions().size());
+        Assert.assertEquals(12, this.transaction.getTransactions().size());
     }
 }

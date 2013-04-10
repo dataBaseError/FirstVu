@@ -24,7 +24,7 @@ public class FileIOTest {
     /** 
      * The location of the input files
      */
-    private static String filePrefix = "./tests/login/login";
+    private static String filePrefix = "./tests/full_test/full";
 
     /**
      * The input Daily Transaction File.
@@ -34,7 +34,7 @@ public class FileIOTest {
      */
     private static String dtf = filePrefix + ".etf";
 
-    /**
+    /** 
      * The input ticket file
      */
     private static String ato = filePrefix + ".ato";
@@ -274,6 +274,6 @@ public class FileIOTest {
         this.fileIO.readTicketFile();
         this.fileIO.removeUserTickets("sell_standard");
 
-        Assert.assertEquals(1, this.fileIO.getEventList().size());
+        Assert.assertEquals(2, this.fileIO.getEventList().size());
     }
 }
