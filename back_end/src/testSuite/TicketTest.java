@@ -33,7 +33,7 @@ public class TicketTest {
      * Tests the ticket's type
      */
     @Test
-    public void testGetType() {
+    public void getType() {
         Assert.assertEquals("event", this.ticket.getEvent());
     }
 
@@ -41,7 +41,7 @@ public class TicketTest {
      * Tests the ticket's seller's username
      */
     @Test
-    public void testGetUsernames() {
+    public void getUsernames() {
         Assert.assertEquals("seller", this.ticket.getUsername());
     }
 
@@ -49,7 +49,7 @@ public class TicketTest {
      * Tests the quantity of tickets for the same event
      */
     @Test
-    public void testGetTicketNumber() {
+    public void getTicketNumber() {
         Assert.assertEquals(1, this.ticket.getTicketNumber());
     }
 
@@ -57,7 +57,7 @@ public class TicketTest {
      * Tests the way the ticket quantity increases
      */
     @Test
-    public void testDecreaseTicketNumber() {
+    public void decreaseTicketNumber() {
         this.ticket.decreaseTicketNumber(1);
 
         Assert.assertEquals(0, this.ticket.getTicketNumber());
@@ -67,7 +67,7 @@ public class TicketTest {
      * Tests the ticket's cost
      */
     @Test
-    public void testGetCost() {
+    public void getCost() {
         Assert.assertEquals(1.00, this.ticket.getCost(), 0.01);
     }
 
@@ -75,7 +75,7 @@ public class TicketTest {
      * Tests the format of the account's entry in the Tickets file
      */
     @Test
-    public void testGetTicketEntry() {
+    public void getTicketEntry() {
         Assert.assertEquals("event               seller          001 001.00", this.ticket.getTicketEntry());
     }
 }

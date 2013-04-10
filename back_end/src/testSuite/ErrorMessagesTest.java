@@ -18,7 +18,7 @@ public class ErrorMessagesTest {
     }
 
     @Test
-    public void testPrintError() {
+    public void printError() {
         // assertSame(ErrorMessages.printError(Messages.getString("INPUT_ERROR_TYPE")
         // ,
         // Messages.getString("DAILY_TRANSACTION_FILE") ), output);
