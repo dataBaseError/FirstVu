@@ -173,34 +173,39 @@ public class TransactionsTest {
 
         try {
             final Field currentUser = this.transaction.getClass().getDeclaredField("currentUser");
+
             currentUser.setAccessible(true);
             Assert.assertEquals(-1, currentUser.getInt(this.transaction));
             currentUser.setAccessible(false);
-        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+        } catch (final NoSuchFieldException e) {
+            Assert.fail(e.getMessage());
+        } catch (final SecurityException e) {
+            Assert.fail(e.getMessage());
+        } catch (final IllegalAccessException e) {
             Assert.fail(e.getMessage());
         }
     }
+
     @Test
     public void loginSuccess() {
     	this.transaction.initTransactionList();
     	Assert.assertTrue(this.transaction.login(1));
     }
-    
-    @Test 
+
+    @Test
     public void failLogin() {
-    	this.transaction.initTransactionList();
-    	Assert.assertFalse(this.transaction.login(-1));
+        this.transaction.initTransactionList();
+        Assert.assertFalse(this.transaction.login(-1));
     }
-    
+
     @Test
     public void buySuccess() {
-    	this.transaction.initTransactionList();
-    	this.transaction.login(3);
-    	
-    	Assert.assertTrue(this.transaction.buy((EventTransaction)this.transaction.getTransactions().get(2)));
-    	
-    }
-    
+		this.transaction.initTransactionList();
+        this.transaction.login(3);
+
+        Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
+	}
+
     @Test
     public void failBuyTicket() {
     	this.buyTransaction.initTransactionList();
