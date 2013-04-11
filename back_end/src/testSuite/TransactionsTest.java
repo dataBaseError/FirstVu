@@ -3,6 +3,7 @@ package testSuite;
 import java.io.File;
 import java.lang.reflect.Field;
 
+import main.AuxiliaryTransaction;
 import main.EventTransaction;
 import main.Transactions;
 
@@ -45,6 +46,8 @@ public class TransactionsTest {
     
     private static String buyFaildtf = "./tests/buy/buy.etf";
     
+    private static String deleteFaildtf = "./tests/delete/delete.etf";
+    
 
     /**
      * A sample new User Account file name
@@ -62,6 +65,8 @@ public class TransactionsTest {
     private Transactions transaction;
     
     private Transactions buyTransaction;
+    
+    private Transactions deleteTransaction;
 
     /**
      * A sample new user accounts file
@@ -83,6 +88,10 @@ public class TransactionsTest {
         this.atoSampleFile = new File(atoSample);
         
         this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
+        this.uaoSampleFile = new File(uaoSample);
+        this.atoSampleFile = new File(atoSample);
+        
+        this.deleteTransaction = new Transactions(deleteFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -217,8 +226,16 @@ public class TransactionsTest {
     @Test
     public void deleteSuccess() {
 		this.transaction.initTransactionList();
-        this.transaction.login(3);
+        this.transaction.login(6);
 
-        Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
+        Assert.assertTrue(this.transaction.delete((AuxiliaryTransaction) this.transaction.getTransactions().get(5)));
+	}
+    
+    @Test
+    public void failDeleteSuccess() {
+		this.deleteTransaction.initTransactionList();
+        this.deleteTransaction.login(1);
+
+        Assert.assertFalse(this.deleteTransaction.delete((AuxiliaryTransaction) this.deleteTransaction.getTransactions().get(0)));
 	}
 }
