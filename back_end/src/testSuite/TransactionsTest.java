@@ -225,6 +225,15 @@ public class TransactionsTest {
     }
     
     @Test
+    public void nextLogout(){
+    	this.buyTransaction.initTransactionList();
+    	int temp = this.buyTransaction.findNextLogout(0);
+    	
+    	Assert.assertTrue(temp >= 0);
+    	Assert.assertTrue(this.buyTransaction.findNextLogout(0) < 0);
+    	
+    	
+    }
     public void failBuyTicket() {
     	this.buyTransaction.initTransactionList();
     	this.buyTransaction.login(3);
