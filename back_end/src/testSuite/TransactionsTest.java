@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 
 import main.AuxiliaryTransaction;
 import main.EventTransaction;
+import main.Refund;
 import main.Transactions;
 
 import org.junit.After;
@@ -48,7 +49,7 @@ public class TransactionsTest {
     
     private static String deleteFaildtf = "./tests/delete/delete.etf";
     
-private static String createFaildtf = "./tests/create/create.etf";
+	private static String createFaildtf = "./tests/create/create.etf";
 
     /**
      * A sample new User Account file name
@@ -98,7 +99,7 @@ private static String createFaildtf = "./tests/create/create.etf";
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
 
-	this.deleteTransaction = new Transactions(deleteFaildtf, uao, ato, uaoSample, atoSample);
+		this.deleteTransaction = new Transactions(deleteFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -230,7 +231,7 @@ private static String createFaildtf = "./tests/create/create.etf";
     	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(0)));
     }
     
-@Test
+	@Test
     public void createSuccess() {
 		this.transaction.initTransactionList();
         this.transaction.login(5);
@@ -249,6 +250,7 @@ private static String createFaildtf = "./tests/create/create.etf";
     	
     }
     
+	@Test
     public void failBuyTicket() {
     	this.buyTransaction.initTransactionList();
     	this.buyTransaction.login(3);
@@ -289,7 +291,14 @@ private static String createFaildtf = "./tests/create/create.etf";
     	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(10)));
 
     }
-    
+
+    @Test
+    public void createSuccess() {
+		this.transaction.initTransactionList();
+        this.transaction.login(5);
+
+        Assert.assertTrue(this.transaction.create((AuxiliaryTransaction) this.transaction.getTransactions().get(4)));
+	}
     
     @Test
     public void failCreate() {
@@ -314,4 +323,13 @@ private static String createFaildtf = "./tests/create/create.etf";
 
         Assert.assertFalse(this.deleteTransaction.delete((AuxiliaryTransaction) this.deleteTransaction.getTransactions().get(0)));
 	}
+
+	@Test
+    public void refundSuccess() {
+    	this.transaction.initTransactionList();
+        this.transaction.login(9);
+        
+        Assert.assertTrue(this.transaction.refund((Refund)this.transaction.getTransactions().get(8)));
+
+    }
 }
