@@ -1,5 +1,7 @@
 package testSuite;
 
+import static org.junit.Assert.*;
+
 import java.io.File;
 
 import main.Transactions;
@@ -10,7 +12,7 @@ import org.junit.Test;
 
 public class CondLoopTest {
 
-    /**  
+    /** 
      * The location of the input files 
      */
     private static String filePrefix = "./tests/full_test/full";
@@ -45,8 +47,10 @@ public class CondLoopTest {
 
     /**
      * Instance of a transaction
-     */
-    private Transactions transactionMany;
+	 */
+	private Transactions transactionMany;
+	
+	private Transactions transactionZero;
 
     /**
      * A sample new user accounts file
@@ -57,14 +61,18 @@ public class CondLoopTest {
      * A sample new ticket file
      */
     private File atoSampleFile;
-
+    
     @Before
     public void setUp() {
         this.transactionMany = new Transactions(dtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
+        
+        this.transactionZero = new Transactions(dtf, uao, ato, uaoSample, atoSample);
+        this.uaoSampleFile = new File(uaoSample);
+        this.atoSampleFile = new File(atoSample);
     }
-
+    
     /**
      * Delete the files created by {@link Transactions}
      */
@@ -74,9 +82,10 @@ public class CondLoopTest {
         this.atoSampleFile.delete();
     }
 
-    @Test
-    public void test() {
-
-    }
+    
+	@Test
+	public void loopCoverageZero() {
+		
+	}
 
 }
