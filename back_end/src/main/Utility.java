@@ -13,6 +13,9 @@ import java.util.Arrays;
 
 public final class Utility {
 
+    /**
+     * Keep Utility's constructor private
+     */
     private Utility() {
     }
 
