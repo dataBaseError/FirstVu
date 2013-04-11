@@ -61,7 +61,7 @@ public class BackendTest {
     private final String[] argsFail = new String[5];
 
     /**
-     * Stores the actual user account file
+     * Stores the actual user account file 
      */
     private BufferedReader accountOutput;
 
