@@ -5,6 +5,7 @@ import java.lang.reflect.Field;
 
 import main.AuxiliaryTransaction;
 import main.EventTransaction;
+import main.Refund;
 import main.Transactions;
 
 import org.junit.After;
@@ -287,4 +288,13 @@ public class TransactionsTest {
 
         //Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
 	}
+    
+    @Test
+    public void refundSuccess() {
+    	this.transaction.initTransactionList();
+        this.transaction.login(9);
+        
+        Assert.assertTrue(this.transaction.refund((Refund)this.transaction.getTransactions().get(8)));
+
+    }
 }
