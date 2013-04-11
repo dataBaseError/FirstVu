@@ -17,6 +17,7 @@ import org.junit.runners.Suite.SuiteClasses;
         AccountTest.class,
         AuxiliaryTransactionTest.class,
         BackendTest.class,
+        CondLoopTest.class,
         ErrorMessagesTest.class,
         EventTransactionTest.class,
         FileIOTest.class,
