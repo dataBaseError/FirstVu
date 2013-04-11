@@ -7,19 +7,27 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests the {@link AuxiliaryTransaction} class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
 public class AuxiliaryTransactionTest {
 
     /**
      * A test auxillary transaction to test with
      */
-    private AuxiliaryTransaction AuxiliaryTransactionTest;
+    private AuxiliaryTransaction transactionTest;
 
     /** 
      * Set up the AuxiliaryTransaction transaction
      */
     @Before
     public void setUp() {
-        this.AuxiliaryTransactionTest = new AuxiliaryTransaction(AuxiliaryTransaction.CREATE, "test", 0.00, Account.ADMIN);
+        this.transactionTest = new AuxiliaryTransaction(AuxiliaryTransaction.CREATE, "test", 0.00, Account.ADMIN);
     }
 
     /**
@@ -27,7 +35,7 @@ public class AuxiliaryTransactionTest {
      */
     @Test
     public void getUsername() {
-        Assert.assertEquals("test", this.AuxiliaryTransactionTest.getUsername());
+        Assert.assertEquals("test", this.transactionTest.getUsername());
     }
 
     /**
@@ -35,7 +43,7 @@ public class AuxiliaryTransactionTest {
      */
     @Test
     public void getCredit() {
-        Assert.assertEquals(0.00, this.AuxiliaryTransactionTest.getCredit(), 0.01);
+        Assert.assertEquals(0.00, this.transactionTest.getCredit(), 0.01);
     }
 
     /**
@@ -43,7 +51,7 @@ public class AuxiliaryTransactionTest {
      */
     @Test
     public void getAccountType() {
-        Assert.assertEquals(Account.ADMIN, this.AuxiliaryTransactionTest.getAccountType());
+        Assert.assertEquals(Account.ADMIN, this.transactionTest.getAccountType());
     }
 
     /**
@@ -51,7 +59,7 @@ public class AuxiliaryTransactionTest {
      */
     @Test
     public void getTransactionType() {
-        Assert.assertEquals(AuxiliaryTransaction.CREATE, this.AuxiliaryTransactionTest.getTransactionType());
+        Assert.assertEquals(AuxiliaryTransaction.CREATE, this.transactionTest.getTransactionType());
     }
 
 }
