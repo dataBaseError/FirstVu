@@ -47,8 +47,10 @@ public class CondLoopTest {
 
     /**
      * Instance of a transaction
-     */
-    private Transactions transactionMany;
+	 */
+	private Transactions transactionMany;
+	
+	private Transactions transactionZero;
 
     /**
      * A sample new user accounts file
@@ -65,6 +67,10 @@ public class CondLoopTest {
         this.transactionMany = new Transactions(dtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
+        
+        this.transactionZero = new Transactions(dtf, uao, ato, uaoSample, atoSample);
+        this.uaoSampleFile = new File(uaoSample);
+        this.atoSampleFile = new File(atoSample);
     }
     
     /**
@@ -78,7 +84,7 @@ public class CondLoopTest {
 
     
 	@Test
-	public void test() {
+	public void loopCoverageZero() {
 		
 	}
 

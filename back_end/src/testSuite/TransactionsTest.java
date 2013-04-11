@@ -46,8 +46,6 @@ public class TransactionsTest {
     
     private static String buyFaildtf = "./tests/buy/buy.etf";
     
-    private static String createFaildtf = "./tests/create/create.etf";
-    
 
     /**
      * A sample new User Account file name
@@ -65,8 +63,6 @@ public class TransactionsTest {
     private Transactions transaction;
     
     private Transactions buyTransaction;
-    
-    private Transactions createTransaction;
 
     /**
      * A sample new user accounts file
@@ -88,10 +84,6 @@ public class TransactionsTest {
         this.atoSampleFile = new File(atoSample);
         
         this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
-        this.uaoSampleFile = new File(uaoSample);
-        this.atoSampleFile = new File(atoSample);
-        
-        this.createTransaction = new Transactions(createFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -216,7 +208,7 @@ public class TransactionsTest {
 	}
 
     @Test
-    public void failBuySeller() {
+    public void failBuyTicket() {
     	this.buyTransaction.initTransactionList();
     	this.buyTransaction.login(1);
     	
@@ -264,7 +256,6 @@ public class TransactionsTest {
     	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(10)));
 
     }
-    
     @Test
     public void createSuccess() {
 		this.transaction.initTransactionList();
@@ -279,5 +270,13 @@ public class TransactionsTest {
         this.createTransaction.login(1);
 
         Assert.assertFalse(this.createTransaction.create((AuxiliaryTransaction) this.createTransaction.getTransactions().get(0)));
+	}
+
+    @Test
+    public void deleteSuccess() {
+		this.transaction.initTransactionList();
+        this.transaction.login(3);
+
+        Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
 	}
 }
