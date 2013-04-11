@@ -2,26 +2,45 @@ package testSuite;
 
 import main.ErrorMessages;
 
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests the {@link ErrorMessages} class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
 public class ErrorMessagesTest {
 
-    private String output;
+    /**
+     * An invalid message key
+     */
+    private String invalidKey;
 
     /**
-     * Set up the AuxiliaryTransaction transaction
+     * The resulting invalid message
+     */
+    private String invalidMessage;
+
+    /**
+     * Set up an invalid message string
      */
     @Before
     public void setUp() {
-        this.output = "ERROR: " + ErrorMessages.getString("INPUT_ERROR_TYPE") + " " + ErrorMessages.getString("DAILY_TRANSACTION_FILE");
+        this.invalidKey = "XXX";
+        this.invalidMessage = "!XXX!";
     }
 
+    /**
+     * Test how {@link ErrorMessages} functions when an invalid message key is used.
+     */
     @Test
-    public void printError() {
-        // assertSame(ErrorMessages.printError(Messages.getString("INPUT_ERROR_TYPE")
-        // ,
-        // Messages.getString("DAILY_TRANSACTION_FILE") ), output);
+    public void failGetString() {
+        Assert.assertEquals(this.invalidMessage, ErrorMessages.getString(this.invalidKey));
     }
 
 }
