@@ -2,6 +2,7 @@ package testSuite;
 
 import java.io.File;
 
+import main.EventTransaction;
 import main.Transactions;
 
 import org.junit.After;
@@ -34,12 +35,12 @@ public class TransactionsTest {
     /**
      * The input ticket file
      */
-    private static String ato = filePrefix + ".ato";
+    private static String ato = "./tests/global/glob_available_tickets.inp";
 
     /**
      * the input user accounts file
      */
-    private static String uao = filePrefix + ".uao";
+    private static String uao = "./tests/global/glob_account.inp";
 
     /**
      * A sample new User Account file name
@@ -151,5 +152,26 @@ public class TransactionsTest {
     public void getTransactions() {
         this.transaction.initTransactionList();
         Assert.assertEquals(12, this.transaction.getTransactions().size());
+    }
+    
+    @Test
+    public void loginSuccess() {
+    	this.transaction.initTransactionList();
+    	Assert.assertTrue(this.transaction.login(1));
+    }
+    
+    @Test 
+    public void failLogin() {
+    	this.transaction.initTransactionList();
+    	Assert.assertFalse(this.transaction.login(-1));
+    }
+    
+    @Test
+    public void buySuccess() {
+    	this.transaction.initTransactionList();
+    	this.transaction.login(3);
+    	
+    	Assert.assertTrue(this.transaction.buy((EventTransaction)this.transaction.getTransactions().get(2)));
+    	
     }
 }

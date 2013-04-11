@@ -96,12 +96,17 @@ public class Transactions {
      * @param loginEntry The index of the transaction that contains the username
      * of the user to apply the next set of transactions to.
      */
-    public void login(final int loginEntry) {
+    public boolean login(final int loginEntry) {
         if (loginEntry >= 0) {
             this.currentUser = this.fileIO.findUser(
                     ((AuxiliaryTransaction) this.transactions.get(loginEntry))
                             .getUsername());
+            if (this.currentUser >= 0) {
+            	return true;
+            }
         }
+        
+        return false;
     }
 
     /**
