@@ -184,8 +184,8 @@ public class TransactionsTest {
 
     @Test
     public void failLogin() {
-        this.transaction.initTransactionList();
-        Assert.assertFalse(this.transaction.login(-1));
+        this.transaction.initTransactionList(); 
+        Assert.assertFalse(this.transaction.login(-1)); 
     }
 
     @Test
