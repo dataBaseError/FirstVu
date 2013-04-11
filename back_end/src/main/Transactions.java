@@ -102,10 +102,10 @@ public class Transactions {
                     ((AuxiliaryTransaction) this.transactions.get(loginEntry))
                             .getUsername());
             if (this.currentUser >= 0) {
-            	return true;
+                return true;
             }
         }
-        
+
         return false;
     }
 

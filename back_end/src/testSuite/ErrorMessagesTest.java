@@ -42,9 +42,4 @@ public class ErrorMessagesTest {
     public void failGetString() {
         Assert.assertEquals(this.invalidMessage, ErrorMessages.getString(this.invalidKey));
     }
-    
-    @Test
-    public void getString() {
-
-    }
 }
