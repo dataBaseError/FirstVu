@@ -224,18 +224,15 @@ public class TransactionsTest {
     }
     
     @Test
-<<<<<<< HEAD
     public void nextLogout(){
     	this.buyTransaction.initTransactionList();
     	int temp = this.buyTransaction.findNextLogout(0);
     	
     	Assert.assertTrue(temp >= 0);
     	Assert.assertTrue(this.buyTransaction.findNextLogout(0) < 0);
-    	
-    	
+    	    	
     }
-    
-=======
+
     public void failBuyTicket() {
     	this.buyTransaction.initTransactionList();
     	this.buyTransaction.login(3);
@@ -299,5 +296,5 @@ public class TransactionsTest {
 
         //Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
 	}
->>>>>>> 30ed5841f29b66859746f0dc73e3a4c0a1416c81
+
 }
