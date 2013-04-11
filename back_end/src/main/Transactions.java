@@ -14,14 +14,14 @@ import java.util.ArrayList;
 
 public class Transactions {
     /**
-     * An array list of type entry to store entries  
-      */
-    private ArrayList<Entry> transactions;
-
-    /**
      * Instance of the FileIO class
      */
     private final FileIO fileIO;
+
+    /**
+     * An array list of type entry to store entries  
+      */
+    private ArrayList<Entry> transactions;
 
     /**
      * index of the current user in the array list  
@@ -363,5 +363,4 @@ public class Transactions {
         // No logout found
         return -1;
     }
-
 }

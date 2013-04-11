@@ -1,6 +1,7 @@
 package testSuite;
 
 import java.io.File;
+import java.lang.reflect.Field;
 
 import main.EventTransaction;
 import main.Transactions;
@@ -153,7 +154,23 @@ public class TransactionsTest {
         this.transaction.initTransactionList();
         Assert.assertEquals(12, this.transaction.getTransactions().size());
     }
-    
+
+    /**
+     * Check that the logout transaction has sucessfully occured
+     */
+    @Test
+    public void logout() {
+        this.transaction.logout();
+
+        try {
+            final Field currentUser = this.transaction.getClass().getDeclaredField("currentUser");
+            currentUser.setAccessible(true);
+            Assert.assertEquals(-1, currentUser.getInt(this.transaction));
+            currentUser.setAccessible(false);
+        } catch (NoSuchFieldException | SecurityException | IllegalArgumentException | IllegalAccessException e) {
+            Assert.fail(e.getMessage());
+        }
+    }
     @Test
     public void loginSuccess() {
     	this.transaction.initTransactionList();
@@ -172,6 +189,7 @@ public class TransactionsTest {
     	this.transaction.login(3);
     	
     	Assert.assertTrue(this.transaction.buy((EventTransaction)this.transaction.getTransactions().get(2)));
-    	
+    
+
     }
 }
