@@ -213,4 +213,12 @@ public class TransactionsTest {
     	
     	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(0)));
     }
+    
+    @Test
+    public void deleteSuccess() {
+		this.transaction.initTransactionList();
+        this.transaction.login(3);
+
+        Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
+	}
 }
