@@ -53,6 +53,8 @@ public class TransactionsTest {
     private static String deleteFaildtf = "./tests/delete/delete.etf";
     
 	private static String createFaildtf = "./tests/create/create.etf";
+	
+	private static String refundFaildtf = "./tests/refund/refund.etf";
 
     /**
      * A sample new User Account file name
@@ -77,6 +79,8 @@ public class TransactionsTest {
     private Transactions createTransaction;
 
     private Transactions deleteTransaction;
+    
+    private Transactions refundTransaction;
 
     /**
      * A sample new user accounts file
@@ -106,6 +110,10 @@ public class TransactionsTest {
         this.atoSampleFile = new File(atoSample);
 
 		this.deleteTransaction = new Transactions(deleteFaildtf, uao, ato, uaoSample, atoSample);
+        this.uaoSampleFile = new File(uaoSample);
+        this.atoSampleFile = new File(atoSample);
+        
+        this.refundTransaction = new Transactions(refundFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -357,5 +365,37 @@ public class TransactionsTest {
 
         Assert.assertTrue(this.transaction.refund((Refund) this.transaction.getTransactions().get(8)));
 
+    }
+	
+	@Test
+    public void failRefundBuyer() {
+        this.refundTransaction.initTransactionList();
+        this.refundTransaction.login(1);
+
+        Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(0)));
+    }
+	
+	@Test
+    public void failRefundSeller() {
+        this.refundTransaction.initTransactionList();
+        this.refundTransaction.login(3);
+
+        Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(2)));
+    }
+	
+	@Test
+    public void failRefundSellerBalance() {
+        this.refundTransaction.initTransactionList();
+        this.refundTransaction.login(5);
+
+        Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(4)));
+    }
+	
+	@Test
+    public void failRefundBuyerBalance() {
+        this.refundTransaction.initTransactionList();
+        this.refundTransaction.login(7);
+
+        Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(6)));
     }
 }
