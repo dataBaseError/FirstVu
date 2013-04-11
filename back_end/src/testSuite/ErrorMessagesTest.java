@@ -1,5 +1,8 @@
 package testSuite;
 
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
 import main.ErrorMessages;
 
 import org.junit.Assert;
@@ -41,5 +44,37 @@ public class ErrorMessagesTest {
     @Test
     public void failGetString() {
         Assert.assertEquals(this.invalidMessage, ErrorMessages.getString(this.invalidKey));
+    }
+
+    /**
+     * Test {@link ErrorMessages}'s private constructor   
+     */
+    @Test
+    public void constructor() {
+        Constructor<ErrorMessages> constructor = null;
+
+        try {
+            constructor = ErrorMessages.class.getDeclaredConstructor();
+        } catch (final NoSuchMethodException e) {
+            Assert.fail(e.toString());
+        } catch (final SecurityException e) {
+            Assert.fail(e.toString());
+        }
+
+        constructor.setAccessible(true);
+
+        try {
+            Assert.assertNotNull(constructor.newInstance());
+        } catch (final InstantiationException e) {
+            Assert.fail(e.toString());
+        } catch (final IllegalAccessException e) {
+            Assert.fail(e.toString());
+        } catch (final IllegalArgumentException e) {
+            Assert.fail(e.toString());
+        } catch (final InvocationTargetException e) {
+            Assert.fail(e.toString());
+        }
+
+        constructor.setAccessible(false);
     }
 }
