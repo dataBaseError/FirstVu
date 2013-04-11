@@ -42,6 +42,9 @@ public class TransactionsTest {
      * the input user accounts file
      */
     private static String uao = "./tests/global/glob_account.inp";
+    
+    private static String buyFaildtf = "./tests/buy/buy.etf";
+    
 
     /**
      * A sample new User Account file name
@@ -57,6 +60,8 @@ public class TransactionsTest {
      * Instance of a transaction
      */
     private Transactions transaction;
+    
+    private Transactions buyTransaction;
 
     /**
      * A sample new user accounts file
@@ -74,6 +79,10 @@ public class TransactionsTest {
     @Before
     public void setUp() {
         this.transaction = new Transactions(dtf, uao, ato, uaoSample, atoSample);
+        this.uaoSampleFile = new File(uaoSample);
+        this.atoSampleFile = new File(atoSample);
+        
+        this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -161,6 +170,7 @@ public class TransactionsTest {
     @Test
     public void logout() {
         this.transaction.logout();
+
         try {
             final Field currentUser = this.transaction.getClass().getDeclaredField("currentUser");
 
@@ -178,22 +188,29 @@ public class TransactionsTest {
 
     @Test
     public void loginSuccess() {
-        this.transaction.initTransactionList();
-        Assert.assertTrue(this.transaction.login(1));
+    	this.transaction.initTransactionList();
+    	Assert.assertTrue(this.transaction.login(1));
     }
 
     @Test
     public void failLogin() {
-        this.transaction.initTransactionList();
-        Assert.assertFalse(this.transaction.login(-1));
+        this.transaction.initTransactionList(); 
+        Assert.assertFalse(this.transaction.login(-1)); 
     }
 
     @Test
     public void buySuccess() {
-        this.transaction.initTransactionList();
+		this.transaction.initTransactionList();
         this.transaction.login(3);
 
         Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
+	}
 
+    @Test
+    public void failBuyTicket() {
+    	this.buyTransaction.initTransactionList();
+    	this.buyTransaction.login(1);
+    	
+    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(0)));
     }
 }

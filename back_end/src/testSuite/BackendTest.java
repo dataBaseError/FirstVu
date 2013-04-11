@@ -5,9 +5,13 @@ import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.PrintStream;
+
+import junitx.framework.FileAssert;
 
 import main.Backend;
 import main.ErrorMessages;
@@ -18,7 +22,9 @@ import org.junit.Test;
 
 public class BackendTest {
 
-    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+    private static final PrintStream stdout = System.out;
+	private static final PrintStream stderr = System.err;
+	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
     private final String argsSuccess[] = new String[5];
@@ -43,8 +49,15 @@ public class BackendTest {
         this.argsSuccess[4] = "./tests/output/newtickets.out";
     }
 
-    @Test
-    public void mainToFewArugements() {
+    @After
+	public void cleanUpStreams() {
+	
+	    System.setOut(new PrintStream(stdout));
+	    System.setErr(new PrintStream(stderr));
+	}
+
+	@Test
+    public void mainToFewArguments() {
         // Should print out
         // ERROR: ErrorMessages.INPUTS_ERROR_TYPE
         // ErrorMessages.INPUT_FILES_MISSING
@@ -71,9 +84,10 @@ public class BackendTest {
         // coverage.
         Backend.main(this.argsSuccess);
 
-        try {
+        FileAssert.assertEquals(new File(this.argsSuccess[3]), new File("./tests/full_test/full.uao"));
+        /*try {
             this.accountOutput = new BufferedReader(
-                    new FileReader(this.argsSuccess[3]));
+                    new FileReader();
             this.accountExpected = new BufferedReader(
                     new FileReader("./tests/full_test/full.uao"));
 
@@ -92,9 +106,11 @@ public class BackendTest {
 
         } catch (final IOException e) {
             fail(e.getMessage());
-        }
+        }*/
+        
+        FileAssert.assertEquals(new File(this.argsSuccess[4]), new File("./tests/full_test/full.ato"));
 
-        try {
+        /*try {
             final BufferedReader ticketOutput = new BufferedReader(
                     new FileReader(this.argsSuccess[4]));
             final BufferedReader ticketExpected = new BufferedReader(
@@ -113,13 +129,6 @@ public class BackendTest {
             ticketExpected.close();
         } catch (final IOException e) {
             fail(e.getMessage());
-        }
-    }
-
-    @After
-    public void cleanUpStreams() {
-
-        System.setOut(null);
-        System.setErr(null);
+        }*/
     }
 }
