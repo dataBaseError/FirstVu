@@ -11,7 +11,14 @@ import java.util.ResourceBundle;
  * @author Joseph Heron
  * @author Carly Marshall
  */
-public class ErrorMessages {
+public final class ErrorMessages {
+
+    /**
+     * Keep ErrorMessages's constructor private
+     */
+    private ErrorMessages() {
+
+    }
 
     /**
      * The location of all of the error string
