@@ -22,7 +22,7 @@ import org.junit.Test;
  * @author Carly Marshall
  */
 public class TransactionsTest {
-    /** 
+    /**  
      * The location of the input files 
      */
     private static String filePrefix = "./tests/full_test/full";
@@ -46,17 +46,29 @@ public class TransactionsTest {
     private static String uao = "./tests/global/glob_account.inp";
 
     /**
-     * Location of an invalid etf by buy transactions
+     * An etf containing an invalid buy transaction
      */
     private static String buyFaildtf = "./tests/buy/buy.etf";
-    
+
+    /**
+     * An etf containing an invalid delete transaction
+     */
     private static String deleteFaildtf = "./tests/delete/delete.etf";
-    
-	private static String createFaildtf = "./tests/create/create.etf";
-	
-	private static String refundFaildtf = "./tests/refund/refund.etf";
-	
-	private static String addcreditFaildtf = "./tests/addcredit/addcredit.etf";
+
+    /**An etf containing an invalid create transaction
+     * 
+     */
+    private static String createFaildtf = "./tests/create/create.etf";
+
+    /**
+     * An etf containing an invalid refund transaction
+     */
+    private static String refundFaildtf = "./tests/refund/refund.etf";
+
+    /**
+     * An etf containing an invalid addcredit transaction
+     */
+    private static String addcreditFaildtf = "./tests/addcredit/addcredit.etf";
 
     /**
      * A sample new User Account file name
@@ -78,12 +90,24 @@ public class TransactionsTest {
      */
     private Transactions buyTransaction;
 
+    /**
+     * Instance of a create transaction
+     */
     private Transactions createTransaction;
 
+    /**
+     * Instance of a delete transaction
+     */
     private Transactions deleteTransaction;
-    
+
+    /**
+     * Instance of a refund transaction
+     */
     private Transactions refundTransaction;
-    
+
+    /**
+     * Instance of a addcredit transaction
+     */
     private Transactions addcreditTransaction;
 
     /**
@@ -102,15 +126,15 @@ public class TransactionsTest {
     @Before
     public void setUp() {
         this.transaction = new Transactions(dtf, uao, ato, uaoSample, atoSample);
-        
+
         this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
-        
+
         this.createTransaction = new Transactions(createFaildtf, uao, ato, uaoSample, atoSample);
-        
-		this.deleteTransaction = new Transactions(deleteFaildtf, uao, ato, uaoSample, atoSample);
-        
+
+        this.deleteTransaction = new Transactions(deleteFaildtf, uao, ato, uaoSample, atoSample);
+
         this.refundTransaction = new Transactions(refundFaildtf, uao, ato, uaoSample, atoSample);
-        
+
         this.addcreditTransaction = new Transactions(addcreditFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
@@ -259,15 +283,15 @@ public class TransactionsTest {
      * Tests to see if a sell transaction is invalid if the same ticket is sold twice by the same user
      */
     @Test
-    public void nextLogout(){
-    	this.createTransaction.initTransactionList();
-    	int temp = this.createTransaction.findNextLogout(0);
-    	
-    	Assert.assertTrue(temp >= 0);
-    	Assert.assertTrue(this.createTransaction.findNextLogout(temp+1) < 0);
-    	    	
+    public void nextLogout() {
+        this.createTransaction.initTransactionList();
+        final int temp = this.createTransaction.findNextLogout(0);
+
+        Assert.assertTrue(temp >= 0);
+        Assert.assertTrue(this.createTransaction.findNextLogout(temp + 1) < 0);
+
     }
-    
+
     /**
      * Tests to see if a sell transaction is invalid if the same ticket is sold twice by the same user
      */
@@ -281,8 +305,10 @@ public class TransactionsTest {
         Assert.assertFalse(this.transaction.sell((EventTransaction) this.transaction.getTransactions().get(10)));
     }
 
+    /**
+     * Tests to see how buy transactions specifying an invalid ticket name are handled
+     */
     @Test
-
     public void failBuyTicket() {
         this.buyTransaction.initTransactionList();
         this.buyTransaction.login(3);
@@ -290,6 +316,9 @@ public class TransactionsTest {
         Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(2)));
     }
 
+    /**
+     * Tests to see how buy transactions specifying an invalid ticket number are handled
+     */
     @Test
     public void failBuyTicketNumber() {
         this.buyTransaction.initTransactionList();
@@ -298,6 +327,9 @@ public class TransactionsTest {
         Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(4)));
     }
 
+    /**
+     * Tests to see how buy transactions involving a buyer's account with an insufficient balance are handled
+     */
     @Test
     public void failBuyFunds() {
         this.buyTransaction.initTransactionList();
@@ -306,6 +338,9 @@ public class TransactionsTest {
         Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(6)));
     }
 
+    /**
+     * Tests to see how buy transactions involving a seller's account with an invalid balance are handled
+     */
     @Test
     public void failBuySellerBalance() {
         this.buyTransaction.initTransactionList();
@@ -314,6 +349,9 @@ public class TransactionsTest {
         Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(8)));
     }
 
+    /**
+     * Test a scenario where a seller attempts to buy their own tickets
+     */
     @Test
     public void failBuySellout() {
         this.buyTransaction.initTransactionList();
@@ -324,6 +362,9 @@ public class TransactionsTest {
 
     }
 
+    /**
+     * Tests a successful create transaction
+     */
     @Test
     public void createSuccess() {
         this.transaction.initTransactionList();
@@ -332,6 +373,9 @@ public class TransactionsTest {
         Assert.assertTrue(this.transaction.create((AuxiliaryTransaction) this.transaction.getTransactions().get(4)));
     }
 
+    /**
+     * Tests for a failed create transaction
+     */
     @Test
     public void failCreate() {
         this.createTransaction.initTransactionList();
@@ -340,79 +384,109 @@ public class TransactionsTest {
         Assert.assertFalse(this.createTransaction.create((AuxiliaryTransaction) this.createTransaction.getTransactions().get(0)));
     }
 
+    /**
+     * Tests for a successful delete transaction
+     */
     @Test
     public void deleteSuccess() {
         this.transaction.initTransactionList();
         this.transaction.login(6);
 
         Assert.assertTrue(this.transaction.delete((AuxiliaryTransaction) this.transaction.getTransactions().get(5)));
-	}
+    }
 
+    /**
+     * Tests for a failed delete transaction
+     */
     @Test
-    public void failDeleteSuccess() {
-		this.deleteTransaction.initTransactionList();
+    public void failDelete() {
+        this.deleteTransaction.initTransactionList();
         this.deleteTransaction.login(1);
 
         Assert.assertFalse(this.deleteTransaction.delete((AuxiliaryTransaction) this.deleteTransaction.getTransactions().get(0)));
-	}
+    }
 
-	@Test
+    /**
+     * Tests for a successful refund transaction
+     */
+    @Test
     public void refundSuccess() {
         this.transaction.initTransactionList();
         this.transaction.login(9);
 
         Assert.assertTrue(this.transaction.refund((Refund) this.transaction.getTransactions().get(8)));
     }
-	
-	@Test
+
+    /**
+     * Tests for a failed refund transaction concerning the buyer
+     */
+    @Test
     public void failRefundBuyer() {
         this.refundTransaction.initTransactionList();
         this.refundTransaction.login(1);
 
         Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(0)));
     }
-	
-	@Test
+
+    /**
+     * Tests for a failed refund transaction concerning the seller
+     */
+    @Test
     public void failRefundSeller() {
         this.refundTransaction.initTransactionList();
         this.refundTransaction.login(3);
 
         Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(2)));
     }
-	
-	@Test
+
+    /**
+     * Tests for a failed refund transaction concerning the seller's account balance
+     */
+    @Test
     public void failRefundSellerBalance() {
         this.refundTransaction.initTransactionList();
         this.refundTransaction.login(5);
 
         Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(4)));
     }
-	
-	@Test
+
+    /**
+     * Tests for a failed refund transaction concerning the buyer's account balance
+     */
+    @Test
     public void failRefundBuyerBalance() {
         this.refundTransaction.initTransactionList();
         this.refundTransaction.login(7);
 
         Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(6)));
     }
-	
-	@Test
+
+    /**
+     * Test for a successful addcredit transaction
+     */
+    @Test
     public void addcreditSuccess() {
         this.transaction.initTransactionList();
         this.transaction.login(1);
 
         Assert.assertTrue(this.transaction.addcredit((AuxiliaryTransaction) this.transaction.getTransactions().get(0)));
     }
-	
-	@Test
+
+    /**
+     * Tests for a failed addcredit transaction concerning the user
+     */
+    @Test
     public void failAddcreditUser() {
         this.addcreditTransaction.initTransactionList();
         this.addcreditTransaction.login(1);
 
         Assert.assertFalse(this.addcreditTransaction.addcredit((AuxiliaryTransaction) this.addcreditTransaction.getTransactions().get(0)));
     }
-	
-	@Test
+
+    /**
+     * Tests for a failed addcredit transaction concerning the user's account balance
+     */
+    @Test
     public void failAddcreditBalance() {
         this.addcreditTransaction.initTransactionList();
         this.addcreditTransaction.login(3);
