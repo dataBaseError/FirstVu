@@ -334,7 +334,7 @@ public class Transactions {
         final Account user = this.fileIO.getAccountList().get(userLocation);
 
         if (user.getBalance() + addcreditTransaction.getCredit()
-        > Account.MAX_BALANCE) {
+        		> Account.MAX_BALANCE) {
             // User balance will exceed max balance
             ErrorMessages.printError("ADDCREDIT_ERROR_TYPE", "USER_BALANCE");
             return false;

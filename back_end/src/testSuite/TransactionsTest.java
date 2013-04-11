@@ -55,6 +55,8 @@ public class TransactionsTest {
 	private static String createFaildtf = "./tests/create/create.etf";
 	
 	private static String refundFaildtf = "./tests/refund/refund.etf";
+	
+	private static String addcreditFaildtf = "./tests/addcredit/addcredit.etf";
 
     /**
      * A sample new User Account file name
@@ -81,6 +83,8 @@ public class TransactionsTest {
     private Transactions deleteTransaction;
     
     private Transactions refundTransaction;
+    
+    private Transactions addcreditTransaction;
 
     /**
      * A sample new user accounts file
@@ -98,22 +102,16 @@ public class TransactionsTest {
     @Before
     public void setUp() {
         this.transaction = new Transactions(dtf, uao, ato, uaoSample, atoSample);
-        this.uaoSampleFile = new File(uaoSample);
-        this.atoSampleFile = new File(atoSample);
-
+        
         this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
-        this.uaoSampleFile = new File(uaoSample);
-        this.atoSampleFile = new File(atoSample);
         
         this.createTransaction = new Transactions(createFaildtf, uao, ato, uaoSample, atoSample);
-        this.uaoSampleFile = new File(uaoSample);
-        this.atoSampleFile = new File(atoSample);
-
+        
 		this.deleteTransaction = new Transactions(deleteFaildtf, uao, ato, uaoSample, atoSample);
-        this.uaoSampleFile = new File(uaoSample);
-        this.atoSampleFile = new File(atoSample);
         
         this.refundTransaction = new Transactions(refundFaildtf, uao, ato, uaoSample, atoSample);
+        
+        this.addcreditTransaction = new Transactions(addcreditFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -364,7 +362,6 @@ public class TransactionsTest {
         this.transaction.login(9);
 
         Assert.assertTrue(this.transaction.refund((Refund) this.transaction.getTransactions().get(8)));
-
     }
 	
 	@Test
@@ -397,5 +394,29 @@ public class TransactionsTest {
         this.refundTransaction.login(7);
 
         Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(6)));
+    }
+	
+	@Test
+    public void addcreditSuccess() {
+        this.transaction.initTransactionList();
+        this.transaction.login(1);
+
+        Assert.assertTrue(this.transaction.addcredit((AuxiliaryTransaction) this.transaction.getTransactions().get(0)));
+    }
+	
+	@Test
+    public void failAddcreditUser() {
+        this.addcreditTransaction.initTransactionList();
+        this.addcreditTransaction.login(1);
+
+        Assert.assertFalse(this.addcreditTransaction.addcredit((AuxiliaryTransaction) this.addcreditTransaction.getTransactions().get(0)));
+    }
+	
+	@Test
+    public void failAddcreditBalance() {
+        this.addcreditTransaction.initTransactionList();
+        this.addcreditTransaction.login(3);
+
+        Assert.assertFalse(this.addcreditTransaction.addcredit((AuxiliaryTransaction) this.addcreditTransaction.getTransactions().get(2)));
     }
 }

@@ -1,3 +1,5 @@
-06 buy_standard    BS 000100.00
-00 buy_standard    BS 001100.00
+06 buy_unstandard  BS 000100.00
+00 buy_standard    BS 001000.00
+06 admin           AA 000001.00
+00 admin           AA 999999.00
 00                             
