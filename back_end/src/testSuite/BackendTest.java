@@ -1,18 +1,13 @@
 package testSuite;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStream;
 import java.io.PrintStream;
 
 import junitx.framework.FileAssert;
-
 import main.Backend;
 import main.ErrorMessages;
 
@@ -20,11 +15,30 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+/**
+ * Tests the {@link Backend} class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
 public class BackendTest {
 
+    /**
+     * Backs up the default standard output
+     */
     private static final PrintStream stdout = System.out;
-	private static final PrintStream stderr = System.err;
-	private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    /**
+     * Backs up the default standard error output
+     */
+    private static final PrintStream stderr = System.err;
+
+    /**
+     * The content of the redirected output
+     */
+    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
     private final String argsSuccess[] = new String[5];
@@ -50,13 +64,13 @@ public class BackendTest {
     }
 
     @After
-	public void cleanUpStreams() {
-	
-	    System.setOut(new PrintStream(stdout));
-	    System.setErr(new PrintStream(stderr));
-	}
+    public void cleanUpStreams() {
 
-	@Test
+        System.setOut(new PrintStream(stdout));
+        System.setErr(new PrintStream(stderr));
+    }
+
+    @Test
     public void mainToFewArguments() {
         // Should print out
         // ERROR: ErrorMessages.INPUTS_ERROR_TYPE
@@ -107,7 +121,7 @@ public class BackendTest {
         } catch (final IOException e) {
             fail(e.getMessage());
         }*/
-        
+
         FileAssert.assertEquals(new File(this.argsSuccess[4]), new File("./tests/full_test/full.ato"));
 
         /*try {
