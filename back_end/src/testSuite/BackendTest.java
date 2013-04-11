@@ -39,13 +39,35 @@ public class BackendTest {
      * The content of the redirected output
      */
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
+
+    /**
+     * The content of the redirected error output
+     */
     private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();
 
-    private final String argsSuccess[] = new String[5];
-    private final String args[] = new String[4];
-    private final String argsFail[] = new String[5];
+    /**
+     * Arguments for a successful run
+     */
+    private final String[] argsSuccess = new String[5];
 
+    /**
+     * Normal arguments for a typical run
+     */
+    private final String[] args = new String[4];
+
+    /**
+     * Arguments for a failing run
+     */
+    private final String[] argsFail = new String[5];
+
+    /**
+     * Stores the actual user account file
+     */
     private BufferedReader accountOutput;
+
+    /**
+     * Stores the expected user account file
+     */
     private BufferedReader accountExpected;
 
     /**
