@@ -44,7 +44,10 @@ public class TransactionsTest {
      * the input user accounts file
      */
     private static String uao = "./tests/global/glob_account.inp";
-    
+
+    /**
+     * Location of an invalid etf by buy transactions
+     */
     private static String buyFaildtf = "./tests/buy/buy.etf";
     
     private static String deleteFaildtf = "./tests/delete/delete.etf";
@@ -65,9 +68,12 @@ public class TransactionsTest {
      * Instance of a transaction
      */
     private Transactions transaction;
-    
+
+    /**
+     * Instance of a buy transaction
+     */
     private Transactions buyTransaction;
-    
+
     private Transactions createTransaction;
 
     private Transactions deleteTransaction;
@@ -90,7 +96,7 @@ public class TransactionsTest {
         this.transaction = new Transactions(dtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
-        
+
         this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
@@ -203,114 +209,132 @@ public class TransactionsTest {
         }
     }
 
+    /**
+     * Tests to see if the current user can be found 
+     */
     @Test
     public void loginSuccess() {
-    	this.transaction.initTransactionList();
-    	Assert.assertTrue(this.transaction.login(1));
+        this.transaction.initTransactionList();
+        Assert.assertTrue(this.transaction.login(1));
     }
 
+    /**
+     * Tests to see if the current user can not be found
+     */
     @Test
     public void failLogin() {
         this.transaction.initTransactionList();
         Assert.assertFalse(this.transaction.login(-1));
     }
 
+    /**
+     * Tests to see if a buy transaction can be processed
+     */
     @Test
     public void buySuccess() {
-		this.transaction.initTransactionList();
+        this.transaction.initTransactionList();
         this.transaction.login(3);
 
         Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
-	}
+    }
 
+    /**
+     * Tests to see if an invalid buy transaction can be caught
+     */
     @Test
     public void failBuySeller() {
-    	this.buyTransaction.initTransactionList();
-    	this.buyTransaction.login(1);
-    	
-    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(0)));
-    }
-    
-	@Test
-    public void createSuccess() {
-		this.transaction.initTransactionList();
-        this.transaction.login(5);
+        this.buyTransaction.initTransactionList();
+        this.buyTransaction.login(1);
 
-        Assert.assertTrue(this.transaction.create((AuxiliaryTransaction) this.transaction.getTransactions().get(4)));
-	}
+        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(0)));
+    }
+
+    /**
+     * Tests to see if a sell transaction is invalid if the same ticket is sold twice by the same user
+     */
+    @Test
+    public void nextLogout() {
+        this.buyTransaction.initTransactionList();
+        final int temp = this.buyTransaction.findNextLogout(0);
+
+        Assert.assertTrue(temp >= 0);
+        Assert.assertTrue(this.buyTransaction.findNextLogout(0) < 0);
+    }
+
+    /**
+     * Tests to see if a sell transaction is invalid if the same ticket is sold twice by the same user
+     */
+    @Test
+    public void sellError() {
+        this.transaction.initTransactionList();
+        this.transaction.login(11);
+
+        this.transaction.sell((EventTransaction) this.transaction.getTransactions().get(10));
+
+        Assert.assertFalse(this.transaction.sell((EventTransaction) this.transaction.getTransactions().get(10)));
+    }
 
     @Test
-    public void nextLogout(){
-    	this.buyTransaction.initTransactionList();
-    	int temp = this.buyTransaction.findNextLogout(0);
-    	
-    	Assert.assertTrue(temp >= 0);
-    	Assert.assertTrue(this.buyTransaction.findNextLogout(0) < 0);
-    	
-    	
-    }
-    
-	@Test
     public void failBuyTicket() {
-    	this.buyTransaction.initTransactionList();
-    	this.buyTransaction.login(3);
-    	
-    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(2)));
+        this.buyTransaction.initTransactionList();
+        this.buyTransaction.login(3);
+
+        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(2)));
     }
-    
+
     @Test
     public void failBuyTicketNumber() {
-    	this.buyTransaction.initTransactionList();
-    	this.buyTransaction.login(5);
-    	
-    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(4)));
+        this.buyTransaction.initTransactionList();
+        this.buyTransaction.login(5);
+
+        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(4)));
     }
-    
+
     @Test
     public void failBuyFunds() {
-    	this.buyTransaction.initTransactionList();
-    	this.buyTransaction.login(7);
-    	
-    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(6)));
+        this.buyTransaction.initTransactionList();
+        this.buyTransaction.login(7);
+
+        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(6)));
     }
-    
+
     @Test
     public void failBuySellerBalance() {
-    	this.buyTransaction.initTransactionList();
-    	this.buyTransaction.login(9);
-    	
-    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(8)));
+        this.buyTransaction.initTransactionList();
+        this.buyTransaction.login(9);
+
+        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(8)));
     }
-    
+
     @Test
     public void failBuySellout() {
-    	this.buyTransaction.initTransactionList();
-    	this.buyTransaction.login(11);
-    	
-    	Assert.assertTrue(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(10)));
-    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(10)));
+        this.buyTransaction.initTransactionList();
+        this.buyTransaction.login(11);
+
+        Assert.assertTrue(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(10)));
+        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(10)));
 
     }
 
     @Test
     public void createSuccess() {
-		this.transaction.initTransactionList();
+        this.transaction.initTransactionList();
         this.transaction.login(5);
 
         Assert.assertTrue(this.transaction.create((AuxiliaryTransaction) this.transaction.getTransactions().get(4)));
-	}
-    
+    }
+
     @Test
     public void failCreate() {
-		this.createTransaction.initTransactionList();
+        this.createTransaction.initTransactionList();
         this.createTransaction.login(1);
 
         Assert.assertFalse(this.createTransaction.create((AuxiliaryTransaction) this.createTransaction.getTransactions().get(0)));
-	}
+    }
 
     @Test
     public void deleteSuccess() {
-		this.transaction.initTransactionList();
+        this.transaction.initTransactionList();
         this.transaction.login(6);
 
         Assert.assertTrue(this.transaction.delete((AuxiliaryTransaction) this.transaction.getTransactions().get(5)));
@@ -326,10 +350,10 @@ public class TransactionsTest {
 
 	@Test
     public void refundSuccess() {
-    	this.transaction.initTransactionList();
+        this.transaction.initTransactionList();
         this.transaction.login(9);
-        
-        Assert.assertTrue(this.transaction.refund((Refund)this.transaction.getTransactions().get(8)));
+
+        Assert.assertTrue(this.transaction.refund((Refund) this.transaction.getTransactions().get(8)));
 
     }
 }
