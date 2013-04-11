@@ -153,7 +153,9 @@ public class TransactionsTest {
         this.transaction.initTransactionList();
         Assert.assertEquals(12, this.transaction.getTransactions().size());
     }
-
+    /**
+     * Check that the logout transaction has sucessfully occured
+     */
     @Test
     public void logout() {
         this.transaction.logout();
