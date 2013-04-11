@@ -213,4 +213,16 @@ public class TransactionsTest {
     	
     	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(0)));
     }
+    
+    @Test
+    public void nextLogout(){
+    	this.buyTransaction.initTransactionList();
+    	int temp = this.buyTransaction.findNextLogout(0);
+    	
+    	Assert.assertTrue(temp >= 0);
+    	Assert.assertTrue(this.buyTransaction.findNextLogout(0) < 0);
+    	
+    	
+    }
+    
 }
