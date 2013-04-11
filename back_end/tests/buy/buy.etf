@@ -1,6 +1,6 @@
 04 JB_Squared          sell_unstandard 004 150.00
 00 admin           AA 999999.00
-04 JB_Squared          sell_unstandard 004 150.00
+04 JB                  sell_standard 004 150.00
 00 admin           AA 999999.00
 04 JB_Squared          sell_standard   004 150.00
 00 admin           AA 999999.00
@@ -8,6 +8,6 @@
 00 buy_standard    BS 001000.00
 04 Alarm_SoundOff      admin           001 001.00
 00 buy_standard    BS 001000.00
-04 JB_Cubed            sell_standard   003 150.00
+04 JB_Squared         sell_standard   003 150.00
 00 admin           AA 999549.00
 00                             
