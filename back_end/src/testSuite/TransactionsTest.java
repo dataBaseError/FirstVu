@@ -253,6 +253,17 @@ public class TransactionsTest {
      * Tests to see if a sell transaction is invalid if the same ticket is sold twice by the same user
      */
     @Test
+<<<<<<< HEAD
+    public void nextLogout(){
+    	this.buyTransaction.initTransactionList();
+    	int temp = this.buyTransaction.findNextLogout(0);
+    	
+    	Assert.assertTrue(temp >= 0);
+    	Assert.assertTrue(this.buyTransaction.findNextLogout(0) < 0);
+    	    	
+    }
+
+=======
     public void nextLogout() {
         this.buyTransaction.initTransactionList();
         final int temp = this.buyTransaction.findNextLogout(0);
@@ -275,6 +286,7 @@ public class TransactionsTest {
     }
 
     @Test
+>>>>>>> 19bf4a1ed26daca8f32d4d798d7b3fe64d1411bc
     public void failBuyTicket() {
         this.buyTransaction.initTransactionList();
         this.buyTransaction.login(3);
@@ -339,6 +351,9 @@ public class TransactionsTest {
 
         Assert.assertTrue(this.transaction.delete((AuxiliaryTransaction) this.transaction.getTransactions().get(5)));
 	}
+<<<<<<< HEAD
+
+=======
     
     @Test
     public void failDeleteSuccess() {
@@ -356,4 +371,5 @@ public class TransactionsTest {
         Assert.assertTrue(this.transaction.refund((Refund) this.transaction.getTransactions().get(8)));
 
     }
+>>>>>>> 19bf4a1ed26daca8f32d4d798d7b3fe64d1411bc
 }
