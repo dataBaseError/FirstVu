@@ -23,5 +23,9 @@ public class ErrorMessagesTest {
         // ,
         // Messages.getString("DAILY_TRANSACTION_FILE") ), output);
     }
+    
+    @Test
+    public void getString() {
 
+    }
 }

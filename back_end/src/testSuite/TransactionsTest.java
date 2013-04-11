@@ -42,6 +42,9 @@ public class TransactionsTest {
      * the input user accounts file
      */
     private static String uao = "./tests/global/glob_account.inp";
+    
+    private static String buyFaildtf = "./tests/buy/buy.etf";
+    
 
     /**
      * A sample new User Account file name
@@ -57,6 +60,8 @@ public class TransactionsTest {
      * Instance of a transaction
      */
     private Transactions transaction;
+    
+    private Transactions buyTransaction;
 
     /**
      * A sample new user accounts file
@@ -74,6 +79,10 @@ public class TransactionsTest {
     @Before
     public void setUp() {
         this.transaction = new Transactions(dtf, uao, ato, uaoSample, atoSample);
+        this.uaoSampleFile = new File(uaoSample);
+        this.atoSampleFile = new File(atoSample);
+        
+        this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -189,7 +198,14 @@ public class TransactionsTest {
     	this.transaction.login(3);
     	
     	Assert.assertTrue(this.transaction.buy((EventTransaction)this.transaction.getTransactions().get(2)));
+    	
+    }
     
-
+    @Test
+    public void failBuyTicket() {
+    	this.buyTransaction.initTransactionList();
+    	this.buyTransaction.login(1);
+    	
+    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(0)));
     }
 }
