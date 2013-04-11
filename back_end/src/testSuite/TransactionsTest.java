@@ -49,6 +49,8 @@ public class TransactionsTest {
      */
     private static String buyFaildtf = "./tests/buy/buy.etf";
 
+    private static String createFaildtf = "./tests/create/create.etf";
+
     /**
      * A sample new User Account file name
      */
@@ -68,6 +70,8 @@ public class TransactionsTest {
      * Instance of a buy transaction
      */
     private Transactions buyTransaction;
+
+    private Transactions createTransaction;
 
     /**
      * A sample new user accounts file
@@ -89,6 +93,10 @@ public class TransactionsTest {
         this.atoSampleFile = new File(atoSample);
 
         this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
+        this.uaoSampleFile = new File(uaoSample);
+        this.atoSampleFile = new File(atoSample);
+
+        this.createTransaction = new Transactions(createFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -225,7 +233,7 @@ public class TransactionsTest {
      * Tests to see if an invalid buy transaction can be caught
      */
     @Test
-    public void failBuyTicket() {
+    public void failBuySeller() {
         this.buyTransaction.initTransactionList();
         this.buyTransaction.login(1);
 
