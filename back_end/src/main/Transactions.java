@@ -95,6 +95,7 @@ public class Transactions {
      * 
      * @param loginEntry The index of the transaction that contains the username
      * of the user to apply the next set of transactions to.
+     * @return whether the user who login was found
      */
     public boolean login(final int loginEntry) {
         if (loginEntry >= 0) {

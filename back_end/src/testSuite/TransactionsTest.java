@@ -42,9 +42,11 @@ public class TransactionsTest {
      * the input user accounts file
      */
     private static String uao = "./tests/global/glob_account.inp";
-    
+
+    /**
+     * Location of an invalid etf by buy transactions
+     */
     private static String buyFaildtf = "./tests/buy/buy.etf";
-    
 
     /**
      * A sample new User Account file name
@@ -60,7 +62,10 @@ public class TransactionsTest {
      * Instance of a transaction
      */
     private Transactions transaction;
-    
+
+    /**
+     * Instance of a buy transaction
+     */
     private Transactions buyTransaction;
 
     /**
@@ -81,7 +86,7 @@ public class TransactionsTest {
         this.transaction = new Transactions(dtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
-        
+
         this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
@@ -186,31 +191,56 @@ public class TransactionsTest {
         }
     }
 
+    /**
+     * Tests to see if the current user can be found 
+     */
     @Test
     public void loginSuccess() {
-    	this.transaction.initTransactionList();
-    	Assert.assertTrue(this.transaction.login(1));
+        this.transaction.initTransactionList();
+        Assert.assertTrue(this.transaction.login(1));
     }
 
+    /**
+     * Tests to see if the current user can not be found
+     */
     @Test
     public void failLogin() {
-        this.transaction.initTransactionList(); 
-        Assert.assertFalse(this.transaction.login(-1)); 
+        this.transaction.initTransactionList();
+        Assert.assertFalse(this.transaction.login(-1));
     }
 
+    /**
+     * Tests to see if a buy transaction can be processed
+     */
     @Test
     public void buySuccess() {
-		this.transaction.initTransactionList();
+        this.transaction.initTransactionList();
         this.transaction.login(3);
 
         Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));
-	}
+    }
 
+    /**
+     * Tests to see if an invalid buy transaction can be caught
+     */
     @Test
     public void failBuyTicket() {
-    	this.buyTransaction.initTransactionList();
-    	this.buyTransaction.login(1);
-    	
-    	Assert.assertFalse(this.buyTransaction.buy((EventTransaction)this.buyTransaction.getTransactions().get(0)));
+        this.buyTransaction.initTransactionList();
+        this.buyTransaction.login(1);
+
+        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(0)));
+    }
+
+    /**
+     * Tests to see if a sell transaction is invalid if the same ticket is sold twice by the same user
+     */
+    @Test
+    public void sellError() {
+        this.transaction.initTransactionList();
+        this.transaction.login(11);
+
+        this.transaction.sell((EventTransaction) this.transaction.getTransactions().get(10));
+
+        Assert.assertFalse(this.transaction.sell((EventTransaction) this.transaction.getTransactions().get(10)));
     }
 }
