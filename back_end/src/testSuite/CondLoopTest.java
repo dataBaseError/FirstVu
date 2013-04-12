@@ -10,48 +10,60 @@ import org.junit.Test;
 
 public class CondLoopTest {
 
+    private static String tests = "./tests/";
+
     /** 
-     * The location of the input files 
+     * The location of the global user account file and ticket file
      */
-    private static String filePrefix = "./tests/full_test/full";
-
-    /**
-     * The input Daily Transaction File.
-     * To ensure proper coverage, the daily transaction file for testing must contain a variety of transactions.
-     * 
-     * It's good enough if it contains a refund, buy and logout transaction.
-     */
-    private static String dtf = filePrefix + ".etf";
-
-    /**
-     * The input ticket file
-     */
-    private static String ato = filePrefix + ".ato";
+    private static String global = tests + "global/";
 
     /**
      * the input user accounts file
      */
-    private static String uao = filePrefix + ".uao";
+    private static String uao = global + "glob_account.inp";
+
+    /**
+     * The input ticket file
+     */
+    private static String ato = global + "glob_available_tickets.inp";
 
     /**
      * A sample new User Account file name
      */
-    private static String uaoSample = filePrefix + ".usr";
+    private static String uaoSample = global + "global.usr";
 
     /**
      * A sample new Tickets file name
      */
-    private static String atoSample = filePrefix + ".tic";
+    private static String atoSample = global + "global.tic";
+
+    private static String etfs = tests + "loopcoverage/";
+
+    private static String manyEtf = etfs + "many.etf";
+
+    private static String onceEtf = etfs + "one.etf";
+
+    private static String twiceEtf = etfs + "two.etf";
+
+    /**
+     * Instance of a transaction that will never execute the loop
+     */
+    private Transactions transactionZero;
+
+    /**
+     * Instance of a transaction that will execute the loop once
+     */
+    private Transactions transactionOnce;
+
+    /**
+     * Instance of a transaction that will execute the loop twice
+     */
+    private Transactions transactionTwice;
 
     /**
      * Instance of a transaction that will execute the loop many times
      */
     private Transactions transactionMany;
-
-    /**
-     * Instance of a transaction that will execute the loop zero times
-     */
-    private Transactions transactionZero;
 
     /**
      * A sample new user accounts file
@@ -68,8 +80,9 @@ public class CondLoopTest {
      */
     @Before
     public void setUp() {
-        this.transactionMany = new Transactions(dtf, uao, ato, uaoSample, atoSample);
         this.transactionZero = new Transactions(dtf, uao, ato, uaoSample, atoSample);
+        this.transactionMany = new Transactions(dtf, uao, ato, uaoSample, atoSample);
+
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
