@@ -164,7 +164,7 @@ public class FileIOTest {
     }
 
     /**
-     * See if the account file can't be read if it doesn't exit
+     * See if the account file can't be read if it doesn't exit  
      */
     @Test
     public void failReadTicketFile() {

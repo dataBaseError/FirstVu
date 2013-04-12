@@ -21,7 +21,7 @@ public class Transactions {
     /**
      * An array list of type entry to store entries  
       */
-    private ArrayList<Entry> transactions;
+    private final ArrayList<Entry> transactions;
 
     /**
      * index of the current user in the array list  
@@ -44,6 +44,7 @@ public class Transactions {
 
         this.fileIO = new FileIO(transactionLocation, accountLocation, ticketLocation, newAccountLocation, newTicketLocation);
         this.currentUser = -1;
+        this.transactions = this.fileIO.readTransactions();
     }
 
     /**
@@ -52,8 +53,6 @@ public class Transactions {
      * @return Whether the initialization was successful.
      */
     public boolean initTransactionList() {
-        this.transactions = this.fileIO.readTransactions();
-
         if (this.transactions.isEmpty()) {
             return false;
         }
@@ -334,7 +333,7 @@ public class Transactions {
         final Account user = this.fileIO.getAccountList().get(userLocation);
 
         if (user.getBalance() + addcreditTransaction.getCredit()
-        		> Account.MAX_BALANCE) {
+        > Account.MAX_BALANCE) {
             // User balance will exceed max balance
             ErrorMessages.printError("ADDCREDIT_ERROR_TYPE", "USER_BALANCE");
             return false;

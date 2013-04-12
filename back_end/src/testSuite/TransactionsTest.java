@@ -71,6 +71,11 @@ public class TransactionsTest {
     private static String addcreditFaildtf = "./tests/addcredit/addcredit.etf";
 
     /**
+     * An empty dtf
+     */
+    private static String emptydtf = "./tests/empty/empty.etf";
+
+    /**
      * A sample new User Account file name
      */
     private static String uaoSample = filePrefix + ".usr";
@@ -111,6 +116,11 @@ public class TransactionsTest {
     private Transactions addcreditTransaction;
 
     /**
+     * Instance of an empty transaction
+     */
+    private Transactions emptyTransaction;
+
+    /**
      * A sample new user accounts file
      */
     private File uaoSampleFile;
@@ -136,6 +146,9 @@ public class TransactionsTest {
         this.refundTransaction = new Transactions(refundFaildtf, uao, ato, uaoSample, atoSample);
 
         this.addcreditTransaction = new Transactions(addcreditFaildtf, uao, ato, uaoSample, atoSample);
+
+        this.emptyTransaction = new Transactions(emptydtf, uao, ato, uaoSample, atoSample);
+
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
@@ -166,7 +179,7 @@ public class TransactionsTest {
         final File backup = new File(dtf + "~");
 
         dtfFile.renameTo(backup);
-        Assert.assertFalse(this.transaction.initTransactionList());
+        Assert.assertFalse(this.emptyTransaction.initTransactionList());
         backup.renameTo(dtfFile);
     }
 
