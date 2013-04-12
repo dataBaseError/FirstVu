@@ -74,7 +74,5 @@ public class ErrorMessagesTest {
         } catch (final InvocationTargetException e) {
             Assert.fail(e.toString());
         }
-
-        constructor.setAccessible(false);
     }
 }

@@ -68,7 +68,5 @@ public class UtilityTest {
         } catch (final InvocationTargetException e) {
             Assert.fail(e.toString());
         }
-
-        constructor.setAccessible(false);
     }
 }
