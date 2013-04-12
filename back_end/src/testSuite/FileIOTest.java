@@ -158,9 +158,9 @@ public class FileIOTest {
         final File accountFile = new File(uao);
         final File accountBackup = new File(uao + "~");
 
-        accountFile.renameTo(accountBackup);
+        Assert.assertTrue(accountFile.renameTo(accountBackup));
         Assert.assertFalse(this.fileIO.readAccountFile());
-        accountBackup.renameTo(accountFile);
+        Assert.assertTrue(accountBackup.renameTo(accountFile));
     }
 
     /**
@@ -171,9 +171,9 @@ public class FileIOTest {
         final File ticketFile = new File(ato);
         final File ticketBackup = new File(ato + "~");
 
-        ticketFile.renameTo(ticketBackup);
+        Assert.assertTrue(ticketFile.renameTo(ticketBackup));
         Assert.assertFalse(this.fileIO.readTicketFile());
-        ticketBackup.renameTo(ticketFile);
+        Assert.assertTrue(ticketBackup.renameTo(ticketFile));
     }
 
     /**
@@ -184,9 +184,9 @@ public class FileIOTest {
         final File transactionsFile = new File(dtf);
         final File transactionsBackup = new File(dtf + "~");
 
-        transactionsFile.renameTo(transactionsBackup);
+        Assert.assertTrue(transactionsFile.renameTo(transactionsBackup));
         Assert.assertEquals(Collections.emptyList(), this.fileIO.readTransactions());
-        transactionsBackup.renameTo(transactionsFile);
+        Assert.assertTrue(transactionsBackup.renameTo(transactionsFile));
     }
 
     /**
@@ -198,7 +198,7 @@ public class FileIOTest {
 
         // Block the creation of the output user account file by making a
         // directory in its place
-        new File(uaoSample).mkdir();
+        Assert.assertTrue(new File(uaoSample).mkdir());
 
         Assert.assertFalse(this.fileIO.writeAccountFile());
 
@@ -214,7 +214,7 @@ public class FileIOTest {
 
         // Block the creation of the output ticket file by making a
         // directory in its place
-        new File(atoSample).mkdir();
+        Assert.assertTrue(new File(atoSample).mkdir());
 
         Assert.assertFalse(this.fileIO.writeTicketFile());
 

@@ -2,6 +2,8 @@ package testSuite;
 
 import java.io.File;
 import java.lang.reflect.Field;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
 
 import main.AuxiliaryTransaction;
 import main.EventTransaction;
@@ -178,9 +180,9 @@ public class TransactionsTest {
         final File dtfFile = new File(dtf);
         final File backup = new File(dtf + "~");
 
-        dtfFile.renameTo(backup);
+        Assert.assertTrue(dtfFile.renameTo(backup));
         Assert.assertFalse(this.emptyTransaction.initTransactionList());
-        backup.renameTo(dtfFile);
+        Assert.assertTrue(backup.renameTo(dtfFile));
     }
 
     /**
@@ -191,9 +193,9 @@ public class TransactionsTest {
         final File accountFile = new File(uao);
         final File accountBackup = new File(uao + "~");
 
-        accountFile.renameTo(accountBackup);
+        Assert.assertTrue(accountFile.renameTo(accountBackup));
         Assert.assertFalse(this.transaction.initTransactionList());
-        accountBackup.renameTo(accountFile);
+        Assert.assertTrue(accountBackup.renameTo(accountFile));
     }
 
     /**
@@ -214,7 +216,7 @@ public class TransactionsTest {
 
         // Block the creation of the output user account file by making a
         // directory in its place
-        this.uaoSampleFile.mkdir();
+        Assert.assertTrue(this.uaoSampleFile.mkdir());
 
         Assert.assertFalse(this.transaction.endSession());
 
@@ -240,9 +242,15 @@ public class TransactionsTest {
         try {
             final Field currentUser = this.transaction.getClass().getDeclaredField("currentUser");
 
-            currentUser.setAccessible(true);
+            AccessController.doPrivileged(new PrivilegedAction<Object>() {
+                @Override
+                public Object run() {
+                    currentUser.setAccessible(true);
+                    return null;
+                }
+            });
+
             Assert.assertEquals(-1, currentUser.getInt(this.transaction));
-            currentUser.setAccessible(false);
         } catch (final NoSuchFieldException e) {
             Assert.fail(e.getMessage());
         } catch (final SecurityException e) {

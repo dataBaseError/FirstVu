@@ -30,7 +30,7 @@ public class CondLoopTest {
     private static String global = tests + "global/";
 
     /**
-     * the input user accounts file
+     * The input user accounts file
      */
     private static String uao = global + "glob_account.inp";
 
@@ -50,7 +50,7 @@ public class CondLoopTest {
     private static String atoSample = global + "global.tic";
 
     /**
-     * the location of the test daily transaction files
+     * The location of the test daily transaction files for loop coverage
      */
     private static String etfs = tests + "loopcoverage/";
 
@@ -75,6 +75,21 @@ public class CondLoopTest {
     private static String twiceEtf = etfs + "twice.etf";
 
     /**
+     * The location of the test daily transaction files for condition covreage
+     */
+    private static String ifs = tests + "condcoverage/";
+
+    /**
+     * A daily transaction file that will cause the if statement to be true
+     */
+    private static String trueEtf = ifs + "true.etf";
+
+    /**
+     * A daily transaction file that will cause the if statement to be false
+     */
+    private static String falseEtf = ifs + "false.etf";
+
+    /**
      * Instance of a transaction that will never execute the loop
      */
     private Transactions transactionZero;
@@ -95,6 +110,16 @@ public class CondLoopTest {
     private Transactions transactionMany;
 
     /**
+     * Instance of a transaction that will cause the if statement to be true
+     */
+    private Transactions transactionTrue;
+
+    /**
+     * Instance of a transaction that will cause the if statement to be false
+     */
+    private Transactions transactionFalse;
+
+    /**
      * A sample new user accounts file
      */
     private File uaoSampleFile;
@@ -109,10 +134,16 @@ public class CondLoopTest {
      */
     @Before
     public void setUp() {
+
+        // Loop coverage
         this.transactionZero = new Transactions(zeroEtf, uao, ato, uaoSample, atoSample);
         this.transactionOnce = new Transactions(onceEtf, uao, ato, uaoSample, atoSample);
         this.transactionTwice = new Transactions(twiceEtf, uao, ato, uaoSample, atoSample);
         this.transactionMany = new Transactions(manyEtf, uao, ato, uaoSample, atoSample);
+
+        // Condition coverage
+        this.transactionTrue = new Transactions(trueEtf, uao, ato, uaoSample, atoSample);
+        this.transactionFalse = new Transactions(falseEtf, uao, ato, uaoSample, atoSample);
 
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
@@ -172,7 +203,9 @@ public class CondLoopTest {
      */
     @Test
     public void ifCoverageTrue() {
+        this.transactionTrue.initTransactionList();
 
+        Assert.assertEquals(0, this.transactionTrue.findNextLogout(0));
     }
 
     /**
@@ -180,6 +213,8 @@ public class CondLoopTest {
      */
     @Test
     public void ifCoverageFalse() {
+        this.transactionFalse.initTransactionList();
 
+        Assert.assertEquals(0 - 1, this.transactionFalse.findNextLogout(0));
     }
 }
