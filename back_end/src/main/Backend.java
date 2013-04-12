@@ -15,7 +15,14 @@ package main;
  * @author Joseph Heron 
  * @author Carly Marshall
  */
-public class Backend {
+public final class Backend {
+
+    /**
+     * Keep Backend's constructor private
+     */
+    private Backend() {
+
+    }
 
     /**
      * Runs the backend.

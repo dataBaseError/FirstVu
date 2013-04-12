@@ -274,6 +274,6 @@ public class FileIOTest {
         this.fileIO.readTicketFile();
         this.fileIO.removeUserTickets("sell_standard");
 
-        Assert.assertEquals(2, this.fileIO.getEventList().size());
+        Assert.assertEquals(3, this.fileIO.getEventList().size());
     }
 }

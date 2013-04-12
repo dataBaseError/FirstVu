@@ -44,10 +44,13 @@ public class CondLoopTest {
     private static String atoSample = filePrefix + ".tic";
 
     /**
-     * Instance of a transaction
+     * Instance of a transaction that will execute the loop many times
      */
     private Transactions transactionMany;
 
+    /**
+     * Instance of a transaction that will execute the loop zero times
+     */
     private Transactions transactionZero;
 
     /**
@@ -60,12 +63,12 @@ public class CondLoopTest {
      */
     private File atoSampleFile;
 
+    /**
+     * Set up the transaction files and the output files
+     */
     @Before
     public void setUp() {
         this.transactionMany = new Transactions(dtf, uao, ato, uaoSample, atoSample);
-        this.uaoSampleFile = new File(uaoSample);
-        this.atoSampleFile = new File(atoSample);
-
         this.transactionZero = new Transactions(dtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
@@ -80,6 +83,9 @@ public class CondLoopTest {
         this.atoSampleFile.delete();
     }
 
+    /**
+     * A test that runs the loop zero times
+     */
     @Test
     public void loopCoverageZero() {
 

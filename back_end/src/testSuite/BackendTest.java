@@ -1,9 +1,10 @@
 package testSuite;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.PrintStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
 
 import junitx.framework.FileAssert;
 import main.Backend;
@@ -55,21 +56,6 @@ public class BackendTest {
     private final String[] args = new String[4];
 
     /**
-     * Arguments for a failing run
-     */
-    private final String[] argsFail = new String[5];
-
-    /**
-     * Stores the actual user account file 
-     */
-    private BufferedReader accountOutput;
-
-    /**
-     * Stores the expected user account file
-     */
-    private BufferedReader accountExpected;
-
-    /**
      * Set up the AuxiliaryTransaction transaction
      */
     @Before
@@ -77,93 +63,70 @@ public class BackendTest {
         System.setOut(new PrintStream(this.outContent));
         System.setErr(new PrintStream(this.errContent));
 
-        this.argsSuccess[0] = "./tests/full_test/full.etf";
-        this.argsSuccess[1] = "./tests/global/glob_account.inp";
-        this.argsSuccess[2] = "./tests/global/glob_available_tickets.inp";
-        this.argsSuccess[3] = "./tests/output/newaccounts.out";
-        this.argsSuccess[4] = "./tests/output/newtickets.out";
+        this.argsSuccess[0] = "tests/full_test/full.etf";
+        this.argsSuccess[1] = "tests/global/glob_account.inp";
+        this.argsSuccess[2] = "tests/global/glob_available_tickets.inp";
+        this.argsSuccess[3] = "tests/output/newaccounts.out";
+        this.argsSuccess[4] = "tests/output/newtickets.out";
     }
 
+    /**
+     * Restore the stdout and stderr stream
+     */
     @After
     public void cleanUpStreams() {
-
         System.setOut(new PrintStream(stdout));
         System.setErr(new PrintStream(stderr));
     }
 
+    /**
+     * Tests what happens when the main function is executed with too few arguments
+     */
     @Test
     public void mainTooFewArguments() {
-        // Should print out
-        // ERROR: ErrorMessages.INPUTS_ERROR_TYPE
-        // ErrorMessages.INPUT_FILES_MISSING
         Backend.main(this.args);
-        // System.out.println("ERROR: " + ErrorMessages.INPUTS_ERROR_TYPE + " "
-        // + ErrorMessages.INPUT_FILES_MISSING);
         Assert.assertEquals("ERROR: " + ErrorMessages.getString("INPUTS_ERROR_TYPE") + " "
                 + ErrorMessages.getString("INPUT_FILES_MISSING") + "\n", this.outContent.toString());
     }
 
-    /*@Test
-    public void mainnInputFail() {
-    	// Should print out
-    	// ERROR: ErrorMessages.INPUTS_ERROR_TYPE ErrorMessages.INPUT_FILES_INVALID
-    	Backend.main(argsFail);
-    	assertEquals("ERROR: " + ErrorMessages.DAILY_TRANSACTION_FILE + " " 
-    			+ ErrorMessages.INPUT_ERROR_TYPE + "\n", outContent.toString());
-    }*/
-
+    /**
+     * Tests a successful execution
+     */
     @Test
     public void mainInputSuccess() {
-
-        // TODO make a dtf that contains each transaction to allow for full
-        // coverage.
         Backend.main(this.argsSuccess);
 
-        FileAssert.assertEquals(new File(this.argsSuccess[3]), new File("./tests/full_test/full.uao"));
-        /*try {
-            this.accountOutput = new BufferedReader(
-                    new FileReader();
-            this.accountExpected = new BufferedReader(
-                    new FileReader("./tests/full_test/full.uao"));
+        FileAssert.assertEquals(new File(this.argsSuccess[3]), new File("tests/full_test/full.uao"));
+        FileAssert.assertEquals(new File(this.argsSuccess[4]), new File("tests/full_test/full.ato"));
+    }
 
-            String actual = "";
-            String expected = "";
+    /**
+     * Test {@link Backend}'s private constructor  
+     */
+    @Test
+    public void constructor() {
+        Constructor<Backend> constructor = null;
 
-            do {
-                actual = this.accountOutput.readLine();
-                expected = this.accountExpected.readLine();
+        try {
+            constructor = Backend.class.getDeclaredConstructor();
+        } catch (final NoSuchMethodException e) {
+            Assert.fail(e.toString());
+        } catch (final SecurityException e) {
+            Assert.fail(e.toString());
+        }
 
-                assertEquals(actual, expected);
-            } while (actual != null && expected != null);
+        constructor.setAccessible(true);
 
-            this.accountOutput.close();
-            this.accountExpected.close();
-
-        } catch (final IOException e) {
-            fail(e.getMessage());
-        }*/
-
-        FileAssert.assertEquals(new File(this.argsSuccess[4]), new File("./tests/full_test/full.ato"));
-
-        /*try {
-            final BufferedReader ticketOutput = new BufferedReader(
-                    new FileReader(this.argsSuccess[4]));
-            final BufferedReader ticketExpected = new BufferedReader(
-                    new FileReader("./tests/full_test/full.ato"));
-            String actual = "";
-            String expected = "";
-
-            do {
-                actual = ticketOutput.readLine();
-                expected = ticketExpected.readLine();
-
-                assertEquals(actual, expected);
-            } while (actual != null && expected != null);
-
-            ticketOutput.close();
-            ticketExpected.close();
-        } catch (final IOException e) {
-            fail(e.getMessage());
-        }*/
+        try {
+            Assert.assertNotNull(constructor.newInstance());
+        } catch (final InstantiationException e) {
+            Assert.fail(e.toString());
+        } catch (final IllegalAccessException e) {
+            Assert.fail(e.toString());
+        } catch (final IllegalArgumentException e) {
+            Assert.fail(e.toString());
+        } catch (final InvocationTargetException e) {
+            Assert.fail(e.toString());
+        }
     }
 }
