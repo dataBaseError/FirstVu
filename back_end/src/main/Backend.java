@@ -53,8 +53,8 @@ public final class Backend {
                 for (int j = 0; j < activityLog.getTransactions().size(); j++) {
                     if (previousLogout > 0) {
                         j = previousLogout;
-
                     }
+                    
                     activityLog.login(nextLogout);
 
                     for (int i = previousLogout; i <= nextLogout; i++) {
