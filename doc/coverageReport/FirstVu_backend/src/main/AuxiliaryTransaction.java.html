@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>AuxiliaryTransaction.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">main</a> &gt; <span class="el_source">AuxiliaryTransaction.java</span></div><h1>AuxiliaryTransaction.java</h1><pre class="source lang-java linenums">package main;
+/**
+ * A class to hold information for a create, delete, addcredit, or end
+ * transaction.
+ *
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ *
+ */
+public class AuxiliaryTransaction extends Entry {
+
+    /**
+     * A symbol for a logout entry in the Daily Transaction File
+     */
+    public static final int LOGOUT = 0;
+
+    /**
+     * A symbol for a create entry in the Daily Transaction File
+     */
+    public static final int CREATE = 1;
+
+    /**
+     * A symbol for a delete entry in the Daily Transaction File
+     */
+    public static final int DELETE = 2;
+
+    /**
+     * A symbol for an addcredit entry in the Daily Transaction File
+     */
+    public static final int ADDCREDIT = 6;
+
+    /**
+     * The username of the affected account during the transaction
+     */
+    private String username;
+
+    /**
+     * The credit amount involved during a transaction
+     */
+    private double credit;
+
+    /**
+     * The account type of the account being manipulated during a transaction
+     */
+    private String accountType;
+
+    /**
+     * Constructor for creating a new transaction.
+     * 
+     * @param type The transaction type.
+     * @param username The username used during transaction.
+     * @param credit Amount of credit used during transaction.
+     * @param accountType Type of account.
+     */
+    public AuxiliaryTransaction(final int type, final String username,
+    		final double credit, final String accountType) {
+<span class="fc" id="L59">        super(type);</span>
+<span class="fc" id="L60">        this.username = username;</span>
+<span class="fc" id="L61">        this.credit = credit;</span>
+<span class="fc" id="L62">        this.accountType = accountType;</span>
+<span class="fc" id="L63">    }</span>
+
+    /**
+     * Accessor method for getting the username.
+     * 
+     * @return Username used for transaction.
+     */
+    public String getUsername() {
+<span class="fc" id="L71">        return this.username;</span>
+    }
+
+    /**
+     * Accessor method for getting the credit amount associated with the
+     * transaction.
+     * 
+     * @return Amount of credit used for transaction.
+     */
+    public double getCredit() {
+<span class="fc" id="L81">        return this.credit;</span>
+    }
+
+    /**
+     * Accessor method for getting the user account type.
+     * 
+     * @return Type of the account.
+     */
+    public String getAccountType() {
+<span class="fc" id="L90">        return this.accountType;</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

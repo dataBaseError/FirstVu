@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>ErrorMessages.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">main</a> &gt; <span class="el_source">ErrorMessages.java</span></div><h1>ErrorMessages.java</h1><pre class="source lang-java linenums">package main;
+
+import java.util.MissingResourceException;
+import java.util.ResourceBundle;
+
+/**
+ * Used to print error messages to the console's output
+ *
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+public final class ErrorMessages {
+
+    /**
+     * Keep ErrorMessages's constructor private
+     */
+<span class="fc" id="L19">    private ErrorMessages() {</span>
+
+<span class="fc" id="L21">    }</span>
+
+    /**
+     * The location of all of the error string
+     */
+<span class="fc" id="L26">    private static final ResourceBundle bundle = ResourceBundle.getBundle(&quot;main.messages&quot;);</span>
+
+    /**
+     * Create an error message given the type of message and the error message.
+     *
+     * @param type the type of error message
+     * @param message the error message
+     */
+    public static void printError(final String type, final String message) {
+<span class="fc" id="L35">        System.out.printf(&quot;ERROR: %s %s%n&quot;, getString(type), getString(message));</span>
+<span class="fc" id="L36">    }</span>
+
+    /**
+     * Get an error string
+     * 
+     * @param key a key for an error string
+     * @return the string corresponding to the key
+     */
+    public static String getString(final String key) {
+        try {
+<span class="fc" id="L46">            return bundle.getString(key);</span>
+<span class="fc" id="L47">        } catch (final MissingResourceException e) {</span>
+<span class="fc" id="L48">            return '!' + key + '!';</span>
+        }
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

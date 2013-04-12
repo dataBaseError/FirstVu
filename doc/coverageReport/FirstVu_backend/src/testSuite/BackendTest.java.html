@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>BackendTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">testSuite</a> &gt; <span class="el_source">BackendTest.java</span></div><h1>BackendTest.java</h1><pre class="source lang-java linenums">package testSuite;
+
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.PrintStream;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+import junitx.framework.FileAssert;
+import main.Backend;
+import main.ErrorMessages;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Tests the {@link Backend} class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+<span class="fc" id="L26">public class BackendTest {</span>
+
+    /**
+     * Backs up the default standard output
+     */
+<span class="fc" id="L31">    private static final PrintStream stdout = System.out;</span>
+
+    /**
+     * Backs up the default standard error output
+     */
+<span class="fc" id="L36">    private static final PrintStream stderr = System.err;</span>
+
+    /**
+     * The content of the redirected output
+     */
+<span class="fc" id="L41">    private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();</span>
+
+    /**
+     * The content of the redirected error output
+     */
+<span class="fc" id="L46">    private final ByteArrayOutputStream errContent = new ByteArrayOutputStream();</span>
+
+    /**
+     * Arguments for a successful run
+     */
+<span class="fc" id="L51">    private final String[] argsSuccess = new String[5];</span>
+
+    /**
+     * Normal arguments for a typical run
+     */
+<span class="fc" id="L56">    private final String[] args = new String[4];</span>
+
+    /**
+     * Set up the AuxiliaryTransaction transaction
+     */
+    @Before
+    public void setUp() {
+<span class="fc" id="L63">        System.setOut(new PrintStream(this.outContent));</span>
+<span class="fc" id="L64">        System.setErr(new PrintStream(this.errContent));</span>
+
+<span class="fc" id="L66">        this.argsSuccess[0] = &quot;tests/full_test/full.etf&quot;;</span>
+<span class="fc" id="L67">        this.argsSuccess[1] = &quot;tests/global/glob_account.inp&quot;;</span>
+<span class="fc" id="L68">        this.argsSuccess[2] = &quot;tests/global/glob_available_tickets.inp&quot;;</span>
+<span class="fc" id="L69">        this.argsSuccess[3] = &quot;tests/output/newaccounts.out&quot;;</span>
+<span class="fc" id="L70">        this.argsSuccess[4] = &quot;tests/output/newtickets.out&quot;;</span>
+<span class="fc" id="L71">    }</span>
+
+    /**
+     * Restore the stdout and stderr stream
+     */
+    @After
+    public void cleanUpStreams() {
+<span class="fc" id="L78">        System.setOut(new PrintStream(stdout));</span>
+<span class="fc" id="L79">        System.setErr(new PrintStream(stderr));</span>
+<span class="fc" id="L80">    }</span>
+
+    /**
+     * Tests what happens when the main function is executed with too few arguments
+     */
+    @Test
+    public void mainTooFewArguments() {
+<span class="fc" id="L87">        Backend.main(this.args);</span>
+<span class="fc" id="L88">        Assert.assertEquals(&quot;ERROR: &quot; + ErrorMessages.getString(&quot;INPUTS_ERROR_TYPE&quot;) + &quot; &quot;</span>
+<span class="fc" id="L89">                + ErrorMessages.getString(&quot;INPUT_FILES_MISSING&quot;) + &quot;\n&quot;, this.outContent.toString());</span>
+<span class="fc" id="L90">    }</span>
+
+    /**
+     * Tests a successful execution
+     */
+    @Test
+    public void mainInputSuccess() {
+<span class="fc" id="L97">        Backend.main(this.argsSuccess);</span>
+
+<span class="fc" id="L99">        FileAssert.assertEquals(new File(this.argsSuccess[3]), new File(&quot;tests/full_test/full.uao&quot;));</span>
+<span class="fc" id="L100">        FileAssert.assertEquals(new File(this.argsSuccess[4]), new File(&quot;tests/full_test/full.ato&quot;));</span>
+<span class="fc" id="L101">    }</span>
+
+    /**
+     * Test {@link Backend}'s private constructor  
+     */
+    @Test
+    public void constructor() {
+<span class="fc" id="L108">        Constructor&lt;Backend&gt; constructor = null;</span>
+
+        try {
+<span class="fc" id="L111">            constructor = Backend.class.getDeclaredConstructor();</span>
+<span class="pc" id="L112">        } catch (final NoSuchMethodException e) {</span>
+<span class="nc" id="L113">            Assert.fail(e.toString());</span>
+<span class="nc" id="L114">        } catch (final SecurityException e) {</span>
+<span class="nc" id="L115">            Assert.fail(e.toString());</span>
+        }
+
+<span class="fc" id="L118">        constructor.setAccessible(true);</span>
+
+        try {
+<span class="fc" id="L121">            Assert.assertNotNull(constructor.newInstance());</span>
+<span class="pc" id="L122">        } catch (final InstantiationException e) {</span>
+<span class="nc" id="L123">            Assert.fail(e.toString());</span>
+<span class="nc" id="L124">        } catch (final IllegalAccessException e) {</span>
+<span class="nc" id="L125">            Assert.fail(e.toString());</span>
+<span class="nc" id="L126">        } catch (final IllegalArgumentException e) {</span>
+<span class="nc" id="L127">            Assert.fail(e.toString());</span>
+<span class="nc" id="L128">        } catch (final InvocationTargetException e) {</span>
+<span class="nc" id="L129">            Assert.fail(e.toString());</span>
+        }
+<span class="fc" id="L131">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

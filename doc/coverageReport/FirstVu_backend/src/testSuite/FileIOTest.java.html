@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>FileIOTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">testSuite</a> &gt; <span class="el_source">FileIOTest.java</span></div><h1>FileIOTest.java</h1><pre class="source lang-java linenums">package testSuite;
+
+import java.io.File;
+import java.util.Collections;
+
+import junitx.framework.FileAssert;
+import main.FileIO;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Tests the FileIO class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron 
+ * @author Carly Marshall
+ */
+<span class="fc" id="L22">public class FileIOTest {</span>
+
+    /** 
+     * The location of the input files
+     */
+<span class="fc" id="L27">    private static String filePrefix = &quot;./tests/full_test/full&quot;;</span>
+
+    /**
+     * The input Daily Transaction File.
+     * To ensure proper coverage, the daily transaction file for testing must contain a variety of transactions.
+     * 
+     * It's good enough if it contains a refund, buy and logout transaction.
+     */
+<span class="fc" id="L35">    private static String dtf = filePrefix + &quot;.etf&quot;;</span>
+
+    /** 
+     * The input ticket file
+     */
+<span class="fc" id="L40">    private static String ato = filePrefix + &quot;.ato&quot;;</span>
+
+    /**
+     * the input user accounts file
+     */
+<span class="fc" id="L45">    private static String uao = filePrefix + &quot;.uao&quot;;</span>
+
+    /**
+     * A sample new User Account file name
+     */
+<span class="fc" id="L50">    private static String uaoSample = filePrefix + &quot;.usr&quot;;</span>
+
+    /**
+     * A sample new Tickets file name
+     */
+<span class="fc" id="L55">    private static String atoSample = filePrefix + &quot;.tic&quot;;</span>
+
+    /**
+     * Instance of the FileIO class
+     */
+    private FileIO fileIO;
+
+    /**
+     * A sample new user accounts file
+     */
+    private File uaoSampleFile;
+
+    /**
+     * A sample new ticket file
+     */
+    private File atoSampleFile;
+
+    /**
+     * Setup a test case
+     */
+    @Before
+    public void setUp() {
+<span class="fc" id="L77">        this.fileIO = new FileIO(dtf, uao, ato, uaoSample, atoSample);</span>
+<span class="fc" id="L78">        this.uaoSampleFile = new File(uaoSample);</span>
+<span class="fc" id="L79">        this.atoSampleFile = new File(atoSample);</span>
+<span class="fc" id="L80">    }</span>
+
+    /**
+     * Delete the files created by {@link FileIO}
+     */
+    @After
+    public void tearDown() {
+<span class="fc" id="L87">        this.uaoSampleFile.delete();</span>
+<span class="fc" id="L88">        this.atoSampleFile.delete();</span>
+<span class="fc" id="L89">    }</span>
+
+    /**
+     * Cover the {@link FileIO#getAccountList()}
+     */
+    @Test
+    public void getAccountList() {
+<span class="fc" id="L96">        Assert.assertTrue(this.fileIO.getAccountList().isEmpty());</span>
+<span class="fc" id="L97">    }</span>
+
+    /**
+     * Cover the {@link FileIO#getEventList()}
+     */
+    @Test
+    public void getEventList() {
+<span class="fc" id="L104">        Assert.assertTrue(this.fileIO.getEventList().isEmpty());</span>
+<span class="fc" id="L105">    }</span>
+
+    /**
+     * Test to see if the account file can be read
+     */
+    @Test
+    public void readAccountFile() {
+<span class="fc" id="L112">        Assert.assertTrue(this.fileIO.readAccountFile());</span>
+<span class="fc" id="L113">    }</span>
+
+    /**
+     * Test to see if the ticket file can be read
+     */
+    @Test
+    public void readTicketFile() {
+<span class="fc" id="L120">        Assert.assertTrue(this.fileIO.readTicketFile());</span>
+<span class="fc" id="L121">    }</span>
+
+    /**
+     * Test to see if transactions can be read
+     */
+    @Test
+    public void readTransactions() {
+<span class="fc" id="L128">        Assert.assertNotEquals(Collections.emptyList(), this.fileIO.readTransactions());</span>
+<span class="fc" id="L129">    }</span>
+
+    /**
+     * See if the new user account file can be written to 
+     */
+    @Test
+    public void writeAccountFile() {
+<span class="fc" id="L136">        this.fileIO.readAccountFile();</span>
+<span class="fc" id="L137">        this.fileIO.writeAccountFile();</span>
+
+<span class="fc" id="L139">        FileAssert.assertEquals(this.uaoSampleFile, new File(uao));</span>
+<span class="fc" id="L140">    }</span>
+
+    /**
+     * See if the new ticket file can be written to 
+     */
+    @Test
+    public void writeTicketFile() {
+<span class="fc" id="L147">        this.fileIO.readTicketFile();</span>
+<span class="fc" id="L148">        this.fileIO.writeTicketFile();</span>
+
+<span class="fc" id="L150">        FileAssert.assertEquals(this.atoSampleFile, new File(ato));</span>
+<span class="fc" id="L151">    }</span>
+
+    /**
+     * See if the account file can't be read if it doesn't exit
+     */
+    @Test
+    public void failReadAccountFile() {
+<span class="fc" id="L158">        final File accountFile = new File(uao);</span>
+<span class="fc" id="L159">        final File accountBackup = new File(uao + &quot;~&quot;);</span>
+
+<span class="fc" id="L161">        Assert.assertTrue(accountFile.renameTo(accountBackup));</span>
+<span class="fc" id="L162">        Assert.assertFalse(this.fileIO.readAccountFile());</span>
+<span class="fc" id="L163">        Assert.assertTrue(accountBackup.renameTo(accountFile));</span>
+<span class="fc" id="L164">    }</span>
+
+    /**
+     * See if the account file can't be read if it doesn't exit  
+     */
+    @Test
+    public void failReadTicketFile() {
+<span class="fc" id="L171">        final File ticketFile = new File(ato);</span>
+<span class="fc" id="L172">        final File ticketBackup = new File(ato + &quot;~&quot;);</span>
+
+<span class="fc" id="L174">        Assert.assertTrue(ticketFile.renameTo(ticketBackup));</span>
+<span class="fc" id="L175">        Assert.assertFalse(this.fileIO.readTicketFile());</span>
+<span class="fc" id="L176">        Assert.assertTrue(ticketBackup.renameTo(ticketFile));</span>
+<span class="fc" id="L177">    }</span>
+
+    /**
+     * See if the daily transaction file can't be read if the file does not exist
+     */
+    @Test
+    public void failReadTransactions() {
+<span class="fc" id="L184">        final File transactionsFile = new File(dtf);</span>
+<span class="fc" id="L185">        final File transactionsBackup = new File(dtf + &quot;~&quot;);</span>
+
+<span class="fc" id="L187">        Assert.assertTrue(transactionsFile.renameTo(transactionsBackup));</span>
+<span class="fc" id="L188">        Assert.assertEquals(Collections.emptyList(), this.fileIO.readTransactions());</span>
+<span class="fc" id="L189">        Assert.assertTrue(transactionsBackup.renameTo(transactionsFile));</span>
+<span class="fc" id="L190">    }</span>
+
+    /**
+     * {@link FileIO#writeAccountFile} can fail if the path to the new user accounts file is a directory.
+     */
+    @Test
+    public void failWriteAccountFile() {
+<span class="fc" id="L197">        this.fileIO.readAccountFile();</span>
+
+        // Block the creation of the output user account file by making a
+        // directory in its place
+<span class="fc" id="L201">        Assert.assertTrue(new File(uaoSample).mkdir());</span>
+
+<span class="fc" id="L203">        Assert.assertFalse(this.fileIO.writeAccountFile());</span>
+
+        // the dummy directory is eventually deleted in tearDown.
+<span class="fc" id="L206">    }</span>
+
+    /**
+     * {@link FileIO#writeTicketFile} can fail if the path to the new ticket file is a directory.
+     */
+    @Test
+    public void failWriteTicketFile() {
+<span class="fc" id="L213">        this.fileIO.readTicketFile();</span>
+
+        // Block the creation of the output ticket file by making a
+        // directory in its place
+<span class="fc" id="L217">        Assert.assertTrue(new File(atoSample).mkdir());</span>
+
+<span class="fc" id="L219">        Assert.assertFalse(this.fileIO.writeTicketFile());</span>
+
+        // the dummy directory is eventually deleted in tearDown.
+<span class="fc" id="L222">    }</span>
+
+    /**
+     * Test to see if a user can be found from the user account file
+     */
+    @Test
+    public void findUser() {
+<span class="fc" id="L229">        this.fileIO.readAccountFile();</span>
+<span class="fc" id="L230">        Assert.assertEquals(1, this.fileIO.findUser(&quot;full_standard&quot;));</span>
+<span class="fc" id="L231">    }</span>
+
+    /**
+     * Test to see what happens when a user does not exist in the user accounts file
+     */
+    @Test
+    public void failFindUser() {
+<span class="fc" id="L238">        this.fileIO.readAccountFile();</span>
+<span class="fc" id="L239">        Assert.assertEquals(-1, this.fileIO.findUser(&quot;Kim Jong il&quot;));</span>
+<span class="fc" id="L240">    }</span>
+
+    /**
+     * Test to see if an event can be found from the ticket file
+     */
+    @Test
+    public void findEvent() {
+<span class="fc" id="L247">        this.fileIO.readTicketFile();</span>
+<span class="fc" id="L248">        Assert.assertEquals(1, this.fileIO.findEvent(&quot;JB_Cubed&quot;, &quot;sell_standard&quot;));</span>
+<span class="fc" id="L249">    }</span>
+
+    /**
+     * Test to see what happens if an event can't be found from the ticket file
+     */
+    @Test
+    public void failFindEvent() {
+<span class="fc" id="L256">        this.fileIO.readTicketFile();</span>
+<span class="fc" id="L257">        Assert.assertEquals(-1, this.fileIO.findEvent(&quot;Aaron's Party&quot;, &quot;Kim Jong il&quot;));</span>
+<span class="fc" id="L258">    }</span>
+
+    /**
+     * Test to see what happens if a seller can't be found for an existing event
+     */
+    @Test
+    public void failFindSeller() {
+<span class="fc" id="L265">        this.fileIO.readTicketFile();</span>
+<span class="fc" id="L266">        Assert.assertEquals(-1, this.fileIO.findEvent(&quot;Captain_Canary&quot;, &quot;Kim Jong il&quot;));</span>
+<span class="fc" id="L267">    }</span>
+
+    /**
+     * Test to see if all the tickets sold by a user can be removed.
+     */
+    @Test
+    public void removeUserTickets() {
+<span class="fc" id="L274">        this.fileIO.readTicketFile();</span>
+<span class="fc" id="L275">        this.fileIO.removeUserTickets(&quot;sell_standard&quot;);</span>
+
+<span class="fc" id="L277">        Assert.assertEquals(3, this.fileIO.getEventList().size());</span>
+<span class="fc" id="L278">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

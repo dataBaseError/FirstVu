@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>UtilityTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">testSuite</a> &gt; <span class="el_source">UtilityTest.java</span></div><h1>UtilityTest.java</h1><pre class="source lang-java linenums">package testSuite;
+
+import java.lang.reflect.Constructor;
+import java.lang.reflect.InvocationTargetException;
+
+import main.Utility;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Tests the Utility class which contains only static methods
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+<span class="fc" id="L20">public class UtilityTest {</span>
+
+    /**
+     * The expected line
+     */
+    private String line;
+
+    /** 
+     * Set up the expected line
+     */
+    @Before
+    public void setUp() {
+<span class="fc" id="L32">        this.line = &quot;0000000000&quot;;</span>
+<span class="fc" id="L33">    }</span>
+
+    /**
+     * Tests the creation of a line of characters
+     */
+    @Test
+    public void createLine() {
+<span class="fc" id="L40">        Assert.assertEquals(this.line, Utility.createLine('0', 10));</span>
+<span class="fc" id="L41">    }</span>
+
+    /**
+     * Test {@link Utility}'s private constructor  
+     */
+    @Test
+    public void constructor() {
+<span class="fc" id="L48">        Constructor&lt;Utility&gt; constructor = null;</span>
+
+        try {
+<span class="fc" id="L51">            constructor = Utility.class.getDeclaredConstructor();</span>
+<span class="pc" id="L52">        } catch (final NoSuchMethodException e) {</span>
+<span class="nc" id="L53">            Assert.fail(e.toString());</span>
+<span class="nc" id="L54">        } catch (final SecurityException e) {</span>
+<span class="nc" id="L55">            Assert.fail(e.toString());</span>
+        }
+
+<span class="fc" id="L58">        constructor.setAccessible(true);</span>
+
+        try {
+<span class="fc" id="L61">            Assert.assertNotNull(constructor.newInstance());</span>
+<span class="pc" id="L62">        } catch (final InstantiationException e) {</span>
+<span class="nc" id="L63">            Assert.fail(e.toString());</span>
+<span class="nc" id="L64">        } catch (final IllegalAccessException e) {</span>
+<span class="nc" id="L65">            Assert.fail(e.toString());</span>
+<span class="nc" id="L66">        } catch (final IllegalArgumentException e) {</span>
+<span class="nc" id="L67">            Assert.fail(e.toString());</span>
+<span class="nc" id="L68">        } catch (final InvocationTargetException e) {</span>
+<span class="nc" id="L69">            Assert.fail(e.toString());</span>
+        }
+<span class="fc" id="L71">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Account.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">main</a> &gt; <span class="el_source">Account.java</span></div><h1>Account.java</h1><pre class="source lang-java linenums">package main;
+
+/**
+* This class is responsible for setting the initial conditions for the account (type, balance, username)
+* and is responsible for changing any of these values
+* 
+* @author Ryan Crawford
+* @author Khalil Fazal
+* @author Joseph Heron
+* @author Carly Marshall
+*/
+
+public class Account {
+
+    /**
+     * The account type for administrative users
+     */
+    public static final String ADMIN = &quot;AA&quot;;
+
+    /**
+     * The account type for full standard users
+     */
+    public static final String FULL = &quot;FS&quot;;
+
+    /**
+     * The account type for sell standard users
+     */
+    public static final String SELL = &quot;SS&quot;;
+
+    /**
+     * The account type for buy standard users
+     */
+    public static final String BUY = &quot;BS&quot;;
+
+    /**
+     * The maximum length of a username's length
+     */
+    public static final int MAX_USERNAME_LENGTH = 15;
+
+    /**
+     * The maximum length of a balance if represented as a string
+     */
+    public static final int MAX_BALANCE_LENGTH = 6;
+
+    /**
+     * The maximum balance a user can have
+     */
+    public static final double MAX_BALANCE = 999999.99;
+
+    /**
+     * The current account's username
+     */
+    private final String username;
+
+    /**
+     * The current account's type
+     */
+    private final String type;
+
+    /**
+     * The current account's balance
+     */
+    private double balance;
+
+    /**
+     * Account constructor to set the username, type and balance for the account.
+     * 
+     * @param username the account's username
+     * @param type the account's type
+     * @param balance the account's balance
+     */
+<span class="fc" id="L72">    public Account(final String username, final String type, final double balance) {</span>
+<span class="fc" id="L73">        this.type = type;</span>
+<span class="fc" id="L74">        this.username = username;</span>
+<span class="fc" id="L75">        this.balance = balance;</span>
+<span class="fc" id="L76">    }</span>
+
+    /**
+     * This accessor method will return the type of the account
+     * 
+     * @return type
+     */
+    public String getType() {
+<span class="fc" id="L84">        return this.type;</span>
+    }
+
+    /**
+     * This accessor method will return the available balance for the account
+     * 
+     * @return balance 
+     */
+    public double getBalance() {
+<span class="fc" id="L93">        return this.balance;</span>
+    }
+
+    /**
+     * Increase the balance by the given amount.
+     * 
+     * @param balance The amount to increase the user's balance by.
+     */
+    public void increaseBalance(final double balance) {
+<span class="fc" id="L102">        this.balance += balance;</span>
+<span class="fc" id="L103">    }</span>
+
+    /**
+     * Decrease the balance by the given amount.
+     * 
+     * @param balance The amount to decrease the user's balance by.
+     */
+    public void decreaseBalance(final double balance) {
+<span class="fc" id="L111">        this.balance -= balance;</span>
+<span class="fc" id="L112">    }</span>
+
+    /**
+     * This accessor method will retrieve the username for the account
+     * 
+     * @return username
+     */
+    public String getUsername() {
+<span class="fc" id="L120">        return this.username;</span>
+    }
+
+    /**
+     * Get the account information as a line of the User Accounts file. This
+     * will be used to store the update account into the new accounts file.
+     *  
+     * @return The account's information formatted for the User Accounts file.
+     */
+    public String getAccountEntry() {
+<span class="fc" id="L130">        return this.username + Utility.createLine(' ', MAX_USERNAME_LENGTH -</span>
+<span class="fc" id="L131">                this.username.length()) + &quot; &quot; + this.type + &quot; &quot;</span>
+<span class="fc" id="L132">                + String.format(&quot;%09.2f&quot;, this.balance);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

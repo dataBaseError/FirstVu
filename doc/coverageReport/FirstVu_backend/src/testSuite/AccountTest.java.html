@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>AccountTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">testSuite</a> &gt; <span class="el_source">AccountTest.java</span></div><h1>AccountTest.java</h1><pre class="source lang-java linenums">package testSuite;
+
+import main.Account;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Tests the functionality of the Account class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+<span class="fc" id="L17">public class AccountTest {</span>
+
+    /**
+     * A sample account that will be tested
+     */
+    private Account adminAccount;
+
+    /**
+     * Set up the test account
+     */
+    @Before
+    public void setUp() {
+<span class="fc" id="L29">        this.adminAccount = new Account(&quot;test&quot;, Account.ADMIN, 1.00);</span>
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * Tests the account's type
+     */
+    @Test
+    public void getType() {
+<span class="fc" id="L37">        Assert.assertEquals(Account.ADMIN, this.adminAccount.getType());</span>
+<span class="fc" id="L38">    }</span>
+
+    /**
+     * Tests the account's balance
+     */
+    @Test
+    public void getBalance() {
+<span class="fc" id="L45">        Assert.assertEquals(1.00, this.adminAccount.getBalance(), 0.01);</span>
+<span class="fc" id="L46">    }</span>
+
+    /** 
+     * Tests the way the account's balance increases
+     */
+    @Test
+    public void increaseBalance() {
+<span class="fc" id="L53">        this.adminAccount.increaseBalance(1.0);</span>
+
+<span class="fc" id="L55">        Assert.assertEquals(2.00, this.adminAccount.getBalance(), 0.01);</span>
+<span class="fc" id="L56">    }</span>
+
+    /**
+     * Test the way the account's balance decreases
+     */
+    @Test
+    public void decreaseBalance() {
+<span class="fc" id="L63">        this.adminAccount.decreaseBalance(1.0);</span>
+
+<span class="fc" id="L65">        Assert.assertEquals(0.00, this.adminAccount.getBalance(), 0.01);</span>
+<span class="fc" id="L66">    }</span>
+
+    /**
+     * Tests the account's username
+     */
+    @Test
+    public void getUsername() {
+<span class="fc" id="L73">        Assert.assertEquals(&quot;test&quot;, this.adminAccount.getUsername());</span>
+<span class="fc" id="L74">    }</span>
+
+    /**
+     * Tests the format of the account's entry in the User Accounts File
+     */
+    @Test
+    public void getAccountEntry() {
+<span class="fc" id="L81">        Assert.assertEquals(&quot;test            AA 000001.00&quot;, this.adminAccount.getAccountEntry());</span>
+<span class="fc" id="L82">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

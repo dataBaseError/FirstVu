@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>RefundTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">testSuite</a> &gt; <span class="el_source">RefundTest.java</span></div><h1>RefundTest.java</h1><pre class="source lang-java linenums">package testSuite;
+
+import main.Refund;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Tests the functionality of how refunds are handled
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+<span class="fc" id="L17">public class RefundTest {</span>
+
+    /**
+     * A sample refund transaction which will be tested
+     */
+    private Refund refund;
+
+    /**
+     * Set up a test refund transaction
+     */
+    @Before
+    public void setUp() {
+<span class="fc" id="L29">        this.refund = new Refund(Refund.REFUND, &quot;buyer&quot;, &quot;seller&quot;, 1.00);</span>
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * Tests the debtor of a refund
+     */
+    @Test
+    public void getBuyName() {
+<span class="fc" id="L37">        Assert.assertEquals(&quot;buyer&quot;, this.refund.getBuyName());</span>
+<span class="fc" id="L38">    }</span>
+
+    /**
+     * Tests the creditor of a refund
+     */
+    @Test
+    public void getSellName() {
+<span class="fc" id="L45">        Assert.assertEquals(&quot;seller&quot;, this.refund.getSellName());</span>
+<span class="fc" id="L46">    }</span>
+
+    /** 
+     * Tests the amount refunded
+     */
+    @Test
+    public void getCredit() {
+<span class="fc" id="L53">        Assert.assertEquals(1.00, this.refund.getCredit(), 0.01);</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * Tests the transaction type
+     */
+    @Test
+    public void getTransactionType() {
+<span class="fc" id="L61">        Assert.assertEquals(Refund.REFUND, this.refund.getTransactionType());</span>
+<span class="fc" id="L62">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>EventTransactionTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">testSuite</a> &gt; <span class="el_source">EventTransactionTest.java</span></div><h1>EventTransactionTest.java</h1><pre class="source lang-java linenums">package testSuite;
+
+import main.EventTransaction;
+
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Tests the {@link EventTransaction} class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+<span class="fc" id="L17">public class EventTransactionTest {</span>
+
+    /**
+     * A test event transaction to test with
+     */
+    private EventTransaction transactionTest;
+
+    /**
+     * Set up the AuxiliaryTransaction transaction
+     */
+    @Before
+    public void setUp() {
+<span class="fc" id="L29">        this.transactionTest = new EventTransaction(EventTransaction.BUY, &quot;event&quot;, &quot;seller&quot;, 1.00, 1);</span>
+<span class="fc" id="L30">    }</span>
+
+    /**
+     * Tests to see if the username of the user who is selling a ticket is accessible
+     */
+    @Test
+    public void getSellName() {
+<span class="fc" id="L37">        Assert.assertEquals(&quot;seller&quot;, this.transactionTest.getSellName());</span>
+<span class="fc" id="L38">    }</span>
+
+    /**
+     * Tests to see if the event name of the event involved in the transaction is accessible
+     */
+    @Test
+    public void getEventName() {
+<span class="fc" id="L45">        Assert.assertEquals(&quot;event&quot;, this.transactionTest.getEventName());</span>
+<span class="fc" id="L46">    }</span>
+
+    /**
+     * Tests to see if the price of the event involved in the transaction is accessible
+     */
+    @Test
+    public void getPrice() {
+<span class="fc" id="L53">        Assert.assertEquals(1.00, this.transactionTest.getPrice(), 0.01);</span>
+<span class="fc" id="L54">    }</span>
+
+    /**
+     * Tests to see if the amount of tickets being sold for an event by a seller is accessible
+     */
+    @Test
+    public void getNumTickets() {
+<span class="fc" id="L61">        Assert.assertEquals(1, this.transactionTest.getNumTickets());</span>
+<span class="fc" id="L62">    }</span>
+
+    /**
+     * Tests to see if the entry type is valid
+     */
+    @Test
+    public void getTransactionType() {
+<span class="fc" id="L69">        Assert.assertEquals(EventTransaction.BUY, this.transactionTest.getTransactionType());</span>
+<span class="fc" id="L70">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

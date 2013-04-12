@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>Ticket.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">main</a> &gt; <span class="el_source">Ticket.java</span></div><h1>Ticket.java</h1><pre class="source lang-java linenums">package main;
+/**
+ * Class for holding information involving tickets for sale in the program. 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+public class Ticket {
+
+    /**
+     * The name of the event the ticket is for
+     */
+    private final String event;
+
+    /**
+     * The username of the seller of the ticket
+     */
+    private final String username;
+
+    /**
+     * The cost of each ticket
+     */
+    private final double cost;
+
+    /**
+     * The number of tickets being sold
+     */
+    private int ticketNumber;
+
+    /**
+     * The maximum number of characters in each event's name
+     */
+    public static final int MAX_EVENT_LENGTH = 19;
+
+    /**
+     * The maximum length of the number of tickets that can be sold if represented as a string
+     */
+    public static final int MAX_TICKET_LENGTH = 3;
+
+    /**
+     * Constructor for making a ticket listing for an event.
+     * 
+     * @param event The name of the event.
+     * @param username The username of the seller.
+     * @param ticketNumber The number of tickets available.
+     * @param cost The cost per ticket.
+     */
+<span class="fc" id="L49">    public Ticket(final String event, final String username,</span>
+    		final int ticketNumber, final double cost) {
+<span class="fc" id="L51">        this.event = event;</span>
+<span class="fc" id="L52">        this.username = username;</span>
+<span class="fc" id="L53">        this.ticketNumber = ticketNumber;</span>
+<span class="fc" id="L54">        this.cost = cost;</span>
+<span class="fc" id="L55">    }</span>
+
+    /**
+     * Accessor method for getting the event name.
+     * 
+     * @return The name of the event.
+     */
+    public String getEvent() {
+<span class="fc" id="L63">        return this.event;</span>
+    }
+
+    /**
+     * Accessor method for getting the seller’s username.
+     * 
+     * @return The username of the seller.
+     */
+    public String getUsername() {
+<span class="fc" id="L72">        return this.username;</span>
+    }
+
+    /**
+     * Accessor method for getting the number of tickets available for the show.
+     * 
+     * @return The number of available tickets.
+     */
+    public int getTicketNumber() {
+<span class="fc" id="L81">        return this.ticketNumber;</span>
+    }
+
+    /**
+     * Decrement the number of tickets for sale for the event.
+     * 
+     * @param ticketNumber The number of available tickets.
+     */
+    public void decreaseTicketNumber(final int ticketNumber) {
+<span class="fc" id="L90">        this.ticketNumber -= ticketNumber;</span>
+<span class="fc" id="L91">    }</span>
+
+    /**
+     * Accessor method for getting the cost of the event per ticket.
+     * 
+     * @return Cost per ticket.
+     */
+    public double getCost() {
+<span class="fc" id="L99">        return this.cost;</span>
+    }
+
+    /**
+     * Get the ticket information as a line of the Available Tickets file. This
+     * will be used to store the update tickets into the new Available Tickets
+     * file.
+     * 
+     * @return The ticket's information formatted for the Available Tickets
+     * file.
+     */
+    public String getTicketEntry() {
+<span class="fc" id="L111">        return this.event + Utility.createLine(' ', MAX_EVENT_LENGTH -</span>
+<span class="fc" id="L112">                this.event.length()) + &quot; &quot; + this.username</span>
+<span class="fc" id="L113">                + Utility.createLine(' ', Account.MAX_USERNAME_LENGTH -</span>
+<span class="fc" id="L114">                        this.username.length()) + &quot; &quot; +</span>
+<span class="fc" id="L115">                String.format(&quot;%03.0f&quot;, (double) this.ticketNumber) + &quot; &quot; +</span>
+<span class="fc" id="L116">                String.format(&quot;%06.2f&quot;, this.cost);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>CondLoopTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">testSuite</a> &gt; <span class="el_source">CondLoopTest.java</span></div><h1>CondLoopTest.java</h1><pre class="source lang-java linenums">package testSuite;
+
+import java.io.File;
+
+import main.Transactions;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Performs Condition and Loop Coverage on {@link Transactions#findNextLogout(int)} 
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+<span class="fc" id="L20">public class CondLoopTest {</span>
+
+    /**
+     * The location of the test files
+     */
+<span class="fc" id="L25">    private static String tests = &quot;./tests/&quot;;</span>
+
+    /** 
+     * The location of the global user account file and ticket file
+     */
+<span class="fc" id="L30">    private static String global = tests + &quot;global/&quot;;</span>
+
+    /**
+     * The input user accounts file
+     */
+<span class="fc" id="L35">    private static String uao = global + &quot;glob_account.inp&quot;;</span>
+
+    /**
+     * The input ticket file
+     */
+<span class="fc" id="L40">    private static String ato = global + &quot;glob_available_tickets.inp&quot;;</span>
+
+    /**
+     * A sample new User Account file name
+     */
+<span class="fc" id="L45">    private static String uaoSample = global + &quot;global.usr&quot;;</span>
+
+    /**
+     * A sample new Tickets file name
+     */
+<span class="fc" id="L50">    private static String atoSample = global + &quot;global.tic&quot;;</span>
+
+    /**
+     * The location of the test daily transaction files for loop coverage
+     */
+<span class="fc" id="L55">    private static String etfs = tests + &quot;loopcoverage/&quot;;</span>
+
+    /**
+     * A daily transaction file that will never cover the loop
+     */
+<span class="fc" id="L60">    private static String zeroEtf = etfs + &quot;zero.etf&quot;;</span>
+
+    /**
+     * A daily transaction file that will cover the loop many times
+     */
+<span class="fc" id="L65">    private static String manyEtf = etfs + &quot;many.etf&quot;;</span>
+
+    /**
+     * A daily transaction file that will cover the loop once
+     */
+<span class="fc" id="L70">    private static String onceEtf = etfs + &quot;one.etf&quot;;</span>
+
+    /**
+     * A daily transaction file that will cover the loop twice
+     */
+<span class="fc" id="L75">    private static String twiceEtf = etfs + &quot;twice.etf&quot;;</span>
+
+    /**
+     * The location of the test daily transaction files for condition covreage
+     */
+<span class="fc" id="L80">    private static String ifs = tests + &quot;condcoverage/&quot;;</span>
+
+    /**
+     * A daily transaction file that will cause the if statement to be true
+     */
+<span class="fc" id="L85">    private static String trueEtf = ifs + &quot;true.etf&quot;;</span>
+
+    /**
+     * A daily transaction file that will cause the if statement to be false
+     */
+<span class="fc" id="L90">    private static String falseEtf = ifs + &quot;false.etf&quot;;</span>
+
+    /**
+     * Instance of a transaction that will never execute the loop
+     */
+    private Transactions transactionZero;
+
+    /**
+     * Instance of a transaction that will execute the loop once
+     */
+    private Transactions transactionOnce;
+
+    /**
+     * Instance of a transaction that will execute the loop twice
+     */
+    private Transactions transactionTwice;
+
+    /**
+     * Instance of a transaction that will execute the loop many times
+     */
+    private Transactions transactionMany;
+
+    /**
+     * Instance of a transaction that will cause the if statement to be true
+     */
+    private Transactions transactionTrue;
+
+    /**
+     * Instance of a transaction that will cause the if statement to be false
+     */
+    private Transactions transactionFalse;
+
+    /**
+     * A sample new user accounts file
+     */
+    private File uaoSampleFile;
+
+    /**
+     * A sample new ticket file
+     */
+    private File atoSampleFile;
+
+    /**
+     * Set up the transaction files and the output files
+     */
+    @Before
+    public void setUp() {
+
+        // Loop coverage
+<span class="fc" id="L139">        this.transactionZero = new Transactions(zeroEtf, uao, ato, uaoSample, atoSample);</span>
+<span class="fc" id="L140">        this.transactionOnce = new Transactions(onceEtf, uao, ato, uaoSample, atoSample);</span>
+<span class="fc" id="L141">        this.transactionTwice = new Transactions(twiceEtf, uao, ato, uaoSample, atoSample);</span>
+<span class="fc" id="L142">        this.transactionMany = new Transactions(manyEtf, uao, ato, uaoSample, atoSample);</span>
+
+        // Condition coverage
+<span class="fc" id="L145">        this.transactionTrue = new Transactions(trueEtf, uao, ato, uaoSample, atoSample);</span>
+<span class="fc" id="L146">        this.transactionFalse = new Transactions(falseEtf, uao, ato, uaoSample, atoSample);</span>
+
+<span class="fc" id="L148">        this.uaoSampleFile = new File(uaoSample);</span>
+<span class="fc" id="L149">        this.atoSampleFile = new File(atoSample);</span>
+<span class="fc" id="L150">    }</span>
+
+    /**
+     * Delete the files created by {@link Transactions}
+     */
+    @After
+    public void tearDown() {
+<span class="fc" id="L157">        this.uaoSampleFile.delete();</span>
+<span class="fc" id="L158">        this.atoSampleFile.delete();</span>
+<span class="fc" id="L159">    }</span>
+
+    /**
+     * A test that runs the loop zero times
+     */
+    @Test
+    public void loopCoverageZero() {
+<span class="fc" id="L166">        this.transactionZero.initTransactionList();</span>
+
+<span class="fc" id="L168">        Assert.assertEquals(-1, this.transactionZero.findNextLogout(0));</span>
+<span class="fc" id="L169">    }</span>
+
+    /**
+     * A test that runs the loop once
+     */
+    @Test
+    public void loopCoverageOnce() {
+<span class="fc" id="L176">        this.transactionOnce.initTransactionList();</span>
+
+<span class="fc" id="L178">        Assert.assertEquals(0, this.transactionOnce.findNextLogout(0));</span>
+<span class="fc" id="L179">    }</span>
+
+    /**
+     * A test that runs the loop twice
+     */
+    @Test
+    public void loopCoverageTwice() {
+<span class="fc" id="L186">        this.transactionTwice.initTransactionList();</span>
+
+<span class="fc" id="L188">        Assert.assertEquals(1, this.transactionTwice.findNextLogout(0));</span>
+<span class="fc" id="L189">    }</span>
+
+    /**
+     * A test that runs the loop many times
+     */
+    @Test
+    public void loopCoverageMany() {
+<span class="fc" id="L196">        this.transactionMany.initTransactionList();</span>
+
+<span class="fc" id="L198">        Assert.assertEquals(2, this.transactionMany.findNextLogout(0));</span>
+<span class="fc" id="L199">    }</span>
+
+    /**
+     * A test that causes the if statement to be true
+     */
+    @Test
+    public void ifCoverageTrue() {
+<span class="fc" id="L206">        this.transactionTrue.initTransactionList();</span>
+
+<span class="fc" id="L208">        Assert.assertEquals(0, this.transactionTrue.findNextLogout(0));</span>
+<span class="fc" id="L209">    }</span>
+
+    /**
+     * A test that causes the if statement to be false
+     */
+    @Test
+    public void ifCoverageFalse() {
+<span class="fc" id="L216">        this.transactionFalse.initTransactionList();</span>
+
+<span class="fc" id="L218">        Assert.assertEquals(0 - 1, this.transactionFalse.findNextLogout(0));</span>
+<span class="fc" id="L219">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>

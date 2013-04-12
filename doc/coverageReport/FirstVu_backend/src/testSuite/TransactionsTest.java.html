@@ -1,0 +1,518 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>TransactionsTest.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">testSuite</a> &gt; <span class="el_source">TransactionsTest.java</span></div><h1>TransactionsTest.java</h1><pre class="source lang-java linenums"><span class="fc" id="L1">package testSuite;</span>
+
+import java.io.File;
+import java.lang.reflect.Field;
+import java.security.AccessController;
+import java.security.PrivilegedAction;
+
+import main.AuxiliaryTransaction;
+import main.EventTransaction;
+import main.Refund;
+import main.Transactions;
+
+import org.junit.After;
+import org.junit.Assert;
+import org.junit.Before;
+import org.junit.Test;
+
+/**
+ * Tests the transactions class
+ * 
+ * @author Ryan Crawford
+ * @author Khalil Fazal
+ * @author Joseph Heron
+ * @author Carly Marshall
+ */
+<span class="fc" id="L26">public class TransactionsTest {</span>
+    /**  
+     * The location of the input files 
+     */
+<span class="fc" id="L30">    private static String filePrefix = &quot;./tests/full_test/full&quot;;</span>
+
+    /**
+     * The input Daily Transaction File.
+     * To ensure proper coverage, the daily transaction file for testing must contain a variety of transactions.
+     * 
+     * It's good enough if it contains a refund, buy and logout transaction.
+     */
+<span class="fc" id="L38">    private static String dtf = filePrefix + &quot;.etf&quot;;</span>
+
+    /**
+     * The input ticket file
+     */
+<span class="fc" id="L43">    private static String ato = &quot;./tests/global/glob_available_tickets.inp&quot;;</span>
+
+    /**
+     * the input user accounts file
+     */
+<span class="fc" id="L48">    private static String uao = &quot;./tests/global/glob_account.inp&quot;;</span>
+
+    /**
+     * An etf containing an invalid buy transaction
+     */
+<span class="fc" id="L53">    private static String buyFaildtf = &quot;./tests/buy/buy.etf&quot;;</span>
+
+    /**
+     * An etf containing an invalid delete transaction
+     */
+<span class="fc" id="L58">    private static String deleteFaildtf = &quot;./tests/delete/delete.etf&quot;;</span>
+
+    /**An etf containing an invalid create transaction
+     * 
+     */
+<span class="fc" id="L63">    private static String createFaildtf = &quot;./tests/create/create.etf&quot;;</span>
+
+    /**
+     * An etf containing an invalid refund transaction
+     */
+<span class="fc" id="L68">    private static String refundFaildtf = &quot;./tests/refund/refund.etf&quot;;</span>
+
+    /**
+     * An etf containing an invalid addcredit transaction
+     */
+<span class="fc" id="L73">    private static String addcreditFaildtf = &quot;./tests/addcredit/addcredit.etf&quot;;</span>
+
+    /**
+     * An empty dtf
+     */
+<span class="fc" id="L78">    private static String emptydtf = &quot;./tests/empty/empty.etf&quot;;</span>
+
+    /**
+     * A sample new User Account file name
+     */
+<span class="fc" id="L83">    private static String uaoSample = filePrefix + &quot;.usr&quot;;</span>
+
+    /**
+     * A sample new Tickets file name
+     */
+<span class="fc" id="L88">    private static String atoSample = filePrefix + &quot;.tic&quot;;</span>
+
+    /**
+     * Instance of a transaction
+     */
+    private Transactions transaction;
+
+    /**
+     * Instance of a buy transaction
+     */
+    private Transactions buyTransaction;
+
+    /**
+     * Instance of a create transaction
+     */
+    private Transactions createTransaction;
+
+    /**
+     * Instance of a delete transaction
+     */
+    private Transactions deleteTransaction;
+
+    /**
+     * Instance of a refund transaction
+     */
+    private Transactions refundTransaction;
+
+    /**
+     * Instance of a addcredit transaction
+     */
+    private Transactions addcreditTransaction;
+
+    /**
+     * Instance of an empty transaction
+     */
+    private Transactions emptyTransaction;
+
+    /**
+     * A sample new user accounts file
+     */
+    private File uaoSampleFile;
+
+    /**
+     * A sample new ticket file
+     */
+    private File atoSampleFile;
+
+    /**
+     * Setup a test case
+     */
+    @Before
+    public void setUp() {
+<span class="fc" id="L140">        this.transaction = new Transactions(dtf, uao, ato, uaoSample, atoSample);</span>
+
+<span class="fc" id="L142">        this.buyTransaction = new Transactions(buyFaildtf, uao, ato, uaoSample, atoSample);</span>
+
+<span class="fc" id="L144">        this.createTransaction = new Transactions(createFaildtf, uao, ato, uaoSample, atoSample);</span>
+
+<span class="fc" id="L146">        this.deleteTransaction = new Transactions(deleteFaildtf, uao, ato, uaoSample, atoSample);</span>
+
+<span class="fc" id="L148">        this.refundTransaction = new Transactions(refundFaildtf, uao, ato, uaoSample, atoSample);</span>
+
+<span class="fc" id="L150">        this.addcreditTransaction = new Transactions(addcreditFaildtf, uao, ato, uaoSample, atoSample);</span>
+
+<span class="fc" id="L152">        this.emptyTransaction = new Transactions(emptydtf, uao, ato, uaoSample, atoSample);</span>
+
+<span class="fc" id="L154">        this.uaoSampleFile = new File(uaoSample);</span>
+<span class="fc" id="L155">        this.atoSampleFile = new File(atoSample);</span>
+<span class="fc" id="L156">    }</span>
+
+    /**
+     * Delete the files created by {@link Transactions}
+     */
+    @After
+    public void tearDown() {
+<span class="fc" id="L163">        this.uaoSampleFile.delete();</span>
+<span class="fc" id="L164">        this.atoSampleFile.delete();</span>
+<span class="fc" id="L165">    }</span>
+
+    /**
+     * Test the set up of the different entries
+     */
+    @Test
+    public void initTransactionList() {
+<span class="fc" id="L172">        Assert.assertTrue(this.transaction.initTransactionList());</span>
+<span class="fc" id="L173">    }</span>
+
+    /**
+     * Test for the case where the daily transaction file is empty
+     */
+    @Test
+    public void failEmptyDTF() {
+<span class="fc" id="L180">        final File dtfFile = new File(dtf);</span>
+<span class="fc" id="L181">        final File backup = new File(dtf + &quot;~&quot;);</span>
+
+<span class="fc" id="L183">        Assert.assertTrue(dtfFile.renameTo(backup));</span>
+<span class="fc" id="L184">        Assert.assertFalse(this.emptyTransaction.initTransactionList());</span>
+<span class="fc" id="L185">        Assert.assertTrue(backup.renameTo(dtfFile));</span>
+<span class="fc" id="L186">    }</span>
+
+    /**
+     * Test for the case that the accounts file can't be read
+     */
+    @Test
+    public void failReadAccounts() {
+<span class="fc" id="L193">        final File accountFile = new File(uao);</span>
+<span class="fc" id="L194">        final File accountBackup = new File(uao + &quot;~&quot;);</span>
+
+<span class="fc" id="L196">        Assert.assertTrue(accountFile.renameTo(accountBackup));</span>
+<span class="fc" id="L197">        Assert.assertFalse(this.transaction.initTransactionList());</span>
+<span class="fc" id="L198">        Assert.assertTrue(accountBackup.renameTo(accountFile));</span>
+<span class="fc" id="L199">    }</span>
+
+    /**
+     * Test for writing out to the new user accounts file the new tickets file
+     */
+    @Test
+    public void endSession() {
+<span class="fc" id="L206">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L207">        Assert.assertTrue(this.transaction.endSession());</span>
+<span class="fc" id="L208">    }</span>
+
+    /**
+     * Test for cases where the session will fail to end
+     */
+    @Test
+    public void failEndSession() {
+<span class="fc" id="L215">        this.transaction.initTransactionList();</span>
+
+        // Block the creation of the output user account file by making a
+        // directory in its place
+<span class="fc" id="L219">        Assert.assertTrue(this.uaoSampleFile.mkdir());</span>
+
+<span class="fc" id="L221">        Assert.assertFalse(this.transaction.endSession());</span>
+
+        // the dummy directory is eventually deleted in tearDown.
+<span class="fc" id="L224">    }</span>
+
+    /** 
+     * Check that there is one transaction in the daily transaction file
+     */
+    @Test
+    public void getTransactions() {
+<span class="fc" id="L231">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L232">        Assert.assertEquals(12, this.transaction.getTransactions().size());</span>
+<span class="fc" id="L233">    }</span>
+
+    /**
+     * Check that the logout transaction has sucessfully occured
+     */
+    @Test
+    public void logout() {
+<span class="fc" id="L240">        this.transaction.logout();</span>
+
+        try {
+<span class="fc" id="L243">            final Field currentUser = this.transaction.getClass().getDeclaredField(&quot;currentUser&quot;);</span>
+
+<span class="fc" id="L245">            AccessController.doPrivileged(new PrivilegedAction&lt;Object&gt;() {</span>
+                @Override
+                public Object run() {
+<span class="fc" id="L248">                    currentUser.setAccessible(true);</span>
+<span class="fc" id="L249">                    return null;</span>
+                }
+            });
+
+<span class="fc" id="L253">            Assert.assertEquals(-1, currentUser.getInt(this.transaction));</span>
+<span class="pc" id="L254">        } catch (final NoSuchFieldException e) {</span>
+<span class="nc" id="L255">            Assert.fail(e.getMessage());</span>
+<span class="nc" id="L256">        } catch (final SecurityException e) {</span>
+<span class="nc" id="L257">            Assert.fail(e.getMessage());</span>
+<span class="nc" id="L258">        } catch (final IllegalAccessException e) {</span>
+<span class="nc" id="L259">            Assert.fail(e.getMessage());</span>
+        }
+<span class="fc" id="L261">    }</span>
+
+    /**
+     * Tests to see if the current user can be found 
+     */
+    @Test
+    public void loginSuccess() {
+<span class="fc" id="L268">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L269">        Assert.assertTrue(this.transaction.login(1));</span>
+<span class="fc" id="L270">    }</span>
+
+    /**
+     * Tests to see if the current user can not be found
+     */
+    @Test
+    public void failLogin() {
+<span class="fc" id="L277">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L278">        Assert.assertFalse(this.transaction.login(-1));</span>
+<span class="fc" id="L279">    }</span>
+
+    /**
+     * Tests to see if a buy transaction can be processed
+     */
+    @Test
+    public void buySuccess() {
+<span class="fc" id="L286">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L287">        this.transaction.login(3);</span>
+
+<span class="fc" id="L289">        Assert.assertTrue(this.transaction.buy((EventTransaction) this.transaction.getTransactions().get(2)));</span>
+<span class="fc" id="L290">    }</span>
+
+    /**
+     * Tests to see if an invalid buy transaction can be caught
+     */
+    @Test
+    public void failBuySeller() {
+<span class="fc" id="L297">        this.buyTransaction.initTransactionList();</span>
+<span class="fc" id="L298">        this.buyTransaction.login(1);</span>
+
+<span class="fc" id="L300">        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(0)));</span>
+<span class="fc" id="L301">    }</span>
+
+    /**
+     * Tests to see if a sell transaction is invalid if the same ticket is sold twice by the same user
+     */
+    @Test
+    public void nextLogout() {
+<span class="fc" id="L308">        this.createTransaction.initTransactionList();</span>
+<span class="fc" id="L309">        final int temp = this.createTransaction.findNextLogout(0);</span>
+
+<span class="pc bpc" id="L311" title="1 of 2 branches missed.">        Assert.assertTrue(temp &gt;= 0);</span>
+<span class="pc bpc" id="L312" title="1 of 2 branches missed.">        Assert.assertTrue(this.createTransaction.findNextLogout(temp + 1) &lt; 0);</span>
+
+<span class="fc" id="L314">    }</span>
+
+    /**
+     * Tests to see if a sell transaction is invalid if the same ticket is sold twice by the same user
+     */
+    @Test
+    public void sellError() {
+<span class="fc" id="L321">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L322">        this.transaction.login(11);</span>
+
+<span class="fc" id="L324">        this.transaction.sell((EventTransaction) this.transaction.getTransactions().get(10));</span>
+
+<span class="fc" id="L326">        Assert.assertFalse(this.transaction.sell((EventTransaction) this.transaction.getTransactions().get(10)));</span>
+<span class="fc" id="L327">    }</span>
+
+    /**
+     * Tests to see how buy transactions specifying an invalid ticket name are handled
+     */
+    @Test
+    public void failBuyTicket() {
+<span class="fc" id="L334">        this.buyTransaction.initTransactionList();</span>
+<span class="fc" id="L335">        this.buyTransaction.login(3);</span>
+
+<span class="fc" id="L337">        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(2)));</span>
+<span class="fc" id="L338">    }</span>
+
+    /**
+     * Tests to see how buy transactions specifying an invalid ticket number are handled
+     */
+    @Test
+    public void failBuyTicketNumber() {
+<span class="fc" id="L345">        this.buyTransaction.initTransactionList();</span>
+<span class="fc" id="L346">        this.buyTransaction.login(5);</span>
+
+<span class="fc" id="L348">        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(4)));</span>
+<span class="fc" id="L349">    }</span>
+
+    /**
+     * Tests to see how buy transactions involving a buyer's account with an insufficient balance are handled
+     */
+    @Test
+    public void failBuyFunds() {
+<span class="fc" id="L356">        this.buyTransaction.initTransactionList();</span>
+<span class="fc" id="L357">        this.buyTransaction.login(7);</span>
+
+<span class="fc" id="L359">        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(6)));</span>
+<span class="fc" id="L360">    }</span>
+
+    /**
+     * Tests to see how buy transactions involving a seller's account with an invalid balance are handled
+     */
+    @Test
+    public void failBuySellerBalance() {
+<span class="fc" id="L367">        this.buyTransaction.initTransactionList();</span>
+<span class="fc" id="L368">        this.buyTransaction.login(9);</span>
+
+<span class="fc" id="L370">        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(8)));</span>
+<span class="fc" id="L371">    }</span>
+
+    /**
+     * Test a scenario where a seller attempts to buy their own tickets
+     */
+    @Test
+    public void failBuySellout() {
+<span class="fc" id="L378">        this.buyTransaction.initTransactionList();</span>
+<span class="fc" id="L379">        this.buyTransaction.login(11);</span>
+
+<span class="fc" id="L381">        Assert.assertTrue(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(10)));</span>
+<span class="fc" id="L382">        Assert.assertFalse(this.buyTransaction.buy((EventTransaction) this.buyTransaction.getTransactions().get(10)));</span>
+
+<span class="fc" id="L384">    }</span>
+
+    /**
+     * Tests a successful create transaction
+     */
+    @Test
+    public void createSuccess() {
+<span class="fc" id="L391">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L392">        this.transaction.login(5);</span>
+
+<span class="fc" id="L394">        Assert.assertTrue(this.transaction.create((AuxiliaryTransaction) this.transaction.getTransactions().get(4)));</span>
+<span class="fc" id="L395">    }</span>
+
+    /**
+     * Tests for a failed create transaction
+     */
+    @Test
+    public void failCreate() {
+<span class="fc" id="L402">        this.createTransaction.initTransactionList();</span>
+<span class="fc" id="L403">        this.createTransaction.login(1);</span>
+
+<span class="fc" id="L405">        Assert.assertFalse(this.createTransaction.create((AuxiliaryTransaction) this.createTransaction.getTransactions().get(0)));</span>
+<span class="fc" id="L406">    }</span>
+
+    /**
+     * Tests for a successful delete transaction
+     */
+    @Test
+    public void deleteSuccess() {
+<span class="fc" id="L413">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L414">        this.transaction.login(6);</span>
+
+<span class="fc" id="L416">        Assert.assertTrue(this.transaction.delete((AuxiliaryTransaction) this.transaction.getTransactions().get(5)));</span>
+<span class="fc" id="L417">    }</span>
+
+    /**
+     * Tests for a failed delete transaction
+     */
+    @Test
+    public void failDelete() {
+<span class="fc" id="L424">        this.deleteTransaction.initTransactionList();</span>
+<span class="fc" id="L425">        this.deleteTransaction.login(1);</span>
+
+<span class="fc" id="L427">        Assert.assertFalse(this.deleteTransaction.delete((AuxiliaryTransaction) this.deleteTransaction.getTransactions().get(0)));</span>
+<span class="fc" id="L428">    }</span>
+
+    /**
+     * Tests for a successful refund transaction
+     */
+    @Test
+    public void refundSuccess() {
+<span class="fc" id="L435">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L436">        this.transaction.login(9);</span>
+
+<span class="fc" id="L438">        Assert.assertTrue(this.transaction.refund((Refund) this.transaction.getTransactions().get(8)));</span>
+<span class="fc" id="L439">    }</span>
+
+    /**
+     * Tests for a failed refund transaction concerning the buyer
+     */
+    @Test
+    public void failRefundBuyer() {
+<span class="fc" id="L446">        this.refundTransaction.initTransactionList();</span>
+<span class="fc" id="L447">        this.refundTransaction.login(1);</span>
+
+<span class="fc" id="L449">        Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(0)));</span>
+<span class="fc" id="L450">    }</span>
+
+    /**
+     * Tests for a failed refund transaction concerning the seller
+     */
+    @Test
+    public void failRefundSeller() {
+<span class="fc" id="L457">        this.refundTransaction.initTransactionList();</span>
+<span class="fc" id="L458">        this.refundTransaction.login(3);</span>
+
+<span class="fc" id="L460">        Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(2)));</span>
+<span class="fc" id="L461">    }</span>
+
+    /**
+     * Tests for a failed refund transaction concerning the seller's account balance
+     */
+    @Test
+    public void failRefundSellerBalance() {
+<span class="fc" id="L468">        this.refundTransaction.initTransactionList();</span>
+<span class="fc" id="L469">        this.refundTransaction.login(5);</span>
+
+<span class="fc" id="L471">        Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(4)));</span>
+<span class="fc" id="L472">    }</span>
+
+    /**
+     * Tests for a failed refund transaction concerning the buyer's account balance
+     */
+    @Test
+    public void failRefundBuyerBalance() {
+<span class="fc" id="L479">        this.refundTransaction.initTransactionList();</span>
+<span class="fc" id="L480">        this.refundTransaction.login(7);</span>
+
+<span class="fc" id="L482">        Assert.assertFalse(this.refundTransaction.refund((Refund) this.refundTransaction.getTransactions().get(6)));</span>
+<span class="fc" id="L483">    }</span>
+
+    /**
+     * Test for a successful addcredit transaction
+     */
+    @Test
+    public void addcreditSuccess() {
+<span class="fc" id="L490">        this.transaction.initTransactionList();</span>
+<span class="fc" id="L491">        this.transaction.login(1);</span>
+
+<span class="fc" id="L493">        Assert.assertTrue(this.transaction.addcredit((AuxiliaryTransaction) this.transaction.getTransactions().get(0)));</span>
+<span class="fc" id="L494">    }</span>
+
+    /**
+     * Tests for a failed addcredit transaction concerning the user
+     */
+    @Test
+    public void failAddcreditUser() {
+<span class="fc" id="L501">        this.addcreditTransaction.initTransactionList();</span>
+<span class="fc" id="L502">        this.addcreditTransaction.login(1);</span>
+
+<span class="fc" id="L504">        Assert.assertFalse(this.addcreditTransaction.addcredit((AuxiliaryTransaction) this.addcreditTransaction.getTransactions().get(0)));</span>
+<span class="fc" id="L505">    }</span>
+
+    /**
+     * Tests for a failed addcredit transaction concerning the user's account balance
+     */
+    @Test
+    public void failAddcreditBalance() {
+<span class="fc" id="L512">        this.addcreditTransaction.initTransactionList();</span>
+<span class="fc" id="L513">        this.addcreditTransaction.login(3);</span>
+
+<span class="fc" id="L515">        Assert.assertFalse(this.addcreditTransaction.addcredit((AuxiliaryTransaction) this.addcreditTransaction.getTransactions().get(2)));</span>
+<span class="fc" id="L516">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>
