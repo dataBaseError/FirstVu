@@ -346,16 +346,14 @@ public class Transactions {
     }
 
     /**
-     * Find the next logout in the daily transaction list.
+     * Find the next logout in the daily transaction list. 
      * 
      * @param startLocation the position from where to start looking for a logout
      * @return The location of the next logout transaction.
      */
     public int findNextLogout(final int startLocation) {
         for (int i = startLocation; i < this.transactions.size(); i++) {
-            if (this.transactions.get(i).getTransactionType() ==
-                    AuxiliaryTransaction.LOGOUT && ((AuxiliaryTransaction)
-                    this.transactions.get(i)).getUsername() != null) {
+            if (this.transactions.get(i).getTransactionType() == AuxiliaryTransaction.LOGOUT) {
                 return i;
             }
         }
