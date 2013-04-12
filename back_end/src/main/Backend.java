@@ -54,9 +54,6 @@ public final class Backend {
                     if (previousLogout > 0) {
                         j = previousLogout;
 
-                        /*if(activityLog.getTransactions().size() < j) {
-                        	break;
-                        }*/
                     }
                     activityLog.login(nextLogout);
 
