@@ -1,7 +1,5 @@
 package testSuite;
 
-import static org.junit.Assert.assertEquals;
-
 import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -12,6 +10,7 @@ import main.Backend;
 import main.ErrorMessages;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -100,7 +99,7 @@ public class BackendTest {
         Backend.main(this.args);
         // System.out.println("ERROR: " + ErrorMessages.INPUTS_ERROR_TYPE + " "
         // + ErrorMessages.INPUT_FILES_MISSING);
-        assertEquals("ERROR: " + ErrorMessages.getString("INPUTS_ERROR_TYPE") + " "
+        Assert.assertEquals("ERROR: " + ErrorMessages.getString("INPUTS_ERROR_TYPE") + " "
                 + ErrorMessages.getString("INPUT_FILES_MISSING") + "\n", this.outContent.toString());
     }
 
