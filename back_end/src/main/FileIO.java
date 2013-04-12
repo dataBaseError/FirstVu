@@ -64,7 +64,7 @@ public class FileIO {
      * @param newAccountLocation The location for the new User Accounts file to
      * be stored to. 
      * @param newTicketLocation The location for the new Available Tickets file
-     * to be stored to.
+     * to be stored to. 
      */
     public FileIO(final String transactionLocation,
             final String accountLocation, final String ticketLocation,
