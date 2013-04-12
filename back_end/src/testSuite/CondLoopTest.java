@@ -1,7 +1,5 @@
 package testSuite;
 
-import static org.junit.Assert.*;
-
 import java.io.File;
 
 import main.Transactions;
@@ -47,10 +45,10 @@ public class CondLoopTest {
 
     /**
      * Instance of a transaction
-	 */
-	private Transactions transactionMany;
-	
-	private Transactions transactionZero;
+     */
+    private Transactions transactionMany;
+
+    private Transactions transactionZero;
 
     /**
      * A sample new user accounts file
@@ -61,18 +59,18 @@ public class CondLoopTest {
      * A sample new ticket file
      */
     private File atoSampleFile;
-    
+
     @Before
     public void setUp() {
         this.transactionMany = new Transactions(dtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
-        
+
         this.transactionZero = new Transactions(dtf, uao, ato, uaoSample, atoSample);
         this.uaoSampleFile = new File(uaoSample);
         this.atoSampleFile = new File(atoSample);
     }
-    
+
     /**
      * Delete the files created by {@link Transactions}
      */
@@ -82,10 +80,9 @@ public class CondLoopTest {
         this.atoSampleFile.delete();
     }
 
-    
-	@Test
-	public void loopCoverageZero() {
-		
-	}
+    @Test
+    public void loopCoverageZero() {
+
+    }
 
 }

@@ -93,7 +93,7 @@ public class BackendTest {
     }
 
     @Test
-    public void mainToFewArguments() {
+    public void mainTooFewArguments() {
         // Should print out
         // ERROR: ErrorMessages.INPUTS_ERROR_TYPE
         // ErrorMessages.INPUT_FILES_MISSING
