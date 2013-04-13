@@ -346,11 +346,11 @@ public class FileIO {
             } finally {
                 fStream.close();
             }
-
         } catch (final FileNotFoundException e) {
             // Error reading dtf
             ErrorMessages.printError("DAILY_TRANSACTION_FILE",
                     "INPUT_ERROR_TYPE");
+
         } catch (final IOException e) {
             // Error reading dtf
             ErrorMessages.printError("DAILY_TRANSACTION_FILE",
