@@ -1,8 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>FileIO.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">main</a> &gt; <span class="el_source">FileIO.java</span></div><h1>FileIO.java</h1><pre class="source lang-java linenums">package main;
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../../../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../../../.resources/report.gif" type="image/gif"/><title>FileIO.java</title><link rel="stylesheet" href="../../../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../../../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="right"><a href="../../../.sessions.html" class="el_session">Sessions</a></span><a href="../../../index.html" class="el_report">All FirstVu Backend Tests (14-Apr-2013 12:49:55 AM)</a> &gt; <a href="../../index.html" class="el_group">FirstVu_backend</a> &gt; <a href="../index.html" class="el_bundle">src</a> &gt; <a href="index.html" class="el_package">main</a> &gt; <span class="el_source">FileIO.java</span></div><h1>FileIO.java</h1><pre class="source lang-java linenums">package main;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -66,18 +65,18 @@ public class FileIO {
      * @param newTicketLocation The location for the new Available Tickets file
      * to be stored to. 
      */
-<span class="fc" id="L69">    public FileIO(final String transactionLocation,</span>
+<span class="fc" id="L68">    public FileIO(final String transactionLocation,</span>
             final String accountLocation, final String ticketLocation,
             final String newAccountLocation, final String newTicketLocation) {
-<span class="fc" id="L72">        this.accountList = new ArrayList&lt;Account&gt;();</span>
-<span class="fc" id="L73">        this.eventList = new ArrayList&lt;Ticket&gt;();</span>
+<span class="fc" id="L71">        this.accountList = new ArrayList&lt;Account&gt;();</span>
+<span class="fc" id="L72">        this.eventList = new ArrayList&lt;Ticket&gt;();</span>
 
-<span class="fc" id="L75">        this.accountLocation = accountLocation;</span>
-<span class="fc" id="L76">        this.transactionLocation = transactionLocation;</span>
-<span class="fc" id="L77">        this.ticketLocation = ticketLocation;</span>
-<span class="fc" id="L78">        this.newAccountLocation = newAccountLocation;</span>
-<span class="fc" id="L79">        this.newTicketLocation = newTicketLocation;</span>
-<span class="fc" id="L80">    }</span>
+<span class="fc" id="L74">        this.accountLocation = accountLocation;</span>
+<span class="fc" id="L75">        this.transactionLocation = transactionLocation;</span>
+<span class="fc" id="L76">        this.ticketLocation = ticketLocation;</span>
+<span class="fc" id="L77">        this.newAccountLocation = newAccountLocation;</span>
+<span class="fc" id="L78">        this.newTicketLocation = newTicketLocation;</span>
+<span class="fc" id="L79">    }</span>
 
     /**
      * Accessor for the current list of user accounts.
@@ -85,7 +84,7 @@ public class FileIO {
      * @return The current list of user accounts.
      */
     public ArrayList&lt;Account&gt; getAccountList() {
-<span class="fc" id="L88">        return this.accountList;</span>
+<span class="fc" id="L87">        return this.accountList;</span>
     }
 
     /**
@@ -94,7 +93,7 @@ public class FileIO {
      * @return The list of currently available tickets.
      */
     public ArrayList&lt;Ticket&gt; getEventList() {
-<span class="fc" id="L97">        return this.eventList;</span>
+<span class="fc" id="L96">        return this.eventList;</span>
     }
 
     /**
@@ -103,47 +102,38 @@ public class FileIO {
      * @return Whether the file was successfully read or not.
      */
     public boolean readAccountFile() {
-<span class="fc" id="L106">        String line = &quot;&quot;;</span>
+<span class="fc" id="L105">        String line = &quot;&quot;;</span>
         String[] lineArray;
         Double balance;
-<span class="fc" id="L109">        FileReader reader = null;</span>
+<span class="fc" id="L108">        FileReader reader = null;</span>
 
         try {
-<span class="fc" id="L112">            reader = new FileReader(this.accountLocation);</span>
-<span class="fc" id="L113">            BufferedReader fStream = null;</span>
+<span class="fc" id="L111">            reader = new FileReader(this.accountLocation);</span>
 
-            try {
-                try {
-                    // Open the user account file
-<span class="fc" id="L118">                    fStream = new BufferedReader(reader);</span>
+            // Open the user account file
+<span class="fc" id="L114">            final BufferedReader fStream = new BufferedReader(reader);</span>
 
-                    // Read lines from the user accounts from the file
-<span class="fc bfc" id="L121" title="All 2 branches covered.">                    while ((line = fStream.readLine()) != null) {</span>
+            // Read lines from the user accounts from the file
+<span class="fc bfc" id="L117" title="All 2 branches covered.">            while ((line = fStream.readLine()) != null) {</span>
 
-<span class="fc" id="L123">                        lineArray = line.split(&quot;\\s+&quot;);</span>
+<span class="fc" id="L119">                lineArray = line.split(&quot;\\s+&quot;);</span>
 
-<span class="fc bfc" id="L125" title="All 2 branches covered.">                        if (lineArray.length == 3) {</span>
-<span class="fc" id="L126">                            balance = Double.parseDouble(lineArray[2]);</span>
-<span class="fc" id="L127">                            this.accountList.add(new Account(lineArray[0], lineArray[1],</span>
-<span class="fc" id="L128">                                    balance));</span>
-                        }
-                    }
-<span class="pc" id="L131">                } finally {</span>
-                    // Close the user account file
-<span class="pc" id="L133">                    fStream.close();</span>
-<span class="nc" id="L134">                }</span>
-<span class="pc" id="L135">            } catch (final IOException e) {</span>
-                // Error reading account file
-<span class="nc" id="L137">                ErrorMessages.printError(&quot;INPUT_ERROR_TYPE&quot;, &quot;USER_ACCOUNTS&quot;);</span>
-<span class="nc" id="L138">                return false;</span>
+<span class="fc bfc" id="L121" title="All 2 branches covered.">                if (lineArray.length == 3) {</span>
+<span class="fc" id="L122">                    balance = Double.parseDouble(lineArray[2]);</span>
+<span class="fc" id="L123">                    this.accountList.add(new Account(lineArray[0], lineArray[1],</span>
+<span class="fc" id="L124">                            balance));</span>
+                }
             }
-<span class="fc" id="L140">        } catch (final FileNotFoundException e) {</span>
+
+            // Close the user account file
+<span class="fc" id="L129">            fStream.close();</span>
+<span class="fc" id="L130">        } catch (final Exception e) {</span>
             // Error reading account file
-<span class="fc" id="L142">            ErrorMessages.printError(&quot;INPUT_ERROR_TYPE&quot;, &quot;USER_ACCOUNTS&quot;);</span>
-<span class="fc" id="L143">            return false;</span>
+<span class="fc" id="L132">            ErrorMessages.printError(&quot;INPUT_ERROR_TYPE&quot;, &quot;USER_ACCOUNTS&quot;);</span>
+<span class="fc" id="L133">            return false;</span>
         }
 
-<span class="fc" id="L146">        return true;</span>
+<span class="fc" id="L136">        return true;</span>
     }
 
     /**
@@ -152,48 +142,38 @@ public class FileIO {
      * @return Whether the file was successfully read or not.
      */
     public boolean readTicketFile() {
-<span class="fc" id="L155">        String line = &quot;&quot;;</span>
+<span class="fc" id="L145">        String line = &quot;&quot;;</span>
         String[] lineArray;
         int ticketNumber;
         Double cost;
-<span class="fc" id="L159">        FileReader reader = null;</span>
+<span class="fc" id="L149">        FileReader reader = null;</span>
 
         try {
-<span class="fc" id="L162">            reader = new FileReader(this.ticketLocation);</span>
+<span class="fc" id="L152">            reader = new FileReader(this.ticketLocation);</span>
 
-<span class="fc" id="L164">            BufferedReader fStream = null;</span>
+            // Open the available tickets file
+<span class="fc" id="L155">            final BufferedReader fStream = new BufferedReader(reader);</span>
 
-            try {
-                try {
-                    // Open the available tickets file
-<span class="fc" id="L169">                    fStream = new BufferedReader(reader);</span>
+            // Read lines from the tickets available from the file
+<span class="fc bfc" id="L158" title="All 2 branches covered.">            while ((line = fStream.readLine()) != null) {</span>
+<span class="fc" id="L159">                lineArray = line.split(&quot;\\s+&quot;);</span>
 
-                    // Read lines from the tickets available from the file
-<span class="fc bfc" id="L172" title="All 2 branches covered.">                    while ((line = fStream.readLine()) != null) {</span>
-<span class="fc" id="L173">                        lineArray = line.split(&quot;\\s+&quot;);</span>
+<span class="fc bfc" id="L161" title="All 2 branches covered.">                if (lineArray.length &gt; 3) {</span>
 
-<span class="fc bfc" id="L175" title="All 2 branches covered.">                        if (lineArray.length &gt; 3) {</span>
-
-<span class="fc" id="L177">                            ticketNumber = Integer.parseInt(lineArray[2]);</span>
-<span class="fc" id="L178">                            cost = Double.parseDouble(lineArray[3]);</span>
-<span class="fc" id="L179">                            this.eventList.add(new Ticket(lineArray[0], lineArray[1], ticketNumber, cost));</span>
-                        }
-                    }
-<span class="pc" id="L182">                } finally {</span>
-<span class="pc" id="L183">                    fStream.close();</span>
-<span class="nc" id="L184">                }</span>
-<span class="pc" id="L185">            } catch (final IOException e) {</span>
-                // Error reading ticket file
-<span class="nc" id="L187">                ErrorMessages.printError(&quot;AVAILABLE_TICKET_FILE&quot;, &quot;INPUT_ERROR_TYPE&quot;);</span>
-<span class="nc" id="L188">                return false;</span>
+<span class="fc" id="L163">                    ticketNumber = Integer.parseInt(lineArray[2]);</span>
+<span class="fc" id="L164">                    cost = Double.parseDouble(lineArray[3]);</span>
+<span class="fc" id="L165">                    this.eventList.add(new Ticket(lineArray[0], lineArray[1], ticketNumber, cost));</span>
+                }
             }
-<span class="fc" id="L190">        } catch (final FileNotFoundException e) {</span>
+
+<span class="fc" id="L169">            fStream.close();</span>
+<span class="fc" id="L170">        } catch (final Exception e) {</span>
             // Error reading ticket file
-<span class="fc" id="L192">            ErrorMessages.printError(&quot;AVAILABLE_TICKET_FILE&quot;, &quot;INPUT_ERROR_TYPE&quot;);</span>
-<span class="fc" id="L193">            return false;</span>
+<span class="fc" id="L172">            ErrorMessages.printError(&quot;AVAILABLE_TICKET_FILE&quot;, &quot;INPUT_ERROR_TYPE&quot;);</span>
+<span class="fc" id="L173">            return false;</span>
         }
 
-<span class="fc" id="L196">        return true;</span>
+<span class="fc" id="L176">        return true;</span>
     }
 
     /**
@@ -202,50 +182,37 @@ public class FileIO {
      * @return Whether the file was successfully read or not.
      */
     public boolean writeAccountFile() {
-<span class="fc" id="L205">        BufferedWriter bufferedWriter = null;</span>
-<span class="fc" id="L206">        FileWriter writer = null;</span>
+<span class="fc" id="L185">        FileWriter writer = null;</span>
 
         try {
-<span class="fc" id="L209">            writer = new FileWriter(this.newAccountLocation);</span>
+<span class="fc" id="L188">            writer = new FileWriter(this.newAccountLocation);</span>
+<span class="fc" id="L189">            final BufferedWriter bufferedWriter = new BufferedWriter(writer);</span>
 
-            try {
-                try {
-<span class="fc" id="L213">                    bufferedWriter = new BufferedWriter(writer);</span>
+            // The format of the line is %-15s %2s %09.2f
+<span class="fc" id="L192">            final String format = String.format(&quot;%s%d%s%d%s&quot;, &quot;%-&quot;,</span>
+<span class="fc" id="L193">                    Account.MAX_USERNAME_LENGTH, &quot;s %2s %0&quot;,</span>
+<span class="fc" id="L194">                    Account.MAX_BALANCE_LENGTH + 3, &quot;.2f&quot;);</span>
 
-                    // The format of the line is %-15s %2s %09.2f
-<span class="fc" id="L216">                    final String format = String.format(&quot;%s%d%s%d%s&quot;, &quot;%-&quot;,</span>
-<span class="fc" id="L217">                            Account.MAX_USERNAME_LENGTH, &quot;s %2s %0&quot;,</span>
-<span class="fc" id="L218">                            Account.MAX_BALANCE_LENGTH + 3, &quot;.2f&quot;);</span>
+            // Add the user accounts to the output file
+<span class="fc bfc" id="L197" title="All 2 branches covered.">            for (final Account account : this.accountList) {</span>
+<span class="fc" id="L198">                final String username = account.getUsername();</span>
+<span class="fc" id="L199">                final String type = account.getType();</span>
+<span class="fc" id="L200">                final double balance = account.getBalance();</span>
 
-                    // Add the user accounts to the output file
-<span class="fc bfc" id="L221" title="All 2 branches covered.">                    for (final Account account : this.accountList) {</span>
-<span class="fc" id="L222">                        final String username = account.getUsername();</span>
-<span class="fc" id="L223">                        final String type = account.getType();</span>
-<span class="fc" id="L224">                        final double balance = account.getBalance();</span>
-
-<span class="fc" id="L226">                        bufferedWriter.write(String.format(format + &quot;\n&quot;, username, type,</span>
-<span class="fc" id="L227">                                balance));</span>
-                    }
-
-<span class="fc" id="L230">                    bufferedWriter.write(String.format(format, &quot;END&quot;, &quot;&quot;, 0.0));</span>
-<span class="pc" id="L231">                } finally {</span>
-<span class="pc" id="L232">                    bufferedWriter.close();</span>
-<span class="nc" id="L233">                }</span>
-<span class="pc" id="L234">            } catch (final IOException e) {</span>
-                // Error writing to current account file
-<span class="nc" id="L236">                ErrorMessages.printError(&quot;USER_ACCOUNTS&quot;,</span>
-<span class="nc" id="L237">                        &quot;OUTPUT_ERROR_TYPE&quot;);</span>
-<span class="nc" id="L238">                return false;</span>
+<span class="fc" id="L202">                bufferedWriter.write(String.format(format + &quot;\n&quot;, username, type,</span>
+<span class="fc" id="L203">                        balance));</span>
             }
-<span class="fc" id="L240">        } catch (final IOException e) {</span>
-            // Error writing to current account file
-<span class="fc" id="L242">            ErrorMessages.printError(&quot;USER_ACCOUNTS&quot;,</span>
-<span class="fc" id="L243">                    &quot;OUTPUT_ERROR_TYPE&quot;);</span>
-<span class="fc" id="L244">            return false;</span>
 
+<span class="fc" id="L206">            bufferedWriter.write(String.format(format, &quot;END&quot;, &quot;&quot;, 0.0));</span>
+<span class="fc" id="L207">            bufferedWriter.close();</span>
+<span class="fc" id="L208">        } catch (final IOException e) {</span>
+            // Error writing to current account file
+<span class="fc" id="L210">            ErrorMessages.printError(&quot;USER_ACCOUNTS&quot;,</span>
+<span class="fc" id="L211">                    &quot;OUTPUT_ERROR_TYPE&quot;);</span>
+<span class="fc" id="L212">            return false;</span>
         }
 
-<span class="fc" id="L248">        return true;</span>
+<span class="fc" id="L215">        return true;</span>
     }
 
     /**
@@ -254,51 +221,40 @@ public class FileIO {
      * @return Whether the file was successfully read or not.
      */
     public boolean writeTicketFile() {
-<span class="fc" id="L257">        BufferedWriter bufferedWriter = null;</span>
-<span class="fc" id="L258">        FileWriter writer = null;</span>
+<span class="fc" id="L224">        FileWriter writer = null;</span>
 
         try {
-<span class="fc" id="L261">            writer = new FileWriter(this.newTicketLocation);</span>
+<span class="fc" id="L227">            writer = new FileWriter(this.newTicketLocation);</span>
 
-            try {
-                try {
-<span class="fc" id="L265">                    bufferedWriter = new BufferedWriter(writer);</span>
+<span class="fc" id="L229">            final BufferedWriter bufferedWriter = new BufferedWriter(writer);</span>
 
-                    // The format of the line is %-19s %-15s %03d %06.2f
-<span class="fc" id="L268">                    final String format = String.format(&quot;%s%d%s%d%s%d%s%d%s&quot;, &quot;%-&quot;,</span>
-<span class="fc" id="L269">                            Ticket.MAX_EVENT_LENGTH, &quot;s %-&quot;, Account.MAX_USERNAME_LENGTH,</span>
-<span class="fc" id="L270">                            &quot;s %0&quot;, Ticket.MAX_TICKET_LENGTH, &quot;d %0&quot;,</span>
-<span class="fc" id="L271">                            Account.MAX_BALANCE_LENGTH, &quot;.2f&quot;);</span>
+            // The format of the line is %-19s %-15s %03d %06.2f
+<span class="fc" id="L232">            final String format = String.format(&quot;%s%d%s%d%s%d%s%d%s&quot;, &quot;%-&quot;,</span>
+<span class="fc" id="L233">                    Ticket.MAX_EVENT_LENGTH, &quot;s %-&quot;, Account.MAX_USERNAME_LENGTH,</span>
+<span class="fc" id="L234">                    &quot;s %0&quot;, Ticket.MAX_TICKET_LENGTH, &quot;d %0&quot;,</span>
+<span class="fc" id="L235">                    Account.MAX_BALANCE_LENGTH, &quot;.2f&quot;);</span>
 
-                    // Add the tickets available to the output file
-<span class="fc bfc" id="L274" title="All 2 branches covered.">                    for (final Ticket ticket : this.eventList) {</span>
-<span class="fc" id="L275">                        final String event = ticket.getEvent();</span>
-<span class="fc" id="L276">                        final String seller = ticket.getUsername();</span>
-<span class="fc" id="L277">                        final int quantity = ticket.getTicketNumber();</span>
-<span class="fc" id="L278">                        final double cost = ticket.getCost();</span>
+            // Add the tickets available to the output file
+<span class="fc bfc" id="L238" title="All 2 branches covered.">            for (final Ticket ticket : this.eventList) {</span>
+<span class="fc" id="L239">                final String event = ticket.getEvent();</span>
+<span class="fc" id="L240">                final String seller = ticket.getUsername();</span>
+<span class="fc" id="L241">                final int quantity = ticket.getTicketNumber();</span>
+<span class="fc" id="L242">                final double cost = ticket.getCost();</span>
 
-<span class="fc" id="L280">                        bufferedWriter.write(String.format(format + &quot;\n&quot;, event, seller,</span>
-<span class="fc" id="L281">                                quantity, cost));</span>
-                    }
-
-<span class="fc" id="L284">                    bufferedWriter.write(String.format(format, &quot;END&quot;, &quot;&quot;, 0, 0.0));</span>
-<span class="pc" id="L285">                } finally {</span>
-<span class="pc" id="L286">                    bufferedWriter.close();</span>
-<span class="nc" id="L287">                }</span>
-<span class="pc" id="L288">            } catch (final IOException e) {</span>
-                // Error writing to available ticket file
-<span class="nc" id="L290">                ErrorMessages.printError(&quot;AVAILABLE_TICKET_FILE&quot;,</span>
-<span class="nc" id="L291">                        &quot;OUTPUT_ERROR_TYPE&quot;);</span>
-<span class="nc" id="L292">                return false;</span>
+<span class="fc" id="L244">                bufferedWriter.write(String.format(format + &quot;\n&quot;, event, seller,</span>
+<span class="fc" id="L245">                        quantity, cost));</span>
             }
-<span class="fc" id="L294">        } catch (final IOException e) {</span>
+
+<span class="fc" id="L248">            bufferedWriter.write(String.format(format, &quot;END&quot;, &quot;&quot;, 0, 0.0));</span>
+<span class="fc" id="L249">            bufferedWriter.close();</span>
+<span class="fc" id="L250">        } catch (final IOException e) {</span>
             // Error writing to available ticket file
-<span class="fc" id="L296">            ErrorMessages.printError(&quot;AVAILABLE_TICKET_FILE&quot;,</span>
-<span class="fc" id="L297">                    &quot;OUTPUT_ERROR_TYPE&quot;);</span>
-<span class="fc" id="L298">            return false;</span>
+<span class="fc" id="L252">            ErrorMessages.printError(&quot;AVAILABLE_TICKET_FILE&quot;,</span>
+<span class="fc" id="L253">                    &quot;OUTPUT_ERROR_TYPE&quot;);</span>
+<span class="fc" id="L254">            return false;</span>
         }
 
-<span class="fc" id="L301">        return true;</span>
+<span class="fc" id="L257">        return true;</span>
     }
 
     /**
@@ -308,76 +264,67 @@ public class FileIO {
      * Available Tickets file. 
      */
     public ArrayList&lt;Entry&gt; readTransactions() {
-<span class="fc" id="L311">        final ArrayList&lt;Entry&gt; entries = new ArrayList&lt;Entry&gt;();</span>
-<span class="fc" id="L312">        BufferedReader fStream = null;</span>
-<span class="fc" id="L313">        FileReader reader = null;</span>
+<span class="fc" id="L267">        final ArrayList&lt;Entry&gt; entries = new ArrayList&lt;Entry&gt;();</span>
+<span class="fc" id="L268">        FileReader reader = null;</span>
 
         try {
-<span class="fc" id="L316">            reader = new FileReader(this.transactionLocation);</span>
+<span class="fc" id="L271">            reader = new FileReader(this.transactionLocation);</span>
 
-            try {
-                try {
-                    // Open the daily transaction file
-<span class="fc" id="L321">                    fStream = new BufferedReader(reader);</span>
-                    String line;
+            // Open the daily transaction file
+<span class="fc" id="L274">            final BufferedReader fStream = new BufferedReader(reader);</span>
+            String line;
 
-                    // Read the lines of the daily transaction file
-<span class="fc bfc" id="L325" title="All 2 branches covered.">                    while ((line = fStream.readLine()) != null) {</span>
-<span class="fc" id="L326">                        final String[] lineArray = line.split(&quot;\\s+&quot;);</span>
-<span class="fc" id="L327">                        final int transaction = Integer.parseInt(lineArray[0]);</span>
+            // Read the lines of the daily transaction file
+<span class="fc bfc" id="L278" title="All 2 branches covered.">            while ((line = fStream.readLine()) != null) {</span>
+<span class="fc" id="L279">                final String[] lineArray = line.split(&quot;\\s+&quot;);</span>
+<span class="fc" id="L280">                final int transaction = Integer.parseInt(lineArray[0]);</span>
 
-<span class="fc bfc" id="L329" title="All 2 branches covered.">                        if (lineArray.length &gt; 1) {</span>
-<span class="fc" id="L330">                            final String username = lineArray[1];</span>
-<span class="pc bpc" id="L331" title="1 of 4 branches missed.">                            switch (transaction) {</span>
-                                case 0:
-                                    // logout or
-                                case 1:
-                                    // create or
-                                case 2:
-                                    // delete or
-                                case 6:
-                                    // addcredit
-<span class="fc" id="L340">                                    final double balance = Double.parseDouble(lineArray[3]);</span>
+<span class="fc bfc" id="L282" title="All 2 branches covered.">                if (lineArray.length &gt; 1) {</span>
+<span class="fc" id="L283">                    final String username = lineArray[1];</span>
+<span class="pc bpc" id="L284" title="1 of 4 branches missed.">                    switch (transaction) {</span>
+                        case 0:
+                            // logout or
+                        case 1:
+                            // create or
+                        case 2:
+                            // delete or
+                        case 6:
+                            // addcredit
+<span class="fc" id="L293">                            final double balance = Double.parseDouble(lineArray[3]);</span>
 
-<span class="fc" id="L342">                                    entries.add(new AuxiliaryTransaction(transaction,</span>
-<span class="fc" id="L343">                                            username, balance, lineArray[2]));</span>
-<span class="fc" id="L344">                                    break;</span>
-                                case 3:
-                                    // sell or
-                                case 4:
-                                    // buy
-<span class="fc" id="L349">                                    final int numTickets = Integer.parseInt(lineArray[3]);</span>
-<span class="fc" id="L350">                                    final double price = Double.parseDouble(lineArray[4]);</span>
+<span class="fc" id="L295">                            entries.add(new AuxiliaryTransaction(transaction,</span>
+<span class="fc" id="L296">                                    username, balance, lineArray[2]));</span>
+<span class="fc" id="L297">                            break;</span>
+                        case 3:
+                            // sell or
+                        case 4:
+                            // buy
+<span class="fc" id="L302">                            final int numTickets = Integer.parseInt(lineArray[3]);</span>
+<span class="fc" id="L303">                            final double price = Double.parseDouble(lineArray[4]);</span>
 
-<span class="fc" id="L352">                                    entries.add(new EventTransaction(transaction,</span>
-<span class="fc" id="L353">                                            lineArray[1], lineArray[2], price,</span>
-<span class="fc" id="L354">                                            numTickets));</span>
-<span class="fc" id="L355">                                    break;</span>
-                                case 5:
-                                    // refund
-<span class="fc" id="L358">                                    final double amount = Double.parseDouble(lineArray[3]);</span>
+<span class="fc" id="L305">                            entries.add(new EventTransaction(transaction,</span>
+<span class="fc" id="L306">                                    lineArray[1], lineArray[2], price,</span>
+<span class="fc" id="L307">                                    numTickets));</span>
+<span class="fc" id="L308">                            break;</span>
+                        case 5:
+                            // refund
+<span class="fc" id="L311">                            final double amount = Double.parseDouble(lineArray[3]);</span>
 
-<span class="fc" id="L360">                                    entries.add(new Refund(transaction, lineArray[1],</span>
-<span class="fc" id="L361">                                            lineArray[2], amount));</span>
-                                    break;
-                            }
-                        }
+<span class="fc" id="L313">                            entries.add(new Refund(transaction, lineArray[1],</span>
+<span class="fc" id="L314">                                    lineArray[2], amount));</span>
+                            break;
                     }
-<span class="pc" id="L366">                } finally {</span>
-<span class="pc" id="L367">                    fStream.close();</span>
-<span class="nc" id="L368">                }</span>
-<span class="pc" id="L369">            } catch (final IOException e) {</span>
-                // Error reading dtf
-<span class="nc" id="L371">                ErrorMessages.printError(&quot;DAILY_TRANSACTION_FILE&quot;,</span>
-<span class="nc" id="L372">                        &quot;INPUT_ERROR_TYPE&quot;);</span>
+                }
             }
-<span class="pc" id="L374">        } catch (final FileNotFoundException e) {</span>
+
+<span class="fc" id="L320">            fStream.close();</span>
+<span class="fc" id="L321">        } catch (final Exception e) {</span>
             // Error reading dtf
-<span class="fc" id="L376">            ErrorMessages.printError(&quot;DAILY_TRANSACTION_FILE&quot;,</span>
-<span class="fc" id="L377">                    &quot;INPUT_ERROR_TYPE&quot;);</span>
+<span class="fc" id="L323">            ErrorMessages.printError(&quot;DAILY_TRANSACTION_FILE&quot;,</span>
+<span class="fc" id="L324">                    &quot;INPUT_ERROR_TYPE&quot;);</span>
         }
 
-<span class="fc" id="L380">        return entries;</span>
+<span class="fc" id="L327">        return entries;</span>
     }
 
     /**
@@ -387,13 +334,13 @@ public class FileIO {
      * @return The location of that user in the user accounts list.
      */
     public int findUser(final String username) {
-<span class="fc bfc" id="L390" title="All 2 branches covered.">        for (int i = 0; i &lt; this.accountList.size(); i++) {</span>
-<span class="fc bfc" id="L391" title="All 2 branches covered.">            if (this.accountList.get(i).getUsername().equals(username)) {</span>
-<span class="fc" id="L392">                return i;</span>
+<span class="fc bfc" id="L337" title="All 2 branches covered.">        for (int i = 0; i &lt; this.accountList.size(); i++) {</span>
+<span class="fc bfc" id="L338" title="All 2 branches covered.">            if (this.accountList.get(i).getUsername().equals(username)) {</span>
+<span class="fc" id="L339">                return i;</span>
             }
         }
 
-<span class="fc" id="L396">        return -1;</span>
+<span class="fc" id="L343">        return -1;</span>
     }
 
     /**
@@ -404,14 +351,14 @@ public class FileIO {
      * @return The location of the ticket in the available tickets list.
      */
     public int findEvent(final String eventName, final String sellName) {
-<span class="fc bfc" id="L407" title="All 2 branches covered.">        for (int i = 0; i &lt; this.eventList.size(); i++) {</span>
-<span class="fc" id="L408">            final Ticket event = this.eventList.get(i);</span>
-<span class="fc bfc" id="L409" title="All 4 branches covered.">            if (event.getEvent().equals(eventName) &amp;&amp; event.getUsername().equals(sellName)) {</span>
-<span class="fc" id="L410">                return i;</span>
+<span class="fc bfc" id="L354" title="All 2 branches covered.">        for (int i = 0; i &lt; this.eventList.size(); i++) {</span>
+<span class="fc" id="L355">            final Ticket event = this.eventList.get(i);</span>
+<span class="fc bfc" id="L356" title="All 4 branches covered.">            if (event.getEvent().equals(eventName) &amp;&amp; event.getUsername().equals(sellName)) {</span>
+<span class="fc" id="L357">                return i;</span>
             }
         }
 
-<span class="fc" id="L414">        return -1;</span>
+<span class="fc" id="L361">        return -1;</span>
     }
 
     /**
@@ -420,14 +367,14 @@ public class FileIO {
      * @param username the event's ticket's seller
      */
     public void removeUserTickets(final String username) {
-<span class="fc bfc" id="L423" title="All 2 branches covered.">        for (int i = 0; i &lt; this.eventList.size();) {</span>
-<span class="fc bfc" id="L424" title="All 2 branches covered.">            if (this.eventList.get(i).getUsername().equals(username)) {</span>
-<span class="fc" id="L425">                this.eventList.remove(i);</span>
-<span class="fc" id="L426">            } else {</span>
-<span class="fc" id="L427">                i++;</span>
+<span class="fc bfc" id="L370" title="All 2 branches covered.">        for (int i = 0; i &lt; this.eventList.size();) {</span>
+<span class="fc bfc" id="L371" title="All 2 branches covered.">            if (this.eventList.get(i).getUsername().equals(username)) {</span>
+<span class="fc" id="L372">                this.eventList.remove(i);</span>
+<span class="fc" id="L373">            } else {</span>
+<span class="fc" id="L374">                i++;</span>
             }
         }
-<span class="fc" id="L430">    }</span>
+<span class="fc" id="L377">    }</span>
 
 }
-</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (12-Apr-2013 3:02:41 PM)</div></body></html>
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.6.0.201210061924</span>All FirstVu Backend Tests (14-Apr-2013 12:49:55 AM)</div></body></html>
